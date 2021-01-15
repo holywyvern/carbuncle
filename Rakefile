@@ -30,4 +30,10 @@ task :clean do
   sh 'cd mruby && rake deep_clean'
 end
 
-task default: :compile
+desc 'move bin folder'
+task bins: :compile do
+  dst_bin = File.join(__dir__, 'mruby', 'bin')
+  FileUtils.mv(dst_bin, __dir__, verbose: true, force: true)
+end
+
+task default: :bins
