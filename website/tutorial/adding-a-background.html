@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <header>
+    <meta charset="utf-8">
+    <title>Carbuncle Game Engine</title>
+    <link rel="stylesheet" href="../reset.css" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Raleway:500|Roboto+Mono|Fredericka+the+Great&display=fallback" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/plugins/line-numbers/prism-line-numbers.css" integrity="sha256-udLi8HM3vM4cuDDMGyRFzG8ek0UN0+uytPLWkbTpagg=" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js" integrity="sha256-5F8rynXScCOEtnwlm5P293TlCvTT1beoEJcmWHCg4BU=" crossorigin="anonymous"></script>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="../styles.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prism-themes@1.1.0/themes/prism-a11y-dark.css" />
+  </header>
+  <body>
+    <div class="tutorial-contents">
+      <p>
+        Let's add an animated background, shall we?
+        The one we are using at this example is the one you can obtain from <a href="https://opengameart.org/content/mountain-at-dusk-background" target="_blank">here</a>.
+        To add a background is pretty simple, add the following lines into your code:
+      </p>
+      <pre class="line-numbers" data-src="./snippets/adding-bg.rb" data-start="10"></pre>
+      <p>As you can see, we first have to load our images as textures.</p>
+      <p>This give us some advantajes:</p>
+      <ul>
+        <li>If we require to use multiple times the same background, we can just load it once, and draw it as many times as we need. Imagine a screen full of the same enemy, for example.</li>
+        <li>We can also change on the fly textures this way, which could be usefull.</li>
+      </ul>
+      <p>We then create one "Plane" for each image we want to draw. Planes are usefull when you want a repeating image (like a background)</p>
+      <hr>
+      <p>We just then need to update and draw our backgrounds. Because they are scrolling we need to move their "origins".</p>
+      <p>While you can use <code>origin.x</code> Carbuncle offers an alias as <code>ox</code>.</p>
+      <p>So we add the following code to our application:</p>
+      <pre class="line-numbers" data-src="./snippets/updating-bg-1.rb" data-start="10"></pre>
+      <p>Now our background is moving!</p>
+      <div class="screenshot">
+        <img src="./img/bg1.gif">
+      </div>
+      <p>This is nice and all... but our Image moves all backgrounds at the same time.</p>
+      <p>We should animate each one separately, to make an illusion of depth. So let's change our update method:</p>
+      <pre class="line-numbers" data-src="./snippets/updating-bg-2.rb" data-start="51"></pre>
+      <p>This now shows as this:</p>
+      <div class="screenshot">
+        <img src="./img/bg2.gif">
+      </div>
+      <p>Now this background looks way better.</p>
+      <p>Our final code for this example is this:</p>
+      <pre class="line-numbers" data-src="./snippets/example3.rb"></pre>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/prism.min.js" integrity="sha256-HWJnMZHGx7U1jmNfxe4yaQedmpo/mtxWSIXvcJkLIf4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/components/prism-ruby.js" integrity="sha256-XyBJQ/qShMYrX19UCNoIrsgtb98q48RtFyv05aS4NqE=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/plugins/line-numbers/prism-line-numbers.min.js" integrity="sha256-hep5s8952MqR7Y79JYfCXZD6vQjVHs7sOu/ZGrs1OEQ=" crossorigin="anonymous"></script>
+  </body>
+</html>

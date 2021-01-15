@@ -1,0 +1,24 @@
+{
+  "name": "carbuncle",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "static-server -p 3000",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/holywyvern/carbuncle.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/holywyvern/carbuncle/issues"
+  },
+  "homepage": "https://github.com/holywyvern/carbuncle#readme",
+  "devDependencies": {
+    "static-server": "^2.2.1"
+  }
+}

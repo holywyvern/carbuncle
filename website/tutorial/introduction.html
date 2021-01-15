@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <header>
+    <meta charset="utf-8">
+    <title>Carbuncle Game Engine</title>
+    <link rel="stylesheet" href="../reset.css" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Raleway:500|Roboto+Mono|Fredericka+the+Great&display=fallback" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/plugins/line-numbers/prism-line-numbers.css" integrity="sha256-udLi8HM3vM4cuDDMGyRFzG8ek0UN0+uytPLWkbTpagg=" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js" integrity="sha256-5F8rynXScCOEtnwlm5P293TlCvTT1beoEJcmWHCg4BU=" crossorigin="anonymous"></script>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="../styles.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prism-themes@1.1.0/themes/prism-a11y-dark.css" />
+  </header>
+  <body>
+    <div class="tutorial-contents">
+      <h3>Welcome to Carbuncle</h3>
+      <p>With this tutorial you will have the base understanding on how to build a game and  play it using Carbuncle.</p>
+      <p>As of today, this version is lacking documentation and some features, but it's possible to build games using this.</p>
+      <h3>Setting Up</h3>
+      <h4>Setting Up on Windows</h4>
+      <p>Just download the binary file at the homepage and you are ready to go!</p>
+      <h4>Setting Up on Mac OSX</h4>
+      <p>On Mac the process is mostly the same, you will probably require to authorize it to run on your PC in the security tab for now.</p>
+      <h4>Setting Up on Other platforms</h4>
+      <p>At the moment, the rest of the platforms are not being built. In the future, ports to iOS, Android and Linux are planned.</p>
+      <h3>Starting your new game</h3>
+      <h4>Using the application as your game executable</h4>
+      <p>At the current version, Carbuncle requires a main.rb file to run. So create the following file named main.rb and put it in some folder:</p>
+      <pre class="line-numbers" data-src="./snippets/empty-game.rb"></pre>
+      <p>Since Carbuncle 0.4 onwards, new methods can now be used for your application:</p>
+      <h4>Using Carbuncle as a command line executable</h4>
+      <p>You can now just do: <code>$ /your/path/to/carbuncle /your/game/folder</code>.</p>
+      <p>You can use this method to develop your game, but when you are done, you should use the distributable version below.</p>
+      <h4>Launching code from the same folder</h4>
+      <p>If Carbuncle reads a main.rb from the same folder it is currently installed, it will run that.</p>
+      <p>This is used to distribute your game with the carbuncle version you were using.</p>
+      <p><strong>Note for MacOS users</strong> Because the Mac OSX version is an APP and not a binary file, your <code>main.rb</code>
+        should be inside your <code>mac.app/Contents/MacOS</code> folder.
+        You can always see the package's contents by right clicking and selecting "view package's contents"
+      </p>
+      <hr>
+      <p>Now click on your application folder and you should see an empty window:</p>
+      <div class="screenshot">
+        <img src="./img/001.png" alt="Hooray your first screen">
+      </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/prism.min.js" integrity="sha256-HWJnMZHGx7U1jmNfxe4yaQedmpo/mtxWSIXvcJkLIf4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/components/prism-ruby.js" integrity="sha256-XyBJQ/qShMYrX19UCNoIrsgtb98q48RtFyv05aS4NqE=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/plugins/line-numbers/prism-line-numbers.min.js" integrity="sha256-hep5s8952MqR7Y79JYfCXZD6vQjVHs7sOu/ZGrs1OEQ=" crossorigin="anonymous"></script>
+  </body>
+</html>

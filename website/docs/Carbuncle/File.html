@@ -1,0 +1,1576 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  Class: Carbuncle::File
+  
+    &mdash; Documentation by YARD 0.9.19
+  
+</title>
+
+  <link rel="stylesheet" href="../css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="../css/common.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="../css/mruby.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  pathId = "Carbuncle::File";
+  relpath = '../';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../js/mruby.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="../class_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  
+    <a href="../_index.html">Index (F)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../Carbuncle.html" title="Carbuncle (module)">Carbuncle</a></span></span>
+     &raquo; 
+    <span class="title">File</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><h1>Class: Carbuncle::File
+  
+  
+  
+</h1>
+<div class="box_info">
+  
+  <dl>
+    <dt>Inherits:</dt>
+    <dd>
+      <span class="inheritName"><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></span>
+      
+        <ul class="fullTree">
+          <li><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></li>
+          
+            <li class="next">Carbuncle::File</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+    </dd>
+  </dl>
+  
+
+  
+  
+  
+  
+  
+
+  
+
+  
+  <dl>
+    <dt>Defined in:</dt>
+    <dd>mrbgems/carbuncle-core/src/filesystem.c<span class="defines">,<br />
+  mrbgems/carbuncle-core/mrblib/file.rb</span>
+</dd>
+  </dl>
+  
+</div>
+
+
+
+
+
+
+
+
+  
+    <h2>
+      Class Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#read-class_method" title="read (class method)">.<strong>read</strong>(path, *opts)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#readlines-class_method" title="readlines (class method)">.<strong>readlines</strong>(name, *args)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#require-class_method" title="require (class method)">.<strong>require</strong>(file)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#required_files-class_method" title="required_files (class method)">.<strong>required_files</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#write-class_method" title="write (class method)">.<strong>write</strong>(path, content, open_args = &#39;w&#39;)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+    <h2>
+      Instance Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#close-instance_method" title="#close (instance method)">#<strong>close</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#closed%3F-instance_method" title="#closed? (instance method)">#<strong>closed?</strong>  &#x21d2; Boolean </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#eof%3F-instance_method" title="#eof? (instance method)">#<strong>eof?</strong>  &#x21d2; Boolean </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#flush-instance_method" title="#flush (instance method)">#<strong>flush</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">#<strong>initialize</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#length-instance_method" title="#length (instance method)">#<strong>length</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#position-instance_method" title="#position (instance method)">#<strong>position</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#read-instance_method" title="#read (instance method)">#<strong>read</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#readline-instance_method" title="#readline (instance method)">#<strong>readline</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#readlines-instance_method" title="#readlines (instance method)">#<strong>readlines</strong>(arg1 = nil, arg2 = nil)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#seek-instance_method" title="#seek (instance method)">#<strong>seek</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#size-instance_method" title="#size (instance method)">#<strong>size</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#tell-instance_method" title="#tell (instance method)">#<strong>tell</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#write-instance_method" title="#write (instance method)">#<strong>write</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+<div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <h3 class="signature first" id="initialize-instance_method">
+  
+    #<strong>initialize</strong>  &#x21d2; <tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'mrbgems/carbuncle-core/src/filesystem.c', line 71</span>
+
+static mrb_value
+mrb_file_initialize(mrb_state *mrb, mrb_value <span style="color:#069">self</span>)
+{
+  <span style="color:#036;font-weight:bold">PHYSFS_File</span> *ptr;
+  const char *file, *mode;
+  mrb_value block = mrb_nil_value();
+  <span style="color:#080;font-weight:bold">if</span> (mrb_get_args(mrb, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">z|z&amp;</span><span style="color:#710">&quot;</span></span>, &amp;file, &amp;mode, &amp;block) &lt; <span style="color:#00D">2</span>)
+  {
+    mode = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">r</span><span style="color:#710">&quot;</span></span>;
+  }
+  <span style="color:#080;font-weight:bold">if</span> (!strcmp(mode, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">r</span><span style="color:#710">&quot;</span></span>))
+  {
+    ptr = PHYSFS_openRead(file);
+  }
+  <span style="color:#080;font-weight:bold">else</span> <span style="color:#080;font-weight:bold">if</span> (!strcmp(mode, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">w+</span><span style="color:#710">&quot;</span></span>))
+  {
+    ptr = PHYSFS_openAppend(file);
+  }
+  <span style="color:#080;font-weight:bold">else</span> <span style="color:#080;font-weight:bold">if</span> (!strcmp(mode, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">+</span><span style="color:#710">&quot;</span></span>))
+  {
+    ptr = PHYSFS_openAppend(file);
+  }
+  <span style="color:#080;font-weight:bold">else</span> <span style="color:#080;font-weight:bold">if</span> (!strcmp(mode, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">w</span><span style="color:#710">&quot;</span></span>))
+  {
+    ptr = PHYSFS_openWrite(file);
+  }
+  <span style="color:#080;font-weight:bold">else</span>
+  {
+    mrb_raisef(mrb, <span style="color:#036;font-weight:bold">E_ARGUMENT_ERROR</span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Unknown File mode: %s.</span><span style="color:#710">&quot;</span></span>, mode);
+  }
+  <span style="color:#080;font-weight:bold">if</span> (!ptr)
+  {
+    <span style="color:#036;font-weight:bold">PHYSFS_ErrorCode</span> code = PHYSFS_getLastErrorCode();
+    mrb_raisef(mrb, <span style="color:#036;font-weight:bold">E_FILE_ERROR</span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">File '%s' could not be opened (%s)</span><span style="color:#710">&quot;</span></span>, file, <span style="color:#036;font-weight:bold">ERROR_MESSAGE</span>);
+  }
+  DATA_PTR(<span style="color:#069">self</span>) = ptr;
+  DATA_TYPE(<span style="color:#069">self</span>) = &amp;file_data_type;
+  <span style="color:#080;font-weight:bold">if</span> (mrb_carbuncle_test(block))
+  {
+    mrb_value error;
+    mrb_bool raised;
+    mrb_value values[<span style="color:#00D">2</span>] = { <span style="color:#069">self</span>, block };
+    error = mrb_protect(mrb, mrb_file_run_block, mrb_ary_new_from_values(mrb, <span style="color:#00D">2</span>, values), &amp;raised);
+    <span style="color:#080;font-weight:bold">if</span> (!PHYSFS_flush(ptr))
+    {
+      <span style="color:#036;font-weight:bold">PHYSFS_ErrorCode</span> code = PHYSFS_getLastErrorCode();
+      mrb_raisef(mrb, <span style="color:#036;font-weight:bold">E_FILE_ERROR</span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">Failed to close file (%s).</span><span style="color:#710">&quot;</span></span>, <span style="color:#036;font-weight:bold">ERROR_MESSAGE</span>);
+    }
+    mrb_file_free(mrb, ptr);
+    DATA_PTR(<span style="color:#069">self</span>) = <span style="color:#036;font-weight:bold">NULL</span>;
+    <span style="color:#080;font-weight:bold">if</span> (raised)
+    {
+      mrb_exc_raise(mrb, error);
+    }
+  }
+  <span style="color:#080;font-weight:bold">return</span> <span style="color:#069">self</span>;
+}</pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="read-class_method">
+  
+    .<strong>read</strong>(path, *opts)  &#x21d2; <tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+50
+51
+52
+53
+54</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'mrbgems/carbuncle-core/mrblib/file.rb', line 50</span>
+
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">read</span>(path, *opts)
+  result = <span style="color:#069">nil</span>
+  <span style="color:#069">self</span>.open(path, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">r</span><span style="color:#710">'</span></span>) { |f| result = f.read(*opts) }
+  result
+<span style="color:#080;font-weight:bold">end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="readlines-class_method">
+  
+    .<strong>readlines</strong>(name, *args)  &#x21d2; <tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'mrbgems/carbuncle-core/mrblib/file.rb', line 17</span>
+
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">readlines</span>(name, *args)
+  open_args = [name]
+  read_args = []
+  <span style="color:#080;font-weight:bold">case</span> args.size
+  <span style="color:#080;font-weight:bold">when</span> <span style="color:#00D">3</span>
+    open_args = [name, args[<span style="color:#00D">2</span>]]
+    read_args = [args[<span style="color:#00D">0</span>], args[<span style="color:#00D">1</span>]]
+  <span style="color:#080;font-weight:bold">when</span> <span style="color:#00D">2</span>
+    <span style="color:#080;font-weight:bold">if</span> args[<span style="color:#00D">0</span>].is_a?(<span style="color:#036;font-weight:bold">String</span>)
+      open_args = [name, args[<span style="color:#00D">1</span>]]
+      read_args = [args[<span style="color:#00D">0</span>]]
+    <span style="color:#080;font-weight:bold">else</span>
+      read_args = args
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">when</span> <span style="color:#00D">1</span>
+    read_args = args
+  <span style="color:#080;font-weight:bold">when</span> <span style="color:#00D">0</span>
+    <span style="color:#777"># Default values</span>
+  <span style="color:#080;font-weight:bold">else</span>
+    raise <span style="color:#036;font-weight:bold">ArgumentError</span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Invalid number of arguments</span><span style="color:#710">'</span></span>
+  <span style="color:#080;font-weight:bold">end</span>
+  fp = <span style="color:#069">self</span>.open(*open_args)
+  lines = fp.readlines(*read_args)
+  fp.close
+  lines
+<span style="color:#080;font-weight:bold">end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="require-class_method">
+  
+    .<strong>require</strong>(file)  &#x21d2; <tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+4
+5
+6
+7
+8
+9
+10
+11</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'mrbgems/carbuncle-core/mrblib/file.rb', line 4</span>
+
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">require</span>(file)
+  <span style="color:#33B">@required_files</span> ||= {}
+  name = file.to_s
+  <span style="color:#080;font-weight:bold">return</span> <span style="color:#069">false</span> <span style="color:#080;font-weight:bold">if</span> <span style="color:#33B">@required_files</span>[name]
+
+  <span style="color:#069">self</span>.load(file)
+  <span style="color:#33B">@required_files</span>[name] = <span style="color:#069">true</span>
+<span style="color:#080;font-weight:bold">end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="required_files-class_method">
+  
+    .<strong>required_files</strong>  &#x21d2; <tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+13
+14
+15</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'mrbgems/carbuncle-core/mrblib/file.rb', line 13</span>
+
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">required_files</span>
+  <span style="color:#33B">@required_files</span>.keys
+<span style="color:#080;font-weight:bold">end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="write-class_method">
+  
+    .<strong>write</strong>(path, content, open_args = &#39;w&#39;)  &#x21d2; <tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+44
+45
+46
+47
+48</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'mrbgems/carbuncle-core/mrblib/file.rb', line 44</span>
+
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">write</span>(path, content, open_args = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">w</span><span style="color:#710">'</span></span>)
+  result = <span style="color:#069">nil</span>
+  <span style="color:#069">self</span>.open(path, open_args) { |f| result = f.write(content) }
+  result
+<span style="color:#080;font-weight:bold">end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="close-instance_method">
+  
+    #<strong>close</strong>  &#x21d2; <tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+142
+143
+144
+145
+146
+147
+148
+149</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'mrbgems/carbuncle-core/src/filesystem.c', line 142</span>
+
+static mrb_value
+mrb_file_close(mrb_state *mrb, mrb_value <span style="color:#069">self</span>)
+{
+  <span style="color:#036;font-weight:bold">PHYSFS_File</span> *file = get_file(mrb, <span style="color:#069">self</span>);
+  mrb_file_free(mrb, file);
+  DATA_PTR(<span style="color:#069">self</span>) = <span style="color:#036;font-weight:bold">NULL</span>;
+  <span style="color:#080;font-weight:bold">return</span> <span style="color:#069">self</span>;
+}</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="closed?-instance_method">
+  
+    #<strong>closed?</strong>  &#x21d2; <tt>Boolean</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div>
+
+<table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+129
+130
+131
+132
+133</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'mrbgems/carbuncle-core/src/filesystem.c', line 129</span>
+
+static mrb_value
+mrb_file_closedQ(mrb_state *mrb, mrb_value <span style="color:#069">self</span>)
+{
+  <span style="color:#080;font-weight:bold">return</span> mrb_bool_value(!DATA_PTR(<span style="color:#069">self</span>));
+}</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="eof?-instance_method">
+  
+    #<strong>eof?</strong>  &#x21d2; <tt>Boolean</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div>
+
+<table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+135
+136
+137
+138
+139
+140</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'mrbgems/carbuncle-core/src/filesystem.c', line 135</span>
+
+static mrb_value
+mrb_file_eofQ(mrb_state *mrb, mrb_value <span style="color:#069">self</span>)
+{
+  <span style="color:#036;font-weight:bold">PHYSFS_File</span> *file = get_file(mrb, <span style="color:#069">self</span>);
+  <span style="color:#080;font-weight:bold">return</span> mrb_bool_value(PHYSFS_eof(file));
+}</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="flush-instance_method">
+  
+    #<strong>flush</strong>  &#x21d2; <tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+291
+292
+293
+294
+295
+296
+297</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'mrbgems/carbuncle-core/src/filesystem.c', line 291</span>
+
+static mrb_value
+mrb_file_flush(mrb_state *mrb, mrb_value <span style="color:#069">self</span>)
+{
+  <span style="color:#036;font-weight:bold">PHYSFS_File</span> *file = get_file(mrb, <span style="color:#069">self</span>);
+  <span style="color:#080;font-weight:bold">if</span> (!PHYSFS_flush(file)) { raise_physfs_error(mrb, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">flush</span><span style="color:#710">&quot;</span></span>); }
+  <span style="color:#080;font-weight:bold">return</span> <span style="color:#069">self</span>;
+}</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="length-instance_method">
+  
+    #<strong>length</strong>  &#x21d2; <tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+265
+266
+267
+268
+269
+270</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'mrbgems/carbuncle-core/src/filesystem.c', line 265</span>
+
+static mrb_value
+mrb_file_get_size(mrb_state *mrb, mrb_value <span style="color:#069">self</span>)
+{
+  <span style="color:#036;font-weight:bold">PHYSFS_File</span> *file = get_file(mrb, <span style="color:#069">self</span>);
+  <span style="color:#080;font-weight:bold">return</span> mrb_fixnum_value(PHYSFS_fileLength(file));
+}</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="position-instance_method">
+  
+    #<strong>position</strong>  &#x21d2; <tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+282
+283
+284
+285
+286
+287
+288
+289</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'mrbgems/carbuncle-core/src/filesystem.c', line 282</span>
+
+static mrb_value
+mrb_file_tell(mrb_state *mrb, mrb_value <span style="color:#069">self</span>)
+{
+  <span style="color:#036;font-weight:bold">PHYSFS_File</span> *file = get_file(mrb, <span style="color:#069">self</span>);
+  mrb_int pos = PHYSFS_tell(file);
+  <span style="color:#080;font-weight:bold">if</span> (pos == <span style="color:#00D">-1</span>) { raise_physfs_error(mrb, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">tell</span><span style="color:#710">&quot;</span></span>); }
+  <span style="color:#080;font-weight:bold">return</span> mrb_fixnum_value(pos);
+}</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="read-instance_method">
+  
+    #<strong>read</strong>  &#x21d2; <tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+377
+378
+379
+380
+381
+382
+383
+384
+385
+386
+387
+388
+389
+390
+391
+392
+393
+394
+395
+396
+397
+398
+399</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'mrbgems/carbuncle-core/src/filesystem.c', line 377</span>
+
+static mrb_value
+mrb_file_read(mrb_state *mrb, mrb_value <span style="color:#069">self</span>)
+{
+  mrb_int limit = <span style="color:#00D">-1</span>;
+  <span style="color:#036;font-weight:bold">PHYSFS_File</span> *file = get_file(mrb, <span style="color:#069">self</span>);
+  <span style="color:#036;font-weight:bold">PHYSFS_sint64</span> len, pos;
+  mrb_get_args(mrb, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">|i</span><span style="color:#710">&quot;</span></span>, &amp;limit);
+  <span style="color:#080;font-weight:bold">if</span> (limit &lt;= <span style="color:#00D">0</span>)
+  {
+    len = PHYSFS_fileLength(file);
+    <span style="color:#080;font-weight:bold">if</span> (len == <span style="color:#00D">-1</span>) { raise_physfs_error(mrb, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">read</span><span style="color:#710">&quot;</span></span>); }
+    pos = PHYSFS_tell(file);
+    <span style="color:#080;font-weight:bold">if</span> (pos == <span style="color:#00D">-1</span>) { raise_physfs_error(mrb, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">read</span><span style="color:#710">&quot;</span></span>); }
+    limit = len - pos;
+  }
+  <span style="color:#080;font-weight:bold">if</span> (limit &lt;= <span style="color:#00D">0</span>) { <span style="color:#080;font-weight:bold">return</span> mrb_nil_value(); }
+  {
+    char *buffer[limit];
+    len = PHYSFS_readBytes(file, buffer, limit);
+    <span style="color:#080;font-weight:bold">if</span> (len &lt; <span style="color:#00D">0</span>) { raise_physfs_error(mrb, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">read</span><span style="color:#710">&quot;</span></span>); }
+    <span style="color:#080;font-weight:bold">return</span> mrb_str_new(mrb, buffer, len);
+  }
+}</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="readline-instance_method">
+  
+    #<strong>readline</strong>  &#x21d2; <tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+367
+368
+369
+370
+371
+372
+373
+374
+375</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'mrbgems/carbuncle-core/src/filesystem.c', line 367</span>
+
+static mrb_value
+mrb_file_readline(mrb_state *mrb, mrb_value <span style="color:#069">self</span>)
+{
+  const char *sep;
+  <span style="color:#036;font-weight:bold">PHYSFS_File</span> *file = get_file(mrb, <span style="color:#069">self</span>);
+  sep = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#b0b">\n</span><span style="color:#710">&quot;</span></span>;
+  mrb_get_args(mrb, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">|z</span><span style="color:#710">&quot;</span></span>, &amp;sep);
+  <span style="color:#080;font-weight:bold">return</span> read_line(mrb, file, sep);
+}</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="readlines-instance_method">
+  
+    #<strong>readlines</strong>(arg1 = nil, arg2 = nil)  &#x21d2; <tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'mrbgems/carbuncle-core/mrblib/file.rb', line 57</span>
+
+<span style="color:#080;font-weight:bold">def</span> <span style="color:#06B;font-weight:bold">readlines</span>(arg1 = <span style="color:#069">nil</span>, arg2 = <span style="color:#069">nil</span>)
+  limit, sep = <span style="color:#00D">-1</span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#b0b">\n</span><span style="color:#710">&quot;</span></span>
+  <span style="color:#080;font-weight:bold">if</span> arg2
+    limit = arg2
+    sep = arg1 || sep
+  <span style="color:#080;font-weight:bold">elsif</span> arg1
+    <span style="color:#080;font-weight:bold">if</span> arg1.is_a?(<span style="color:#036;font-weight:bold">Numeric</span>)
+      limit = arg1
+    <span style="color:#080;font-weight:bold">else</span>
+      sep = arg1
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+  [].tap <span style="color:#080;font-weight:bold">do</span> |lines|
+    line = readline(sep)
+    <span style="color:#080;font-weight:bold">while</span> line &amp;&amp; (limit == <span style="color:#00D">-1</span> || limit &lt; lines.length)
+      lines.push(line)
+      line = readline(sep)
+    <span style="color:#080;font-weight:bold">end</span>
+  <span style="color:#080;font-weight:bold">end</span>
+<span style="color:#080;font-weight:bold">end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="seek-instance_method">
+  
+    #<strong>seek</strong>  &#x21d2; <tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+272
+273
+274
+275
+276
+277
+278
+279
+280</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'mrbgems/carbuncle-core/src/filesystem.c', line 272</span>
+
+static mrb_value
+mrb_file_seek(mrb_state *mrb, mrb_value <span style="color:#069">self</span>)
+{
+  mrb_int position;
+  <span style="color:#036;font-weight:bold">PHYSFS_File</span> *file = get_file(mrb, <span style="color:#069">self</span>);
+  mrb_get_args(mrb, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">i</span><span style="color:#710">&quot;</span></span>, &amp;position);
+  <span style="color:#080;font-weight:bold">if</span> (!PHYSFS_seek(file, position)) { raise_physfs_error(mrb, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">seek</span><span style="color:#710">&quot;</span></span>); }
+  <span style="color:#080;font-weight:bold">return</span> <span style="color:#069">self</span>;
+}</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="size-instance_method">
+  
+    #<strong>size</strong>  &#x21d2; <tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+265
+266
+267
+268
+269
+270</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'mrbgems/carbuncle-core/src/filesystem.c', line 265</span>
+
+static mrb_value
+mrb_file_get_size(mrb_state *mrb, mrb_value <span style="color:#069">self</span>)
+{
+  <span style="color:#036;font-weight:bold">PHYSFS_File</span> *file = get_file(mrb, <span style="color:#069">self</span>);
+  <span style="color:#080;font-weight:bold">return</span> mrb_fixnum_value(PHYSFS_fileLength(file));
+}</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="tell-instance_method">
+  
+    #<strong>tell</strong>  &#x21d2; <tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+282
+283
+284
+285
+286
+287
+288
+289</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'mrbgems/carbuncle-core/src/filesystem.c', line 282</span>
+
+static mrb_value
+mrb_file_tell(mrb_state *mrb, mrb_value <span style="color:#069">self</span>)
+{
+  <span style="color:#036;font-weight:bold">PHYSFS_File</span> *file = get_file(mrb, <span style="color:#069">self</span>);
+  mrb_int pos = PHYSFS_tell(file);
+  <span style="color:#080;font-weight:bold">if</span> (pos == <span style="color:#00D">-1</span>) { raise_physfs_error(mrb, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">tell</span><span style="color:#710">&quot;</span></span>); }
+  <span style="color:#080;font-weight:bold">return</span> mrb_fixnum_value(pos);
+}</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="write-instance_method">
+  
+    #<strong>write</strong>  &#x21d2; <tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+401
+402
+403
+404
+405
+406
+407
+408
+409
+410
+411
+412
+413
+414
+415</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'mrbgems/carbuncle-core/src/filesystem.c', line 401</span>
+
+static mrb_value
+mrb_file_write(mrb_state *mrb, mrb_value <span style="color:#069">self</span>)
+{
+  mrb_int size;
+  const char *txt;
+  <span style="color:#036;font-weight:bold">PHYSFS_sint64</span> bytes;
+  <span style="color:#036;font-weight:bold">PHYSFS_File</span> *file = get_file(mrb, <span style="color:#069">self</span>);
+  mrb_get_args(mrb, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">s</span><span style="color:#710">&quot;</span></span>, &amp;txt, &amp;size);
+  bytes = PHYSFS_writeBytes(file, txt, size);
+  <span style="color:#080;font-weight:bold">if</span> (bytes == <span style="color:#00D">-1</span>)
+  {
+    raise_physfs_error(mrb, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">write</span><span style="color:#710">&quot;</span></span>);
+  }
+  <span style="color:#080;font-weight:bold">return</span> mrb_fixnum_value(bytes);
+}</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+      <div id="footer">
+  Generated on Sat Dec 28 01:23:14 2019 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.19 in <a href="https://github.com/sagmor/yard-mruby">mruby mode</a> 0.3.0 (ruby-2.6.2).
+</div>
+
+    </div>
+  </body>
+</html>

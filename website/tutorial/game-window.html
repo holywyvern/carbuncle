@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <header>
+    <meta charset="utf-8">
+    <title>Carbuncle Game Engine</title>
+    <link rel="stylesheet" href="../reset.css" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Raleway:500|Roboto+Mono|Fredericka+the+Great&display=fallback" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/plugins/line-numbers/prism-line-numbers.css" integrity="sha256-udLi8HM3vM4cuDDMGyRFzG8ek0UN0+uytPLWkbTpagg=" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js" integrity="sha256-5F8rynXScCOEtnwlm5P293TlCvTT1beoEJcmWHCg4BU=" crossorigin="anonymous"></script>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="../styles.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prism-themes@1.1.0/themes/prism-a11y-dark.css" />
+  </header>
+  <body>
+    <div class="tutorial-contents">
+      <p>
+        After opening up our new empty window, we can add some configurations to our window before opening it.
+        Let's change it's name and such.
+      </p>
+      <pre class="line-numbers" data-src="./snippets/resize-window.rb" data-start="2"></pre>
+      <p>After that, your window will end up looking like this:</p>
+      <div class="screenshot">
+        <img src="./img/002.png" alt="Resizing the screen">
+      </div>
+      <p>
+        Let's go a bit deeper and add some text. To do that, we require to load a Font first.
+      </p>
+      <p> Download <a href="./assets/pixel.ttf" target="_blank">this font</a> (thanks Iván Coello) and put it in the same folder as your application.</p>
+      <p>Now let's load it in our game:</p>
+      <pre class="line-numbers" data-src="./snippets/adding-font.rb" data-start="10"></pre>
+      <p>(You can learn more about the font from the <a href="../docs/Carbuncle/Font.html">API docs</a>)</p>
+      <hr>
+      <p>We the font loaded we can now create some text</p>
+      <p>the Text component is used to write a sentence into the screen:</p>
+      <pre class="line-numbers" data-src="./snippets/adding-text.rb" data-start="10"></pre>
+      <p>(You can learn more about the text class from the <a href="../docs/Carbuncle/Text.html">API docs</a>)</p>
+      <hr>
+      <p>We almost have some text into the screen, we just need to tell our game to draw it:</p>
+      <pre class="line-numbers" data-src="./snippets/drawing-text.rb" data-start="24"></pre>
+      <hr>
+      <p>So our final code will end up being:</p>
+      <pre class="line-numbers" data-src="./snippets/example2.rb"></pre>
+      <div class="screenshot">
+        <img src="./img/003.png" alt="Drawing text">
+      </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/prism.min.js" integrity="sha256-HWJnMZHGx7U1jmNfxe4yaQedmpo/mtxWSIXvcJkLIf4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/components/prism-ruby.js" integrity="sha256-XyBJQ/qShMYrX19UCNoIrsgtb98q48RtFyv05aS4NqE=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/plugins/line-numbers/prism-line-numbers.min.js" integrity="sha256-hep5s8952MqR7Y79JYfCXZD6vQjVHs7sOu/ZGrs1OEQ=" crossorigin="anonymous"></script>
+  </body>
+</html>
