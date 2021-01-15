@@ -20,6 +20,9 @@
 #include <math.h>
 #include <assert.h>
 
+Image
+LoadImageEx(Color *pixels, int width, int height);
+
 static const size_t MAX_ATLAS_WIDTH = 2048;
 
 struct mrb_FontCursor

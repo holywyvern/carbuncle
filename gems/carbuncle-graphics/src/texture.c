@@ -108,7 +108,7 @@ mrb_texture_get_width(mrb_state *mrb, mrb_value self)
 static mrb_value
 mrb_texture_get_height(mrb_state *mrb, mrb_value self)
 {
-  struct Texture2D *data = mrb_carbuncle_get_texture(mrb, self);
+  Texture2D *data = mrb_carbuncle_get_texture(mrb, self);
   return mrb_float_value(mrb, data->height);
 }
 

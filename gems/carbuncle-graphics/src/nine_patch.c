@@ -317,7 +317,7 @@ mrb_nine_patch_draw(mrb_state *mrb, mrb_value self)
   struct mrb_9Patch *patch = get_nine_patch(mrb, self);
   if (!patch->texture) {  return self; }
   info = (NPatchInfo){
-    .sourceRec = *(patch->src_rect),
+    .source = *(patch->src_rect),
     .left = patch->left,
     .top = patch->top,
     .right = patch->right,
