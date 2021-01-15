@@ -439,11 +439,10 @@ find_node(struct mrb_Glyph *current, FT_UInt codepoint)
 }
 
 Vector2
-mrb_carbuncle_font_measure_text(struct mrb_Font *font, const char *msg)
+mrb_carbuncle_font_measure_text_len(struct mrb_Font *font, const char *msg, size_t len)
 {
-  const char *text;
   uint32_t codepoint;
-  size_t len = utf8_strlen(msg);
+  const char *text;
   Vector2 size = { 0, 0 };
   Vector2 pen = { 0, 0 };
   mrb_int min_h = font->metrics.max_height;
@@ -487,6 +486,13 @@ mrb_carbuncle_font_measure_text(struct mrb_Font *font, const char *msg)
     }
   }
   return size;
+}
+
+Vector2
+mrb_carbuncle_font_measure_text(struct mrb_Font *font, const char *msg)
+{
+  size_t len = utf8_strlen(msg);
+  return mrb_carbuncle_font_measure_text_len(font, msg, len);
 }
 
 struct mrb_Glyph *

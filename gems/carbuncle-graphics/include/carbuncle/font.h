@@ -64,6 +64,10 @@ mrb_carbuncle_font_get_glyph(struct mrb_Font *font, FT_UInt codepoint);
 Vector2
 mrb_carbuncle_font_measure_text(struct mrb_Font *font, const char *text);
 
+Vector2
+mrb_carbuncle_font_measure_text_len(struct mrb_Font *font, const char *text, size_t len);
+
+
 #ifdef __cplusplus
 }
 #endif

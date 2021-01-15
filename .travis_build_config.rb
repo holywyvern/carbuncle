@@ -2,7 +2,7 @@
 
 CARBUNCLE_GEMS = %w[
   dependencies support core audio doc-ext graphics
-  input math scene
+  input math scene gui
 ].freeze
 
 CORE_GEMS = %w[

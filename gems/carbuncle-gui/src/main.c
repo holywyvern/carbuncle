@@ -11,6 +11,7 @@
 #define NK_INCLUDE_STANDARD_VARARGS
 #define NK_INCLUDE_COMMAND_USERDATA
 #define NK_KEYSTATE_BASED_INPUT
+#define NK_INCLUDE_FIXED_TYPES
 #include "nuklear.h"
 
 #include <mruby.h>
@@ -85,11 +86,11 @@ draw_text(struct nk_command_text *txt)
   uint32_t codepoint;
   struct mrb_Glyph *glyph, *prev;
   const char *message = txt->string;
-  size_t len = utf8_strlen(txt->string);
+  size_t len = txt->length;
   mrb_int diff_h;
   struct mrb_Font *font = txt->font->userdata.ptr;
   {
-    Vector2 position = (Vector2) {0, 0};
+    Vector2 position = (Vector2) {txt->x, txt->y};
     mrb_int min_h = font->metrics.max_height;
     mrb_int max_h = font->metrics.min_height;
     Color color = nk_color_convert(txt->foreground);
@@ -281,12 +282,8 @@ draw_command(struct mrb_GuiContext *ctx, struct nk_command *cmd)
       struct nk_command_text *txt = (struct nk_command_text *)cmd;
       RenderTexture2D render = LoadRenderTexture(txt->w, txt->h);
       color = nk_color_convert(txt->background);
-      BeginTextureMode(render);
-        ClearBackground(color);
-        draw_text(txt);
-      EndTextureMode();
-      DrawTexture(render.texture, txt->x, txt->y, WHITE);
-      UnloadRenderTexture(render);
+      DrawRectangle(txt->x, txt->y, txt->w, txt->h, color);
+      draw_text(txt);
       break;
     }
     case NK_COMMAND_IMAGE:
@@ -326,6 +323,13 @@ get_context(mrb_state *mrb, mrb_value self)
   return DATA_GET_DISPOSABLE_PTR(mrb, self, &gui_data_type, struct mrb_GuiContext);
 }
 
+static float
+nk_carbuncle_font_width(nk_handle handle, float h, const char *text, int len)
+{
+  struct mrb_Font *fd = handle.ptr;
+  return mrb_carbuncle_font_measure_text(fd, text).x;
+}
+
 static mrb_value
 mrb_gui_initialize(mrb_state *mrb, mrb_value self)
 {
@@ -335,8 +339,8 @@ mrb_gui_initialize(mrb_state *mrb, mrb_value self)
   mrb_get_args(mrb, "o", &font_value);
   fd = mrb_carbuncle_get_font(mrb, font_value);
   ctx->font.userdata.ptr = fd;
-  ctx->font.width  = fd->size;
   ctx->font.height = fd->size;
+  ctx->font.width  = nk_carbuncle_font_width;
   mrb_iv_set(mrb, self, FONT_SYMBOL, font_value);
   DATA_PTR(self) = ctx;
   DATA_TYPE(self) = &gui_data_type;
@@ -393,9 +397,7 @@ mrb_gui_draw(mrb_state *mrb, mrb_value self)
 static mrb_value
 draw_window(mrb_state *mrb, mrb_value self)
 {
-  return mrb_funcall_with_block(
-    mrb, mrb_ary_entry(self, 0), "instance_exec", 0, NULL, mrb_ary_entry(self, 1)
-  );
+  return mrb_yield_argv(mrb, self, 0, NULL);
 }
 
 static mrb_value
@@ -405,7 +407,6 @@ mrb_gui_window(mrb_state *mrb, mrb_value self)
   nk_flags flags;
   const char *id, *title_str;
   mrb_value kw_values[WINDOW_KEYS];
-  mrb_value values[2];
   mrb_value title, rect, block, result;
   struct nk_rect bounds;
   Rectangle *rect_data;
@@ -433,13 +434,11 @@ mrb_gui_window(mrb_state *mrb, mrb_value self)
   bounds.y = rect_data->y;
   bounds.w = rect_data->width;
   bounds.h = rect_data->height;
-  values[0] = self;
-  values[1] = block;
-  nk_begin_titled(&(ctx->nk), title_str, id, bounds, flags);
-  result = mrb_protect(mrb, draw_window, mrb_ary_new_from_values(mrb, 2, values), &raised);
+  nk_bool ok = nk_begin_titled(&(ctx->nk), title_str, id, bounds, flags);
+  result = mrb_protect(mrb, draw_window, block, &raised);
   nk_end(&(ctx->nk));
   if (raised) { mrb_exc_raise(mrb, result); }
-  return self;
+  return mrb_bool_value(ok);
 }
 
 void
@@ -449,15 +448,15 @@ mrb_carbuncle_gui_gem_init(mrb_state *mrb)
   struct RClass *gui = mrb_define_class_under(mrb, carbuncle, "GUI", mrb->object_class);
   MRB_SET_INSTANCE_TT(gui, MRB_TT_DATA);
 
-  mrb_define_module_function(mrb, gui, "initialize", mrb_gui_initialize, MRB_ARGS_REQ(1));
+  mrb_define_method(mrb, gui, "initialize", mrb_gui_initialize, MRB_ARGS_REQ(1));
 
-  mrb_define_module_function(mrb, gui, "disposed?", mrb_gui_disposedQ, MRB_ARGS_NONE());
-  mrb_define_module_function(mrb, gui, "dispose", mrb_gui_dispose, MRB_ARGS_NONE());
+  mrb_define_method(mrb, gui, "disposed?", mrb_gui_disposedQ, MRB_ARGS_NONE());
+  mrb_define_method(mrb, gui, "dispose", mrb_gui_dispose, MRB_ARGS_NONE());
 
-  mrb_define_module_function(mrb, gui, "window", mrb_gui_window, MRB_ARGS_REQ(2)|MRB_ARGS_BLOCK()|MRB_ARGS_KEY(WINDOW_KEYS, 0));
+  mrb_define_method(mrb, gui, "window", mrb_gui_window, MRB_ARGS_REQ(2)|MRB_ARGS_BLOCK()|MRB_ARGS_KEY(WINDOW_KEYS, 0));
 
-  mrb_define_module_function(mrb, gui, "update", mrb_gui_update, MRB_ARGS_REQ(1));
-  mrb_define_module_function(mrb, gui, "draw", mrb_gui_draw, MRB_ARGS_NONE());
+  mrb_define_method(mrb, gui, "update", mrb_gui_update, MRB_ARGS_REQ(1));
+  mrb_define_method(mrb, gui, "draw", mrb_gui_draw, MRB_ARGS_NONE());
 }
 
 void
