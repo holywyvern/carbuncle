@@ -5,14 +5,8 @@
 #include "microutf8.h"
 
 #define NK_IMPLEMENTATION
-#define NK_PRIVATE
-#define NK_INCLUDE_DEFAULT_ALLOCATOR
-#define NK_INCLUDE_STANDARD_IO
-#define NK_INCLUDE_STANDARD_VARARGS
-#define NK_INCLUDE_COMMAND_USERDATA
-#define NK_KEYSTATE_BASED_INPUT
-#define NK_INCLUDE_FIXED_TYPES
-#include "nuklear.h"
+#include <carbuncle/nuklear_config.h>
+#include <nuklear.h>
 
 #include <mruby.h>
 #include <mruby/class.h>
@@ -25,22 +19,6 @@
 #include <math.h>
 
 #define FONT_SYMBOL mrb_intern_cstr(mrb, "#font")
-
-#define WINDOW_KEYS 14
-
-static const char *WINDOW_KEYWORDS[WINDOW_KEYS] = {
-  "id", "border", "movable", "scalable", "closable", "minimizable",
-  "disable_scrollbar", "title", "auto_scrollbar", "background", "scale_left", "disable",
-  "minimized", "maximized"
-};
-
-struct mrb_GuiContext
-{
-  struct nk_context   nk;
-  struct nk_user_font font;
-  Vector2 mouse;
-  mrb_bool scissor;
-};
 
 static Color
 nk_color_convert(struct nk_color color)
@@ -317,8 +295,8 @@ static const struct mrb_data_type gui_data_type = {
   "Carbuncle::GUI", mrb_gui_free
 };
 
-static struct mrb_GuiContext *
-get_context(mrb_state *mrb, mrb_value self)
+struct mrb_GuiContext *
+mrb_carbuncle_gui_get_context(mrb_state *mrb, mrb_value self)
 {
   return DATA_GET_DISPOSABLE_PTR(mrb, self, &gui_data_type, struct mrb_GuiContext);
 }
@@ -360,7 +338,7 @@ mrb_gui_disposedQ(mrb_state *mrb, mrb_value self)
 static mrb_value
 mrb_gui_dispose(mrb_state *mrb, mrb_value self)
 {
-  void *ctx = get_context(mrb, self);
+  void *ctx = mrb_carbuncle_gui_get_context(mrb, self);
   mrb_free_context(mrb, ctx);
   DATA_PTR(self) = NULL;
   return self;
@@ -369,7 +347,7 @@ mrb_gui_dispose(mrb_state *mrb, mrb_value self)
 static mrb_value
 mrb_gui_update(mrb_state *mrb, mrb_value self)
 {
-  struct mrb_GuiContext *ctx = get_context(mrb, self);
+  struct mrb_GuiContext *ctx = mrb_carbuncle_gui_get_context(mrb, self);
   update_input(&(ctx->nk), ctx->mouse.x, ctx->mouse.y);
   ctx->mouse = GetMousePosition();
   return self;
@@ -378,7 +356,7 @@ mrb_gui_update(mrb_state *mrb, mrb_value self)
 static mrb_value
 mrb_gui_draw(mrb_state *mrb, mrb_value self)
 {
-  struct mrb_GuiContext *ctx = get_context(mrb, self);
+  struct mrb_GuiContext *ctx = mrb_carbuncle_gui_get_context(mrb, self);
   struct nk_context *nk = &(ctx->nk);
   const struct nk_command *cmd = NULL;
   ctx->scissor = FALSE;
@@ -394,52 +372,8 @@ mrb_gui_draw(mrb_state *mrb, mrb_value self)
   return self;
 }
 
-static mrb_value
-draw_window(mrb_state *mrb, mrb_value self)
-{
-  return mrb_yield_argv(mrb, self, 0, NULL);
-}
-
-static mrb_value
-mrb_gui_window(mrb_state *mrb, mrb_value self)
-{
-  mrb_bool raised;
-  nk_flags flags;
-  const char *id, *title_str;
-  mrb_value kw_values[WINDOW_KEYS];
-  mrb_value title, rect, block, result;
-  struct nk_rect bounds;
-  Rectangle *rect_data;
-  const mrb_kwargs kwargs = { WINDOW_KEYS, kw_values, WINDOW_KEYWORDS, 0, NULL };
-  struct mrb_GuiContext *ctx = get_context(mrb, self);
-  mrb_get_args(mrb, "So:&", &title, &rect, &kwargs, &block);
-  rect_data = mrb_carbuncle_get_rect(mrb, rect);
-  if (mrb_undef_p(kw_values[0])) { kw_values[0] = title; }
-  if (mrb_carbuncle_test(kw_values[1]))  { flags |= NK_WINDOW_BORDER; }
-  if (mrb_carbuncle_test(kw_values[2]))  { flags |= NK_WINDOW_MOVABLE; }
-  if (mrb_carbuncle_test(kw_values[3]))  { flags |= NK_WINDOW_SCALABLE; }
-  if (mrb_carbuncle_test(kw_values[4]))  { flags |= NK_WINDOW_CLOSABLE; }
-  if (mrb_carbuncle_test(kw_values[5]))  { flags |= NK_WINDOW_MINIMIZABLE; }
-  if (mrb_carbuncle_test(kw_values[6]))  { flags |= NK_WINDOW_NO_SCROLLBAR; }
-  if (mrb_carbuncle_test(kw_values[7]))  { flags |= NK_WINDOW_TITLE; }
-  if (mrb_carbuncle_test(kw_values[8]))  { flags |= NK_WINDOW_SCROLL_AUTO_HIDE; }
-  if (mrb_carbuncle_test(kw_values[9]))  { flags |= NK_WINDOW_BACKGROUND; }
-  if (mrb_carbuncle_test(kw_values[10])) { flags |= NK_WINDOW_SCALE_LEFT; }
-  if (mrb_carbuncle_test(kw_values[11])) { flags |= NK_WINDOW_NO_INPUT; }
-  if (mrb_carbuncle_test(kw_values[12])) { flags |= NK_MINIMIZED; }
-  if (mrb_carbuncle_test(kw_values[13])) { flags |= NK_MAXIMIZED; }
-  title_str = mrb_string_cstr(mrb, title);
-  id = mrb_string_cstr(mrb, kw_values[0]);
-  bounds.x = rect_data->x;
-  bounds.y = rect_data->y;
-  bounds.w = rect_data->width;
-  bounds.h = rect_data->height;
-  nk_bool ok = nk_begin_titled(&(ctx->nk), title_str, id, bounds, flags);
-  result = mrb_protect(mrb, draw_window, block, &raised);
-  nk_end(&(ctx->nk));
-  if (raised) { mrb_exc_raise(mrb, result); }
-  return mrb_bool_value(ok);
-}
+void
+mrb_init_carbuncle_gui_window(mrb_state *mrb, struct RClass *gui);
 
 void
 mrb_carbuncle_gui_gem_init(mrb_state *mrb)
@@ -453,7 +387,7 @@ mrb_carbuncle_gui_gem_init(mrb_state *mrb)
   mrb_define_method(mrb, gui, "disposed?", mrb_gui_disposedQ, MRB_ARGS_NONE());
   mrb_define_method(mrb, gui, "dispose", mrb_gui_dispose, MRB_ARGS_NONE());
 
-  mrb_define_method(mrb, gui, "window", mrb_gui_window, MRB_ARGS_REQ(2)|MRB_ARGS_BLOCK()|MRB_ARGS_KEY(WINDOW_KEYS, 0));
+  mrb_init_carbuncle_gui_window(mrb, gui);
 
   mrb_define_method(mrb, gui, "update", mrb_gui_update, MRB_ARGS_REQ(1));
   mrb_define_method(mrb, gui, "draw", mrb_gui_draw, MRB_ARGS_NONE());
