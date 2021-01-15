@@ -1,11 +1,16 @@
 language: c
+os:
+  - linux
+  - osx
 compiler:
   - gcc
   - clang
 before_install:
-    - sudo apt-get -qq update
+  - if [ "$TRAVIS_OS_NAME" = "osx" ]; then brew update; fi
+  - if [ "$TRAVIS_OS_NAME" = "linux" ]; then sudo apt-get -qq update; fi
 install:
-    - sudo apt-get -qq install rake bison git gperf
+  - if [ "$TRAVIS_OS_NAME" = "osx" ]; then brew install bison gperf; fi
+  - if [ "$TRAVIS_OS_NAME" = "linux" ]; then sudo apt-get -qq install rake bison git gperf; fi
 before_script:
   - cd ../
   - git clone https://github.com/mruby/mruby.git
