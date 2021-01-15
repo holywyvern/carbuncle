@@ -32,8 +32,14 @@ end
 
 desc 'move bin folder'
 task bins: :compile do
-  dst_bin = File.join(__dir__, 'mruby', 'bin')
-  FileUtils.mv(dst_bin, __dir__, verbose: true, force: true)
+  dst_folder = File.join(__dir__, 'bin')
+  FileUtils.mkdir_p(dst_folder)
+  Dir[File.join(__dir__, 'mruby', 'bin', '*')].each do |src|
+    name = File.basename(src)
+    dst = File.join(dst_folder, name)
+    FileUtils.rm_r(dst) if File.exist?(dst)
+    FileUtils.cp_r(src, dst)
+  end
 end
 
 task default: :bins
