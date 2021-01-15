@@ -1,6 +1,6 @@
 include Carbuncle
 
-require 'scripts/player.rb'
+Carbuncle::File.require 'scripts/player.rb'
 
 class TestGame < Carbuncle::Game
   def load

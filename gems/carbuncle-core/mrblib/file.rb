@@ -76,9 +76,3 @@ module Carbuncle
     end
   end
 end
-
-module Kernel
-  def require(file)
-    Carbuncle::File.require(file)
-  end
-end
