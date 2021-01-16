@@ -63,6 +63,7 @@
 #define COLOR mrb_intern_cstr(mrb, "#color")
 #define IMAGE mrb_intern_cstr(mrb, "#image")
 #define REGION mrb_intern_cstr(mrb, "#region")
+#define TEXTURE mrb_intern_cstr(mrb, "#texture")
 
 void
 mrb_style_free(mrb_state *mrb, void *ptr) {}
@@ -699,6 +700,7 @@ image_set(mrb_state *mrb, mrb_value self)
   img->region[1] = 0;
   img->region[2] = img->w;
   img->region[3] = img->h;
+  mrb_iv_set(mrb, self, TEXTURE, obj);
   return self;
 }
 
