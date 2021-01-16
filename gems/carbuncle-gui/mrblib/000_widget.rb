@@ -1,12 +1,15 @@
 module Carbuncle
   class GUI
     class Widget
-      attr_reader :parent
+      attr_reader :parent, :rect
 
-      delegate :gui, to: :parent
+      delegate :gui, :layout, to: :parent
+      delegate :x, :x=, :y, :y=, :width, :width=, :height, :height=,
+               to: :rect
 
       def initialize(parent)
         @parent = nil
+        @rect = Carbuncle::Rect.new
         self.parent = parent
       end
 
@@ -30,6 +33,12 @@ module Carbuncle
         return if parent.blank?
 
         parent.remove_child(self)
+      end
+
+      def rect=(value)
+        return if value.blank?
+
+        rect.set(value)
       end
     end
   end
