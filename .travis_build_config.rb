@@ -16,6 +16,10 @@ CORE_GEMS = %w[
   mruby-compiler
 ].freeze
 
+GITHUB_GEMS = %w[
+  yui-knk/mruby-set iij/mruby-regexp-pcre mattn/mruby-json
+].freeze
+
 def add_core_gems(conf)
   CORE_GEMS.each do |gem|
     conf.gem core: gem
@@ -23,8 +27,9 @@ def add_core_gems(conf)
 end
 
 def add_external_gems(conf)
-  conf.gem github: 'yui-knk/mruby-set'
-  conf.gem github: 'iij/mruby-regexp-pcre'
+  GITHUB_GEMS.each do |gem|
+    conf.gem github: gem
+  end
 end
 
 def add_carbuncle_gems(conf)
