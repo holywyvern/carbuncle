@@ -17,6 +17,7 @@
 #include <math.h>
 
 #define FONT_SYMBOL mrb_intern_cstr(mrb, "#font")
+#define STYLE_SYMBOL mrb_intern_cstr(mrb, "#style")
 
 static Color
 nk_color_convert(struct nk_color color)
@@ -330,6 +331,12 @@ mrb_gui_initialize(mrb_state *mrb, mrb_value self)
   {
     mrb_raise(mrb, E_RUNTIME_ERROR, "Failed to initialize GUI.");
   }
+  {
+    struct RClass *gui = mrb_obj_class(mrb, self);
+    struct RClass *style_class = mrb_class_get_under(mrb, gui, "Style");
+    mrb_value style = mrb_obj_new(mrb, style_class, 1, &self);
+    mrb_iv_set(mrb, self, STYLE_SYMBOL, style);
+  }
   return self;
 }
 
@@ -376,6 +383,21 @@ mrb_gui_draw(mrb_state *mrb, mrb_value self)
   return self;
 }
 
+static mrb_value
+mrb_gui_font(mrb_state *mrb, mrb_value self)
+{
+  return mrb_iv_get(mrb, self, FONT_SYMBOL);
+}
+
+static mrb_value
+mrb_gui_style(mrb_state *mrb, mrb_value self)
+{
+  return mrb_iv_get(mrb, self, STYLE_SYMBOL);
+}
+
+void
+mrb_init_carbuncle_gui_style(mrb_state *mrb, struct RClass *gui);
+
 void
 mrb_init_carbuncle_gui_window(mrb_state *mrb, struct RClass *gui);
 
@@ -394,6 +416,10 @@ mrb_carbuncle_gui_gem_init(mrb_state *mrb)
   mrb_define_method(mrb, gui, "disposed?", mrb_gui_disposedQ, MRB_ARGS_NONE());
   mrb_define_method(mrb, gui, "dispose", mrb_gui_dispose, MRB_ARGS_NONE());
 
+  mrb_define_method(mrb, gui, "font", mrb_gui_font, MRB_ARGS_NONE());
+  mrb_define_method(mrb, gui, "style", mrb_gui_style, MRB_ARGS_NONE());
+
+  mrb_init_carbuncle_gui_style(mrb, gui);
   mrb_init_carbuncle_gui_window(mrb, gui);
   mrb_init_carbuncle_gui_layout(mrb, gui);
 
