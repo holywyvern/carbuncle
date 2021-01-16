@@ -64,6 +64,39 @@
 #define IMAGE mrb_intern_cstr(mrb, "#image")
 #define REGION mrb_intern_cstr(mrb, "#region")
 #define TEXTURE mrb_intern_cstr(mrb, "#texture")
+#define OFFSET mrb_intern_cstr(mrb, "#offset")
+#define SIZE mrb_intern_cstr(mrb, "#size")
+#define BORDER_COLOR mrb_intern_cstr(mrb, "#border_color")
+#define IMAGE_PADDING mrb_intern_cstr(mrb, "#image_padding")
+#define TEXT_ACTIVE mrb_intern_cstr(mrb, "#text_active")
+#define TEXT_BACKGROUND mrb_intern_cstr(mrb, "#text_background")
+#define TEXT_HOVER mrb_intern_cstr(mrb, "#text_hover")
+#define TEXT_NORMAL mrb_intern_cstr(mrb, "#text_normal")
+#define TOUCH_PADDING mrb_intern_cstr(mrb, "#touch_padding")
+#define BACKGROUND mrb_intern_cstr(mrb, "#background")
+#define NODE_MAXIMIZE_BUTTON mrb_intern_cstr(mrb, "#node_maximize_button")
+#define NODE_MINIMIZE_BUTTON mrb_intern_cstr(mrb, "#node_minimize_button")
+#define TAB_MAXIMIZE_BUTTON mrb_intern_cstr(mrb, "#tab_maximize_button")
+#define TAB_MINIMIZE_BUTTON mrb_intern_cstr(mrb, "#tab_minimize_button")
+#define TEXT mrb_intern_cstr(mrb, "#text")
+#define BUTTON mrb_intern_cstr(mrb, "#button")
+#define CONTENT_PADDING mrb_intern_cstr(mrb, "#content_padding")
+#define SYMBOL_ACTIVE mrb_intern_cstr(mrb, "#symbol_active")
+#define SYMBOL_HOVER mrb_intern_cstr(mrb, "#symbol_hover")
+#define SYMBOL_NORMAL mrb_intern_cstr(mrb, "#symbol_normal")
+#define SELECTED_COLOR mrb_intern_cstr(mrb, "#selected_color")
+#define DEC_BUTTON mrb_intern_cstr(mrb, "#dec_button")
+#define EDIT mrb_intern_cstr(mrb, "#edit")
+#define INC_BUTTON mrb_intern_cstr(mrb, "#inc_button")
+#define CURSOR_HOVER mrb_intern_cstr(mrb, "#cursor_hover")
+#define CURSOR_NORMAL mrb_intern_cstr(mrb, "#cursor_normal")
+#define CURSOR_TEXT_HOVER mrb_intern_cstr(mrb, "#cursor_text_hover")
+#define CURSOR_TEXT_NORMAL mrb_intern_cstr(mrb, "#cursor_text_normal")
+#define SCROLLBAR mrb_intern_cstr(mrb, "#scrollbar")
+#define SELECTED_HOVER mrb_intern_cstr(mrb, "#selected_hover")
+#define SELECTED_NORMAL mrb_intern_cstr(mrb, "#selected_normal")
+#define SELECTED_TEXT_HOVER mrb_intern_cstr(mrb, "#selected_text_hover")
+#define SELECTED_TEXT_NORMAL mrb_intern_cstr(mrb, "#selected_text_normal")
 
 void
 mrb_style_free(mrb_state *mrb, void *ptr) {}
@@ -142,8 +175,7 @@ static const struct mrb_data_type style_vec2_data_type = {
 static mrb_value
 new_vec2(mrb_state *mrb, struct nk_vec2 *ptr)
 {
-  mrb_value self = new_style_object(mrb, "Vec2", ptr, &style_vec2_data_type);
-  return self;
+  return new_style_object(mrb, "Vec2", ptr, &style_vec2_data_type);
 }
 
 static const struct mrb_data_type style_cursor_data_type = {
@@ -157,6 +189,9 @@ new_cursor(mrb_state *mrb, const struct nk_cursor *ptr, mrb_bool frozen)
   {
     return mrb_obj_freeze(mrb, self);
   }
+  mrb_iv_set(mrb, self, IMAGE, new_image(mrb, &(ptr->img)));
+  mrb_iv_set(mrb, self, OFFSET, new_vec2(mrb, &(ptr->offset)));
+  mrb_iv_set(mrb, self, SIZE, new_vec2(mrb, &(ptr->size)));
   return self;
 }
 
@@ -167,6 +202,8 @@ static mrb_value
 new_text(mrb_state *mrb, struct nk_style_text *ptr)
 {
   mrb_value self =  new_style_object(mrb, "Text", ptr, &style_text_data_type);
+  mrb_iv_set(mrb, self, COLOR, new_color(mrb, &(ptr->color)));
+  mrb_iv_set(mrb, self, PADDING, new_vec2(mrb, &(ptr->padding)));
   return self;
 }
 static const struct mrb_data_type style_button_data_type = {
@@ -176,6 +213,17 @@ static mrb_value
 new_button(mrb_state *mrb, struct nk_style_button *ptr)
 {
   mrb_value self = new_style_object(mrb, "Button", ptr, &style_button_data_type);
+  mrb_iv_set(mrb, self, ACTIVE, new_item(mrb, &(ptr->active)));
+  mrb_iv_set(mrb, self, BORDER_COLOR, new_color(mrb, &(ptr->border_color)));
+  mrb_iv_set(mrb, self, HOVER, new_item(mrb, &(ptr->hover)));
+  mrb_iv_set(mrb, self, IMAGE_PADDING, new_vec2(mrb, &(ptr->image_padding)));
+  mrb_iv_set(mrb, self, NORMAL, new_item(mrb, &(ptr->normal)));
+  mrb_iv_set(mrb, self, PADDING, new_vec2(mrb, &(ptr->padding)));
+  mrb_iv_set(mrb, self, TEXT_ACTIVE, new_color(mrb, &(ptr->text_active)));
+  mrb_iv_set(mrb, self, TEXT_BACKGROUND, new_color(mrb, &(ptr->text_background)));
+  mrb_iv_set(mrb, self, TEXT_HOVER, new_color(mrb, &(ptr->text_hover)));
+  mrb_iv_set(mrb, self, TEXT_NORMAL, new_color(mrb, &(ptr->text_normal)));
+  mrb_iv_set(mrb, self, TOUCH_PADDING, new_vec2(mrb, &(ptr->touch_padding)));
   return self;
 }
 
@@ -215,7 +263,7 @@ static const struct mrb_data_type style_progress_data_type = {
 static mrb_value
 new_progress(mrb_state *mrb, struct nk_style_progress *ptr)
 {
-  mrb_value self = new_style_object(mrb, "Slider", ptr, &style_progress_data_type);
+  mrb_value self = new_style_object(mrb, "Progress", ptr, &style_progress_data_type);
   return self;
 }
 
@@ -236,6 +284,24 @@ static mrb_value
 new_edit(mrb_state *mrb, struct nk_style_edit *ptr)
 {
   mrb_value self = new_style_object(mrb, "Edit", ptr, &style_edit_data_type);
+  mrb_iv_set(mrb, self, ACTIVE, new_item(mrb, &(ptr->active)));
+  mrb_iv_set(mrb, self, BORDER_COLOR, new_color(mrb, &(ptr->border_color)));
+  mrb_iv_set(mrb, self, CURSOR_HOVER, new_color(mrb, &(ptr->cursor_hover)));
+  mrb_iv_set(mrb, self, CURSOR_NORMAL, new_color(mrb, &(ptr->cursor_normal)));
+  mrb_iv_set(mrb, self, CURSOR_TEXT_HOVER, new_color(mrb, &(ptr->cursor_text_hover)));
+  mrb_iv_set(mrb, self, CURSOR_TEXT_NORMAL, new_color(mrb, &(ptr->cursor_text_normal)));
+  mrb_iv_set(mrb, self, HOVER, new_item(mrb, &(ptr->hover)));
+  mrb_iv_set(mrb, self, NORMAL, new_item(mrb, &(ptr->normal)));
+  mrb_iv_set(mrb, self, PADDING, new_vec2(mrb, &(ptr->padding)));
+  mrb_iv_set(mrb, self, SCROLLBAR, new_scrollbar(mrb, &(ptr->scrollbar)));
+  mrb_iv_set(mrb, self, SCROLLBAR_SIZE, new_vec2(mrb, &(ptr->scrollbar_size)));
+  mrb_iv_set(mrb, self, SELECTED_HOVER, new_color(mrb, &(ptr->selected_hover)));
+  mrb_iv_set(mrb, self, SELECTED_NORMAL, new_color(mrb, &(ptr->selected_normal)));
+  mrb_iv_set(mrb, self, SELECTED_TEXT_HOVER, new_color(mrb, &(ptr->selected_text_hover)));
+  mrb_iv_set(mrb, self, SELECTED_TEXT_NORMAL, new_color(mrb, &(ptr->selected_text_normal)));
+  mrb_iv_set(mrb, self, TEXT_ACTIVE, new_color(mrb, &(ptr->text_active)));
+  mrb_iv_set(mrb, self, TEXT_HOVER, new_color(mrb, &(ptr->text_hover)));
+  mrb_iv_set(mrb, self, TEXT_NORMAL, new_color(mrb, &(ptr->text_normal)));
   return self;
 }
 
@@ -246,6 +312,17 @@ static mrb_value
 new_property(mrb_state *mrb, struct nk_style_property *ptr)
 {
   mrb_value self = new_style_object(mrb, "Property", ptr, &style_property_data_type);
+  mrb_iv_set(mrb, self, ACTIVE, new_item(mrb, &(ptr->active)));
+  mrb_iv_set(mrb, self, BORDER_COLOR, new_color(mrb, &(ptr->border_color)));
+  mrb_iv_set(mrb, self, DEC_BUTTON, new_button(mrb, &(ptr->dec_button)));
+  mrb_iv_set(mrb, self, EDIT, new_edit(mrb, &(ptr->edit)));
+  mrb_iv_set(mrb, self, HOVER, new_item(mrb, &(ptr->hover)));
+  mrb_iv_set(mrb, self, INC_BUTTON, new_button(mrb, &(ptr->inc_button)));
+  mrb_iv_set(mrb, self, LABEL_ACTIVE, new_color(mrb, &(ptr->label_active)));
+  mrb_iv_set(mrb, self, LABEL_HOVER, new_color(mrb, &(ptr->label_hover)));
+  mrb_iv_set(mrb, self, LABEL_NORMAL, new_color(mrb, &(ptr->label_normal)));
+  mrb_iv_set(mrb, self, NORMAL, new_item(mrb, &(ptr->normal)));
+  mrb_iv_set(mrb, self, PADDING, new_vec2(mrb, &(ptr->padding)));
   return self;
 }
 
@@ -256,6 +333,11 @@ static mrb_value
 new_chart(mrb_state *mrb, struct nk_style_chart *ptr)
 {
   mrb_value self = new_style_object(mrb, "Chart", ptr, &style_chart_data_type);
+  mrb_iv_set(mrb, self, BACKGROUND, new_item(mrb, &(ptr->background)));
+  mrb_iv_set(mrb, self, BORDER_COLOR, new_color(mrb, &(ptr->border_color)));
+  mrb_iv_set(mrb, self, COLOR, new_color(mrb, &(ptr->color)));
+  mrb_iv_set(mrb, self, PADDING, new_vec2(mrb, &(ptr->padding)));
+  mrb_iv_set(mrb, self, SELECTED_COLOR, new_color(mrb, &(ptr->selected_color)));
   return self;
 }
 
@@ -266,6 +348,20 @@ static mrb_value
 new_combo(mrb_state *mrb, struct nk_style_combo *ptr)
 {
   mrb_value self = new_style_object(mrb, "Combo", ptr, &style_combo_data_type);
+  mrb_iv_set(mrb, self, ACTIVE, new_item(mrb, &(ptr->active)));
+  mrb_iv_set(mrb, self, BORDER_COLOR, new_color(mrb, &(ptr->border_color)));
+  mrb_iv_set(mrb, self, BUTTON, new_button(mrb, &(ptr->button)));
+  mrb_iv_set(mrb, self, PADDING, new_vec2(mrb, &(ptr->button_padding)));
+  mrb_iv_set(mrb, self, CONTENT_PADDING, new_vec2(mrb, &(ptr->content_padding)));
+  mrb_iv_set(mrb, self, HOVER, new_item(mrb, &(ptr->hover)));
+  mrb_iv_set(mrb, self, LABEL_ACTIVE, new_color(mrb, &(ptr->label_active)));
+  mrb_iv_set(mrb, self, LABEL_HOVER, new_color(mrb, &(ptr->label_hover)));
+  mrb_iv_set(mrb, self, LABEL_NORMAL, new_color(mrb, &(ptr->label_normal)));
+  mrb_iv_set(mrb, self, NORMAL, new_item(mrb, &(ptr->normal)));
+  mrb_iv_set(mrb, self, SPACING, new_vec2(mrb, &(ptr->spacing)));
+  mrb_iv_set(mrb, self, SYMBOL_ACTIVE, new_color(mrb, &(ptr->symbol_active)));
+  mrb_iv_set(mrb, self, SYMBOL_HOVER, new_color(mrb, &(ptr->symbol_hover)));
+  mrb_iv_set(mrb, self, SYMBOL_NORMAL, new_color(mrb, &(ptr->symbol_normal)));
   return self;
 }
 
@@ -276,6 +372,15 @@ static mrb_value
 new_tab(mrb_state *mrb, struct nk_style_tab *ptr)
 {
   mrb_value self = new_style_object(mrb, "Tab", ptr, &style_tab_data_type);
+  mrb_iv_set(mrb, self, BACKGROUND, new_item(mrb, &(ptr->background)));
+  mrb_iv_set(mrb, self, BORDER_COLOR, new_color(mrb, &(ptr->border_color)));
+  mrb_iv_set(mrb, self, NODE_MAXIMIZE_BUTTON, new_button(mrb, &(ptr->node_maximize_button)));
+  mrb_iv_set(mrb, self, NODE_MINIMIZE_BUTTON, new_button(mrb, &(ptr->node_minimize_button)));
+  mrb_iv_set(mrb, self, PADDING, new_vec2(mrb, &(ptr->padding)));
+  mrb_iv_set(mrb, self, SPACING, new_vec2(mrb, &(ptr->spacing)));
+  mrb_iv_set(mrb, self, TAB_MAXIMIZE_BUTTON, new_button(mrb, &(ptr->tab_maximize_button)));
+  mrb_iv_set(mrb, self, TAB_MINIMIZE_BUTTON, new_button(mrb, &(ptr->tab_minimize_button)));
+  mrb_iv_set(mrb, self, TEXT, new_color(mrb, &(ptr->text)));
   return self;
 }
 
