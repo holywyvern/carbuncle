@@ -36,7 +36,7 @@ module Carbuncle
 
       def update(dt)
         super
-        layout.render do
+        layout.render(gui) do
           @children.each do |c|
             layout.apply(c) if layout.present?
             c.update(dt)

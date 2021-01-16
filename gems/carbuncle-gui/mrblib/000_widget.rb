@@ -3,6 +3,8 @@ module Carbuncle
     class Widget
       attr_reader :parent
 
+      delegate :gui, to: :parent
+
       def initialize(parent)
         @parent = nil
         self.parent = parent

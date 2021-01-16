@@ -1,7 +1,7 @@
 module Carbuncle
   class GUI
     class Layout
-      def render
+      def render(gui)
         yield if block_given?
       end
 
