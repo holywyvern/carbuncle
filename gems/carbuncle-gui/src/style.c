@@ -42,7 +42,62 @@ void
 mrb_style_free(mrb_state *mrb, void *ptr) {}
 
 static const struct mrb_data_type style_data_type = {
-  "Carbuncle::GUI", mrb_style_free
+  "Carbuncle::GUI::Style", mrb_style_free
+};
+
+static const struct mrb_data_type style_item_data_type = {
+  "Carbuncle::GUI::Style::Item", mrb_style_free
+};
+static const struct mrb_data_type style_image_data_type = {
+  "Carbuncle::GUI::Style::Image", mrb_style_free
+};
+static const struct mrb_data_type style_color_data_type = {
+  "Carbuncle::GUI::Style::Color", mrb_style_free
+};
+static const struct mrb_data_type style_vec2_data_type = {
+  "Carbuncle::GUI::Style::Vec2", mrb_style_free
+};
+static const struct mrb_data_type style_text_data_type = {
+  "Carbuncle::GUI::Style::Text", mrb_style_free
+};
+static const struct mrb_data_type style_button_data_type = {
+  "Carbuncle::GUI::Style::Button", mrb_style_free
+};
+static const struct mrb_data_type style_toggle_data_type = {
+  "Carbuncle::GUI::Style::Toggle", mrb_style_free
+};
+static const struct mrb_data_type style_selectable_data_type = {
+  "Carbuncle::GUI::Style::Selectable", mrb_style_free
+};
+static const struct mrb_data_type style_slider_data_type = {
+  "Carbuncle::GUI::Style::Slider", mrb_style_free
+};
+static const struct mrb_data_type style_progress_data_type = {
+  "Carbuncle::GUI::Style::Progress", mrb_style_free
+};
+static const struct mrb_data_type style_scrollbar_data_type = {
+  "Carbuncle::GUI::Style::Scrollbar", mrb_style_free
+};
+static const struct mrb_data_type style_edit_data_type = {
+  "Carbuncle::GUI::Style::Edit", mrb_style_free
+};
+static const struct mrb_data_type style_property_data_type = {
+  "Carbuncle::GUI::Style::Property", mrb_style_free
+};
+static const struct mrb_data_type style_chart_data_type = {
+  "Carbuncle::GUI::Style::Chart", mrb_style_free
+};
+static const struct mrb_data_type style_combo_data_type = {
+  "Carbuncle::GUI::Style::Combo", mrb_style_free
+};
+static const struct mrb_data_type style_tab_data_type = {
+  "Carbuncle::GUI::Style::Tab", mrb_style_free
+};
+static const struct mrb_data_type style_window_header_data_type = {
+  "Carbuncle::GUI::Style::Window::Header", mrb_style_free
+};
+static const struct mrb_data_type style_window_data_type = {
+  "Carbuncle::GUI::Style::Window", mrb_style_free
 };
 
 static struct nk_style *
