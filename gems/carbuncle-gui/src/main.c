@@ -380,6 +380,9 @@ void
 mrb_init_carbuncle_gui_window(mrb_state *mrb, struct RClass *gui);
 
 void
+mrb_init_carbuncle_gui_layout(mrb_state *mrb, struct RClass *gui);
+
+void
 mrb_carbuncle_gui_gem_init(mrb_state *mrb)
 {
   struct RClass *carbuncle = mrb_carbuncle_get(mrb);
@@ -392,6 +395,7 @@ mrb_carbuncle_gui_gem_init(mrb_state *mrb)
   mrb_define_method(mrb, gui, "dispose", mrb_gui_dispose, MRB_ARGS_NONE());
 
   mrb_init_carbuncle_gui_window(mrb, gui);
+  mrb_init_carbuncle_gui_layout(mrb, gui);
 
   mrb_define_method(mrb, gui, "update", mrb_gui_update, MRB_ARGS_REQ(1));
   mrb_define_method(mrb, gui, "draw", mrb_gui_draw, MRB_ARGS_NONE());
