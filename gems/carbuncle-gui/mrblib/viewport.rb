@@ -3,7 +3,7 @@ module Carbuncle
     class Viewport < Carbuncle::GUI::Container
       attr_reader :font, :gui
 
-      delegate :dispose, :disposed?, to: :gui
+      delegate :dispose, :disposed?, :draw, to: :gui
 
       def initialize(font)
         super(nil)
@@ -12,12 +12,8 @@ module Carbuncle
       end
 
       def update(dt)
-        @gui.update
+        @gui.update(dt)
         super
-      end
-
-      def draw
-        @gui.draw
       end
     end
   end
