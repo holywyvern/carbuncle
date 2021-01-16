@@ -9,6 +9,8 @@ module Carbuncle
                     :maximized, :visible
 
       delegate :gui, to: :parent
+      delegate :x, :y, :width, :height, :x=, :y=, :width=, :height,
+               to: :rect
 
       def initialize(view)
         unless view.is_a?(::Carbuncle::GUI::Viewport)
