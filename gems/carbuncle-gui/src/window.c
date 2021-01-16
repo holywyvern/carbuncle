@@ -1,6 +1,7 @@
 #include "carbuncle/core.h"
 #include "carbuncle/font.h"
 #include "carbuncle/rect.h"
+#include "carbuncle/point.h"
 
 #include <carbuncle/nuklear_config.h>
 #include <nuklear.h>
@@ -70,8 +71,159 @@ mrb_gui_window(mrb_state *mrb, mrb_value self)
   return mrb_bool_value(ok);
 }
 
+static mrb_value
+mrb_gui_window_bounds(mrb_state *mrb, mrb_value self)
+{
+  struct mrb_GuiContext *ctx = mrb_carbuncle_gui_get_context(mrb, self);
+  struct nk_rect bounds = nk_window_get_bounds(&(ctx->nk));
+  return mrb_carbuncle_rect_new(mrb, bounds.x, bounds.y, bounds.w, bounds.h);
+}
+
+static mrb_value
+mrb_gui_window_set_bounds(mrb_state *mrb, mrb_value self)
+{
+  const char *name;
+  mrb_value rect;
+  Rectangle *data;
+  struct mrb_GuiContext *ctx = mrb_carbuncle_gui_get_context(mrb, self);
+  mrb_get_args(mrb, "zo", &name, &rect);
+  data = mrb_carbuncle_get_rect(mrb, rect);
+  nk_window_set_bounds(&(ctx->nk), name, (struct nk_rect){ data->x, data->y, data->width, data->height });
+  return self;
+}
+
+static mrb_value
+mrb_gui_window_focusQ(mrb_state *mrb, mrb_value self)
+{
+  struct mrb_GuiContext *ctx = mrb_carbuncle_gui_get_context(mrb, self);
+  return mrb_bool_value(nk_window_has_focus(&(ctx->nk)));
+}
+
+static mrb_value
+mrb_gui_window_minimizedQ(mrb_state *mrb, mrb_value self)
+{
+  const char *name;
+  struct mrb_GuiContext *ctx = mrb_carbuncle_gui_get_context(mrb, self);
+  mrb_get_args(mrb, "z", &name);
+  return mrb_bool_value(nk_window_is_collapsed(&(ctx->nk), name));
+}
+
+static mrb_value
+mrb_gui_window_closedQ(mrb_state *mrb, mrb_value self)
+{
+  const char *name;
+  struct mrb_GuiContext *ctx = mrb_carbuncle_gui_get_context(mrb, self);
+  mrb_get_args(mrb, "z", &name);
+  return mrb_bool_value(nk_window_is_closed(&(ctx->nk), name));
+}
+
+static mrb_value
+mrb_gui_window_hiddenQ(mrb_state *mrb, mrb_value self)
+{
+  const char *name;
+  struct mrb_GuiContext *ctx = mrb_carbuncle_gui_get_context(mrb, self);
+  mrb_get_args(mrb, "z", &name);
+  return mrb_bool_value(nk_window_is_hidden(&(ctx->nk), name));
+}
+
+static mrb_value
+mrb_gui_window_activeQ(mrb_state *mrb, mrb_value self)
+{
+  const char *name;
+  struct mrb_GuiContext *ctx = mrb_carbuncle_gui_get_context(mrb, self);
+  mrb_get_args(mrb, "z", &name);
+  return mrb_bool_value(nk_window_is_active(&(ctx->nk), name));
+}
+
+static mrb_value
+mrb_gui_window_hoveredQ(mrb_state *mrb, mrb_value self)
+{
+  struct mrb_GuiContext *ctx = mrb_carbuncle_gui_get_context(mrb, self);
+  return mrb_bool_value(nk_window_is_hovered(&(ctx->nk)));
+}
+
+static mrb_value
+mrb_gui_window_set_focus(mrb_state *mrb, mrb_value self)
+{
+  const char *name;
+  struct mrb_GuiContext *ctx = mrb_carbuncle_gui_get_context(mrb, self);
+  mrb_get_args(mrb, "z", &name);
+  nk_window_set_focus(&(ctx->nk), name);
+  return self;
+}
+
+static mrb_value
+mrb_gui_window_scroll(mrb_state *mrb, mrb_value self)
+{
+  struct mrb_GuiContext *ctx = mrb_carbuncle_gui_get_context(mrb, self);
+  nk_uint x, y;
+  nk_window_get_scroll(&(ctx->nk), &x, &y);
+  return mrb_carbuncle_point_new(mrb, x, y);
+}
+
+static mrb_value
+mrb_gui_window_set_scroll(mrb_state *mrb, mrb_value self)
+{
+  mrb_value point;
+  Vector2 *data;
+  struct mrb_GuiContext *ctx = mrb_carbuncle_gui_get_context(mrb, self);
+  mrb_get_args(mrb, "o", &point);
+  data = mrb_carbuncle_get_point(mrb, point);
+  nk_window_set_scroll(&(ctx->nk), data->x, data->y);
+  return self;
+}
+
+static mrb_value
+mrb_gui_window_close(mrb_state *mrb, mrb_value self)
+{
+  const char *name;
+  struct mrb_GuiContext *ctx = mrb_carbuncle_gui_get_context(mrb, self);
+  mrb_get_args(mrb, "z", &name);
+  nk_window_close(&(ctx->nk), name);
+  return self;
+}
+
+static mrb_value
+mrb_gui_window_minimize(mrb_state *mrb, mrb_value self)
+{
+  const char *name;
+  mrb_bool minimized;
+  struct mrb_GuiContext *ctx = mrb_carbuncle_gui_get_context(mrb, self);
+  mrb_get_args(mrb, "zb", &name, &minimized);
+  nk_window_collapse(&(ctx->nk), name, minimized ? NK_MINIMIZED : NK_MAXIMIZED);
+  return self;
+}
+
+static mrb_value
+mrb_gui_window_show(mrb_state *mrb, mrb_value self)
+{
+  const char *name;
+  mrb_bool show;
+  struct mrb_GuiContext *ctx = mrb_carbuncle_gui_get_context(mrb, self);
+  mrb_get_args(mrb, "zb", &name, &show);
+  nk_window_show(&(ctx->nk), name, show ? NK_SHOWN : NK_HIDDEN);
+  return self;
+}
+
 void
 mrb_init_carbuncle_gui_window(mrb_state *mrb, struct RClass *gui)
 {
   mrb_define_method(mrb, gui, "window", mrb_gui_window, MRB_ARGS_REQ(2)|MRB_ARGS_BLOCK()|MRB_ARGS_KEY(WINDOW_KEYS, 0));
+
+  mrb_define_method(mrb, gui, "window_bounds", mrb_gui_window_bounds, MRB_ARGS_NONE());
+  mrb_define_method(mrb, gui, "set_window_bounds", mrb_gui_window_set_bounds, MRB_ARGS_REQ(2));
+  mrb_define_method(mrb, gui, "window_focus?", mrb_gui_window_focusQ, MRB_ARGS_NONE());
+  mrb_define_method(mrb, gui, "window_focus", mrb_gui_window_focusQ, MRB_ARGS_NONE());
+  mrb_define_method(mrb, gui, "window_focus=", mrb_gui_window_set_focus, MRB_ARGS_REQ(1));
+  mrb_define_method(mrb, gui, "window_minimized?", mrb_gui_window_minimizedQ, MRB_ARGS_REQ(1));
+  mrb_define_method(mrb, gui, "window_closed?", mrb_gui_window_closedQ, MRB_ARGS_REQ(1));
+  mrb_define_method(mrb, gui, "window_hidden?", mrb_gui_window_hiddenQ, MRB_ARGS_REQ(1));
+  mrb_define_method(mrb, gui, "window_active?", mrb_gui_window_activeQ, MRB_ARGS_REQ(1));
+  mrb_define_method(mrb, gui, "window_hovered?", mrb_gui_window_hoveredQ, MRB_ARGS_NONE());
+  mrb_define_method(mrb, gui, "window_scroll", mrb_gui_window_scroll, MRB_ARGS_NONE());
+  mrb_define_method(mrb, gui, "window_scroll=", mrb_gui_window_set_scroll, MRB_ARGS_REQ(1));
+
+  mrb_define_method(mrb, gui, "close_window", mrb_gui_window_close, MRB_ARGS_REQ(1));
+  mrb_define_method(mrb, gui, "minimize_window", mrb_gui_window_minimize, MRB_ARGS_REQ(2));
+  mrb_define_method(mrb, gui, "show_window", mrb_gui_window_show, MRB_ARGS_REQ(2));
 }

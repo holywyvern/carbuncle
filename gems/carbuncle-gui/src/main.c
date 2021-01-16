@@ -4,9 +4,7 @@
 
 #include "microutf8.h"
 
-#define NK_IMPLEMENTATION
 #include <carbuncle/nuklear_config.h>
-#include <nuklear.h>
 
 #include <mruby.h>
 #include <mruby/class.h>
@@ -33,9 +31,11 @@ update_mouse(struct nk_context *ctx, float prev_x, float prev_y)
 {
   float x = GetMouseX();
   float y = GetMouseY();
+  float scroll = GetMouseWheelMove();
   nk_input_button(ctx, NK_BUTTON_LEFT, x, y, IsMouseButtonDown(MOUSE_LEFT_BUTTON));
   nk_input_button(ctx, NK_BUTTON_MIDDLE, x, y, IsMouseButtonDown(MOUSE_MIDDLE_BUTTON));
   nk_input_button(ctx, NK_BUTTON_RIGHT, x, y, IsMouseButtonDown(MOUSE_RIGHT_BUTTON));
+  nk_input_scroll(ctx, (struct nk_vec2){0, scroll });
   if (x != prev_x || y != prev_y)
   {
     nk_input_motion(ctx, x, y);
@@ -45,8 +45,12 @@ update_mouse(struct nk_context *ctx, float prev_x, float prev_y)
 static void
 update_keyboard(struct nk_context *ctx)
 {
-  nk_rune character = GetKeyPressed();
-  nk_input_unicode(ctx, character);
+  nk_rune character = GetCharPressed();
+  while (character)
+  {
+    nk_input_unicode(ctx, character);
+    character = GetCharPressed();
+  }
 }
 
 static void

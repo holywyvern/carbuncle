@@ -9,6 +9,11 @@ module Carbuncle
         @gui = Carbuncle::GUI.new(font)
       end
 
+      def update(dt)
+        @gui.update
+        super
+      end
+
       def draw
         @gui.draw
       end
