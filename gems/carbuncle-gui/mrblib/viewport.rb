@@ -3,6 +3,8 @@ module Carbuncle
     class Viewport < Carbuncle::GUI::Container
       attr_reader :font, :gui
 
+      delegate :dispose, :disposed?, to: :gui
+
       def initialize(font)
         super(nil)
         @font = font
