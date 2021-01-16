@@ -511,6 +511,14 @@ get_color(mrb_state *mrb, mrb_value self)
   return ptr;
 }
 
+static struct nk_style_item *
+get_item(mrb_state *mrb, mrb_value self)
+{
+  struct nk_style_item *ptr;
+  Data_Get_Struct(mrb, self, &style_item_data_type, ptr);
+  return ptr;
+}
+
 static mrb_value
 color_get_r(mrb_state *mrb, mrb_value self)
 {
@@ -579,6 +587,69 @@ color_set_a(mrb_state *mrb, mrb_value self)
   return mrb_fixnum_value(value);
 }
 
+static mrb_value
+item_colorQ(mrb_state *mrb, mrb_value self)
+{
+  return mrb_bool_value(get_item(mrb, self)->type == NK_STYLE_ITEM_COLOR);
+}
+
+static mrb_value
+item_imageQ(mrb_state *mrb, mrb_value self)
+{
+  return mrb_bool_value(get_item(mrb, self)->type == NK_STYLE_ITEM_IMAGE);
+}
+
+static mrb_value
+item_type(mrb_state *mrb, mrb_value self)
+{
+  switch (get_item(mrb, self)->type)
+  {
+    case NK_STYLE_ITEM_COLOR: return mrb_str_new_cstr(mrb, "color");
+    case NK_STYLE_ITEM_IMAGE: return mrb_str_new_cstr(mrb, "image");
+  }
+  return mrb_nil_value();
+}
+
+static mrb_value
+item_image(mrb_state *mrb, mrb_value self)
+{
+  if (!get_item(mrb, self)->type == NK_STYLE_ITEM_IMAGE)
+  {
+    mrb_raise(mrb, E_TYPE_ERROR, "Item is not an Image");
+  }
+  return mrb_iv_get(mrb, self, IMAGE);
+}
+
+static mrb_value
+item_color(mrb_state *mrb, mrb_value self)
+{
+  if (!get_item(mrb, self)->type == NK_STYLE_ITEM_COLOR)
+  {
+    mrb_raise(mrb, E_TYPE_ERROR, "Item is not a Color");
+  }
+  return mrb_iv_get(mrb, self, COLOR);
+}
+
+static mrb_value
+item_set_image(mrb_state *mrb, mrb_value self)
+{
+  mrb_value value;
+  mrb_get_args(mrb, "o", &value);
+  mrb_funcall(mrb, mrb_iv_get(mrb, self, IMAGE), "set", 1, value);
+  get_item(mrb, self)->type = NK_STYLE_ITEM_IMAGE;
+  return value;
+}
+
+static mrb_value
+item_set_color(mrb_state *mrb, mrb_value self)
+{
+  mrb_value value;
+  mrb_get_args(mrb, "o", &value);
+  mrb_funcall(mrb, mrb_iv_get(mrb, self, COLOR), "set", 1, value);
+  get_item(mrb, self)->type = NK_STYLE_ITEM_COLOR;
+  return value;
+}
+
 void
 mrb_init_carbuncle_gui_style(mrb_state *mrb, struct RClass *gui)
 {
@@ -638,6 +709,14 @@ mrb_init_carbuncle_gui_style(mrb_state *mrb, struct RClass *gui)
 
   struct RClass *item = mrb_define_class_under(mrb, style, "Item", mrb->object_class);
   MRB_SET_INSTANCE_TT(item, MRB_TT_DATA);
+
+  mrb_define_method(mrb, item, "color?", item_colorQ, MRB_ARGS_NONE());
+  mrb_define_method(mrb, item, "image?", item_imageQ, MRB_ARGS_NONE());
+  mrb_define_method(mrb, item, "type", item_type, MRB_ARGS_NONE());
+  mrb_define_method(mrb, item, "color", item_color, MRB_ARGS_NONE());
+  mrb_define_method(mrb, item, "image", item_image, MRB_ARGS_NONE());
+  mrb_define_method(mrb, item, "color=", item_set_color, MRB_ARGS_REQ(1));
+  mrb_define_method(mrb, item, "image=", item_set_image, MRB_ARGS_REQ(1));
 
   struct RClass *cursor = mrb_define_class_under(mrb, style, "Cursor", mrb->object_class);
   MRB_SET_INSTANCE_TT(cursor, MRB_TT_DATA);
