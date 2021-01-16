@@ -2,6 +2,7 @@
 #include "carbuncle/font.h"
 #include "carbuncle/rect.h"
 #include "carbuncle/point.h"
+#include "carbuncle/texture.h"
 
 #include <carbuncle/nuklear_config.h>
 #include <nuklear.h>
@@ -61,6 +62,7 @@
 #define NORMAL mrb_intern_cstr(mrb, "#normal")
 #define COLOR mrb_intern_cstr(mrb, "#color")
 #define IMAGE mrb_intern_cstr(mrb, "#image")
+#define REGION mrb_intern_cstr(mrb, "#region")
 
 void
 mrb_style_free(mrb_state *mrb, void *ptr) {}
@@ -87,13 +89,29 @@ new_style_object(mrb_state *mrb, const char *class_name, void *ptr, const struct
   return obj;
 }
 
+static const struct mrb_data_type style_image_region_data_type = {
+  "Carbuncle::GUI::Style::Image::Region", mrb_style_free
+};
+static mrb_value
+new_image_region(mrb_state *mrb, unsigned short *ptr)
+{
+  struct RClass *style_class = get_style_class(mrb, "Image");
+  struct RClass *region = mrb_class_get_under(mrb, style_class, "Region");
+  mrb_value self = mrb_obj_new(mrb, region, 0, NULL);
+  DATA_TYPE(self) = &style_image_region_data_type;
+  DATA_PTR(self) = ptr;
+  return self;
+}
+
 static const struct mrb_data_type style_image_data_type = {
   "Carbuncle::GUI::Style::Image", mrb_style_free
 };
 static mrb_value
 new_image(mrb_state *mrb, struct nk_image *ptr)
 {
-  return new_style_object(mrb, "Image", ptr, &style_image_data_type);
+  mrb_value self = new_style_object(mrb, "Image", ptr, &style_image_data_type);
+  mrb_iv_set(mrb, self, REGION, new_image_region(mrb, ptr->region));
+  return self;
 }
 
 static const struct mrb_data_type style_color_data_type = {
@@ -519,6 +537,22 @@ get_item(mrb_state *mrb, mrb_value self)
   return ptr;
 }
 
+static struct nk_image *
+get_image(mrb_state *mrb, mrb_value self)
+{
+  struct nk_image *ptr;
+  Data_Get_Struct(mrb, self, &style_image_data_type, ptr);
+  return ptr;
+}
+
+static unsigned short *
+get_image_region(mrb_state *mrb, mrb_value self)
+{
+  unsigned short *ptr;
+  Data_Get_Struct(mrb, self, &style_image_data_type, ptr);
+  return ptr;
+}
+
 static mrb_value
 color_get_r(mrb_state *mrb, mrb_value self)
 {
@@ -650,6 +684,53 @@ item_set_color(mrb_state *mrb, mrb_value self)
   return value;
 }
 
+static mrb_value
+image_set(mrb_state *mrb, mrb_value self)
+{
+  mrb_value obj;
+  Texture2D *texture;
+  struct nk_image *img = get_image(mrb, self);
+  mrb_get_args(mrb, "o", &obj);
+  texture = mrb_carbuncle_get_texture(mrb, obj);
+  img->handle.ptr = texture;
+  img->w = texture->width;
+  img->h = texture->height;
+  img->region[0] = 0;
+  img->region[1] = 0;
+  img->region[2] = img->w;
+  img->region[3] = img->h;
+  return self;
+}
+
+static mrb_value
+image_get_region(mrb_state *mrb, mrb_value self)
+{
+  return mrb_iv_get(mrb, self, REGION);
+}
+
+static mrb_value
+image_region_get(mrb_state *mrb, mrb_value self)
+{
+  mrb_int i;
+  mrb_get_args(mrb, "i", &i);
+  if (i > 3 || i < 0) {
+    mrb_raise(mrb, E_ARGUMENT_ERROR, "Invalid region index");
+  }
+  return mrb_fixnum_value(get_image_region(mrb, self)[i]);
+}
+
+static mrb_value
+image_region_set(mrb_state *mrb, mrb_value self)
+{
+  mrb_int i, value;
+  mrb_get_args(mrb, "ii", &i, &value);
+  if (i > 3 || i < 0) {
+    mrb_raise(mrb, E_ARGUMENT_ERROR, "Invalid region index");
+  }
+  get_image_region(mrb, self)[i] = value;
+  return mrb_fixnum_value(value);
+}
+
 void
 mrb_init_carbuncle_gui_style(mrb_state *mrb, struct RClass *gui)
 {
@@ -703,6 +784,15 @@ mrb_init_carbuncle_gui_style(mrb_state *mrb, struct RClass *gui)
 
   struct RClass *image = mrb_define_class_under(mrb, style, "Image", mrb->object_class);
   MRB_SET_INSTANCE_TT(image, MRB_TT_DATA);
+
+  mrb_define_method(mrb, image, "set", image_set, MRB_ARGS_REQ(1));
+  mrb_define_method(mrb, image, "region", image_get_region, MRB_ARGS_NONE());
+
+  struct RClass *image_region = mrb_define_class_under(mrb, image, "Region", mrb->object_class);
+  MRB_SET_INSTANCE_TT(image_region, MRB_TT_DATA);
+
+  mrb_define_method(mrb, image_region, "[]", image_region_get, MRB_ARGS_REQ(1));
+  mrb_define_method(mrb, image_region, "[]=", image_region_set, MRB_ARGS_REQ(2));
 
   struct RClass *vec2 = mrb_define_class_under(mrb, style, "Vec2", mrb->object_class);
   MRB_SET_INSTANCE_TT(vec2, MRB_TT_DATA);
