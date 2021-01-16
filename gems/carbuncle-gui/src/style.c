@@ -221,4 +221,55 @@ mrb_init_carbuncle_gui_style(mrb_state *mrb, struct RClass *gui)
   mrb_define_method(mrb, style, "tab", mrb_style_get_tab, MRB_ARGS_NONE());
   mrb_define_method(mrb, style, "text", mrb_style_get_text, MRB_ARGS_NONE());
   mrb_define_method(mrb, style, "window", mrb_style_get_window, MRB_ARGS_NONE());
+
+  struct RClass *color = mrb_define_class_under(mrb, style, "Color", mrb->object_class);
+  MRB_SET_INSTANCE_TT(color, MRB_TT_DATA);
+
+  struct RClass *image = mrb_define_class_under(mrb, style, "Image", mrb->object_class);
+  MRB_SET_INSTANCE_TT(image, MRB_TT_DATA);
+
+  struct RClass *item = mrb_define_class_under(mrb, style, "Item", mrb->object_class);
+  MRB_SET_INSTANCE_TT(item, MRB_TT_DATA);
+
+  struct RClass *vec2 = mrb_define_class_under(mrb, style, "Vec2", mrb->object_class);
+  MRB_SET_INSTANCE_TT(item, MRB_TT_DATA);
+
+  struct RClass *button = mrb_define_class_under(mrb, style, "Button", mrb->object_class);
+  MRB_SET_INSTANCE_TT(button, MRB_TT_DATA);
+
+  struct RClass *toggle = mrb_define_class_under(mrb, style, "Toggle", mrb->object_class);
+  MRB_SET_INSTANCE_TT(toggle, MRB_TT_DATA);
+
+  struct RClass *selectable = mrb_define_class_under(mrb, style, "Selectable", mrb->object_class);
+  MRB_SET_INSTANCE_TT(selectable, MRB_TT_DATA);
+
+  struct RClass *slider = mrb_define_class_under(mrb, style, "Slider", mrb->object_class);
+  MRB_SET_INSTANCE_TT(slider, MRB_TT_DATA);
+
+  struct RClass *progress = mrb_define_class_under(mrb, style, "Progress", mrb->object_class);
+  MRB_SET_INSTANCE_TT(progress, MRB_TT_DATA);
+
+  struct RClass *scrollbar = mrb_define_class_under(mrb, style, "Scrollbar", mrb->object_class);
+  MRB_SET_INSTANCE_TT(scrollbar, MRB_TT_DATA);
+
+  struct RClass *edit = mrb_define_class_under(mrb, style, "Edit", mrb->object_class);
+  MRB_SET_INSTANCE_TT(edit, MRB_TT_DATA);
+
+  struct RClass *property = mrb_define_class_under(mrb, style, "Property", mrb->object_class);
+  MRB_SET_INSTANCE_TT(property, MRB_TT_DATA);
+
+  struct RClass *chart = mrb_define_class_under(mrb, style, "Chart", mrb->object_class);
+  MRB_SET_INSTANCE_TT(chart, MRB_TT_DATA);
+
+  struct RClass *combo = mrb_define_class_under(mrb, style, "Combo", mrb->object_class);
+  MRB_SET_INSTANCE_TT(combo, MRB_TT_DATA);
+
+  struct RClass *tab = mrb_define_class_under(mrb, style, "Tab", mrb->object_class);
+  MRB_SET_INSTANCE_TT(tab, MRB_TT_DATA);
+
+  struct RClass *window = mrb_define_class_under(mrb, style, "Window", mrb->object_class);
+  MRB_SET_INSTANCE_TT(window, MRB_TT_DATA);
+
+  struct RClass *window_header = mrb_define_class_under(mrb, window, "Header", mrb->object_class);
+  MRB_SET_INSTANCE_TT(window_header, MRB_TT_DATA);
 }
