@@ -11,41 +11,12 @@
 extern "C" {
 #endif
 
-struct mrb_Glyph
-{
-  FT_ULong codepoint;
-  FT_BitmapGlyph bmp;
-  Rectangle rect;
-  Vector2 advance;
-  Vector2 margin;
-  struct mrb_Glyph *left;
-  struct mrb_Glyph *right;
-  mrb_int node_height;
-  size_t row;
-};
-
-struct mrb_GlyphMap
-{
-  size_t count;
-  struct mrb_Glyph *root;
-};
-
-struct mrb_FontMetrics
-{
-  mrb_int max_width;
-  mrb_int min_height;
-  mrb_int max_height;
-};
-
 struct mrb_Font
 {
   FT_Face face;
   Font raylib_font;
   mrb_int size;
-  struct mrb_GlyphMap glyphs;
-  struct mrb_FontMetrics metrics;
-  Texture2D texture;
-  Image image;
+  mrb_bool is_default;
   char *bytes;
 };
 

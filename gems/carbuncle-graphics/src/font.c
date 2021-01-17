@@ -29,9 +29,10 @@ mrb_font_free(mrb_state *mrb, void *ptr)
   struct mrb_Font *font = ptr;
   if (font)
   {
-    UnloadFont(font->raylib_font);
-    UnloadTexture(font->texture);
-    UnloadImage(font->image);
+    if (!font->is_default)
+    {
+      UnloadFont(font->raylib_font);
+    }
     FT_Done_Face(font->face);
     mrb_free(mrb, font->bytes);
     mrb_free(mrb, font);
@@ -101,11 +102,10 @@ mrb_font_initialize(mrb_state *mrb, mrb_value self)
   if (argc < 1)
   {
     mrb_value default_name = mrb_funcall(mrb, font_class, "default_name", 0);
-    if (mrb_nil_p(default_name))
+    if (!mrb_nil_p(default_name))
     {
-      mrb_raise(mrb, E_ARGUMENT_ERROR, "Cannot load default font when default font is null.");
+      name = mrb_str_to_cstr(mrb, default_name);
     }
-    name = mrb_str_to_cstr(mrb, default_name);
   }
   if (argc < 2)
   {
@@ -116,8 +116,18 @@ mrb_font_initialize(mrb_state *mrb, mrb_value self)
   DATA_TYPE(self) = &font_data_type;
   font->face = NULL;
   font->size = size;
-  mrb_carbuncle_check_file(mrb, name);
-  open_font(mrb, font, name, size);
+  
+  if (name)
+  {
+    mrb_carbuncle_check_file(mrb, name);
+    open_font(mrb, font, name, size);
+    font->is_default = FALSE;
+  }
+  else
+  {
+    font->raylib_font = GetFontDefault();
+    font->is_default = TRUE;
+  }
   return self;
 }
 
