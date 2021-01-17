@@ -107,6 +107,11 @@
 #define TEXT_PRESSED_ACTIVE mrb_intern_cstr(mrb, "#text_pressed_active")
 #define CURSOR_ACTIVE mrb_intern_cstr(mrb, "#cursor_active")
 #define CURSOR_BORDER_COLOR mrb_intern_cstr(mrb, "#cursor_border_color")
+#define BAR_ACTIVE mrb_intern_cstr(mrb, "#bar_active")
+#define BAR_FILLED mrb_intern_cstr(mrb, "#bar_filled")
+#define BAR_HOVER mrb_intern_cstr(mrb, "#bar_hover")
+#define BAR_NORMAL mrb_intern_cstr(mrb, "#bar_normal")
+#define CURSOR_SIZE mrb_intern_cstr(mrb, "#cursor_size")
 
 void
 mrb_style_free(mrb_state *mrb, void *ptr) {}
@@ -400,6 +405,22 @@ static mrb_value
 new_slider(mrb_state *mrb, struct nk_style_slider *ptr)
 {
   mrb_value self = new_style_object(mrb, "Slider", ptr, &style_slider_data_type);
+  mrb_iv_set(mrb, self, ACTIVE, new_item(mrb, &(ptr->active)));
+  mrb_iv_set(mrb, self, BAR_ACTIVE, new_color(mrb, &(ptr->bar_active)));
+  mrb_iv_set(mrb, self, BAR_FILLED, new_color(mrb, &(ptr->bar_filled)));
+  mrb_iv_set(mrb, self, BAR_HOVER, new_color(mrb, &(ptr->bar_hover)));
+  mrb_iv_set(mrb, self, BAR_NORMAL, new_color(mrb, &(ptr->bar_normal)));
+  mrb_iv_set(mrb, self, BORDER_COLOR, new_color(mrb, &(ptr->border_color)));
+  mrb_iv_set(mrb, self, CURSOR_ACTIVE, new_item(mrb, &(ptr->cursor_active)));
+  mrb_iv_set(mrb, self, CURSOR_HOVER, new_item(mrb, &(ptr->cursor_hover)));
+  mrb_iv_set(mrb, self, CURSOR_NORMAL, new_item(mrb, &(ptr->cursor_normal)));
+  mrb_iv_set(mrb, self, CURSOR_SIZE, new_vec2(mrb, &(ptr->cursor_size)));
+  mrb_iv_set(mrb, self, DEC_BUTTON, new_button(mrb, &(ptr->dec_button)));
+  mrb_iv_set(mrb, self, HOVER, new_item(mrb, &(ptr->hover)));
+  mrb_iv_set(mrb, self, INC_BUTTON, new_button(mrb, &(ptr->inc_button)));
+  mrb_iv_set(mrb, self, NORMAL, new_item(mrb, &(ptr->normal)));
+  mrb_iv_set(mrb, self, PADDING, new_vec2(mrb, &(ptr->padding)));
+  mrb_iv_set(mrb, self, SPACING, new_vec2(mrb, &(ptr->spacing)));
   return self;
 }
 
@@ -419,6 +440,15 @@ static mrb_value
 new_progress(mrb_state *mrb, struct nk_style_progress *ptr)
 {
   mrb_value self = new_style_object(mrb, "Progress", ptr, &style_progress_data_type);
+  mrb_iv_set(mrb, self, ACTIVE, new_item(mrb, &(ptr->active)));
+  mrb_iv_set(mrb, self, BORDER_COLOR, new_color(mrb, &(ptr->border_color)));
+  mrb_iv_set(mrb, self, CURSOR_ACTIVE, new_item(mrb, &(ptr->cursor_active)));
+  mrb_iv_set(mrb, self, CURSOR_BORDER_COLOR, new_color(mrb, &(ptr->cursor_border_color)));
+  mrb_iv_set(mrb, self, CURSOR_HOVER, new_item(mrb, &(ptr->cursor_hover)));
+  mrb_iv_set(mrb, self, CURSOR_NORMAL, new_item(mrb, &(ptr->cursor_normal)));
+  mrb_iv_set(mrb, self, HOVER, new_item(mrb, &(ptr->hover)));
+  mrb_iv_set(mrb, self, NORMAL, new_item(mrb, &(ptr->normal)));
+  mrb_iv_set(mrb, self, PADDING, new_vec2(mrb, &(ptr->padding)));
   return self;
 }
 
