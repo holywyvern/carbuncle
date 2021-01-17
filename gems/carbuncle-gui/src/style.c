@@ -97,6 +97,16 @@
 #define SELECTED_NORMAL mrb_intern_cstr(mrb, "#selected_normal")
 #define SELECTED_TEXT_HOVER mrb_intern_cstr(mrb, "#selected_text_hover")
 #define SELECTED_TEXT_NORMAL mrb_intern_cstr(mrb, "#selected_text_normal")
+#define HOVER_ACTIVE mrb_intern_cstr(mrb, "#hover_active")
+#define NORMAL_ACTIVE mrb_intern_cstr(mrb, "#normal_active")
+#define PRESSED mrb_intern_cstr(mrb, "#pressed")
+#define PRESSED_ACTIVE mrb_intern_cstr(mrb, "#pressed_active")
+#define TEXT_HOVER_ACTIVE mrb_intern_cstr(mrb, "#text_hover_active")
+#define TEXT_NORMAL_ACTIVE mrb_intern_cstr(mrb, "#text_normal_active")
+#define TEXT_PRESSED mrb_intern_cstr(mrb, "#text_pressed")
+#define TEXT_PRESSED_ACTIVE mrb_intern_cstr(mrb, "#text_pressed_active")
+#define CURSOR_ACTIVE mrb_intern_cstr(mrb, "#cursor_active")
+#define CURSOR_BORDER_COLOR mrb_intern_cstr(mrb, "#cursor_border_color")
 
 void
 mrb_style_free(mrb_state *mrb, void *ptr) {}
@@ -104,6 +114,14 @@ mrb_style_free(mrb_state *mrb, void *ptr) {}
 static const struct mrb_data_type style_data_type = {
   "Carbuncle::GUI::Style", mrb_style_free
 };
+
+static struct nk_style *
+get_style(mrb_state *mrb, mrb_value self)
+{
+  struct nk_style *data;
+  Data_Get_Struct(mrb, self, &style_data_type, data);
+  return data;
+}
 
 static struct RClass *
 get_style_class(mrb_state *mrb, const char *name)
@@ -126,6 +144,15 @@ new_style_object(mrb_state *mrb, const char *class_name, void *ptr, const struct
 static const struct mrb_data_type style_image_region_data_type = {
   "Carbuncle::GUI::Style::Image::Region", mrb_style_free
 };
+
+static unsigned short *
+get_image_region(mrb_state *mrb, mrb_value self)
+{
+  unsigned short *ptr;
+  Data_Get_Struct(mrb, self, &style_image_region_data_type, ptr);
+  return ptr;
+}
+
 static mrb_value
 new_image_region(mrb_state *mrb, unsigned short *ptr)
 {
@@ -140,6 +167,15 @@ new_image_region(mrb_state *mrb, unsigned short *ptr)
 static const struct mrb_data_type style_image_data_type = {
   "Carbuncle::GUI::Style::Image", mrb_style_free
 };
+
+static struct nk_image *
+get_image(mrb_state *mrb, mrb_value self)
+{
+  struct nk_image *ptr;
+  Data_Get_Struct(mrb, self, &style_image_data_type, ptr);
+  return ptr;
+}
+
 static mrb_value
 new_image(mrb_state *mrb, struct nk_image *ptr)
 {
@@ -151,6 +187,15 @@ new_image(mrb_state *mrb, struct nk_image *ptr)
 static const struct mrb_data_type style_color_data_type = {
   "Carbuncle::GUI::Style::Color", mrb_style_free
 };
+
+static struct nk_color *
+get_color(mrb_state *mrb, mrb_value self)
+{
+  struct nk_color *ptr;
+  Data_Get_Struct(mrb, self, &style_color_data_type, ptr);
+  return ptr;
+}
+
 static mrb_value
 new_color(mrb_state *mrb, struct nk_color *ptr)
 {
@@ -160,6 +205,15 @@ new_color(mrb_state *mrb, struct nk_color *ptr)
 static const struct mrb_data_type style_item_data_type = {
   "Carbuncle::GUI::Style::Item", mrb_style_free
 };
+
+static struct nk_style_item *
+get_item(mrb_state *mrb, mrb_value self)
+{
+  struct nk_style_item *ptr;
+  Data_Get_Struct(mrb, self, &style_item_data_type, ptr);
+  return ptr;
+}
+
 static mrb_value
 new_item(mrb_state *mrb, struct nk_style_item *ptr)
 {
@@ -172,6 +226,15 @@ new_item(mrb_state *mrb, struct nk_style_item *ptr)
 static const struct mrb_data_type style_vec2_data_type = {
   "Carbuncle::GUI::Style::Vec2", mrb_style_free
 };
+
+static struct nk_vec2 *
+get_vec2(mrb_state *mrb, mrb_value self)
+{
+  struct nk_vec2 *ptr;
+  Data_Get_Struct(mrb, self, &style_vec2_data_type, ptr);
+  return ptr;
+}
+
 static mrb_value
 new_vec2(mrb_state *mrb, struct nk_vec2 *ptr)
 {
@@ -181,6 +244,15 @@ new_vec2(mrb_state *mrb, struct nk_vec2 *ptr)
 static const struct mrb_data_type style_cursor_data_type = {
   "Carbuncle::GUI::Style::Cursor", mrb_style_free
 };
+
+static struct nk_cursor *
+get_cursor(mrb_state *mrb, mrb_value self)
+{
+  struct nk_cursor *ptr;
+  Data_Get_Struct(mrb, self, &style_cursor_data_type, ptr);
+  return ptr;
+}
+
 static mrb_value
 new_cursor(mrb_state *mrb, const struct nk_cursor *ptr, mrb_bool frozen)
 {
@@ -198,6 +270,15 @@ new_cursor(mrb_state *mrb, const struct nk_cursor *ptr, mrb_bool frozen)
 static const struct mrb_data_type style_text_data_type = {
   "Carbuncle::GUI::Style::Text", mrb_style_free
 };
+
+static struct nk_style_text *
+get_text(mrb_state *mrb, mrb_value self)
+{
+  struct nk_style_text *ptr;
+  Data_Get_Struct(mrb, self, &style_text_data_type, ptr);
+  return ptr;
+}
+
 static mrb_value
 new_text(mrb_state *mrb, struct nk_style_text *ptr)
 {
@@ -206,9 +287,19 @@ new_text(mrb_state *mrb, struct nk_style_text *ptr)
   mrb_iv_set(mrb, self, PADDING, new_vec2(mrb, &(ptr->padding)));
   return self;
 }
+
 static const struct mrb_data_type style_button_data_type = {
   "Carbuncle::GUI::Style::Button", mrb_style_free
 };
+
+static struct nk_style_button *
+get_button(mrb_state *mrb, mrb_value self)
+{
+  struct nk_style_button *ptr;
+  Data_Get_Struct(mrb, self, &style_button_data_type, ptr);
+  return ptr;
+}
+
 static mrb_value
 new_button(mrb_state *mrb, struct nk_style_button *ptr)
 {
@@ -230,26 +321,81 @@ new_button(mrb_state *mrb, struct nk_style_button *ptr)
 static const struct mrb_data_type style_toggle_data_type = {
   "Carbuncle::GUI::Style::Toggle", mrb_style_free
 };
+
+static struct nk_style_toggle *
+get_toggle(mrb_state *mrb, mrb_value self)
+{
+  struct nk_style_toggle *ptr;
+  Data_Get_Struct(mrb, self, &style_toggle_data_type, ptr);
+  return ptr;
+}
+
 static mrb_value
 new_toggle(mrb_state *mrb, struct nk_style_toggle *ptr)
 {
   mrb_value self = new_style_object(mrb, "Toggle", ptr, &style_toggle_data_type);
+  mrb_iv_set(mrb, self, ACTIVE, new_item(mrb, &(ptr->active)));
+  mrb_iv_set(mrb, self, BORDER_COLOR, new_color(mrb, &(ptr->border_color)));
+  mrb_iv_set(mrb, self, CURSOR_HOVER, new_item(mrb, &(ptr->cursor_hover)));
+  mrb_iv_set(mrb, self, CURSOR_NORMAL, new_item(mrb, &(ptr->cursor_normal)));
+  mrb_iv_set(mrb, self, HOVER, new_item(mrb, &(ptr->hover)));
+  mrb_iv_set(mrb, self, NORMAL, new_item(mrb, &(ptr->normal)));
+  mrb_iv_set(mrb, self, PADDING, new_vec2(mrb, &(ptr->padding)));
+  mrb_iv_set(mrb, self, TEXT_ACTIVE, new_color(mrb, &(ptr->text_active)));
+  mrb_iv_set(mrb, self, TEXT_BACKGROUND, new_color(mrb, &(ptr->text_background)));
+  mrb_iv_set(mrb, self, TEXT_HOVER, new_color(mrb, &(ptr->text_hover)));
+  mrb_iv_set(mrb, self, TEXT_NORMAL, new_color(mrb, &(ptr->text_normal)));
+  mrb_iv_set(mrb, self, TOUCH_PADDING, new_vec2(mrb, &(ptr->touch_padding)));
   return self;
 }
 
 static const struct mrb_data_type style_selectable_data_type = {
   "Carbuncle::GUI::Style::Selectable", mrb_style_free
 };
+
+static struct nk_style_selectable *
+get_selectable(mrb_state *mrb, mrb_value self)
+{
+  struct nk_style_selectable *ptr;
+  Data_Get_Struct(mrb, self, &style_selectable_data_type, ptr);
+  return ptr;
+}
+
 static mrb_value
 new_selectable(mrb_state *mrb, struct nk_style_selectable *ptr)
 {
   mrb_value self = new_style_object(mrb, "Selectable", ptr, &style_selectable_data_type);
+  mrb_iv_set(mrb, self, HOVER, new_item(mrb, &(ptr->hover)));
+  mrb_iv_set(mrb, self, HOVER_ACTIVE, new_item(mrb, &(ptr->hover_active)));
+  mrb_iv_set(mrb, self, IMAGE_PADDING, new_vec2(mrb, &(ptr->image_padding)));
+  mrb_iv_set(mrb, self, NORMAL, new_item(mrb, &(ptr->normal)));
+  mrb_iv_set(mrb, self, NORMAL_ACTIVE, new_item(mrb, &(ptr->normal_active)));
+  mrb_iv_set(mrb, self, PADDING, new_vec2(mrb, &(ptr->padding)));
+  mrb_iv_set(mrb, self, PRESSED, new_item(mrb, &(ptr->pressed)));
+  mrb_iv_set(mrb, self, PRESSED_ACTIVE, new_item(mrb, &(ptr->pressed_active)));
+  mrb_iv_set(mrb, self, TEXT_BACKGROUND, new_color(mrb, &(ptr->text_background)));
+  mrb_iv_set(mrb, self, TEXT_HOVER, new_color(mrb, &(ptr->text_hover)));
+  mrb_iv_set(mrb, self, TEXT_HOVER_ACTIVE, new_color(mrb, &(ptr->text_hover_active)));
+  mrb_iv_set(mrb, self, TEXT_NORMAL, new_color(mrb, &(ptr->text_normal)));
+  mrb_iv_set(mrb, self, TEXT_NORMAL_ACTIVE, new_color(mrb, &(ptr->text_normal_active)));
+  mrb_iv_set(mrb, self, TEXT_PRESSED, new_color(mrb, &(ptr->text_pressed)));
+  mrb_iv_set(mrb, self, TEXT_PRESSED_ACTIVE, new_color(mrb, &(ptr->text_pressed_active)));
+  mrb_iv_set(mrb, self, TOUCH_PADDING, new_vec2(mrb, &(ptr->touch_padding)));
   return self;
 }
 
 static const struct mrb_data_type style_slider_data_type = {
   "Carbuncle::GUI::Style::Slider", mrb_style_free
 };
+
+static struct nk_style_slider *
+get_slider(mrb_state *mrb, mrb_value self)
+{
+  struct nk_style_slider *ptr;
+  Data_Get_Struct(mrb, self, &style_slider_data_type, ptr);
+  return ptr;
+}
+
 static mrb_value
 new_slider(mrb_state *mrb, struct nk_style_slider *ptr)
 {
@@ -260,6 +406,15 @@ new_slider(mrb_state *mrb, struct nk_style_slider *ptr)
 static const struct mrb_data_type style_progress_data_type = {
   "Carbuncle::GUI::Style::Progress", mrb_style_free
 };
+
+static struct nk_style_progress *
+get_progress(mrb_state *mrb, mrb_value self)
+{
+  struct nk_style_progress *ptr;
+  Data_Get_Struct(mrb, self, &style_progress_data_type, ptr);
+  return ptr;
+}
+
 static mrb_value
 new_progress(mrb_state *mrb, struct nk_style_progress *ptr)
 {
@@ -270,16 +425,45 @@ new_progress(mrb_state *mrb, struct nk_style_progress *ptr)
 static const struct mrb_data_type style_scrollbar_data_type = {
   "Carbuncle::GUI::Style::Scrollbar", mrb_style_free
 };
+
+static struct nk_style_scrollbar *
+get_scrollbar(mrb_state *mrb, mrb_value self)
+{
+  struct nk_style_scrollbar *ptr;
+  Data_Get_Struct(mrb, self, &style_scrollbar_data_type, ptr);
+  return ptr;
+}
+
 static mrb_value
 new_scrollbar(mrb_state *mrb, struct nk_style_scrollbar *ptr)
 {
   mrb_value self = new_style_object(mrb, "Scrollbar", ptr, &style_scrollbar_data_type);
+  mrb_iv_set(mrb, self, ACTIVE, new_item(mrb, &(ptr->active)));
+  mrb_iv_set(mrb, self, BORDER_COLOR, new_color(mrb, &(ptr->border_color)));
+  mrb_iv_set(mrb, self, CURSOR_ACTIVE, new_item(mrb, &(ptr->cursor_active)));
+  mrb_iv_set(mrb, self, CURSOR_BORDER_COLOR, new_color(mrb, &(ptr->cursor_border_color)));
+  mrb_iv_set(mrb, self, CURSOR_HOVER, new_item(mrb, &(ptr->cursor_hover)));
+  mrb_iv_set(mrb, self, CURSOR_NORMAL, new_item(mrb, &(ptr->cursor_normal)));
+  mrb_iv_set(mrb, self, DEC_BUTTON, new_button(mrb, &(ptr->dec_button)));
+  mrb_iv_set(mrb, self, HOVER, new_item(mrb, &(ptr->hover)));
+  mrb_iv_set(mrb, self, INC_BUTTON, new_button(mrb, &(ptr->inc_button)));
+  mrb_iv_set(mrb, self, NORMAL, new_item(mrb, &(ptr->normal)));
+  mrb_iv_set(mrb, self, PADDING, new_vec2(mrb, &(ptr->padding)));
   return self;
 }
 
 static const struct mrb_data_type style_edit_data_type = {
   "Carbuncle::GUI::Style::Edit", mrb_style_free
 };
+
+static struct nk_style_edit *
+get_edit(mrb_state *mrb, mrb_value self)
+{
+  struct nk_style_edit *ptr;
+  Data_Get_Struct(mrb, self, &style_edit_data_type, ptr);
+  return ptr;
+}
+
 static mrb_value
 new_edit(mrb_state *mrb, struct nk_style_edit *ptr)
 {
@@ -308,6 +492,15 @@ new_edit(mrb_state *mrb, struct nk_style_edit *ptr)
 static const struct mrb_data_type style_property_data_type = {
   "Carbuncle::GUI::Style::Property", mrb_style_free
 };
+
+static struct nk_style_property *
+get_property(mrb_state *mrb, mrb_value self)
+{
+  struct nk_style_property *ptr;
+  Data_Get_Struct(mrb, self, &style_property_data_type, ptr);
+  return ptr;
+}
+
 static mrb_value
 new_property(mrb_state *mrb, struct nk_style_property *ptr)
 {
@@ -329,6 +522,15 @@ new_property(mrb_state *mrb, struct nk_style_property *ptr)
 static const struct mrb_data_type style_chart_data_type = {
   "Carbuncle::GUI::Style::Chart", mrb_style_free
 };
+
+static struct nk_style_chart *
+get_chart(mrb_state *mrb, mrb_value self)
+{
+  struct nk_style_chart *ptr;
+  Data_Get_Struct(mrb, self, &style_chart_data_type, ptr);
+  return ptr;
+}
+
 static mrb_value
 new_chart(mrb_state *mrb, struct nk_style_chart *ptr)
 {
@@ -344,6 +546,15 @@ new_chart(mrb_state *mrb, struct nk_style_chart *ptr)
 static const struct mrb_data_type style_combo_data_type = {
   "Carbuncle::GUI::Style::Combo", mrb_style_free
 };
+
+static struct nk_style_combo *
+get_combo(mrb_state *mrb, mrb_value self)
+{
+  struct nk_style_combo *ptr;
+  Data_Get_Struct(mrb, self, &style_combo_data_type, ptr);
+  return ptr;
+}
+
 static mrb_value
 new_combo(mrb_state *mrb, struct nk_style_combo *ptr)
 {
@@ -368,6 +579,15 @@ new_combo(mrb_state *mrb, struct nk_style_combo *ptr)
 static const struct mrb_data_type style_tab_data_type = {
   "Carbuncle::GUI::Style::Tab", mrb_style_free
 };
+
+static struct nk_style_tab *
+get_tab(mrb_state *mrb, mrb_value self)
+{
+  struct nk_style_tab *ptr;
+  Data_Get_Struct(mrb, self, &style_tab_data_type, ptr);
+  return ptr;
+}
+
 static mrb_value
 new_tab(mrb_state *mrb, struct nk_style_tab *ptr)
 {
@@ -387,6 +607,15 @@ new_tab(mrb_state *mrb, struct nk_style_tab *ptr)
 static const struct mrb_data_type style_window_header_data_type = {
   "Carbuncle::GUI::Style::Window::Header", mrb_style_free
 };
+
+static struct nk_style_window_header *
+get_window_header(mrb_state *mrb, mrb_value self)
+{
+  struct nk_style_window_header *ptr;
+  Data_Get_Struct(mrb, self, &style_window_header_data_type, ptr);
+  return ptr;
+}
+
 static mrb_value
 new_window_header(mrb_state *mrb, struct nk_style_window_header *ptr)
 {
@@ -415,6 +644,14 @@ static const struct mrb_data_type style_window_data_type = {
   "Carbuncle::GUI::Style::Window", mrb_style_free
 };
 
+static struct nk_style_window *
+get_window(mrb_state *mrb, mrb_value self)
+{
+  struct nk_style_window *ptr;
+  Data_Get_Struct(mrb, self, &style_window_data_type, ptr);
+  return ptr;
+}
+
 static mrb_value
 new_window(mrb_state *mrb, struct nk_style_window *ptr)
 {
@@ -435,14 +672,6 @@ new_window(mrb_state *mrb, struct nk_style_window *ptr)
   mrb_iv_set(mrb, self, TOOLTIP_PADDING, new_vec2(mrb, &(ptr->tooltip_padding)));
 
   return self;
-}
-
-static struct nk_style *
-get_style(mrb_state *mrb, mrb_value self)
-{
-  struct nk_style *data;
-  Data_Get_Struct(mrb, self, &style_data_type, data);
-  return data;
 }
 
 mrb_value
@@ -627,38 +856,6 @@ mrb_style_set_cursor_visible(mrb_state *mrb, mrb_value self)
   return mrb_bool_value(value);
 }
 
-static struct nk_color *
-get_color(mrb_state *mrb, mrb_value self)
-{
-  struct nk_color *ptr;
-  Data_Get_Struct(mrb, self, &style_color_data_type, ptr);
-  return ptr;
-}
-
-static struct nk_style_item *
-get_item(mrb_state *mrb, mrb_value self)
-{
-  struct nk_style_item *ptr;
-  Data_Get_Struct(mrb, self, &style_item_data_type, ptr);
-  return ptr;
-}
-
-static struct nk_image *
-get_image(mrb_state *mrb, mrb_value self)
-{
-  struct nk_image *ptr;
-  Data_Get_Struct(mrb, self, &style_image_data_type, ptr);
-  return ptr;
-}
-
-static unsigned short *
-get_image_region(mrb_state *mrb, mrb_value self)
-{
-  unsigned short *ptr;
-  Data_Get_Struct(mrb, self, &style_image_data_type, ptr);
-  return ptr;
-}
-
 static mrb_value
 color_get_r(mrb_state *mrb, mrb_value self)
 {
@@ -753,7 +950,7 @@ item_type(mrb_state *mrb, mrb_value self)
 static mrb_value
 item_image(mrb_state *mrb, mrb_value self)
 {
-  if (!get_item(mrb, self)->type == NK_STYLE_ITEM_IMAGE)
+  if (get_item(mrb, self)->type != NK_STYLE_ITEM_IMAGE)
   {
     mrb_raise(mrb, E_TYPE_ERROR, "Item is not an Image");
   }
@@ -763,7 +960,7 @@ item_image(mrb_state *mrb, mrb_value self)
 static mrb_value
 item_color(mrb_state *mrb, mrb_value self)
 {
-  if (!get_item(mrb, self)->type == NK_STYLE_ITEM_COLOR)
+  if (get_item(mrb, self)->type != NK_STYLE_ITEM_COLOR)
   {
     mrb_raise(mrb, E_TYPE_ERROR, "Item is not a Color");
   }
