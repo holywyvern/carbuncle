@@ -1221,4 +1221,21 @@ mrb_init_carbuncle_gui_style(mrb_state *mrb, struct RClass *gui)
 
   struct RClass *window_header = mrb_define_class_under(mrb, window, "Header", mrb->object_class);
   MRB_SET_INSTANCE_TT(window_header, MRB_TT_DATA);
+
+  struct RClass *symbols = mrb_define_module_under(mrb, style, "Symbols");
+
+  mrb_define_const(mrb, symbols, "NONE", mrb_fixnum_value(NK_SYMBOL_NONE));
+  mrb_define_const(mrb, symbols, "X", mrb_fixnum_value(NK_SYMBOL_X));
+  mrb_define_const(mrb, symbols, "UNDERSCORE", mrb_fixnum_value(NK_SYMBOL_UNDERSCORE));
+  mrb_define_const(mrb, symbols, "SOLID", mrb_fixnum_value(NK_SYMBOL_CIRCLE_SOLID));
+  mrb_define_const(mrb, symbols, "OUTLINE", mrb_fixnum_value(NK_SYMBOL_CIRCLE_OUTLINE));
+  mrb_define_const(mrb, symbols, "RECT_SOLID", mrb_fixnum_value(NK_SYMBOL_RECT_SOLID));
+  mrb_define_const(mrb, symbols, "RECT_OUTLINE", mrb_fixnum_value(NK_SYMBOL_RECT_OUTLINE));
+  mrb_define_const(mrb, symbols, "TRIANGLE_UP", mrb_fixnum_value(NK_SYMBOL_TRIANGLE_UP));
+  mrb_define_const(mrb, symbols, "TRIANGLE_DOWN", mrb_fixnum_value(NK_SYMBOL_TRIANGLE_DOWN));
+  mrb_define_const(mrb, symbols, "TRIANGLE_LEFT", mrb_fixnum_value(NK_SYMBOL_TRIANGLE_LEFT));
+  mrb_define_const(mrb, symbols, "TRIANGLE_RIGHT", mrb_fixnum_value(NK_SYMBOL_TRIANGLE_RIGHT));
+  mrb_define_const(mrb, symbols, "PLUS", mrb_fixnum_value(NK_SYMBOL_PLUS));
+  mrb_define_const(mrb, symbols, "MINUS", mrb_fixnum_value(NK_SYMBOL_MINUS));
+  mrb_define_const(mrb, symbols, "MAX", mrb_fixnum_value(NK_SYMBOL_MAX));  
 }

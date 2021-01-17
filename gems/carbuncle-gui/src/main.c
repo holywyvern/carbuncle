@@ -66,55 +66,14 @@ update_input(struct nk_context *ctx, float prev_x, float prev_y)
 static void
 draw_text(struct nk_command_text *txt)
 {
-  uint32_t codepoint;
-  struct mrb_Glyph *glyph, *prev;
-  const char *message = txt->string;
-  size_t len = txt->length;
-  mrb_int diff_h;
-  struct mrb_Font *font = txt->font->userdata.ptr;
-  {
-    Vector2 position = (Vector2) {txt->x, txt->y};
-    mrb_int min_h = font->metrics.max_height;
-    mrb_int max_h = font->metrics.min_height;
-    Color color = nk_color_convert(txt->foreground);
-    struct mrb_Glyph *glyphs[len];
-    for (size_t i = 0; i < len; ++i)
-    {
-      message = utf8_decode(message, &codepoint);
-      glyph = mrb_carbuncle_font_get_glyph(font, codepoint);
-      glyphs[i] = glyph;
-      if (glyph)
-      {
-        mrb_int h = font->metrics.max_height - glyph->margin.y;
-        if (h < min_h) { min_h = h; }
-        if (h > max_h) { max_h = h; }
-      }
-    }
-    prev = NULL;
-    diff_h = max_h - min_h;
-    for (size_t i = 0; i < len; ++i)
-    {
-      glyph = glyphs[i];
-      if (glyph)
-      {
-        FT_Vector kerning;
-        if (prev)
-        {
-          FT_Get_Kerning(font->face, prev->codepoint, glyph->codepoint, FT_KERNING_DEFAULT, &kerning);
-          kerning.x = (kerning.x / font->face->units_per_EM) >> 6;          
-        }
-        else { kerning.x = 0; }
-        Vector2 pos = (Vector2){
-          position.x + glyph->margin.x + kerning.x,
-          position.y + diff_h - glyph->margin.y + min_h
-        };
-        DrawTextureRec(font->texture, glyph->rect, pos, color);
-        position.x += glyph->advance.x;
-        position.y += glyph->advance.y;
-      }
-      prev = glyph;
-    }
-  }
+  Color bg, fg;
+  struct mrb_Font *font = txt->font->userdata.ptr; 
+  Vector2 pos = (Vector2){txt->x, txt->y};
+  bg = nk_color_convert(txt->background);
+  fg = nk_color_convert(txt->foreground);
+  DrawRectangle(txt->x, txt->y, txt->w, txt->h, bg);
+  DrawTextEx(
+    font->raylib_font, txt->string, pos, font->size, 0, fg);
 }
 
 static void
@@ -263,9 +222,6 @@ draw_command(struct mrb_GuiContext *ctx, struct nk_command *cmd)
     case NK_COMMAND_TEXT:
     {
       struct nk_command_text *txt = (struct nk_command_text *)cmd;
-      RenderTexture2D render = LoadRenderTexture(txt->w, txt->h);
-      color = nk_color_convert(txt->background);
-      DrawRectangle(txt->x, txt->y, txt->w, txt->h, color);
       draw_text(txt);
       break;
     }

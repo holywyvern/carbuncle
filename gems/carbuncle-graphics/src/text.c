@@ -34,13 +34,6 @@ struct mrb_Text
   struct mrb_Font   *font;
   Color             *color;
   Vector2           *position;
-  Texture2D          texture;
-  size_t             len;
-  size_t             capa;
-  struct mrb_Glyph **glyphs;
-  mrb_int            min_y;
-  mrb_int            height;
-  mrb_int            diff_h;
 };
 
 static void
@@ -48,11 +41,6 @@ mrb_free_text(mrb_state *mrb, void *ptr)
 {
   if (ptr)
   {
-    struct mrb_Text *text = ptr;
-    if (text->glyphs)
-    {
-      mrb_free(mrb, text->glyphs);
-    }
     mrb_free(mrb, ptr);
   }
 }
@@ -65,52 +53,6 @@ static struct mrb_Text *
 get_text(mrb_state *mrb, mrb_value obj)
 {
   return DATA_GET_PTR(mrb, obj, &text_data_type, struct mrb_Text);
-}
-
-static void
-update_glyph_capacity(mrb_state *mrb, struct mrb_Text *text, size_t len)
-{
-  mrb_bool change = FALSE;
-  while (text->capa <= len)
-  {
-    text->capa = text->capa * 2 + 1;
-    change = TRUE;
-  }
-  if (change)
-  {
-    text->glyphs = mrb_realloc(mrb, text->glyphs, text->capa * sizeof(struct mrb_Glyph *));
-  }
-}
-
-static void
-load_glyphs(mrb_state *mrb, struct mrb_Text *text, size_t len, const char *message)
-{
-  uint32_t codepoint;
-  text->min_y = text->font->metrics.max_height;
-  text->height = text->font->metrics.min_height;
-  for (size_t i = 0; i < len; ++i)
-  {
-    message = utf8_decode(message, &codepoint);
-    struct mrb_Glyph *glyph = mrb_carbuncle_font_get_glyph(text->font, codepoint);
-    if (!glyph) {glyph = mrb_carbuncle_font_get_glyph(text->font, 0xFFFD); }
-    if (glyph)
-    {
-      text->glyphs[i] = glyph;
-      mrb_int h = text->font->metrics.max_height - glyph->margin.y;
-      if (h < text->min_y)  { text->min_y  = h; }
-      if (h > text->height) { text->height = h; }
-    }
-  }
-  text->diff_h = text->height - text->min_y;
-}
-
-static void
-update_text(mrb_state *mrb, struct mrb_Text *text, const char *message)
-{
-  size_t len = utf8_strlen(message);
-  text->len = len;
-  update_glyph_capacity(mrb, text, len);
-  load_glyphs(mrb, text, len, message);
 }
 
 static struct mrb_value
@@ -132,12 +74,8 @@ mrb_text_initialize(mrb_state *mrb, mrb_value self)
   text->font = mrb_carbuncle_get_font(mrb, font);
   text->color = mrb_carbuncle_get_color(mrb, color);
   text->position = mrb_carbuncle_get_point(mrb, position);
-  text->glyphs = mrb_malloc(mrb, DEFAULT_CAPA * sizeof(struct mrb_Glyph *));
-  text->capa = DEFAULT_CAPA;
-  text->len = 0;
   DATA_PTR(self) = text;
   DATA_TYPE(self) = &text_data_type;
-  update_text(mrb, text, "");
   return self;
 }
 
@@ -172,8 +110,6 @@ mrb_text_set_value(mrb_state *mrb, mrb_value self)
   mrb_get_args(mrb, "S", &value);
   struct mrb_Text *text = get_text(mrb, self);
   mrb_iv_set(mrb, self, VALUE_SYMBOL, value);
-  const char *message = mrb_str_to_cstr(mrb, value);
-  update_text(mrb, text, message);
   return value;
 }
 
@@ -186,7 +122,6 @@ mrb_text_set_font(mrb_state *mrb, mrb_value self)
   text->font = mrb_carbuncle_get_font(mrb, value);
   mrb_iv_set(mrb, self, FONT_SYMBOL, value);
   const char *message = mrb_str_to_cstr(mrb, mrb_iv_get(mrb, self, VALUE_SYMBOL));
-  update_text(mrb, text, message);
   return value;
 }
 
@@ -215,36 +150,11 @@ mrb_text_set_position(mrb_state *mrb, mrb_value self)
 static mrb_value
 mrb_text_draw(mrb_state *mrb, mrb_value self)
 {
+  const char *msg;
   FT_Vector kerning;
   struct mrb_Text *text = get_text(mrb, self);
-  Vector2 position = *(text->position);
-  Color color = *(text->color);
-  kerning.x = 0;
-  for (size_t i = 0; i < text->len; ++i)
-  {
-    struct mrb_Glyph *glyph = text->glyphs[i];
-    if (i > 0)
-    {
-      struct mrb_Glyph *prev = text->glyphs[i - 1];
-      if (prev)
-      {
-        FT_Get_Kerning(text->font->face, prev->codepoint, glyph->codepoint, FT_KERNING_DEFAULT, &kerning);
-        kerning.x = (kerning.x / text->font->face->units_per_EM) >> 6;
-      }
-      else { kerning.x = 0; }
-    }
-    if (glyph)
-    {
-      Vector2 pos = (Vector2){
-        position.x + glyph->margin.x + kerning.x,
-        position.y + text->diff_h - glyph->margin.y
-      };
-      DrawTextureRec(text->font->texture, glyph->rect, pos, color);
-      position.x += glyph->advance.x;
-      position.y += glyph->advance.y;
-    }
-  }
-  return self;
+  msg = mrb_str_to_cstr(mrb, mrb_iv_get(mrb, self, VALUE_SYMBOL));
+  DrawTextEx(text->font->raylib_font, msg, *text->position, text->font->size, 0, *text->color);
 }
 
 void

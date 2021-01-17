@@ -74,62 +74,10 @@ get_blt_color(mrb_state *mrb, mrb_value obj)
 static void
 draw_text(Image *dst, Rectangle dst_rect, struct mrb_Font *font, const char *msg, Color color)
 {
-  FT_Vector kerning;
-  const char *text;
-  uint32_t codepoint;
-  mrb_int h_diff;
-  mrb_int min_height = font->metrics.max_height;
-  mrb_int max_height = font->metrics.min_height;
-  Vector2 size = mrb_carbuncle_font_measure_text(font, text);
-  Image text_img = GenImageColor(size.x, size.y, BLANK);
-  size_t len = utf8_strlen(text);
-  Vector2 position = { 0, 0 };
-  Rectangle src_rect = (Rectangle){ 0, 0, size.x, size.y };
-  struct mrb_Glyph *prev = NULL;
-  text = msg;
-  kerning.x = 0;
-  for (size_t i = 0; i < len; ++i)
-  {
-    text = utf8_decode(text, &codepoint);
-    struct mrb_Glyph *glyph = mrb_carbuncle_font_get_glyph(font, codepoint);
-    if (glyph)
-    {
-      mrb_int h = font->metrics.max_height - glyph->margin.y;
-      if (h < min_height) { min_height = h; }
-      if (h > max_height) { max_height = h; }
-    }
-  }
-  text = msg;
-  h_diff = max_height - min_height;
-  for (size_t i = 0; i < len; ++i)
-  {
-    text = utf8_decode(text, &codepoint);
-    struct mrb_Glyph *glyph = mrb_carbuncle_font_get_glyph(font, codepoint);
-    if (glyph)
-    {
-      if (i > 0)
-      {
-        if (prev)
-        {
-          FT_Get_Kerning(font->face, prev->codepoint, glyph->codepoint, FT_KERNING_DEFAULT, &kerning);
-          kerning.x = (kerning.x / font->face->units_per_EM) >> 6;
-        }
-        else { kerning.x = 0; }
-      }
-      Rectangle glyph_dst = (Rectangle){
-        position.x + glyph->margin.x + kerning.x,
-        position.y + h_diff - glyph->margin.y + min_height,
-        glyph->rect.width,
-        glyph->rect.height
-      };
-      ImageDraw(&text_img, font->image, glyph->rect, glyph_dst, color);
-      position.x += glyph->advance.x;
-      position.y += glyph->advance.y;
-      prev = glyph;
-    }
-  }
-  ImageDraw(dst, text_img, src_rect, dst_rect, WHITE);
-  UnloadImage(text_img);
+  Image text = ImageTextEx(font->raylib_font, msg, font->size, 0, color);
+  Rectangle src = (Rectangle){0, 0, text.width, text.height};
+  ImageDraw(dst, text, src, dst_rect, RAYWHITE);
+  UnloadImage(text);
 }
 
 static mrb_value
