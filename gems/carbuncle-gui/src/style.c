@@ -1065,6 +1065,36 @@ image_region_set(mrb_state *mrb, mrb_value self)
   return mrb_fixnum_value(value);
 }
 
+static mrb_value
+vec2_get_x(mrb_state *mrb, mrb_value self)
+{
+  return mrb_float_value(mrb, get_vec2(mrb, self)->x);
+}
+
+static mrb_value
+vec2_get_y(mrb_state *mrb, mrb_value self)
+{
+  return mrb_float_value(mrb, get_vec2(mrb, self)->y);
+}
+
+static mrb_value
+vec2_set_x(mrb_state *mrb, mrb_value self)
+{
+  mrb_float value;
+  mrb_get_args(mrb, "f", &value);
+  get_vec2(mrb, self)->x = value;
+  return mrb_float_value(mrb, value);
+}
+
+static mrb_value
+vec2_set_y(mrb_state *mrb, mrb_value self)
+{
+  mrb_float value;
+  mrb_get_args(mrb, "f", &value);
+  get_vec2(mrb, self)->y = value;
+  return mrb_float_value(mrb, value);
+}
+
 void
 mrb_init_carbuncle_gui_style(mrb_state *mrb, struct RClass *gui)
 {
@@ -1130,6 +1160,11 @@ mrb_init_carbuncle_gui_style(mrb_state *mrb, struct RClass *gui)
 
   struct RClass *vec2 = mrb_define_class_under(mrb, style, "Vec2", mrb->object_class);
   MRB_SET_INSTANCE_TT(vec2, MRB_TT_DATA);
+
+  mrb_define_method(mrb, vec2, "x", vec2_get_x, MRB_ARGS_NONE());
+  mrb_define_method(mrb, vec2, "y", vec2_get_y, MRB_ARGS_NONE());
+  mrb_define_method(mrb, vec2, "x=", vec2_set_x, MRB_ARGS_REQ(1));
+  mrb_define_method(mrb, vec2, "x=", vec2_set_y, MRB_ARGS_REQ(1));
 
   struct RClass *item = mrb_define_class_under(mrb, style, "Item", mrb->object_class);
   MRB_SET_INSTANCE_TT(item, MRB_TT_DATA);
