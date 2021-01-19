@@ -398,6 +398,59 @@ mrb_init_carbuncle_gui_tree(mrb_state *mrb, struct RClass *gui);
 void
 mrb_init_carbuncle_gui_property(mrb_state *mrb, struct RClass *gui);
 
+/* Widgets */
+
+void
+mrb_init_carbuncle_gui_button(mrb_state *mrb, struct RClass *gui);
+
+void
+mrb_init_carbuncle_gui_chart(mrb_state *mrb, struct RClass *gui);
+
+void
+mrb_init_carbuncle_gui_checkbox(mrb_state *mrb, struct RClass *gui);
+
+void
+mrb_init_carbuncle_gui_color_picker(mrb_state *mrb, struct RClass *gui);
+
+void
+mrb_init_carbuncle_gui_combo(mrb_state *mrb, struct RClass *gui);
+
+void
+mrb_init_carbuncle_gui_edit(mrb_state *mrb, struct RClass *gui);
+
+void
+mrb_init_carbuncle_gui_image(mrb_state *mrb, struct RClass *gui);
+
+void
+mrb_init_carbuncle_gui_label(mrb_state *mrb, struct RClass *gui);
+
+void
+mrb_init_carbuncle_gui_list_view(mrb_state *mrb, struct RClass *gui);
+
+void
+mrb_init_carbuncle_gui_menu(mrb_state *mrb, struct RClass *gui);
+
+void
+mrb_init_carbuncle_gui_popup(mrb_state *mrb, struct RClass *gui);
+
+void
+mrb_init_carbuncle_gui_progress(mrb_state *mrb, struct RClass *gui);
+
+void
+mrb_init_carbuncle_gui_radio(mrb_state *mrb, struct RClass *gui);
+
+void
+mrb_init_carbuncle_gui_select(mrb_state *mrb, struct RClass *gui);
+
+void
+mrb_init_carbuncle_gui_slider(mrb_state *mrb, struct RClass *gui);
+
+void
+mrb_init_carbuncle_gui_text(mrb_state *mrb, struct RClass *gui);
+
+void
+mrb_init_carbuncle_gui_tooltip(mrb_state *mrb, struct RClass *gui);
+
 void
 mrb_carbuncle_gui_gem_init(mrb_state *mrb)
 {
@@ -419,6 +472,24 @@ mrb_carbuncle_gui_gem_init(mrb_state *mrb)
   mrb_init_carbuncle_gui_group(mrb, gui);
   mrb_init_carbuncle_gui_tree(mrb, gui);
   mrb_init_carbuncle_gui_property(mrb, gui);
+  // Widgets
+  mrb_init_carbuncle_gui_button(mrb, gui);
+  mrb_init_carbuncle_gui_chart(mrb, gui);
+  mrb_init_carbuncle_gui_checkbox(mrb, gui);
+  mrb_init_carbuncle_gui_color_picker(mrb, gui);
+  mrb_init_carbuncle_gui_combo(mrb, gui);
+  mrb_init_carbuncle_gui_edit(mrb, gui);
+  mrb_init_carbuncle_gui_image(mrb, gui);
+  mrb_init_carbuncle_gui_label(mrb, gui);
+  mrb_init_carbuncle_gui_list_view(mrb, gui);
+  mrb_init_carbuncle_gui_menu(mrb, gui);
+  mrb_init_carbuncle_gui_popup(mrb, gui);
+  mrb_init_carbuncle_gui_progress(mrb, gui);
+  mrb_init_carbuncle_gui_radio(mrb, gui);
+  mrb_init_carbuncle_gui_select(mrb, gui);
+  mrb_init_carbuncle_gui_slider(mrb, gui);
+  mrb_init_carbuncle_gui_text(mrb, gui);
+  mrb_init_carbuncle_gui_tooltip(mrb, gui);
 
   mrb_define_method(mrb, gui, "update", mrb_gui_update, MRB_ARGS_REQ(1));
   mrb_define_method(mrb, gui, "set_input", mrb_gui_set_input, MRB_ARGS_REQ(2));
@@ -458,7 +529,7 @@ mrb_carbuncle_gui_gem_init(mrb_state *mrb)
   mrb_define_const(mrb, keys, "SCROLL_END", mrb_fixnum_value(NK_KEY_SCROLL_END));
   mrb_define_const(mrb, keys, "SCROLL_DOWN", mrb_fixnum_value(NK_KEY_SCROLL_DOWN));
   mrb_define_const(mrb, keys, "SCROLL_UP", mrb_fixnum_value(NK_KEY_SCROLL_UP));
-  mrb_define_const(mrb, keys, "KEY_MAX", mrb_fixnum_value(NK_KEY_MAX));    
+  mrb_define_const(mrb, keys, "KEY_MAX", mrb_fixnum_value(NK_KEY_MAX));
 }
 
 void
