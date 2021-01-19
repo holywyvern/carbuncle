@@ -10,6 +10,12 @@
     "xstring": "c",
     "xtree": "c",
     "xutility": "c",
-    "memory": "c"
+    "memory": "c",
+    "chrono": "c",
+    "ratio": "c",
+    "tuple": "c",
+    "utility": "c",
+    "xmemory0": "c",
+    "xtr1common": "c"
   }
 }
