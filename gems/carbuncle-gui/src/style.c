@@ -1095,6 +1095,135 @@ vec2_set_y(mrb_state *mrb, mrb_value self)
   return mrb_float_value(mrb, value);
 }
 
+static mrb_value
+cursor_get_image(mrb_state *mrb, mrb_value self)
+{
+  return mrb_iv_get(mrb, self, IMAGE);
+}
+
+static mrb_value
+cursor_get_offset(mrb_state *mrb, mrb_value self)
+{
+  return mrb_iv_get(mrb, self, OFFSET);
+}
+
+static mrb_value
+cursor_get_size(mrb_state *mrb, mrb_value self)
+{
+  return mrb_iv_get(mrb, self, SIZE);
+}
+
+static mrb_value
+button_active(mrb_state *mrb, mrb_value self)
+{
+  return mrb_iv_get(mrb, self, ACTIVE);
+}
+
+static mrb_value
+button_border_color(mrb_state *mrb, mrb_value self)
+{
+  return mrb_iv_get(mrb, self, BORDER_COLOR);
+}
+
+static mrb_value
+button_hover(mrb_state *mrb, mrb_value self)
+{
+  return mrb_iv_get(mrb, self, HOVER);
+}
+
+static mrb_value
+button_image_padding(mrb_state *mrb, mrb_value self)
+{
+  return mrb_iv_get(mrb, self, IMAGE_PADDING);
+}
+
+static mrb_value
+button_normal(mrb_state *mrb, mrb_value self)
+{
+  return mrb_iv_get(mrb, self, NORMAL);
+}
+
+static mrb_value
+button_padding(mrb_state *mrb, mrb_value self)
+{
+  return mrb_iv_get(mrb, self, PADDING);
+}
+
+static mrb_value
+button_text_active(mrb_state *mrb, mrb_value self)
+{
+  return mrb_iv_get(mrb, self, TEXT_ACTIVE);
+}
+
+static mrb_value
+button_text_background(mrb_state *mrb, mrb_value self)
+{
+  return mrb_iv_get(mrb, self, TEXT_BACKGROUND);
+}
+
+static mrb_value
+button_text_hover(mrb_state *mrb, mrb_value self)
+{
+  return mrb_iv_get(mrb, self, TEXT_HOVER);
+}
+
+static mrb_value
+button_text_normal(mrb_state *mrb, mrb_value self)
+{
+  return mrb_iv_get(mrb, self, TEXT_NORMAL);
+}
+
+static mrb_value
+button_touch_padding(mrb_state *mrb, mrb_value self)
+{
+  return mrb_iv_get(mrb, self, TOUCH_PADDING);
+}
+
+static mrb_value
+button_get_border(mrb_state *mrb, mrb_value self)
+{
+  return mrb_float_value(mrb, get_button(mrb, self)->border);
+}
+
+static mrb_value
+button_get_rounding(mrb_state *mrb, mrb_value self)
+{
+  return mrb_float_value(mrb, get_button(mrb, self)->rounding);
+}
+
+static mrb_value
+button_get_text_alignment(mrb_state *mrb, mrb_value self)
+{
+  return mrb_fixnum_value(get_button(mrb, self)->text_alignment);
+}
+
+static mrb_value
+button_set_border(mrb_state *mrb, mrb_value self)
+{
+  mrb_float value;
+  mrb_get_args(mrb, "f", &value);
+  get_button(mrb, self)->border = value;
+  return mrb_float_value(mrb, value);
+}
+
+static mrb_value
+button_set_rounding(mrb_state *mrb, mrb_value self)
+{
+  mrb_float value;
+  mrb_get_args(mrb, "f", &value);
+  get_button(mrb, self)->rounding = value;
+  return mrb_float_value(mrb, value);
+}
+
+static mrb_value
+button_set_text_alignment(mrb_state *mrb, mrb_value self)
+{
+  mrb_int value;
+  mrb_get_args(mrb, "i", &value);
+  get_button(mrb, self)->text_alignment = value;
+  return mrb_fixnum_value(value);
+}
+
 void
 mrb_init_carbuncle_gui_style(mrb_state *mrb, struct RClass *gui)
 {
@@ -1180,8 +1309,31 @@ mrb_init_carbuncle_gui_style(mrb_state *mrb, struct RClass *gui)
   struct RClass *cursor = mrb_define_class_under(mrb, style, "Cursor", mrb->object_class);
   MRB_SET_INSTANCE_TT(cursor, MRB_TT_DATA);
 
+  mrb_define_method(mrb, cursor, "image", cursor_get_image, MRB_ARGS_NONE());
+  mrb_define_method(mrb, cursor, "offset", cursor_get_offset, MRB_ARGS_NONE());
+  mrb_define_method(mrb, cursor, "size", cursor_get_size, MRB_ARGS_NONE());
+
   struct RClass *button = mrb_define_class_under(mrb, style, "Button", mrb->object_class);
   MRB_SET_INSTANCE_TT(button, MRB_TT_DATA);
+
+  mrb_define_method(mrb, button, "active", button_active, MRB_ARGS_NONE());
+  mrb_define_method(mrb, button, "border_color", button_border_color, MRB_ARGS_NONE());
+  mrb_define_method(mrb, button, "hover", button_hover, MRB_ARGS_NONE());
+  mrb_define_method(mrb, button, "image_padding", button_image_padding, MRB_ARGS_NONE());
+  mrb_define_method(mrb, button, "normal", button_normal, MRB_ARGS_NONE());
+  mrb_define_method(mrb, button, "padding", button_padding, MRB_ARGS_NONE());
+  mrb_define_method(mrb, button, "text_active", button_text_active, MRB_ARGS_NONE());
+  mrb_define_method(mrb, button, "text_background", button_text_background, MRB_ARGS_NONE());
+  mrb_define_method(mrb, button, "text_hover", button_text_hover, MRB_ARGS_NONE());
+  mrb_define_method(mrb, button, "text_normal", button_text_normal, MRB_ARGS_NONE());
+  mrb_define_method(mrb, button, "touch_padding", button_touch_padding, MRB_ARGS_NONE());
+
+  mrb_define_method(mrb, button, "border", button_get_border, MRB_ARGS_NONE());
+  mrb_define_method(mrb, button, "border=", button_set_border, MRB_ARGS_REQ(1));
+  mrb_define_method(mrb, button, "rounding", button_get_rounding, MRB_ARGS_NONE());
+  mrb_define_method(mrb, button, "rounding=", button_set_rounding, MRB_ARGS_REQ(1));
+  mrb_define_method(mrb, button, "text_alignment", button_get_text_alignment, MRB_ARGS_NONE());
+  mrb_define_method(mrb, button, "text_alignment=", button_set_text_alignment, MRB_ARGS_REQ(1));
 
   struct RClass *toggle = mrb_define_class_under(mrb, style, "Toggle", mrb->object_class);
   MRB_SET_INSTANCE_TT(toggle, MRB_TT_DATA);
@@ -1237,5 +1389,14 @@ mrb_init_carbuncle_gui_style(mrb_state *mrb, struct RClass *gui)
   mrb_define_const(mrb, symbols, "TRIANGLE_RIGHT", mrb_fixnum_value(NK_SYMBOL_TRIANGLE_RIGHT));
   mrb_define_const(mrb, symbols, "PLUS", mrb_fixnum_value(NK_SYMBOL_PLUS));
   mrb_define_const(mrb, symbols, "MINUS", mrb_fixnum_value(NK_SYMBOL_MINUS));
-  mrb_define_const(mrb, symbols, "MAX", mrb_fixnum_value(NK_SYMBOL_MAX));  
+  mrb_define_const(mrb, symbols, "MAX", mrb_fixnum_value(NK_SYMBOL_MAX));
+
+  struct RClass *align = mrb_define_module_under(mrb, style, "Align");
+
+  mrb_define_const(mrb, align, "LEFT", mrb_fixnum_value(NK_TEXT_ALIGN_LEFT));
+  mrb_define_const(mrb, align, "CENTERED", mrb_fixnum_value(NK_TEXT_ALIGN_CENTERED));
+  mrb_define_const(mrb, align, "RIGHT", mrb_fixnum_value(NK_TEXT_ALIGN_RIGHT));
+  mrb_define_const(mrb, align, "TOP", mrb_fixnum_value(NK_TEXT_ALIGN_TOP));
+  mrb_define_const(mrb, align, "MIDDLE", mrb_fixnum_value(NK_TEXT_ALIGN_MIDDLE));
+  mrb_define_const(mrb, align, "BOTTOM", mrb_fixnum_value(NK_TEXT_ALIGN_BOTTOM));
 }

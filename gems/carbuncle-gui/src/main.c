@@ -18,6 +18,7 @@
 
 #define FONT_SYMBOL mrb_intern_cstr(mrb, "#font")
 #define STYLE_SYMBOL mrb_intern_cstr(mrb, "#style")
+#define ON_INPUT_SYMBOL mrb_intern_cstr(mrb, "#on_input")
 
 static Color
 nk_color_convert(struct nk_color color)
@@ -55,11 +56,20 @@ update_keyboard(struct nk_context *ctx)
 }
 
 static void
-update_input(struct nk_context *ctx, float prev_x, float prev_y)
+update_input(mrb_state *mrb, mrb_value self, struct nk_context *ctx, float prev_x, float prev_y)
 {
   nk_input_begin(ctx);
   update_mouse(ctx, prev_x, prev_y);
   update_keyboard(ctx);
+  {
+    mrb_value inputs = mrb_iv_get(mrb, self, ON_INPUT_SYMBOL);
+    mrb_int len = RARRAY_LEN(inputs);
+    for (mrb_int i = 0; i < len; ++i)
+    {
+      mrb_value item = mrb_ary_entry(inputs, i);
+      mrb_yield_argv(mrb, item, 1, &self);
+    }
+  }
   nk_input_end(ctx);
 }
 
@@ -281,6 +291,7 @@ mrb_gui_initialize(mrb_state *mrb, mrb_value self)
   ctx->font.height = fd->size;
   ctx->font.width  = nk_carbuncle_font_width;
   mrb_iv_set(mrb, self, FONT_SYMBOL, font_value);
+  mrb_iv_set(mrb, self, ON_INPUT_SYMBOL, mrb_ary_new(mrb));
   DATA_PTR(self) = ctx;
   DATA_TYPE(self) = &gui_data_type;
   if (!nk_init_default(&(ctx->nk), &(ctx->font)))
@@ -315,7 +326,7 @@ static mrb_value
 mrb_gui_update(mrb_state *mrb, mrb_value self)
 {
   struct mrb_GuiContext *ctx = mrb_carbuncle_gui_get_context(mrb, self);
-  update_input(&(ctx->nk), ctx->mouse.x, ctx->mouse.y);
+  update_input(mrb, self, &(ctx->nk), ctx->mouse.x, ctx->mouse.y);
   ctx->mouse = GetMousePosition();
   return self;
 }
@@ -351,6 +362,24 @@ mrb_gui_style(mrb_state *mrb, mrb_value self)
   return mrb_iv_get(mrb, self, STYLE_SYMBOL);
 }
 
+static mrb_value
+mrb_gui_on_input(mrb_state *mrb, mrb_value self)
+{
+  return mrb_iv_get(mrb, self, ON_INPUT_SYMBOL);
+}
+
+static mrb_value
+mrb_gui_set_input(mrb_state *mrb, mrb_value self)
+{
+  mrb_int key;
+  mrb_bool is_down;
+  struct mrb_GuiContext *ctx = mrb_carbuncle_gui_get_context(mrb, self);
+  struct nk_context *nk = &(ctx->nk);
+  mrb_get_args(mrb, "ib", &key, &is_down);
+  nk_input_key(nk, key, is_down);
+  return self;
+}
+
 void
 mrb_init_carbuncle_gui_style(mrb_state *mrb, struct RClass *gui);
 
@@ -380,7 +409,44 @@ mrb_carbuncle_gui_gem_init(mrb_state *mrb)
   mrb_init_carbuncle_gui_layout(mrb, gui);
 
   mrb_define_method(mrb, gui, "update", mrb_gui_update, MRB_ARGS_REQ(1));
+  mrb_define_method(mrb, gui, "set_input", mrb_gui_set_input, MRB_ARGS_REQ(2));
+  mrb_define_method(mrb, gui, "on_input", mrb_gui_on_input, MRB_ARGS_NONE());
   mrb_define_method(mrb, gui, "draw", mrb_gui_draw, MRB_ARGS_NONE());
+
+  struct RClass *keys = mrb_define_module_under(mrb, gui, "Keys");
+  mrb_define_const(mrb, keys, "NONE", mrb_fixnum_value(NK_KEY_NONE));
+  mrb_define_const(mrb, keys, "SHIFT", mrb_fixnum_value(NK_KEY_SHIFT));
+  mrb_define_const(mrb, keys, "CTRL", mrb_fixnum_value(NK_KEY_CTRL));
+  mrb_define_const(mrb, keys, "DEL", mrb_fixnum_value(NK_KEY_DEL));
+  mrb_define_const(mrb, keys, "DELETE", mrb_fixnum_value(NK_KEY_DEL));
+  mrb_define_const(mrb, keys, "ENTER", mrb_fixnum_value(NK_KEY_ENTER));
+  mrb_define_const(mrb, keys, "RETURN", mrb_fixnum_value(NK_KEY_ENTER));
+  mrb_define_const(mrb, keys, "TAB", mrb_fixnum_value(NK_KEY_TAB));
+  mrb_define_const(mrb, keys, "BACKSPACE", mrb_fixnum_value(NK_KEY_BACKSPACE));
+  mrb_define_const(mrb, keys, "COPY", mrb_fixnum_value(NK_KEY_COPY));
+  mrb_define_const(mrb, keys, "CUT", mrb_fixnum_value(NK_KEY_CUT));
+  mrb_define_const(mrb, keys, "PASTE", mrb_fixnum_value(NK_KEY_PASTE));
+  mrb_define_const(mrb, keys, "UP", mrb_fixnum_value(NK_KEY_UP));
+  mrb_define_const(mrb, keys, "DOWN", mrb_fixnum_value(NK_KEY_DOWN));
+  mrb_define_const(mrb, keys, "LEFT", mrb_fixnum_value(NK_KEY_LEFT));
+  mrb_define_const(mrb, keys, "RIGHT", mrb_fixnum_value(NK_KEY_RIGHT));
+  mrb_define_const(mrb, keys, "TEXT_INSERT_MODE", mrb_fixnum_value(NK_KEY_TEXT_INSERT_MODE));
+  mrb_define_const(mrb, keys, "TEXT_REPLACE_MODE", mrb_fixnum_value(NK_KEY_TEXT_REPLACE_MODE));
+  mrb_define_const(mrb, keys, "TEXT_RESET_MODE", mrb_fixnum_value(NK_KEY_TEXT_RESET_MODE));
+  mrb_define_const(mrb, keys, "TEXT_LINE_START", mrb_fixnum_value(NK_KEY_TEXT_LINE_START));
+  mrb_define_const(mrb, keys, "TEXT_LINE_END", mrb_fixnum_value(NK_KEY_TEXT_LINE_END));
+  mrb_define_const(mrb, keys, "TEXT_START", mrb_fixnum_value(NK_KEY_TEXT_START));
+  mrb_define_const(mrb, keys, "TEXT_END", mrb_fixnum_value(NK_KEY_TEXT_END));
+  mrb_define_const(mrb, keys, "TEXT_UNDO", mrb_fixnum_value(NK_KEY_TEXT_UNDO));
+  mrb_define_const(mrb, keys, "TEXT_REDO", mrb_fixnum_value(NK_KEY_TEXT_REDO));
+  mrb_define_const(mrb, keys, "TEXT_SELECT_ALL", mrb_fixnum_value(NK_KEY_TEXT_SELECT_ALL));
+  mrb_define_const(mrb, keys, "TEXT_WORD_LEFT", mrb_fixnum_value(NK_KEY_TEXT_WORD_LEFT));
+  mrb_define_const(mrb, keys, "TEXT_WORD_RIGHT", mrb_fixnum_value(NK_KEY_TEXT_WORD_RIGHT));
+  mrb_define_const(mrb, keys, "SCROLL_START", mrb_fixnum_value(NK_KEY_SCROLL_START));
+  mrb_define_const(mrb, keys, "SCROLL_END", mrb_fixnum_value(NK_KEY_SCROLL_END));
+  mrb_define_const(mrb, keys, "SCROLL_DOWN", mrb_fixnum_value(NK_KEY_SCROLL_DOWN));
+  mrb_define_const(mrb, keys, "SCROLL_UP", mrb_fixnum_value(NK_KEY_SCROLL_UP));
+  mrb_define_const(mrb, keys, "KEY_MAX", mrb_fixnum_value(NK_KEY_MAX));    
 }
 
 void
