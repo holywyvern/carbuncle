@@ -65,7 +65,6 @@ module Carbuncle
       def update(_dt)
         update_creation if @created
         gui.window(title, rect, **options) do
-          gui.window_scroll = scroll if @created
           @created = true
           super
           update_state

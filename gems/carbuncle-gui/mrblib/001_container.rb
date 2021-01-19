@@ -6,7 +6,11 @@ module Carbuncle
       def initialize(parent)
         super
         @children = []
-        @layout = Carbuncle::GUI::NoLayout.new
+        @layout = Carbuncle::GUI::AbsoluteLayout.new
+      end
+
+      def size
+        @children.size
       end
 
       def add_child(child)
@@ -31,14 +35,14 @@ module Carbuncle
       def layout=(value)
         is_layout = value.is_a?(Carbuncle::GUI::Layout)
         @layout =
-          is_layout ? value : Carbuncle::GUI::NoLayout.new
+          is_layout ? value : Carbuncle::GUI::AbsoluteLayout.new
       end
 
       def update(dt)
         super
-        layout.render(gui) do
+        layout.render(self) do
           @children.each do |c|
-            layout.apply(c) if layout.present?
+            layout.apply(c)
             c.update(dt)
           end
         end

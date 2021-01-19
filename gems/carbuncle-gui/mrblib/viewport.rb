@@ -13,7 +13,9 @@ module Carbuncle
 
       def update(dt)
         @gui.update(dt)
-        super
+        @children.each do |c|
+          c.update(dt)
+        end
       end
     end
   end
