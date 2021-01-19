@@ -33,7 +33,8 @@ gui_list_view(mrb_state *mrb, mrb_value self)
   mrb_int height, rows;
   struct nk_list_view view;
   nk_flags flags = 0;
-  const mrb_kwargs kwargs = { LIST_VIEW_KEYS, kw_values, LIST_VIEW_KEYWORDS, 0, NULL };  
+  const mrb_kwargs kwargs = { LIST_VIEW_KEYS, kw_values, LIST_VIEW_KEYWORDS, 0, NULL };
+  struct mrb_GuiContext *ctx = mrb_carbuncle_gui_get_context(mrb, self); 
   mrb_get_args(mrb, "zii:&", &id, &height, &rows, &kwargs, &block);
   if (mrb_carbuncle_test(kw_values[0]))  { flags |= NK_WINDOW_BORDER; }
   if (mrb_carbuncle_test(kw_values[1]))  { flags |= NK_WINDOW_MOVABLE; }
@@ -47,8 +48,7 @@ gui_list_view(mrb_state *mrb, mrb_value self)
   if (mrb_carbuncle_test(kw_values[9])) { flags |= NK_WINDOW_SCALE_LEFT; }
   if (mrb_carbuncle_test(kw_values[10])) { flags |= NK_WINDOW_NO_INPUT; }
   if (mrb_carbuncle_test(kw_values[11])) { flags |= NK_MINIMIZED; }
-  if (mrb_carbuncle_test(kw_values[12])) { flags |= NK_MAXIMIZED; }  
-  struct mrb_GuiContext *ctx = mrb_carbuncle_gui_get_context(mrb, self); 
+  if (mrb_carbuncle_test(kw_values[12])) { flags |= NK_MAXIMIZED; }
   if (nk_list_view_begin(&(ctx->nk), &view, id, flags, height, rows))
   {
     mrb_yield_argv(mrb, block, 0, NULL);
@@ -60,5 +60,5 @@ gui_list_view(mrb_state *mrb, mrb_value self)
 void
 mrb_init_carbuncle_gui_list_view(mrb_state *mrb, struct RClass *gui)
 {
-  mrb_define_method(mrb, gui, "list_view", gui_list_view, MRB_ARGS_BLOCK());
+  mrb_define_method(mrb, gui, "list_view", gui_list_view, MRB_ARGS_REQ(3)|MRB_ARGS_BLOCK()|MRB_ARGS_KEY(LIST_VIEW_KEYS, 0));
 }
