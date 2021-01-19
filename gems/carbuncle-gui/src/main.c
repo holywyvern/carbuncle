@@ -396,6 +396,9 @@ void
 mrb_init_carbuncle_gui_tree(mrb_state *mrb, struct RClass *gui);
 
 void
+mrb_init_carbuncle_gui_property(mrb_state *mrb, struct RClass *gui);
+
+void
 mrb_carbuncle_gui_gem_init(mrb_state *mrb)
 {
   struct RClass *carbuncle = mrb_carbuncle_get(mrb);
@@ -415,6 +418,7 @@ mrb_carbuncle_gui_gem_init(mrb_state *mrb)
   mrb_init_carbuncle_gui_layout(mrb, gui);
   mrb_init_carbuncle_gui_group(mrb, gui);
   mrb_init_carbuncle_gui_tree(mrb, gui);
+  mrb_init_carbuncle_gui_property(mrb, gui);
 
   mrb_define_method(mrb, gui, "update", mrb_gui_update, MRB_ARGS_REQ(1));
   mrb_define_method(mrb, gui, "set_input", mrb_gui_set_input, MRB_ARGS_REQ(2));
