@@ -8,9 +8,12 @@ module Carbuncle
                     :background, :scale_left, :disabled, :minimized,
                     :maximized, :visible
 
-      delegate :gui, to: :parent
-      delegate :x, :y, :width, :height, :x=, :y=, :width=, :height,
-               to: :rect
+      delegate :x, :y, :width, :height, :x=, :y=, :width=, :height, to: :rect
+
+      BOOLEAN_ATTRIBUTES = %i[
+        border movable scalable closable minimizable disable_scrollbar
+        auto_scrollbar background scale_left disabled
+      ].freeze
 
       def initialize(view)
         unless view.is_a?(::Carbuncle::GUI::Viewport)
@@ -28,15 +31,10 @@ module Carbuncle
 
       def initialize_flags
         self.border = self.show_title = self.visible = true
-        self.movable = false
-        self.scalable = false
-        self.closable = false
-        self.minimizable = false
-        self.disable_scrollbar = false
+        self.movable = self.scalable = self.closable = false
+        self.minimizable = self.disable_scrollbar = false
         self.auto_scrollbar = true
-        self.background = false
-        self.scale_left = false
-        self.disabled = false
+        self.background = self.scale_left = self.disabled = false
       end
 
       def id
@@ -70,10 +68,7 @@ module Carbuncle
           gui.window_scroll = scroll if @created
           @created = true
           super
-          rect.set(gui.window_bounds)
-          @focused = gui.window_focus?
-          @hovered = gui.window_hovered?
-          self.scroll = gui.window_scroll
+          update_state
         end
       end
 
@@ -81,44 +76,17 @@ module Carbuncle
         gui.set_window_bounds(id, rect)
       end
 
-      def border?
-        border
+      def update_state
+        rect.set(gui.window_bounds)
+        @focused = gui.window_focus?
+        @hovered = gui.window_hovered?
+        self.scroll = gui.window_scroll
       end
 
-      def movable?
-        movable
-      end
-
-      def scalable?
-        scalable
-      end
-
-      def closable?
-        closable
-      end
-
-      def minimizable?
-        minimizable
-      end
-
-      def disable_scrollbar?
-        disable_scrollbar
-      end
-
-      def auto_scrollbar?
-        auto_scrollbar
-      end
-
-      def background?
-        background
-      end
-
-      def scale_left?
-        scale_left
-      end
-
-      def disabled?
-        disabled
+      BOOLEAN_ATTRIBUTES.each do |attr|
+        define_method(:"#{attr}?") do
+          send(attr)
+        end
       end
 
       def minimized?
