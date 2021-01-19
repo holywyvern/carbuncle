@@ -6,7 +6,7 @@ module Carbuncle
       attr_accessor :border, :movable, :scalable, :closable, :minimizable,
                     :disable_scrollbar, :show_title, :auto_scrollbar,
                     :background, :scale_left, :disabled, :minimized,
-                    :maximized, :visible
+                    :maximized
 
       def initialize(view)
         super(view)
@@ -16,8 +16,8 @@ module Carbuncle
       end
 
       def initialize_flags
-        self.border = self.show_title = self.visible = true
-        self.movable = self.scalable = self.closable = false
+        self.show_title =
+        self.border = self.movable = self.scalable = self.closable = false
         self.minimizable = self.disable_scrollbar = false
         self.auto_scrollbar = true
         self.background = self.scale_left = self.disabled = false

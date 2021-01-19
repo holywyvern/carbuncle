@@ -5,7 +5,7 @@ module Carbuncle
 
       def initialize
         super
-        self.height = 24
+        self.height = 0
         self.rows = 1
       end
 

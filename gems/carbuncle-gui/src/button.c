@@ -59,7 +59,6 @@ gui_image_button(mrb_state *mrb, mrb_value self)
   {
     result = nk_button_image_label(&(ctx->nk), img, title, align);
   }
-  
   return mrb_bool_value(result);
 }
 

@@ -6,7 +6,7 @@ module Carbuncle
       def initialize(parent)
         super
         @children = []
-        @layout = Carbuncle::GUI::AbsoluteLayout.new
+        @layout = Carbuncle::GUI::DynamicLayout.new
       end
 
       def size
@@ -35,7 +35,7 @@ module Carbuncle
       def layout=(value)
         is_layout = value.is_a?(Carbuncle::GUI::Layout)
         @layout =
-          is_layout ? value : Carbuncle::GUI::AbsoluteLayout.new
+          is_layout ? value : Carbuncle::GUI::DynamicLayout.new
       end
 
       def update(dt)
