@@ -7,12 +7,21 @@
 #include <mruby/data.h>
 
 #include "raylib.h"
+#ifdef __EMSCRIPTEN__
+#include <stdlib.h>
+#include <string.h>
+#include <emscripten/emscripten.h>
+#endif
+
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
 #define DATA_GET_DISPOSABLE_PTR(mrb, obj, type, cast) (cast *)mrb_check_disposed(mrb, obj, type);
+
+
+
 
 #ifdef CARBUNCLE_DEBUG
 extern mrb_bool mrb_carbuncle_debug_drawing;
@@ -42,6 +51,11 @@ mrb_carbuncle_module_get(mrb_state *mrb, const char *name);
 
 struct RClass *
 mrb_carbuncle_get(mrb_state *mrb);
+
+#ifdef __EMSCRIPTEN__
+void 
+mrb_carbuncle_fetch_file(const char* filename);
+#endif
 
 #ifdef CARBUNCLE_DEBUG
 void

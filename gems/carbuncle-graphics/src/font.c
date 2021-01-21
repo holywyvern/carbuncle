@@ -348,7 +348,6 @@ mrb_font_initialize(mrb_state *mrb, mrb_value self)
   DATA_TYPE(self) = &font_data_type;
   font->face = NULL;
   font->size = size;
-  mrb_carbuncle_check_file(mrb, name);
   open_font(mrb, font, name, size);
   return self;
 }

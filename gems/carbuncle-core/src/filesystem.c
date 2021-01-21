@@ -564,6 +564,7 @@ mrb_carbuncle_load_file(mrb_state *mrb, const char *filename, size_t *size)
 {
   char *result;
   PHYSFS_File *file;
+  mrb_carbuncle_check_file(mrb, filename);
   file = PHYSFS_openRead(filename);
   if (!file) { { raise_physfs_error(mrb, "open"); } }
   *size = PHYSFS_fileLength(file);
@@ -672,3 +673,4 @@ mrb_carbuncle_file_error(mrb_state *mrb, const char *action)
 {
   raise_physfs_error(mrb, action);
 }
+

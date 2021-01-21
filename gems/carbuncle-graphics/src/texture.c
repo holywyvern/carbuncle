@@ -38,7 +38,6 @@ void
 load_from_filename(mrb_state *mrb, mrb_value self, const char *filename)
 {
   struct mrb_Texture *texture = mrb_malloc(mrb, sizeof *texture);
-  mrb_carbuncle_check_file(mrb, filename);
   texture->base = LoadCarbuncleTexture(mrb, filename);
   ++(texture->ref_count);
   DATA_PTR(self) = texture;

@@ -47,9 +47,25 @@ mrb_check_disposed(mrb_state *mrb, mrb_value obj, const struct mrb_data_type *ty
   return ptr;
 }
 
+#ifdef __EMSCRIPTEN__
+void
+mrb_carbuncle_fetch_file(const char* filename) 
+{
+  char* host = emscripten_run_script_string("/.*(?=\\/\\w*)/.exec(window.location.href).join() + '/'");
+  char* endpoint = malloc(strlen(host) + strlen(filename) + 1);
+  strcpy(endpoint, host);
+  strcat(endpoint, filename);
+  emscripten_wget(endpoint, filename);
+}
+#else 
+void
+mrb_carbuncle_fetch_file(const char* filename) {}
+#endif
+
 void
 mrb_carbuncle_check_file(mrb_state *mrb, const char *filename)
 {
+  mrb_carbuncle_fetch_file(filename);
   if (!PHYSFS_exists(filename))
   {
     struct RClass *file_not_exists = mrb_carbuncle_class_get(mrb, "FileNotExists");

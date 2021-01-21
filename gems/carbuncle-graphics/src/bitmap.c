@@ -149,7 +149,6 @@ mrb_bitmap_initialize(mrb_state *mrb, mrb_value self)
     else
     {
       const char *filename = mrb_str_to_cstr(mrb, obj);
-      mrb_carbuncle_check_file(mrb, filename);
       *img = LoadCarbuncleImage(mrb, filename);
     }
   }
