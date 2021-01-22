@@ -9,7 +9,7 @@
 
 EM_JS(void, emscripten_alert, (const char* str), {
   alert(UTF8ToString(str));
-}
+})
 
 #else
 #include <boxer/boxer.h>
