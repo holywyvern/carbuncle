@@ -1,7 +1,7 @@
 module Carbuncle
   class GUI
     class Widget
-      attr_reader :parent, :rect
+      attr_reader :parent, :rect, :events
 
       delegate :gui, :layout, to: :parent
       delegate :x, :x=, :y, :y=, :width, :width=, :height, :height=,
@@ -10,6 +10,7 @@ module Carbuncle
       def initialize(parent)
         @parent = nil
         @rect = Carbuncle::Rect.new
+        @events = Events.new
         self.parent = parent
       end
 

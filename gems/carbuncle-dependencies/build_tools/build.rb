@@ -47,12 +47,16 @@ module Carbuncle
       @ws ||= Carbuncle::Dependencies::LibWebsockets.new(self)
     end
 
+    def boxer
+      @boxer ||= Carbuncle::Dependencies::Boxer.new(self)
+    end
+
     def library_paths
       all_dependencies.map(&:lib_dir)
     end
 
     def libraries
-      %w[raylib freetype physfs soloud mbedtls mbedcrypto mbedx509 z xml2 tmx]
+      %w[raylib freetype physfs soloud mbedtls mbedcrypto mbedx509 z xml2 tmx boxer]
     end
 
     def general_cmake_flags
@@ -153,6 +157,10 @@ module Carbuncle
       ]
     end
 
+    def boxer_cmake_flags
+      []
+    end
+
     def include_paths
       all_dependencies.map(&:include_paths).flatten
     end
@@ -217,9 +225,13 @@ module Carbuncle
       'libmbedx509.a'
     end
 
+    def boxer_library
+      'libboxer.a'
+    end
+
     def all_dependencies
       @all_dependencies ||= [
-        raylib, zlib, freetype, libxml2, tmx, physfs, soloud, ssl, # ws
+        raylib, zlib, freetype, libxml2, tmx, physfs, soloud, ssl, boxer, # ws
       ]
     end
   end

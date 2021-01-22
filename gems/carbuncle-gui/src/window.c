@@ -25,25 +25,20 @@ static const char *WINDOW_KEYWORDS[WINDOW_KEYS] = {
 };
 
 static mrb_value
-draw_window(mrb_state *mrb, mrb_value self)
-{
-  return mrb_yield_argv(mrb, self, 0, NULL);
-}
-
-static mrb_value
 mrb_gui_window(mrb_state *mrb, mrb_value self)
 {
-  mrb_bool raised;
+  nk_bool ok;
   nk_flags flags;
   const char *id, *title_str;
   mrb_value kw_values[WINDOW_KEYS];
-  mrb_value title, rect, block, result;
+  mrb_value title, rect, block;
   struct nk_rect bounds;
   Rectangle *rect_data;
   const mrb_kwargs kwargs = { WINDOW_KEYS, kw_values, WINDOW_KEYWORDS, 0, NULL };
   struct mrb_GuiContext *ctx = mrb_carbuncle_gui_get_context(mrb, self);
   mrb_get_args(mrb, "So:&", &title, &rect, &kwargs, &block);
   rect_data = mrb_carbuncle_get_rect(mrb, rect);
+  flags = 0;
   if (mrb_undef_p(kw_values[0])) { kw_values[0] = title; }
   if (mrb_carbuncle_test(kw_values[1]))  { flags |= NK_WINDOW_BORDER; }
   if (mrb_carbuncle_test(kw_values[2]))  { flags |= NK_WINDOW_MOVABLE; }
@@ -64,10 +59,12 @@ mrb_gui_window(mrb_state *mrb, mrb_value self)
   bounds.y = rect_data->y;
   bounds.w = rect_data->width;
   bounds.h = rect_data->height;
-  nk_bool ok = nk_begin_titled(&(ctx->nk), title_str, id, bounds, flags);
-  result = mrb_protect(mrb, draw_window, block, &raised);
+  ok = nk_begin_titled(&(ctx->nk), title_str, id, bounds, flags);
+  if (ok)
+  {
+    mrb_yield_argv(mrb, block, 0, NULL);
+  }
   nk_end(&(ctx->nk));
-  if (raised) { mrb_exc_raise(mrb, result); }
   return mrb_bool_value(ok);
 }
 

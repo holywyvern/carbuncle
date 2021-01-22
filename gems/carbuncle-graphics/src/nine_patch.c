@@ -10,18 +10,6 @@
 #include <mruby/variable.h>
 #include <mruby/class.h>
 #include <mruby/data.h>
-
-struct mrb_9Patch
-{
-  mrb_float  angle;
-  mrb_float  width, height, left, top, right, bottom;
-  Texture   *texture;
-  Rectangle *src_rect;
-  Vector2   *position;
-  Vector2   *pivot;
-  Color     *color;
-};
-
 static const struct mrb_data_type nine_patch_data_type = {
   "Carbuncle::NinePatch", mrb_free
 };
@@ -380,4 +368,17 @@ mrb_init_carbuncle_nine_patch(mrb_state *mrb)
   mrb_define_method(mrb, nine_patch, "height=", mrb_nine_patch_set_height, MRB_ARGS_REQ(1));
 
   mrb_define_method(mrb, nine_patch, "draw", mrb_nine_patch_draw, MRB_ARGS_NONE());
+}
+
+struct mrb_9Patch *
+mrb_carbuncle_get_nine_patch(mrb_state *mrb, mrb_value obj)
+{
+  struct mrb_9Patch *patch = DATA_GET_DISPOSABLE_PTR(mrb, obj, &nine_patch_data_type, struct mrb_9Patch);
+  return patch;
+}
+
+mrb_bool
+mrb_carbuncle_nine_patch_p(mrb_value obj)
+{
+  return mrb_data_p(obj) && (DATA_TYPE(obj) == &nine_patch_data_type);
 }

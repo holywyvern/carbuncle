@@ -28,6 +28,7 @@ require_relative 'build_tools/dependencies/physfs'
 require_relative 'build_tools/dependencies/soloud'
 require_relative 'build_tools/dependencies/libwebsockets'
 require_relative 'build_tools/dependencies/mbedtls'
+require_relative 'build_tools/dependencies/Boxer'
 
 MRuby::Gem::Specification.new('carbuncle-dependencies') do |spec|
   spec.license = 'MIT'

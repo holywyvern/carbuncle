@@ -64,12 +64,13 @@ mrb_gui_push_column(mrb_state *mrb, mrb_value self)
 static mrb_value
 mrb_gui_space_layout(mrb_state *mrb, mrb_value self)
 {
+  mrb_int count;
   mrb_bool layout_static;
   mrb_float height;
   mrb_value block;
   struct mrb_GuiContext *ctx = mrb_carbuncle_gui_get_context(mrb, self);
-  mrb_get_args(mrb, "bf&", &layout_static, &height, &block);
-  nk_layout_space_begin(&(ctx->nk), layout_static ? NK_STATIC : NK_DYNAMIC, height, INT_MAX);
+  mrb_get_args(mrb, "bfi&", &layout_static, &height, &count, &block);
+  nk_layout_space_begin(&(ctx->nk), layout_static ? NK_STATIC : NK_DYNAMIC, height, count);
   mrb_yield_argv(mrb, block, 0, NULL);
   nk_layout_space_end(&(ctx->nk));
   return self;
@@ -142,6 +143,6 @@ mrb_init_carbuncle_gui_layout(mrb_state *mrb, struct RClass *gui)
   mrb_define_method(mrb, gui, "variable_column", mrb_gui_variable_column, MRB_ARGS_REQ(1));
   mrb_define_method(mrb, gui, "static_column", mrb_gui_static_column, MRB_ARGS_REQ(1));
 
-  mrb_define_method(mrb, gui, "space_layout", mrb_gui_space_layout, MRB_ARGS_REQ(2)|MRB_ARGS_BLOCK());
+  mrb_define_method(mrb, gui, "space_layout", mrb_gui_space_layout, MRB_ARGS_REQ(3)|MRB_ARGS_BLOCK());
   mrb_define_method(mrb, gui, "space_push", mrb_gui_space_push, MRB_ARGS_REQ(1));
 }

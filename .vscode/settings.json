@@ -1,6 +1,21 @@
 {
   "files.associations": {
     "xiosbase": "c",
-    "*.rh": "c"
+    "*.rh": "c",
+    "deque": "c",
+    "initializer_list": "c",
+    "stack": "c",
+    "type_traits": "c",
+    "vector": "c",
+    "xstring": "c",
+    "xtree": "c",
+    "xutility": "c",
+    "memory": "c",
+    "chrono": "c",
+    "ratio": "c",
+    "tuple": "c",
+    "utility": "c",
+    "xmemory0": "c",
+    "xtr1common": "c"
   }
 }

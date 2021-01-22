@@ -97,6 +97,21 @@
 #define SELECTED_NORMAL mrb_intern_cstr(mrb, "#selected_normal")
 #define SELECTED_TEXT_HOVER mrb_intern_cstr(mrb, "#selected_text_hover")
 #define SELECTED_TEXT_NORMAL mrb_intern_cstr(mrb, "#selected_text_normal")
+#define HOVER_ACTIVE mrb_intern_cstr(mrb, "#hover_active")
+#define NORMAL_ACTIVE mrb_intern_cstr(mrb, "#normal_active")
+#define PRESSED mrb_intern_cstr(mrb, "#pressed")
+#define PRESSED_ACTIVE mrb_intern_cstr(mrb, "#pressed_active")
+#define TEXT_HOVER_ACTIVE mrb_intern_cstr(mrb, "#text_hover_active")
+#define TEXT_NORMAL_ACTIVE mrb_intern_cstr(mrb, "#text_normal_active")
+#define TEXT_PRESSED mrb_intern_cstr(mrb, "#text_pressed")
+#define TEXT_PRESSED_ACTIVE mrb_intern_cstr(mrb, "#text_pressed_active")
+#define CURSOR_ACTIVE mrb_intern_cstr(mrb, "#cursor_active")
+#define CURSOR_BORDER_COLOR mrb_intern_cstr(mrb, "#cursor_border_color")
+#define BAR_ACTIVE mrb_intern_cstr(mrb, "#bar_active")
+#define BAR_FILLED mrb_intern_cstr(mrb, "#bar_filled")
+#define BAR_HOVER mrb_intern_cstr(mrb, "#bar_hover")
+#define BAR_NORMAL mrb_intern_cstr(mrb, "#bar_normal")
+#define CURSOR_SIZE mrb_intern_cstr(mrb, "#cursor_size")
 
 void
 mrb_style_free(mrb_state *mrb, void *ptr) {}
@@ -104,6 +119,14 @@ mrb_style_free(mrb_state *mrb, void *ptr) {}
 static const struct mrb_data_type style_data_type = {
   "Carbuncle::GUI::Style", mrb_style_free
 };
+
+static struct nk_style *
+get_style(mrb_state *mrb, mrb_value self)
+{
+  struct nk_style *data;
+  Data_Get_Struct(mrb, self, &style_data_type, data);
+  return data;
+}
 
 static struct RClass *
 get_style_class(mrb_state *mrb, const char *name)
@@ -126,6 +149,15 @@ new_style_object(mrb_state *mrb, const char *class_name, void *ptr, const struct
 static const struct mrb_data_type style_image_region_data_type = {
   "Carbuncle::GUI::Style::Image::Region", mrb_style_free
 };
+
+static unsigned short *
+get_image_region(mrb_state *mrb, mrb_value self)
+{
+  unsigned short *ptr;
+  Data_Get_Struct(mrb, self, &style_image_region_data_type, ptr);
+  return ptr;
+}
+
 static mrb_value
 new_image_region(mrb_state *mrb, unsigned short *ptr)
 {
@@ -140,6 +172,15 @@ new_image_region(mrb_state *mrb, unsigned short *ptr)
 static const struct mrb_data_type style_image_data_type = {
   "Carbuncle::GUI::Style::Image", mrb_style_free
 };
+
+static struct nk_image *
+get_image(mrb_state *mrb, mrb_value self)
+{
+  struct nk_image *ptr;
+  Data_Get_Struct(mrb, self, &style_image_data_type, ptr);
+  return ptr;
+}
+
 static mrb_value
 new_image(mrb_state *mrb, struct nk_image *ptr)
 {
@@ -151,6 +192,15 @@ new_image(mrb_state *mrb, struct nk_image *ptr)
 static const struct mrb_data_type style_color_data_type = {
   "Carbuncle::GUI::Style::Color", mrb_style_free
 };
+
+static struct nk_color *
+get_color(mrb_state *mrb, mrb_value self)
+{
+  struct nk_color *ptr;
+  Data_Get_Struct(mrb, self, &style_color_data_type, ptr);
+  return ptr;
+}
+
 static mrb_value
 new_color(mrb_state *mrb, struct nk_color *ptr)
 {
@@ -160,6 +210,15 @@ new_color(mrb_state *mrb, struct nk_color *ptr)
 static const struct mrb_data_type style_item_data_type = {
   "Carbuncle::GUI::Style::Item", mrb_style_free
 };
+
+static struct nk_style_item *
+get_item(mrb_state *mrb, mrb_value self)
+{
+  struct nk_style_item *ptr;
+  Data_Get_Struct(mrb, self, &style_item_data_type, ptr);
+  return ptr;
+}
+
 static mrb_value
 new_item(mrb_state *mrb, struct nk_style_item *ptr)
 {
@@ -172,6 +231,15 @@ new_item(mrb_state *mrb, struct nk_style_item *ptr)
 static const struct mrb_data_type style_vec2_data_type = {
   "Carbuncle::GUI::Style::Vec2", mrb_style_free
 };
+
+static struct nk_vec2 *
+get_vec2(mrb_state *mrb, mrb_value self)
+{
+  struct nk_vec2 *ptr;
+  Data_Get_Struct(mrb, self, &style_vec2_data_type, ptr);
+  return ptr;
+}
+
 static mrb_value
 new_vec2(mrb_state *mrb, struct nk_vec2 *ptr)
 {
@@ -181,6 +249,15 @@ new_vec2(mrb_state *mrb, struct nk_vec2 *ptr)
 static const struct mrb_data_type style_cursor_data_type = {
   "Carbuncle::GUI::Style::Cursor", mrb_style_free
 };
+
+static struct nk_cursor *
+get_cursor(mrb_state *mrb, mrb_value self)
+{
+  struct nk_cursor *ptr;
+  Data_Get_Struct(mrb, self, &style_cursor_data_type, ptr);
+  return ptr;
+}
+
 static mrb_value
 new_cursor(mrb_state *mrb, const struct nk_cursor *ptr, mrb_bool frozen)
 {
@@ -198,6 +275,15 @@ new_cursor(mrb_state *mrb, const struct nk_cursor *ptr, mrb_bool frozen)
 static const struct mrb_data_type style_text_data_type = {
   "Carbuncle::GUI::Style::Text", mrb_style_free
 };
+
+static struct nk_style_text *
+get_text(mrb_state *mrb, mrb_value self)
+{
+  struct nk_style_text *ptr;
+  Data_Get_Struct(mrb, self, &style_text_data_type, ptr);
+  return ptr;
+}
+
 static mrb_value
 new_text(mrb_state *mrb, struct nk_style_text *ptr)
 {
@@ -206,9 +292,19 @@ new_text(mrb_state *mrb, struct nk_style_text *ptr)
   mrb_iv_set(mrb, self, PADDING, new_vec2(mrb, &(ptr->padding)));
   return self;
 }
+
 static const struct mrb_data_type style_button_data_type = {
   "Carbuncle::GUI::Style::Button", mrb_style_free
 };
+
+static struct nk_style_button *
+get_button(mrb_state *mrb, mrb_value self)
+{
+  struct nk_style_button *ptr;
+  Data_Get_Struct(mrb, self, &style_button_data_type, ptr);
+  return ptr;
+}
+
 static mrb_value
 new_button(mrb_state *mrb, struct nk_style_button *ptr)
 {
@@ -230,56 +326,174 @@ new_button(mrb_state *mrb, struct nk_style_button *ptr)
 static const struct mrb_data_type style_toggle_data_type = {
   "Carbuncle::GUI::Style::Toggle", mrb_style_free
 };
+
+static struct nk_style_toggle *
+get_toggle(mrb_state *mrb, mrb_value self)
+{
+  struct nk_style_toggle *ptr;
+  Data_Get_Struct(mrb, self, &style_toggle_data_type, ptr);
+  return ptr;
+}
+
 static mrb_value
 new_toggle(mrb_state *mrb, struct nk_style_toggle *ptr)
 {
   mrb_value self = new_style_object(mrb, "Toggle", ptr, &style_toggle_data_type);
+  mrb_iv_set(mrb, self, ACTIVE, new_item(mrb, &(ptr->active)));
+  mrb_iv_set(mrb, self, BORDER_COLOR, new_color(mrb, &(ptr->border_color)));
+  mrb_iv_set(mrb, self, CURSOR_HOVER, new_item(mrb, &(ptr->cursor_hover)));
+  mrb_iv_set(mrb, self, CURSOR_NORMAL, new_item(mrb, &(ptr->cursor_normal)));
+  mrb_iv_set(mrb, self, HOVER, new_item(mrb, &(ptr->hover)));
+  mrb_iv_set(mrb, self, NORMAL, new_item(mrb, &(ptr->normal)));
+  mrb_iv_set(mrb, self, PADDING, new_vec2(mrb, &(ptr->padding)));
+  mrb_iv_set(mrb, self, TEXT_ACTIVE, new_color(mrb, &(ptr->text_active)));
+  mrb_iv_set(mrb, self, TEXT_BACKGROUND, new_color(mrb, &(ptr->text_background)));
+  mrb_iv_set(mrb, self, TEXT_HOVER, new_color(mrb, &(ptr->text_hover)));
+  mrb_iv_set(mrb, self, TEXT_NORMAL, new_color(mrb, &(ptr->text_normal)));
+  mrb_iv_set(mrb, self, TOUCH_PADDING, new_vec2(mrb, &(ptr->touch_padding)));
   return self;
 }
 
 static const struct mrb_data_type style_selectable_data_type = {
   "Carbuncle::GUI::Style::Selectable", mrb_style_free
 };
+
+static struct nk_style_selectable *
+get_selectable(mrb_state *mrb, mrb_value self)
+{
+  struct nk_style_selectable *ptr;
+  Data_Get_Struct(mrb, self, &style_selectable_data_type, ptr);
+  return ptr;
+}
+
 static mrb_value
 new_selectable(mrb_state *mrb, struct nk_style_selectable *ptr)
 {
   mrb_value self = new_style_object(mrb, "Selectable", ptr, &style_selectable_data_type);
+  mrb_iv_set(mrb, self, HOVER, new_item(mrb, &(ptr->hover)));
+  mrb_iv_set(mrb, self, HOVER_ACTIVE, new_item(mrb, &(ptr->hover_active)));
+  mrb_iv_set(mrb, self, IMAGE_PADDING, new_vec2(mrb, &(ptr->image_padding)));
+  mrb_iv_set(mrb, self, NORMAL, new_item(mrb, &(ptr->normal)));
+  mrb_iv_set(mrb, self, NORMAL_ACTIVE, new_item(mrb, &(ptr->normal_active)));
+  mrb_iv_set(mrb, self, PADDING, new_vec2(mrb, &(ptr->padding)));
+  mrb_iv_set(mrb, self, PRESSED, new_item(mrb, &(ptr->pressed)));
+  mrb_iv_set(mrb, self, PRESSED_ACTIVE, new_item(mrb, &(ptr->pressed_active)));
+  mrb_iv_set(mrb, self, TEXT_BACKGROUND, new_color(mrb, &(ptr->text_background)));
+  mrb_iv_set(mrb, self, TEXT_HOVER, new_color(mrb, &(ptr->text_hover)));
+  mrb_iv_set(mrb, self, TEXT_HOVER_ACTIVE, new_color(mrb, &(ptr->text_hover_active)));
+  mrb_iv_set(mrb, self, TEXT_NORMAL, new_color(mrb, &(ptr->text_normal)));
+  mrb_iv_set(mrb, self, TEXT_NORMAL_ACTIVE, new_color(mrb, &(ptr->text_normal_active)));
+  mrb_iv_set(mrb, self, TEXT_PRESSED, new_color(mrb, &(ptr->text_pressed)));
+  mrb_iv_set(mrb, self, TEXT_PRESSED_ACTIVE, new_color(mrb, &(ptr->text_pressed_active)));
+  mrb_iv_set(mrb, self, TOUCH_PADDING, new_vec2(mrb, &(ptr->touch_padding)));
   return self;
 }
 
 static const struct mrb_data_type style_slider_data_type = {
   "Carbuncle::GUI::Style::Slider", mrb_style_free
 };
+
+static struct nk_style_slider *
+get_slider(mrb_state *mrb, mrb_value self)
+{
+  struct nk_style_slider *ptr;
+  Data_Get_Struct(mrb, self, &style_slider_data_type, ptr);
+  return ptr;
+}
+
 static mrb_value
 new_slider(mrb_state *mrb, struct nk_style_slider *ptr)
 {
   mrb_value self = new_style_object(mrb, "Slider", ptr, &style_slider_data_type);
+  mrb_iv_set(mrb, self, ACTIVE, new_item(mrb, &(ptr->active)));
+  mrb_iv_set(mrb, self, BAR_ACTIVE, new_color(mrb, &(ptr->bar_active)));
+  mrb_iv_set(mrb, self, BAR_FILLED, new_color(mrb, &(ptr->bar_filled)));
+  mrb_iv_set(mrb, self, BAR_HOVER, new_color(mrb, &(ptr->bar_hover)));
+  mrb_iv_set(mrb, self, BAR_NORMAL, new_color(mrb, &(ptr->bar_normal)));
+  mrb_iv_set(mrb, self, BORDER_COLOR, new_color(mrb, &(ptr->border_color)));
+  mrb_iv_set(mrb, self, CURSOR_ACTIVE, new_item(mrb, &(ptr->cursor_active)));
+  mrb_iv_set(mrb, self, CURSOR_HOVER, new_item(mrb, &(ptr->cursor_hover)));
+  mrb_iv_set(mrb, self, CURSOR_NORMAL, new_item(mrb, &(ptr->cursor_normal)));
+  mrb_iv_set(mrb, self, CURSOR_SIZE, new_vec2(mrb, &(ptr->cursor_size)));
+  mrb_iv_set(mrb, self, DEC_BUTTON, new_button(mrb, &(ptr->dec_button)));
+  mrb_iv_set(mrb, self, HOVER, new_item(mrb, &(ptr->hover)));
+  mrb_iv_set(mrb, self, INC_BUTTON, new_button(mrb, &(ptr->inc_button)));
+  mrb_iv_set(mrb, self, NORMAL, new_item(mrb, &(ptr->normal)));
+  mrb_iv_set(mrb, self, PADDING, new_vec2(mrb, &(ptr->padding)));
+  mrb_iv_set(mrb, self, SPACING, new_vec2(mrb, &(ptr->spacing)));
   return self;
 }
 
 static const struct mrb_data_type style_progress_data_type = {
   "Carbuncle::GUI::Style::Progress", mrb_style_free
 };
+
+static struct nk_style_progress *
+get_progress(mrb_state *mrb, mrb_value self)
+{
+  struct nk_style_progress *ptr;
+  Data_Get_Struct(mrb, self, &style_progress_data_type, ptr);
+  return ptr;
+}
+
 static mrb_value
 new_progress(mrb_state *mrb, struct nk_style_progress *ptr)
 {
   mrb_value self = new_style_object(mrb, "Progress", ptr, &style_progress_data_type);
+  mrb_iv_set(mrb, self, ACTIVE, new_item(mrb, &(ptr->active)));
+  mrb_iv_set(mrb, self, BORDER_COLOR, new_color(mrb, &(ptr->border_color)));
+  mrb_iv_set(mrb, self, CURSOR_ACTIVE, new_item(mrb, &(ptr->cursor_active)));
+  mrb_iv_set(mrb, self, CURSOR_BORDER_COLOR, new_color(mrb, &(ptr->cursor_border_color)));
+  mrb_iv_set(mrb, self, CURSOR_HOVER, new_item(mrb, &(ptr->cursor_hover)));
+  mrb_iv_set(mrb, self, CURSOR_NORMAL, new_item(mrb, &(ptr->cursor_normal)));
+  mrb_iv_set(mrb, self, HOVER, new_item(mrb, &(ptr->hover)));
+  mrb_iv_set(mrb, self, NORMAL, new_item(mrb, &(ptr->normal)));
+  mrb_iv_set(mrb, self, PADDING, new_vec2(mrb, &(ptr->padding)));
   return self;
 }
 
 static const struct mrb_data_type style_scrollbar_data_type = {
   "Carbuncle::GUI::Style::Scrollbar", mrb_style_free
 };
+
+static struct nk_style_scrollbar *
+get_scrollbar(mrb_state *mrb, mrb_value self)
+{
+  struct nk_style_scrollbar *ptr;
+  Data_Get_Struct(mrb, self, &style_scrollbar_data_type, ptr);
+  return ptr;
+}
+
 static mrb_value
 new_scrollbar(mrb_state *mrb, struct nk_style_scrollbar *ptr)
 {
   mrb_value self = new_style_object(mrb, "Scrollbar", ptr, &style_scrollbar_data_type);
+  mrb_iv_set(mrb, self, ACTIVE, new_item(mrb, &(ptr->active)));
+  mrb_iv_set(mrb, self, BORDER_COLOR, new_color(mrb, &(ptr->border_color)));
+  mrb_iv_set(mrb, self, CURSOR_ACTIVE, new_item(mrb, &(ptr->cursor_active)));
+  mrb_iv_set(mrb, self, CURSOR_BORDER_COLOR, new_color(mrb, &(ptr->cursor_border_color)));
+  mrb_iv_set(mrb, self, CURSOR_HOVER, new_item(mrb, &(ptr->cursor_hover)));
+  mrb_iv_set(mrb, self, CURSOR_NORMAL, new_item(mrb, &(ptr->cursor_normal)));
+  mrb_iv_set(mrb, self, DEC_BUTTON, new_button(mrb, &(ptr->dec_button)));
+  mrb_iv_set(mrb, self, HOVER, new_item(mrb, &(ptr->hover)));
+  mrb_iv_set(mrb, self, INC_BUTTON, new_button(mrb, &(ptr->inc_button)));
+  mrb_iv_set(mrb, self, NORMAL, new_item(mrb, &(ptr->normal)));
+  mrb_iv_set(mrb, self, PADDING, new_vec2(mrb, &(ptr->padding)));
   return self;
 }
 
 static const struct mrb_data_type style_edit_data_type = {
   "Carbuncle::GUI::Style::Edit", mrb_style_free
 };
+
+static struct nk_style_edit *
+get_edit(mrb_state *mrb, mrb_value self)
+{
+  struct nk_style_edit *ptr;
+  Data_Get_Struct(mrb, self, &style_edit_data_type, ptr);
+  return ptr;
+}
+
 static mrb_value
 new_edit(mrb_state *mrb, struct nk_style_edit *ptr)
 {
@@ -308,6 +522,15 @@ new_edit(mrb_state *mrb, struct nk_style_edit *ptr)
 static const struct mrb_data_type style_property_data_type = {
   "Carbuncle::GUI::Style::Property", mrb_style_free
 };
+
+static struct nk_style_property *
+get_property(mrb_state *mrb, mrb_value self)
+{
+  struct nk_style_property *ptr;
+  Data_Get_Struct(mrb, self, &style_property_data_type, ptr);
+  return ptr;
+}
+
 static mrb_value
 new_property(mrb_state *mrb, struct nk_style_property *ptr)
 {
@@ -329,6 +552,15 @@ new_property(mrb_state *mrb, struct nk_style_property *ptr)
 static const struct mrb_data_type style_chart_data_type = {
   "Carbuncle::GUI::Style::Chart", mrb_style_free
 };
+
+static struct nk_style_chart *
+get_chart(mrb_state *mrb, mrb_value self)
+{
+  struct nk_style_chart *ptr;
+  Data_Get_Struct(mrb, self, &style_chart_data_type, ptr);
+  return ptr;
+}
+
 static mrb_value
 new_chart(mrb_state *mrb, struct nk_style_chart *ptr)
 {
@@ -344,6 +576,15 @@ new_chart(mrb_state *mrb, struct nk_style_chart *ptr)
 static const struct mrb_data_type style_combo_data_type = {
   "Carbuncle::GUI::Style::Combo", mrb_style_free
 };
+
+static struct nk_style_combo *
+get_combo(mrb_state *mrb, mrb_value self)
+{
+  struct nk_style_combo *ptr;
+  Data_Get_Struct(mrb, self, &style_combo_data_type, ptr);
+  return ptr;
+}
+
 static mrb_value
 new_combo(mrb_state *mrb, struct nk_style_combo *ptr)
 {
@@ -368,6 +609,15 @@ new_combo(mrb_state *mrb, struct nk_style_combo *ptr)
 static const struct mrb_data_type style_tab_data_type = {
   "Carbuncle::GUI::Style::Tab", mrb_style_free
 };
+
+static struct nk_style_tab *
+get_tab(mrb_state *mrb, mrb_value self)
+{
+  struct nk_style_tab *ptr;
+  Data_Get_Struct(mrb, self, &style_tab_data_type, ptr);
+  return ptr;
+}
+
 static mrb_value
 new_tab(mrb_state *mrb, struct nk_style_tab *ptr)
 {
@@ -387,6 +637,15 @@ new_tab(mrb_state *mrb, struct nk_style_tab *ptr)
 static const struct mrb_data_type style_window_header_data_type = {
   "Carbuncle::GUI::Style::Window::Header", mrb_style_free
 };
+
+static struct nk_style_window_header *
+get_window_header(mrb_state *mrb, mrb_value self)
+{
+  struct nk_style_window_header *ptr;
+  Data_Get_Struct(mrb, self, &style_window_header_data_type, ptr);
+  return ptr;
+}
+
 static mrb_value
 new_window_header(mrb_state *mrb, struct nk_style_window_header *ptr)
 {
@@ -415,6 +674,14 @@ static const struct mrb_data_type style_window_data_type = {
   "Carbuncle::GUI::Style::Window", mrb_style_free
 };
 
+static struct nk_style_window *
+get_window(mrb_state *mrb, mrb_value self)
+{
+  struct nk_style_window *ptr;
+  Data_Get_Struct(mrb, self, &style_window_data_type, ptr);
+  return ptr;
+}
+
 static mrb_value
 new_window(mrb_state *mrb, struct nk_style_window *ptr)
 {
@@ -435,14 +702,6 @@ new_window(mrb_state *mrb, struct nk_style_window *ptr)
   mrb_iv_set(mrb, self, TOOLTIP_PADDING, new_vec2(mrb, &(ptr->tooltip_padding)));
 
   return self;
-}
-
-static struct nk_style *
-get_style(mrb_state *mrb, mrb_value self)
-{
-  struct nk_style *data;
-  Data_Get_Struct(mrb, self, &style_data_type, data);
-  return data;
 }
 
 mrb_value
@@ -627,38 +886,6 @@ mrb_style_set_cursor_visible(mrb_state *mrb, mrb_value self)
   return mrb_bool_value(value);
 }
 
-static struct nk_color *
-get_color(mrb_state *mrb, mrb_value self)
-{
-  struct nk_color *ptr;
-  Data_Get_Struct(mrb, self, &style_color_data_type, ptr);
-  return ptr;
-}
-
-static struct nk_style_item *
-get_item(mrb_state *mrb, mrb_value self)
-{
-  struct nk_style_item *ptr;
-  Data_Get_Struct(mrb, self, &style_item_data_type, ptr);
-  return ptr;
-}
-
-static struct nk_image *
-get_image(mrb_state *mrb, mrb_value self)
-{
-  struct nk_image *ptr;
-  Data_Get_Struct(mrb, self, &style_image_data_type, ptr);
-  return ptr;
-}
-
-static unsigned short *
-get_image_region(mrb_state *mrb, mrb_value self)
-{
-  unsigned short *ptr;
-  Data_Get_Struct(mrb, self, &style_image_data_type, ptr);
-  return ptr;
-}
-
 static mrb_value
 color_get_r(mrb_state *mrb, mrb_value self)
 {
@@ -753,7 +980,7 @@ item_type(mrb_state *mrb, mrb_value self)
 static mrb_value
 item_image(mrb_state *mrb, mrb_value self)
 {
-  if (!get_item(mrb, self)->type == NK_STYLE_ITEM_IMAGE)
+  if (get_item(mrb, self)->type != NK_STYLE_ITEM_IMAGE)
   {
     mrb_raise(mrb, E_TYPE_ERROR, "Item is not an Image");
   }
@@ -763,7 +990,7 @@ item_image(mrb_state *mrb, mrb_value self)
 static mrb_value
 item_color(mrb_state *mrb, mrb_value self)
 {
-  if (!get_item(mrb, self)->type == NK_STYLE_ITEM_COLOR)
+  if (get_item(mrb, self)->type != NK_STYLE_ITEM_COLOR)
   {
     mrb_raise(mrb, E_TYPE_ERROR, "Item is not a Color");
   }
@@ -838,6 +1065,165 @@ image_region_set(mrb_state *mrb, mrb_value self)
   return mrb_fixnum_value(value);
 }
 
+static mrb_value
+vec2_get_x(mrb_state *mrb, mrb_value self)
+{
+  return mrb_float_value(mrb, get_vec2(mrb, self)->x);
+}
+
+static mrb_value
+vec2_get_y(mrb_state *mrb, mrb_value self)
+{
+  return mrb_float_value(mrb, get_vec2(mrb, self)->y);
+}
+
+static mrb_value
+vec2_set_x(mrb_state *mrb, mrb_value self)
+{
+  mrb_float value;
+  mrb_get_args(mrb, "f", &value);
+  get_vec2(mrb, self)->x = value;
+  return mrb_float_value(mrb, value);
+}
+
+static mrb_value
+vec2_set_y(mrb_state *mrb, mrb_value self)
+{
+  mrb_float value;
+  mrb_get_args(mrb, "f", &value);
+  get_vec2(mrb, self)->y = value;
+  return mrb_float_value(mrb, value);
+}
+
+static mrb_value
+cursor_get_image(mrb_state *mrb, mrb_value self)
+{
+  return mrb_iv_get(mrb, self, IMAGE);
+}
+
+static mrb_value
+cursor_get_offset(mrb_state *mrb, mrb_value self)
+{
+  return mrb_iv_get(mrb, self, OFFSET);
+}
+
+static mrb_value
+cursor_get_size(mrb_state *mrb, mrb_value self)
+{
+  return mrb_iv_get(mrb, self, SIZE);
+}
+
+static mrb_value
+button_active(mrb_state *mrb, mrb_value self)
+{
+  return mrb_iv_get(mrb, self, ACTIVE);
+}
+
+static mrb_value
+button_border_color(mrb_state *mrb, mrb_value self)
+{
+  return mrb_iv_get(mrb, self, BORDER_COLOR);
+}
+
+static mrb_value
+button_hover(mrb_state *mrb, mrb_value self)
+{
+  return mrb_iv_get(mrb, self, HOVER);
+}
+
+static mrb_value
+button_image_padding(mrb_state *mrb, mrb_value self)
+{
+  return mrb_iv_get(mrb, self, IMAGE_PADDING);
+}
+
+static mrb_value
+button_normal(mrb_state *mrb, mrb_value self)
+{
+  return mrb_iv_get(mrb, self, NORMAL);
+}
+
+static mrb_value
+button_padding(mrb_state *mrb, mrb_value self)
+{
+  return mrb_iv_get(mrb, self, PADDING);
+}
+
+static mrb_value
+button_text_active(mrb_state *mrb, mrb_value self)
+{
+  return mrb_iv_get(mrb, self, TEXT_ACTIVE);
+}
+
+static mrb_value
+button_text_background(mrb_state *mrb, mrb_value self)
+{
+  return mrb_iv_get(mrb, self, TEXT_BACKGROUND);
+}
+
+static mrb_value
+button_text_hover(mrb_state *mrb, mrb_value self)
+{
+  return mrb_iv_get(mrb, self, TEXT_HOVER);
+}
+
+static mrb_value
+button_text_normal(mrb_state *mrb, mrb_value self)
+{
+  return mrb_iv_get(mrb, self, TEXT_NORMAL);
+}
+
+static mrb_value
+button_touch_padding(mrb_state *mrb, mrb_value self)
+{
+  return mrb_iv_get(mrb, self, TOUCH_PADDING);
+}
+
+static mrb_value
+button_get_border(mrb_state *mrb, mrb_value self)
+{
+  return mrb_float_value(mrb, get_button(mrb, self)->border);
+}
+
+static mrb_value
+button_get_rounding(mrb_state *mrb, mrb_value self)
+{
+  return mrb_float_value(mrb, get_button(mrb, self)->rounding);
+}
+
+static mrb_value
+button_get_text_alignment(mrb_state *mrb, mrb_value self)
+{
+  return mrb_fixnum_value(get_button(mrb, self)->text_alignment);
+}
+
+static mrb_value
+button_set_border(mrb_state *mrb, mrb_value self)
+{
+  mrb_float value;
+  mrb_get_args(mrb, "f", &value);
+  get_button(mrb, self)->border = value;
+  return mrb_float_value(mrb, value);
+}
+
+static mrb_value
+button_set_rounding(mrb_state *mrb, mrb_value self)
+{
+  mrb_float value;
+  mrb_get_args(mrb, "f", &value);
+  get_button(mrb, self)->rounding = value;
+  return mrb_float_value(mrb, value);
+}
+
+static mrb_value
+button_set_text_alignment(mrb_state *mrb, mrb_value self)
+{
+  mrb_int value;
+  mrb_get_args(mrb, "i", &value);
+  get_button(mrb, self)->text_alignment = value;
+  return mrb_fixnum_value(value);
+}
+
 void
 mrb_init_carbuncle_gui_style(mrb_state *mrb, struct RClass *gui)
 {
@@ -904,6 +1290,11 @@ mrb_init_carbuncle_gui_style(mrb_state *mrb, struct RClass *gui)
   struct RClass *vec2 = mrb_define_class_under(mrb, style, "Vec2", mrb->object_class);
   MRB_SET_INSTANCE_TT(vec2, MRB_TT_DATA);
 
+  mrb_define_method(mrb, vec2, "x", vec2_get_x, MRB_ARGS_NONE());
+  mrb_define_method(mrb, vec2, "y", vec2_get_y, MRB_ARGS_NONE());
+  mrb_define_method(mrb, vec2, "x=", vec2_set_x, MRB_ARGS_REQ(1));
+  mrb_define_method(mrb, vec2, "x=", vec2_set_y, MRB_ARGS_REQ(1));
+
   struct RClass *item = mrb_define_class_under(mrb, style, "Item", mrb->object_class);
   MRB_SET_INSTANCE_TT(item, MRB_TT_DATA);
 
@@ -918,8 +1309,31 @@ mrb_init_carbuncle_gui_style(mrb_state *mrb, struct RClass *gui)
   struct RClass *cursor = mrb_define_class_under(mrb, style, "Cursor", mrb->object_class);
   MRB_SET_INSTANCE_TT(cursor, MRB_TT_DATA);
 
+  mrb_define_method(mrb, cursor, "image", cursor_get_image, MRB_ARGS_NONE());
+  mrb_define_method(mrb, cursor, "offset", cursor_get_offset, MRB_ARGS_NONE());
+  mrb_define_method(mrb, cursor, "size", cursor_get_size, MRB_ARGS_NONE());
+
   struct RClass *button = mrb_define_class_under(mrb, style, "Button", mrb->object_class);
   MRB_SET_INSTANCE_TT(button, MRB_TT_DATA);
+
+  mrb_define_method(mrb, button, "active", button_active, MRB_ARGS_NONE());
+  mrb_define_method(mrb, button, "border_color", button_border_color, MRB_ARGS_NONE());
+  mrb_define_method(mrb, button, "hover", button_hover, MRB_ARGS_NONE());
+  mrb_define_method(mrb, button, "image_padding", button_image_padding, MRB_ARGS_NONE());
+  mrb_define_method(mrb, button, "normal", button_normal, MRB_ARGS_NONE());
+  mrb_define_method(mrb, button, "padding", button_padding, MRB_ARGS_NONE());
+  mrb_define_method(mrb, button, "text_active", button_text_active, MRB_ARGS_NONE());
+  mrb_define_method(mrb, button, "text_background", button_text_background, MRB_ARGS_NONE());
+  mrb_define_method(mrb, button, "text_hover", button_text_hover, MRB_ARGS_NONE());
+  mrb_define_method(mrb, button, "text_normal", button_text_normal, MRB_ARGS_NONE());
+  mrb_define_method(mrb, button, "touch_padding", button_touch_padding, MRB_ARGS_NONE());
+
+  mrb_define_method(mrb, button, "border", button_get_border, MRB_ARGS_NONE());
+  mrb_define_method(mrb, button, "border=", button_set_border, MRB_ARGS_REQ(1));
+  mrb_define_method(mrb, button, "rounding", button_get_rounding, MRB_ARGS_NONE());
+  mrb_define_method(mrb, button, "rounding=", button_set_rounding, MRB_ARGS_REQ(1));
+  mrb_define_method(mrb, button, "text_alignment", button_get_text_alignment, MRB_ARGS_NONE());
+  mrb_define_method(mrb, button, "text_alignment=", button_set_text_alignment, MRB_ARGS_REQ(1));
 
   struct RClass *toggle = mrb_define_class_under(mrb, style, "Toggle", mrb->object_class);
   MRB_SET_INSTANCE_TT(toggle, MRB_TT_DATA);
@@ -959,4 +1373,30 @@ mrb_init_carbuncle_gui_style(mrb_state *mrb, struct RClass *gui)
 
   struct RClass *window_header = mrb_define_class_under(mrb, window, "Header", mrb->object_class);
   MRB_SET_INSTANCE_TT(window_header, MRB_TT_DATA);
+
+  struct RClass *symbols = mrb_define_module_under(mrb, style, "Symbols");
+
+  mrb_define_const(mrb, symbols, "NONE", mrb_fixnum_value(NK_SYMBOL_NONE));
+  mrb_define_const(mrb, symbols, "X", mrb_fixnum_value(NK_SYMBOL_X));
+  mrb_define_const(mrb, symbols, "UNDERSCORE", mrb_fixnum_value(NK_SYMBOL_UNDERSCORE));
+  mrb_define_const(mrb, symbols, "SOLID", mrb_fixnum_value(NK_SYMBOL_CIRCLE_SOLID));
+  mrb_define_const(mrb, symbols, "OUTLINE", mrb_fixnum_value(NK_SYMBOL_CIRCLE_OUTLINE));
+  mrb_define_const(mrb, symbols, "RECT_SOLID", mrb_fixnum_value(NK_SYMBOL_RECT_SOLID));
+  mrb_define_const(mrb, symbols, "RECT_OUTLINE", mrb_fixnum_value(NK_SYMBOL_RECT_OUTLINE));
+  mrb_define_const(mrb, symbols, "TRIANGLE_UP", mrb_fixnum_value(NK_SYMBOL_TRIANGLE_UP));
+  mrb_define_const(mrb, symbols, "TRIANGLE_DOWN", mrb_fixnum_value(NK_SYMBOL_TRIANGLE_DOWN));
+  mrb_define_const(mrb, symbols, "TRIANGLE_LEFT", mrb_fixnum_value(NK_SYMBOL_TRIANGLE_LEFT));
+  mrb_define_const(mrb, symbols, "TRIANGLE_RIGHT", mrb_fixnum_value(NK_SYMBOL_TRIANGLE_RIGHT));
+  mrb_define_const(mrb, symbols, "PLUS", mrb_fixnum_value(NK_SYMBOL_PLUS));
+  mrb_define_const(mrb, symbols, "MINUS", mrb_fixnum_value(NK_SYMBOL_MINUS));
+  mrb_define_const(mrb, symbols, "MAX", mrb_fixnum_value(NK_SYMBOL_MAX));
+
+  struct RClass *align = mrb_define_module_under(mrb, style, "Align");
+
+  mrb_define_const(mrb, align, "LEFT", mrb_fixnum_value(NK_TEXT_ALIGN_LEFT));
+  mrb_define_const(mrb, align, "CENTERED", mrb_fixnum_value(NK_TEXT_ALIGN_CENTERED));
+  mrb_define_const(mrb, align, "RIGHT", mrb_fixnum_value(NK_TEXT_ALIGN_RIGHT));
+  mrb_define_const(mrb, align, "TOP", mrb_fixnum_value(NK_TEXT_ALIGN_TOP));
+  mrb_define_const(mrb, align, "MIDDLE", mrb_fixnum_value(NK_TEXT_ALIGN_MIDDLE));
+  mrb_define_const(mrb, align, "BOTTOM", mrb_fixnum_value(NK_TEXT_ALIGN_BOTTOM));
 }
