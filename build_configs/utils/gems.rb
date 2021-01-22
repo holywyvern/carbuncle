@@ -31,8 +31,9 @@ def add_external_gems(conf)
 end
   
 def add_carbuncle_gems(conf)
+  root_dir = File.join(__dir__, '..', '..', 'gems')
   CARBUNCLE_GEMS.each do |name|
-    conf.gem File.expand_path(File.join(__dir__, '..', 'gems', "carbuncle-#{name}"))
+    conf.gem File.expand_path(File.join(root_dir, "carbuncle-#{name}"))
   end
-  conf.gem File.expand_path(File.join(__dir__, '..', 'gems', 'mruby-bin-carbuncle'))
+  conf.gem File.expand_path(File.join(root_dir, 'mruby-bin-carbuncle'))
 end
