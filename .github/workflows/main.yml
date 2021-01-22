@@ -30,6 +30,8 @@ jobs:
       - uses: jwlawson/actions-setup-cmake@v1.6
         with:
           cmake-version: '3.16.x'
+      - name: Install packages
+        run: apt-get install -y build-essential git libasound2-dev mesa-common-dev libx11-dev libxrandr-dev libxi-dev xorg-dev libgl1-mesa-dev libglu1-mesa-dev
 
       # Installs gems
       - name: Install all gems
