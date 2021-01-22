@@ -37,4 +37,4 @@ jobs:
 
       # Runs all mrb tests
       - name: Run all tests
-        run: rake all test
+        run: rake test
