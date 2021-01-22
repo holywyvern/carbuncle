@@ -31,7 +31,7 @@ jobs:
         with:
           cmake-version: '3.16.x'
       - name: Install packages
-        run: |
+        run: >
           sudo apt-get install -y
           build-essential git libasound2-dev mesa-common-dev
           libx11-dev libxrandr-dev libxi-dev xorg-dev libgl1-mesa-dev
