@@ -11,6 +11,8 @@ EM_JS(void, emscripten_alert, (const char* str), {
   alert(UTF8ToString(str));
 })
 
+#ifdef __unix__
+  // TODO: Add error message
 #else
 #include <boxer/boxer.h>
 #endif
@@ -20,6 +22,8 @@ mrb_carbuncle_show_fatal(const char *title, const char *message)
 {
 #ifdef __EMSCRIPTEN__
     emscripten_alert(message);
+#ifdef __unix__
+    // TODO: Add error message
 #else
     boxerShow(message, title, BoxerStyleError, BoxerSelectionOK);
 #endif
