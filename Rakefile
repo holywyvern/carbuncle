@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-MRUBY_CONFIG = File.expand_path(ENV['MRUBY_CONFIG'] || File.join('build_configs', 'travis.rb'))
+MRUBY_CONFIG = File.expand_path(ENV['MRUBY_CONFIG'] || File.join('build_configs', 'ci.rb'))
 MRUBY_VERSION = ENV['MRUBY_VERSION'] || '2.1.2'
 
 file :mruby do
