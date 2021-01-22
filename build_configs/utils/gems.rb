@@ -15,7 +15,7 @@ CORE_GEMS = %w[
 ].freeze
   
 GITHUB_GEMS = %w[
-  yui-knk/mruby-set iij/mruby-regexp-pcre mattn/mruby-json
+  iij/mruby-regexp-pcre mattn/mruby-json
 ].freeze
   
 def add_core_gems(conf)

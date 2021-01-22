@@ -41,6 +41,10 @@ jobs:
       - name: Install all gems
         run: gem install rubyzip
 
-      # Runs all mrb tests
-      - name: Run all tests
+      # Build mruby
+      - name: Build mruby
+        run: rake
+      
+      # Run tests
+      - name: Test
         run: rake test
