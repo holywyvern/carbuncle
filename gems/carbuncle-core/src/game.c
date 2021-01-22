@@ -80,17 +80,6 @@ draw_game(mrb_state *mrb, mrb_value instance)
   EndDrawing();
 }
 
-#ifdef __EMSCRIPTEN__
-static void
-carbuncle_emscripten_game_frame(void)
-{
-  mrb_value dt = mrb_float_value(emscripten_mrb_state, GetFrameTime());
-  update_file_drop(emscripten_mrb_state, emscripten_carbuncle_game);
-  mrb_funcall(emscripten_mrb_state, emscripten_carbuncle_game, "update", 1, dt);
-  draw_game(emscripten_mrb_state, emscripten_carbuncle_game);
-}
-#endif
-
 static inline void
 update_file_drop(mrb_state *mrb, mrb_value instance)
 {
@@ -112,6 +101,17 @@ update_file_drop(mrb_state *mrb, mrb_value instance)
     }
   }
 }
+
+#ifdef __EMSCRIPTEN__
+static void
+carbuncle_emscripten_game_frame(void)
+{
+  mrb_value dt = mrb_float_value(emscripten_mrb_state, GetFrameTime());
+  update_file_drop(emscripten_mrb_state, emscripten_carbuncle_game);
+  mrb_funcall(emscripten_mrb_state, emscripten_carbuncle_game, "update", 1, dt);
+  draw_game(emscripten_mrb_state, emscripten_carbuncle_game);
+}
+#endif
 
 static inline void
 game_loop(mrb_state *mrb, mrb_value instance)

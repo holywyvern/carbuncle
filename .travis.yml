@@ -12,9 +12,6 @@ install:
   - if [ "$TRAVIS_OS_NAME" = "osx" ]; then brew install bison gperf; fi
   - if [ "$TRAVIS_OS_NAME" = "linux" ]; then sudo apt-get -qq install rake bison git gperf; fi
 before_script:
-  - cd ../
   - git clone https://github.com/mruby/mruby.git
-  - cd mruby
-  - cp -fp ../carbuncle/.travis_build_config.rb build_config.rb
 script:
   - make all test
