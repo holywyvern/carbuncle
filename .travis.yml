@@ -14,4 +14,4 @@ install:
 before_script:
   - git clone https://github.com/mruby/mruby.git
 script:
-  - make all test
+  - rake all test
