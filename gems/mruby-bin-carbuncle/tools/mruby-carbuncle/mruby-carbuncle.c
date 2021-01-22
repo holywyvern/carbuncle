@@ -2,9 +2,12 @@
 
 #include <mruby/array.h>
 #include <mruby/compile.h>
+#include <mruby/string.h>
+#include <mruby/error.h>
 
 #include "carbuncle/core.h"
 #include "carbuncle/filesystem.h"
+#include "carbuncle/message_box.h"
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -115,6 +118,14 @@ choose_game(mrb_state *mrb)
   close_game(MULTIPLE_GAME_MSG);
 }
 
+static mrb_value
+start_engine(mrb_state *mrb, mrb_value self)
+{
+  load_main_file(mrb);
+  choose_game(mrb);
+  return self;
+}
+
 int
 main(int argc, char **argv)
 {
@@ -123,6 +134,7 @@ main(int argc, char **argv)
   {
     PHYSFS_ErrorCode code = PHYSFS_getLastErrorCode();
     printf("Failed to initialize filesystem: %s.\n", PHYSFS_getErrorByCode(code));
+    mrb_carbuncle_show_fatal("File system error", "Failed to initialize filesystem");
     return EXIT_FAILURE;
   }
   if (argv[0]) {
@@ -135,11 +147,16 @@ main(int argc, char **argv)
     {
       PHYSFS_ErrorCode code = PHYSFS_getLastErrorCode();
       printf("Failed to mount filesystem for '%s' (%s).\n", argv[argc - 1], PHYSFS_getErrorByCode(code));
+      mrb_carbuncle_show_fatal("File system error", "Failed to mount filesystem");
       return EXIT_FAILURE;
     }
   }
-  load_main_file(mrb);
-  choose_game(mrb);
+  mrb_bool error;
+  mrb_value result = mrb_protect(mrb, start_engine, mrb_nil_value(), &error);
+  if (error)
+  {
+    mrb_carbuncle_show_error(mrb, result);
+  }
   mrb_close(mrb);
   PHYSFS_deinit();
   return EXIT_SUCCESS;
