@@ -1,11 +1,12 @@
 import styles from "./styles.module.scss";
 
 import Link from "./link";
+import Image from 'next/image';
 
 function Header() {
   return (
     <header className={styles.header}>
-      <img className={styles.logo} src="/img/logo.svg" alt="Carbuncle Logo" />
+      <Image className={styles.logo} src="/img/logo.svg" alt="Carbuncle Logo" width='auto' height='auto' />
       <div className={styles.container}>
         <h1 className={styles.title}>
           Ca<span>r</span>buncle
