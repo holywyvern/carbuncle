@@ -56,7 +56,7 @@ module Carbuncle
     end
 
     def libraries
-      %w[raylib freetype physfs soloud mbedtls mbedcrypto mbedx509 z xml2 tmx boxer]
+      %w[raylib freetype physfs soloud mbedtls mbedcrypto mbedx509 z xml2 tmx Boxer]
     end
 
     def general_cmake_flags
@@ -226,7 +226,7 @@ module Carbuncle
     end
 
     def boxer_library
-      'libboxer.a'
+      'libBoxer.a'
     end
 
     def all_dependencies
