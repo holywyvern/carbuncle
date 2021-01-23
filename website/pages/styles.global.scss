@@ -1,0 +1,81 @@
+* {
+  --page-color: #9fbbae;
+  --tutorial-color: #d6e7df;
+  --link-color: #155a3b;
+  --panel-color: #3d9970;
+  --text-color: #041f13;
+  --highlight-color: #631a16;
+  --header-color: #022e1a;
+  --keyword-color: #174d80;
+  --string-color: #631a16;
+  --number-color: #631636;
+  --operator-color: #104758;
+  --symbol-color: #101809;
+  --footer-color: #041f13;
+  --footer-text-color: #9fbbae;
+  --padding-xxs: 4px;
+  --padding-xs: 8px;
+  --padding-sm: 12px;
+  --padding-md: 24px;
+  --padding-xl: 32px;
+  --page-width: 600px;
+}
+
+sup {
+  vertical-align: super;
+  font-size: 16px;
+  font-family: "Montserrat", sans-serif;
+}
+
+body {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--page-color);
+  font-family: "Montserrat", sans-serif;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  font-family: "Montserrat", sans-serif;
+}
+
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Raleway", sans-serif;
+}
+
+h1 {
+  font-family: "Fredericka the Great", cursive;
+  font-size: 72px;
+}
+
+h2 {
+  font-family: "Raleway", sans-serif;
+  font-size: 24px;
+}
+
+h3 {
+  font-size: 32px;
+  align-self: flex-start;
+  padding: var(--padding-md) 0;
+}
+
+h4 {
+  font-size: 24px;
+  align-self: flex-start;
+  padding: var(--padding-sm) 0;
+}
+
+pre,
+code {
+  font-family: "Roboto Mono", monospace;
+}
+
+a {
+  color: var(--link-color);
+  font-weight: bold;
+}

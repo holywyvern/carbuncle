@@ -1,0 +1,47 @@
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  max-width: 100px;
+}
+
+.title span {
+  color: var(--highlight-color);
+}
+
+.sup {
+  vertical-align: super;
+  font-size: 16px;
+  font-family: "Montserrat", sans-serif;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.subtitle {
+  display: flex;
+  justify-content: space-between;
+}
+
+.links {
+  display: grid;
+  grid-auto-columns: 1fr;
+  gap: 5px;
+  align-items: center;
+  justify-content: center;
+}
+
+.link {
+  font-weight: bold;
+  text-decoration: none;
+  padding: var(--padding-xxs) var(--padding-xs);
+  border-radius: var(--padding-sm);
+  color: #fafafa;
+  background: var(--link-color);
+  font-size: 12px;
+}

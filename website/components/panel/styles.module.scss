@@ -1,0 +1,78 @@
+.panel {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  grid-template-areas: "tl top tr" "left content right" "bl bottom br";
+}
+
+.tr {
+  grid-area: tr;
+  background: var(--panel-color);
+  border-top-right-radius: 200%;
+}
+
+.bl {
+  grid-area: bl;
+  background: var(--panel-color);
+  width: var(--padding-sm);
+  height: var(--padding-sm);
+  border-bottom-left-radius: 200%;
+}
+
+.contents {
+  grid-area: content;
+  padding: var(--padding-sm);
+  background: var(--panel-color);
+  justify-self: stretch;
+}
+
+.left {
+  grid-area: left;
+  width: var(--padding-sm);
+  border-radius: 100% 0 0 0;
+  background: var(--panel-color);
+}
+
+.right {
+  grid-area: right;
+  width: var(--padding-sm);
+  border-radius: 0 0 100% 0;
+  background: var(--panel-color);
+}
+
+.top {
+  grid-area: top;
+  border-bottom: var(--padding-sm) solid var(--panel-color);
+  border-left: var(--padding-sm) solid transparent;
+  border-top-left-radius: 100%;
+}
+
+.bottom {
+  grid-area: bottom;
+  border-top: var(--padding-sm) solid var(--panel-color);
+  border-right: var(--padding-sm) solid transparent;
+  border-bottom-right-radius: 100%;
+}
+
+.stretch {
+  align-self: stretch;
+}
+
+.panel h3 {
+  font-size: 24px;
+  padding-top: 0;
+  padding-bottom: var(--padding-sm);
+}
+
+.panel h4 {
+  font-size: 16px;
+  padding-bottom: 0.6em;
+}
+
+.panel h1,
+.panel h2,
+.panel h3,
+.panel h4,
+.panel h5,
+.panel h6 {
+  color: var(--header-color);
+}
