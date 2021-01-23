@@ -4,3 +4,4 @@ bin
 build_configs/*.lock
 
 website/node_modules
+website/.next
