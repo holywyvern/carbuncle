@@ -16,6 +16,7 @@ MRuby::CrossBuild.new('web') do |conf|
     '--use-preload-plugins',
     '-s FORCE_FILESYSTEM=1',
     '-s DISABLE_EXCEPTION_CATCHING=0',
+    '-s ALLOW_MEMORY_GROWTH=1',
     '-O3'
   ]
 
