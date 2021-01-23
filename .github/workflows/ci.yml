@@ -119,7 +119,7 @@ jobs:
       # Build mruby
       - name: Build mruby
         run: >
-          EMSCRIPTEN_ROOT_PATH=$EMSCRIPTEN_ROOT_PATH
+          EMSCRIPTEN=$EMSCRIPTEN_ROOT_PATH
           MRUBY_CONFIG=build_configs/emscripten.rb
           rake
 

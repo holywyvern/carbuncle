@@ -37,8 +37,19 @@ module Carbuncle
         ]
       end
 
+      def libraries
+        %w[raylib freetype physfs soloud mbedtls mbedcrypto mbedx509 z xml2 tmx]
+      end
+  
+      
       def toolchain_name
         'emcc'
+      end
+
+      def all_dependencies
+        @all_dependencies ||= [
+          raylib, zlib, freetype, libxml2, tmx, physfs, soloud, ssl, # ws
+        ]
       end
     end
   end
