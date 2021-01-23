@@ -5,7 +5,7 @@ on:
       - main
 jobs:
   build-and-deploy:
-    name: Build Website
+    name: Test Website
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
