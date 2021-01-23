@@ -1,0 +1,18 @@
+.footer {
+  margin-top: var(--padding-md);
+  padding: var(--padding-md) 0;
+  background: var(--footer-color);
+  color: var(--footer-text-color);
+  align-self: stretch;
+  display: flex;
+  justify-content: center;
+}
+
+.content {
+  max-width: var(--page-width);
+  display: flex;
+
+  section {
+    padding: 0 var(--padding-sm);
+  }
+}
