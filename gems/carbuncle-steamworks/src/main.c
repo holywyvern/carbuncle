@@ -70,8 +70,8 @@ open_library(mrb_state *mrb)
 static mrb_value
 steam_load(mrb_state *mrb, mrb_value self)
 {
-  mrb_int app_id;
-  mrb_get_args(mrb, "i", &app_id);
+  mrb_int app_id = 0;
+  mrb_get_args(mrb, "|i", &app_id);
   /* Already loaded, skip */
   if (mrb_carbuncle_steamworks_handle)
   {
@@ -111,7 +111,7 @@ mrb_carbuncle_steamworks_gem_init(mrb_state *mrb)
 {
   struct RClass *steam = mrb_define_module(mrb, "Steamworks");
 
-  mrb_define_module_function(mrb, steam, "load", steam_load, MRB_ARGS_REQ(1));
+  mrb_define_module_function(mrb, steam, "load", steam_load, MRB_ARGS_OPT(1));
   mrb_define_module_function(mrb, steam, "unload", steam_unload, MRB_ARGS_NONE());
 }
 
