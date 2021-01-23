@@ -16,6 +16,11 @@
 #include <mruby/compile.h>
 
 #ifdef __EMSCRIPTEN__
+
+EM_JS(void, mrb_file_carbuncle_console_log, (const char *a, const char *b), {
+  console.log(UTF8ToString(a) + ' ' + UTF8ToString(b));
+});
+
 void
 mrb_carbuncle_fetch_file(mrb_state *mrb, const char *filename)
 {
@@ -27,7 +32,9 @@ mrb_carbuncle_fetch_file(mrb_state *mrb, const char *filename)
   char *endpoint = mrb_alloca(mrb, strlen(host) + strlen(filename) + 1);
   strcpy(endpoint, host);
   strcat(endpoint, filename);
+  mrb_file_carbuncle_console_log("Loading filename", filename);
   emscripten_wget(endpoint, filename);
+  mrb_file_carbuncle_console_log(filename, "was loaded.");
 }
 #endif
 
