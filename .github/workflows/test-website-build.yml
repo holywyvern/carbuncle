@@ -2,7 +2,7 @@ name: Test Website Build
 on:
   pull_request:
     branches:
-      - master
+      - main
 jobs:
   build-and-deploy:
     name: Build Website
