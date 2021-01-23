@@ -1,7 +1,7 @@
 function Image({ src, ...props }) {
   return (
     <img
-      src={`${process.env.basePath}${src}`}
+      src={`${process.env.basePath}/${src}`}
       {...props}
     />
   );
