@@ -1,0 +1,17 @@
+.downloads {
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  gap: var(--padding-xs);
+}
+
+.platform {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  h4 {
+    align-self: stretch;
+    text-align: center;
+  }
+}

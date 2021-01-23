@@ -1,8 +1,11 @@
 import Head from "next/head";
 
 import './reset.global.scss';
-import './styles.global.scss';
+
 import '@fortawesome/fontawesome-svg-core/styles.css';
+import 'highlight.js/styles/vs.css';
+
+import './styles.global.scss';
 
 function CarbuncleApp({ Component, pageProps }) {
   return (

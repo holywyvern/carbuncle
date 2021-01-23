@@ -2,7 +2,7 @@
   --page-color: #9fbbae;
   --tutorial-color: #d6e7df;
   --link-color: #155a3b;
-  --panel-color: #3d9970;
+  --panel-color: #33a170;
   --text-color: #041f13;
   --highlight-color: #631a16;
   --header-color: #022e1a;
@@ -78,4 +78,8 @@ code {
 a {
   color: var(--link-color);
   font-weight: bold;
+}
+
+.hljs.hljs {
+  background: transparent;
 }
