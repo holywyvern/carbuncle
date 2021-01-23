@@ -16,7 +16,7 @@ MRuby::CrossBuild.new('web') do |conf|
     '-s USE_GLFW=3',
     '--use-preload-plugins',
     '-s FORCE_FILESYSTEM=1',
-    '-O3'
+    '-s DISABLE_EXCEPTION_CATCHING=0'
   ]
 
   conf.gembox 'default'
