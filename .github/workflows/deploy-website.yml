@@ -24,5 +24,5 @@ jobs:
         with:
           GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           BRANCH: gh-pages
-          FOLDER: out
+          FOLDER: website/out
           CLEAN: true
