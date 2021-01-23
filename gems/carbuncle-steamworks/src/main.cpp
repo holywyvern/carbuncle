@@ -1,11 +1,11 @@
 #include <mruby.h>
 #include <mruby/error.h>
 
-#include <stdint.h>
 #include <stdbool.h>
 #include <stdlib.h>
 
 #include <carbuncle/core.h>
+#include <carbuncle/steamworks.h>
 
 #ifdef _WIN32
 # include <windows.h>
@@ -27,7 +27,7 @@ typedef void* LibraryFunction;
 static LibraryHandle mrb_carbuncle_steamworks_handle;
 
 static bool (*steamworks_Init)(void);
-static bool (*steamworks_RestartAppIfNecessary)(uint32_t);
+static bool (*steamworks_RestartAppIfNecessary)(uint32);
 static void (*steamworks_Shutdown)(void);
 
 static void
@@ -59,13 +59,17 @@ load_function(mrb_state *mrb, const char *name)
   }
 }
 
+#define LOAD(var, name) var = (decltype(var))load_function(mrb, name)
+
 static void
-open_library(mrb_state *mrb)
+load_functions(mrb_state *mrb)
 {
-  steamworks_RestartAppIfNecessary = load_function(mrb, "SteamAPI_RestartAppIfNecessary");
-  steamworks_Init = load_function(mrb, "SteamAPI_Init");
-  steamworks_Shutdown = load_function(mrb, "SteamAPI_Shutdown");
+  LOAD(steamworks_RestartAppIfNecessary, "SteamAPI_RestartAppIfNecessary");
+  LOAD(steamworks_Init, "SteamAPI_Init");
+  LOAD(steamworks_Shutdown, "SteamAPI_Shutdown");
 }
+
+#undef LOAD
 
 static mrb_value
 steam_load(mrb_state *mrb, mrb_value self)
@@ -106,7 +110,7 @@ steam_unload(mrb_state *mrb, mrb_value self)
   return self;
 }
 
-void
+extern "C" void
 mrb_carbuncle_steamworks_gem_init(mrb_state *mrb)
 {
   struct RClass *steam = mrb_define_module(mrb, "Steamworks");
@@ -115,7 +119,7 @@ mrb_carbuncle_steamworks_gem_init(mrb_state *mrb)
   mrb_define_module_function(mrb, steam, "unload", steam_unload, MRB_ARGS_NONE());
 }
 
-void
+extern "C" void
 mrb_carbuncle_steamworks_gem_final(mrb_state *mrb)
 {
 }
