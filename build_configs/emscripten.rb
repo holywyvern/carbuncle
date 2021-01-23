@@ -12,11 +12,11 @@ MRuby::CrossBuild.new('web') do |conf|
 
   emscripten_flags = [
     '-s ASYNCIFY=1',
-    '-s WASM=0',
     '-s USE_GLFW=3',
     '--use-preload-plugins',
     '-s FORCE_FILESYSTEM=1',
-    '-s DISABLE_EXCEPTION_CATCHING=0'
+    '-s DISABLE_EXCEPTION_CATCHING=0',
+    '-O3'
   ]
 
   conf.gembox 'default'
