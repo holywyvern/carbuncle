@@ -119,3 +119,29 @@ jobs:
           MRUBY_CONFIG=build_configs/emscripten.rb
           rake
 
+  macos_build:
+    name: Mac OS X Build
+    runs-on: macos-latest
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: |
+          brew install ruby bison
+          brew link bison --force
+
+      # Installs gems
+      - name: Install all gems
+        run: gem install rubyzip rake
+
+      # Build mruby
+      - name: Build mruby
+        run: >
+          MRUBY_CONFIG=build_configs/clang.rb
+          rake
+
+      # Test mruby
+      - name: Test
+        run: >
+          MRUBY_CONFIG=build_configs/clang.rb
+          rake test
