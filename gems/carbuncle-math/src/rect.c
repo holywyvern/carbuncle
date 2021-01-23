@@ -14,7 +14,7 @@ validate_size(mrb_state *mrb, const char *name, mrb_float value)
 {
   if (value < 0)
   {
-    mrb_raisef(mrb, "rect %s must be a positive number.", name);
+    mrb_raisef(mrb, E_ARGUMENT_ERROR, "rect %s must be a positive number.", name);
   }
 }
 
