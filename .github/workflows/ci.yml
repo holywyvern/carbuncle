@@ -119,9 +119,11 @@ jobs:
           MRUBY_CONFIG=build_configs/emscripten.rb
           rake
 
+  # Build on Mac OSX
   macos_build:
     name: Mac OS X Build
     runs-on: macos-latest
+    steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
