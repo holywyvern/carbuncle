@@ -112,16 +112,10 @@ jobs:
       - name: Install all gems
         run: gem install rubyzip
 
-      # Setup Environment
-      - name: Setup ENV
-        run: |
-          set EMSCRIPTEN=$(dirname "$(which emcc)")
-          echo $EMSCRIPTEN
-
       # Build mruby
       - name: Build mruby
         run: >
-          EMSCRIPTEN=$EMSCRIPTEN
+          EMSCRIPTEN=$(dirname "$(which emcc)")
           MRUBY_CONFIG=build_configs/emscripten.rb
           rake
 
