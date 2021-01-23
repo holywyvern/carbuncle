@@ -97,9 +97,14 @@ jobs:
       - uses: jwlawson/actions-setup-cmake@v1.6
         with:
           cmake-version: '3.16.x'
-      - uses: lovasoa/setup-emscripten@master
+      - uses: mymindstorm/setup-emsdk@v7
         with:
-          emscripten-version: '1.38.47'
+          version: 1.38.40
+          actions-cache-folder: 'emsdk-cache'
+
+      # Verify Emscripted Install
+      - name: Verify
+        run: emcc -v
 
       # Installs gems
       - name: Install all gems
