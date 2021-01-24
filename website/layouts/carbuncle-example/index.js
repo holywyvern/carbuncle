@@ -51,7 +51,7 @@ function CarbuncleExample({ id }) {
     <ExamplesLayout>
       <div className={styles.wrapper}>
         <div className={styles.frame}>
-          <iframe src={`/data/examples${id}/mruby-carbuncle.html`} width="640" height="480" frameBorder="0" />
+          <iframe src={`${process.env.basePath}/data/examples${id}/mruby-carbuncle.html`} width="640" height="480" frameBorder="0" />
         </div>
         {showCode && (
           <div className={styles.code}>
