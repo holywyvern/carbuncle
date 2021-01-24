@@ -19,7 +19,8 @@ MRuby::CrossBuild.new('web') do |conf|
     '-s FORCE_FILESYSTEM=1',
     '-s DISABLE_EXCEPTION_CATCHING=0',
     '-s ALLOW_MEMORY_GROWTH=1',
-    '-O3'
+    '-O3',
+    "--shell-file #{File.join(__dir__, 'utils', 'emscripten_shell.html')}"
   ]
 
   conf.gembox 'default'
