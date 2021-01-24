@@ -13,6 +13,8 @@ MRuby::CrossBuild.new('web') do |conf|
   emscripten_flags = [
     '-s ASYNCIFY=1',
     '-s USE_GLFW=3',
+    '-s USE_SDL=2',
+    '-s USE_SDL_MIXER=2',
     '--use-preload-plugins',
     '-s FORCE_FILESYSTEM=1',
     '-s DISABLE_EXCEPTION_CATCHING=0',

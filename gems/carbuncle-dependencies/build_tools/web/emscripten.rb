@@ -33,7 +33,7 @@ module Carbuncle
       def soloud_cmake_flags
         [
           '-DSOLOUD_BACKEND_SDL2=OFF',
-          '-SOLOUD_BACKEND_OPENSLES=ON'
+          '-DSOLOUD_BACKEND_NULL=ON'
         ]
       end
 
