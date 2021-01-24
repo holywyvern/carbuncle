@@ -8,6 +8,7 @@ import Link from "next/link";
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
 import styles from './styles.module.scss';
+import Image from "../../components/image";
 
 function Item({ label, to }) {
   const router = useRouter();
@@ -46,7 +47,7 @@ function MenuGroup({ label, children }) {
         <MenuButton onClick={onToggle} visible={visible} />
       </div>
       {visible && (
-        <ul className={styles.item}>
+        <ul className={styles.items}>
           {children}
         </ul>
       )}
@@ -54,9 +55,25 @@ function MenuGroup({ label, children }) {
   ) 
 }
 
+function Header() {
+  return (
+    <>
+      <header className={styles.header}>
+        <Image src="/img/logo.svg" className={styles.logo} />
+        <div>
+          <h1>Ca<span className={styles.hightlight}>r</span>buncle</h1>
+          <h2>Examples</h2>
+        </div>
+      </header>
+      <hr />
+    </>
+  )
+}
+
 function ExampleList() {
   return (
     <nav className={styles.menu}>
+      <Header />
       <MenuGroup label="Core examples">
         <Item
           to="/core/hello_world"

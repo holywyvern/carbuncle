@@ -48,3 +48,42 @@
     color: var(--link-color);
   }
 }
+
+.header {
+  display: flex;
+  justify-content: center;
+
+  padding: var(--padding-xs) var(--padding-sm);
+
+  h1 {
+    font-size: 24px;
+  }
+
+  h2 {
+    font-size: 18px;
+  }
+}
+
+.logo {
+  max-width: 40px;
+}
+
+.items {
+  display: flex;
+  flex-direction: column;
+
+  li {
+    display: flex;
+  }
+}
+
+.link {
+  width: 100%;
+  padding: var(--padding-sm);
+  border-radius: var(--padding-sm);
+}
+
+.active {
+  color: var(--tutorial-color);
+  background: var(--footer-color);
+}

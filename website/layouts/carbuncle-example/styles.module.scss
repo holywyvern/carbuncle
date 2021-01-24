@@ -35,7 +35,9 @@
 }
 
 .button {
-  background: transparent;
+  background: var(--footer-color);
+  padding: var(--padding-sm);
+  border-radius: var(--padding-sm);
   color: var(--tutorial-color);
   border: 0;
   position: absolute;
