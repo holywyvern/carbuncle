@@ -2,10 +2,14 @@ import cx from "classnames";
 
 import styles from "./styles.module.scss";
 
-function Panel({ children, stretch }) {
+function Panel({ children, stretch, noOverflow }) {
   const className = cx({
     [styles.panel]: true,
     [styles.stretch]: stretch,
+  })
+  const contentClassNames = cx({
+    [styles.contents]: true,
+    [styles['no-overflow']]: noOverflow
   })
   return (
     <div className={className}>
@@ -15,7 +19,7 @@ function Panel({ children, stretch }) {
       <div className={styles.right} />
       <div className={styles.top} />
       <div className={styles.bottom} />
-      <div className={styles.contents}>
+      <div className={contentClassNames}>
         {children}
       </div>
     </div>

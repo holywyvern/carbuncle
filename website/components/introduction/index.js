@@ -1,6 +1,8 @@
+import styles from "./styles.module.scss";
+
 function Introduction() {
   return (
-    <section>
+    <section className={styles.intro}>
       <p>
         A Game library build with&nbsp;
         <a href="https://mruby.org/" target="_blank">

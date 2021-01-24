@@ -10,10 +10,12 @@ function Example({ title, children }) {
       <header>
         <h4>{title}</h4>
       </header>
-      <Panel stretch>
-        <SyntaxHighlighter language="ruby">
-          {children}
-        </SyntaxHighlighter>
+      <Panel stretch noOverflow>
+        <div className={styles.panel}>
+          <SyntaxHighlighter language="ruby">
+            {children}
+          </SyntaxHighlighter>
+        </div>
       </Panel>
     </section>
   )
