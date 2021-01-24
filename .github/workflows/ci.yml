@@ -101,7 +101,7 @@ jobs:
           cmake-version: '3.16.x'
       - uses: mymindstorm/setup-emsdk@v7
         with:
-          version: 1.38.40
+          version: 2.0.12
           actions-cache-folder: 'emsdk-cache'
 
       # Verify Emscripted Install
