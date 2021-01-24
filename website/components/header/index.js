@@ -16,6 +16,7 @@ function Header() {
           <h2>Game Engine</h2>
           <div className={styles.links}>
             <Link to="https://github.com/holywyvern/carbuncle">Source</Link>
+            <Link to="/examples">Examples</Link>
           </div>
         </div>
       </div>

@@ -18,6 +18,7 @@ function CarbuncleApp({ Component, pageProps }) {
         <link
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
         />
+        <link rel="shortcut icon" href="https://holywyvern.github.io/carbuncle/favicon.ico" />
       </Head>
       <Component {...pageProps} />
     </>

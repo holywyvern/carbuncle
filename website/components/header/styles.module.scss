@@ -30,7 +30,7 @@
 
 .links {
   display: grid;
-  grid-auto-columns: 1fr;
+  grid-template-columns: repeat(2, auto);
   gap: 5px;
   align-items: center;
   justify-content: center;
