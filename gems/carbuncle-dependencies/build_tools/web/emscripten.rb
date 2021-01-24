@@ -32,8 +32,9 @@ module Carbuncle
 
       def soloud_cmake_flags
         [
-          '-DSOLOUD_BACKEND_SDL2=OFF',
-          '-SOLOUD_BACKEND_OPENSLES=ON'
+          '-DSOLOUD_BACKEND_SDL2=ON',
+          "-DSDL2_INCLUDE_DIR=#{ENV['EMSCRIPTEN']}/cache/include",
+          "-DSDL2_LIBRARY=#{ENV['EMSCRIPTEN']}/cache/ports-builds/libSDL2.a"
         ]
       end
 

@@ -1,6 +1,10 @@
 #include "carbuncle/core.h"
 #include "carbuncle/filesystem.h"
 
+#ifdef __EMSCRIPTEN__
+#include <emscripten/emscripten.h>
+#endif
+
 #include "physfs.h"
 
 #include <string.h>
@@ -10,6 +14,29 @@
 #include <mruby/error.h>
 #include <mruby/string.h>
 #include <mruby/compile.h>
+
+#ifdef __EMSCRIPTEN__
+
+EM_JS(void, mrb_file_carbuncle_console_log, (const char *a, const char *b), {
+  console.log(UTF8ToString(a) + ' ' + UTF8ToString(b));
+});
+
+void
+mrb_carbuncle_fetch_file(mrb_state *mrb, const char *filename)
+{
+  if (PHYSFS_exists(filename))
+  {
+    return;
+  }
+  char *host = emscripten_run_script_string("/.*(?=\\/\\w*)/.exec(window.location.href).join() + '/'");
+  char *endpoint = mrb_alloca(mrb, strlen(host) + strlen(filename) + 1);
+  strcpy(endpoint, host);
+  strcat(endpoint, filename);
+  mrb_file_carbuncle_console_log("Loading filename", filename);
+  emscripten_wget(endpoint, filename);
+  mrb_file_carbuncle_console_log(filename, "was loaded.");
+}
+#endif
 
 #include "external/stb_image.h"
 
@@ -23,14 +50,24 @@ get_class_by_code(mrb_state *mrb, PHYSFS_ErrorCode code)
 {
   switch (code)
   {
-    case PHYSFS_ERR_OUT_OF_MEMORY: return mrb_class_get(mrb, "NoMemoryError");
-    case PHYSFS_ERR_NOT_INITIALIZED: return mrb_carbuncle_class_get(mrb, "FilesystemNotInitialized");
-    case PHYSFS_ERR_IS_INITIALIZED: return mrb_carbuncle_class_get(mrb, "FilesystemNotInitialized");
-    case PHYSFS_ERR_ARGV0_IS_NULL: return mrb_carbuncle_class_get(mrb, "FilesystemNotInitialized");
-    case PHYSFS_ERR_UNSUPPORTED: return E_NOTIMP_ERROR;
-    case PHYSFS_ERR_NOT_FOUND: return mrb_carbuncle_class_get(mrb, "FileNotExists");
-    case PHYSFS_ERR_NOT_A_FILE: return mrb_carbuncle_class_get(mrb, "NotAFile");
-    default: { break; }
+  case PHYSFS_ERR_OUT_OF_MEMORY:
+    return mrb_class_get(mrb, "NoMemoryError");
+  case PHYSFS_ERR_NOT_INITIALIZED:
+    return mrb_carbuncle_class_get(mrb, "FilesystemNotInitialized");
+  case PHYSFS_ERR_IS_INITIALIZED:
+    return mrb_carbuncle_class_get(mrb, "FilesystemNotInitialized");
+  case PHYSFS_ERR_ARGV0_IS_NULL:
+    return mrb_carbuncle_class_get(mrb, "FilesystemNotInitialized");
+  case PHYSFS_ERR_UNSUPPORTED:
+    return E_NOTIMP_ERROR;
+  case PHYSFS_ERR_NOT_FOUND:
+    return mrb_carbuncle_class_get(mrb, "FileNotExists");
+  case PHYSFS_ERR_NOT_A_FILE:
+    return mrb_carbuncle_class_get(mrb, "NotAFile");
+  default:
+  {
+    break;
+  }
   }
   return mrb_carbuncle_class_get(mrb, "FileError");
 }
@@ -48,13 +85,15 @@ mrb_file_free(mrb_state *mrb, void *ptr)
   if (ptr)
   {
     PHYSFS_File *file = ptr;
-    if (!PHYSFS_close(file)) { raise_physfs_error(mrb, "close"); }
+    if (!PHYSFS_close(file))
+    {
+      raise_physfs_error(mrb, "close");
+    }
   }
 }
 
 static const struct mrb_data_type file_data_type = {
-  "Carbuncle::File", mrb_file_free
-};
+    "Carbuncle::File", mrb_file_free};
 
 static PHYSFS_File *
 get_file(mrb_state *mrb, mrb_value self)
@@ -80,6 +119,9 @@ mrb_file_initialize(mrb_state *mrb, mrb_value self)
   }
   if (!strcmp(mode, "r"))
   {
+#ifdef __EMSCRIPTEN__
+    mrb_carbuncle_fetch_file(mrb, file);
+#endif    
     ptr = PHYSFS_openRead(file);
   }
   else if (!strcmp(mode, "w+"))
@@ -109,7 +151,7 @@ mrb_file_initialize(mrb_state *mrb, mrb_value self)
   {
     mrb_value error;
     mrb_bool raised;
-    mrb_value values[2] = { self, block };
+    mrb_value values[2] = {self, block};
     error = mrb_protect(mrb, mrb_file_run_block, mrb_ary_new_from_values(mrb, 2, values), &raised);
     if (!PHYSFS_flush(ptr))
     {
@@ -182,7 +224,10 @@ static mrb_value
 mrb_s_file_get_write_dir(mrb_state *mrb, mrb_value self)
 {
   const char *dir = PHYSFS_getWriteDir();
-  if (!dir) { return mrb_nil_value(); }
+  if (!dir)
+  {
+    return mrb_nil_value();
+  }
   return mrb_str_new_cstr(mrb, dir);
 }
 
@@ -235,6 +280,9 @@ mrb_s_file_existsQ(mrb_state *mrb, mrb_value self)
 {
   const char *path;
   mrb_get_args(mrb, "z", &path);
+#ifdef __EMSCRIPTEN__
+  mrb_carbuncle_fetch_file(mrb, path);
+#endif   
   return mrb_bool_value(PHYSFS_exists(path));
 }
 
@@ -244,6 +292,9 @@ mrb_s_file_directoryQ(mrb_state *mrb, mrb_value self)
   PHYSFS_Stat stat;
   const char *path;
   mrb_get_args(mrb, "z", &path);
+#ifdef __EMSCRIPTEN__
+  mrb_carbuncle_fetch_file(mrb, path);
+#endif
   PHYSFS_stat(path, &stat);
   return mrb_bool_value(stat.filetype == PHYSFS_FILETYPE_DIRECTORY);
 }
@@ -254,6 +305,9 @@ mrb_s_file_linkQ(mrb_state *mrb, mrb_value self)
   PHYSFS_Stat stat;
   const char *path;
   mrb_get_args(mrb, "z", &path);
+#ifdef __EMSCRIPTEN__
+  mrb_carbuncle_fetch_file(mrb, path);
+#endif
   PHYSFS_stat(path, &stat);
   return mrb_bool_value(stat.filetype == PHYSFS_FILETYPE_SYMLINK);
 }
@@ -264,6 +318,9 @@ mrb_s_file_fileQ(mrb_state *mrb, mrb_value self)
   PHYSFS_Stat stat;
   const char *path;
   mrb_get_args(mrb, "z", &path);
+#ifdef __EMSCRIPTEN__
+  mrb_carbuncle_fetch_file(mrb, path);
+#endif  
   PHYSFS_stat(path, &stat);
   return mrb_bool_value(stat.filetype == PHYSFS_FILETYPE_REGULAR);
 }
@@ -281,7 +338,10 @@ mrb_file_seek(mrb_state *mrb, mrb_value self)
   mrb_int position;
   PHYSFS_File *file = get_file(mrb, self);
   mrb_get_args(mrb, "i", &position);
-  if (!PHYSFS_seek(file, position)) { raise_physfs_error(mrb, "seek"); }
+  if (!PHYSFS_seek(file, position))
+  {
+    raise_physfs_error(mrb, "seek");
+  }
   return self;
 }
 
@@ -290,7 +350,10 @@ mrb_file_tell(mrb_state *mrb, mrb_value self)
 {
   PHYSFS_File *file = get_file(mrb, self);
   mrb_int pos = PHYSFS_tell(file);
-  if (pos == -1) { raise_physfs_error(mrb, "tell"); }
+  if (pos == -1)
+  {
+    raise_physfs_error(mrb, "tell");
+  }
   return mrb_fixnum_value(pos);
 }
 
@@ -298,7 +361,10 @@ static mrb_value
 mrb_file_flush(mrb_state *mrb, mrb_value self)
 {
   PHYSFS_File *file = get_file(mrb, self);
-  if (!PHYSFS_flush(file)) { raise_physfs_error(mrb, "flush"); }
+  if (!PHYSFS_flush(file))
+  {
+    raise_physfs_error(mrb, "flush");
+  }
   return self;
 }
 
@@ -320,7 +386,10 @@ read_byte(mrb_state *mrb, PHYSFS_File *file, void *buffer, void *str)
 {
   if (PHYSFS_readBytes(file, buffer, 1) == -1)
   {
-    if (str) { mrb_free(mrb, str); }
+    if (str)
+    {
+      mrb_free(mrb, str);
+    }
     raise_physfs_error(mrb, "read");
   }
 }
@@ -332,7 +401,10 @@ read_line(mrb_state *mrb, PHYSFS_File *file, const char *sep)
   char *str;
   mrb_bool loop;
   size_t sep_len, size = 0, capa = 7;
-  if (PHYSFS_eof(file)) { return mrb_nil_value(); }
+  if (PHYSFS_eof(file))
+  {
+    return mrb_nil_value();
+  }
   sep_len = strlen(sep);
   str = mrb_malloc(mrb, capa * sizeof *str);
   loop = true;
@@ -363,7 +435,10 @@ read_line(mrb_state *mrb, PHYSFS_File *file, const char *sep)
     {
       str = append_to_string(mrb, str, &size, &capa, buffer, 1);
     }
-    if (PHYSFS_eof(file)) { loop = FALSE; }
+    if (PHYSFS_eof(file))
+    {
+      loop = FALSE;
+    }
   }
   result = mrb_str_new(mrb, str, size);
   mrb_free(mrb, str);
@@ -390,16 +465,28 @@ mrb_file_read(mrb_state *mrb, mrb_value self)
   if (limit <= 0)
   {
     len = PHYSFS_fileLength(file);
-    if (len == -1) { raise_physfs_error(mrb, "read"); }
+    if (len == -1)
+    {
+      raise_physfs_error(mrb, "read");
+    }
     pos = PHYSFS_tell(file);
-    if (pos == -1) { raise_physfs_error(mrb, "read"); }
+    if (pos == -1)
+    {
+      raise_physfs_error(mrb, "read");
+    }
     limit = len - pos;
   }
-  if (limit <= 0) { return mrb_nil_value(); }
+  if (limit <= 0)
+  {
+    return mrb_nil_value();
+  }
   {
     char *buffer[limit];
     len = PHYSFS_readBytes(file, buffer, limit);
-    if (len < 0) { raise_physfs_error(mrb, "read"); }
+    if (len < 0)
+    {
+      raise_physfs_error(mrb, "read");
+    }
     return mrb_str_new(mrb, buffer, len);
   }
 }
@@ -447,6 +534,9 @@ mrb_s_file_load(mrb_state *mrb, mrb_value self)
   PHYSFS_File *file;
   mrb_value result;
   mrb_get_args(mrb, "z", &name);
+#ifdef __EMSCRIPTEN__
+  mrb_carbuncle_check_file(mrb, name);
+#endif
   file = PHYSFS_openRead(name);
   result = self;
   if (!file)
@@ -490,15 +580,14 @@ mrb_s_file_load(mrb_state *mrb, mrb_value self)
   return result;
 }
 
-void
-mrb_init_carbuncle_filesystem(mrb_state *mrb)
+void mrb_init_carbuncle_filesystem(mrb_state *mrb)
 {
   struct RClass *carbuncle = mrb_carbuncle_get(mrb);
 
   struct RClass *file = mrb_define_class_under(mrb, carbuncle, "File", mrb->object_class);
   MRB_SET_INSTANCE_TT(file, MRB_TT_DATA);
 
-  mrb_define_method(mrb, file, "initialize", mrb_file_initialize, MRB_ARGS_REQ(1)|MRB_ARGS_OPT(1)|MRB_ARGS_BLOCK());
+  mrb_define_method(mrb, file, "initialize", mrb_file_initialize, MRB_ARGS_REQ(1) | MRB_ARGS_OPT(1) | MRB_ARGS_BLOCK());
 
   mrb_define_method(mrb, file, "closed?", mrb_file_closedQ, MRB_ARGS_NONE());
   mrb_define_method(mrb, file, "eof?", mrb_file_eofQ, MRB_ARGS_NONE());
@@ -515,10 +604,10 @@ mrb_init_carbuncle_filesystem(mrb_state *mrb)
 
   mrb_define_method(mrb, file, "readline", mrb_file_readline, MRB_ARGS_OPT(1));
 
-  mrb_define_method(mrb, file, "read",  mrb_file_read,  MRB_ARGS_OPT(1));
+  mrb_define_method(mrb, file, "read", mrb_file_read, MRB_ARGS_OPT(1));
   mrb_define_method(mrb, file, "write", mrb_file_write, MRB_ARGS_REQ(1));
 
-  mrb_define_class_method(mrb, file, "open", mrb_s_file_open, MRB_ARGS_REQ(1)|MRB_ARGS_OPT(1)|MRB_ARGS_BLOCK());
+  mrb_define_class_method(mrb, file, "open", mrb_s_file_open, MRB_ARGS_REQ(1) | MRB_ARGS_OPT(1) | MRB_ARGS_BLOCK());
   mrb_define_class_method(mrb, file, "join", mrb_s_file_join, MRB_ARGS_ANY());
 
   mrb_define_class_method(mrb, file, "pwd", mrb_s_file_get_pwd, MRB_ARGS_NONE());
@@ -537,7 +626,7 @@ mrb_init_carbuncle_filesystem(mrb_state *mrb)
   mrb_define_class_method(mrb, file, "absolute_path_for", mrb_s_file_absolute_path, MRB_ARGS_REQ(1));
   mrb_define_class_method(mrb, file, "absolute_path_of", mrb_s_file_absolute_path, MRB_ARGS_REQ(1));
   mrb_define_class_method(mrb, file, "absolute_path", mrb_s_file_absolute_path, MRB_ARGS_REQ(1));
-   mrb_define_class_method(mrb, file, "expand_path", mrb_s_file_expand_path, MRB_ARGS_REQ(1));
+  mrb_define_class_method(mrb, file, "expand_path", mrb_s_file_expand_path, MRB_ARGS_REQ(1));
 
   mrb_define_class_method(mrb, file, "exists?", mrb_s_file_existsQ, MRB_ARGS_REQ(1));
   mrb_define_class_method(mrb, file, "exist?", mrb_s_file_existsQ, MRB_ARGS_REQ(1));
@@ -549,7 +638,7 @@ mrb_init_carbuncle_filesystem(mrb_state *mrb)
   mrb_define_class_method(mrb, file, "symlink?", mrb_s_file_linkQ, MRB_ARGS_REQ(1));
   mrb_define_class_method(mrb, file, "file?", mrb_s_file_fileQ, MRB_ARGS_REQ(1));
 
-  mrb_define_class_method(mrb, file, "mount", mrb_s_file_mount, MRB_ARGS_REQ(1)|MRB_ARGS_OPT(2));
+  mrb_define_class_method(mrb, file, "mount", mrb_s_file_mount, MRB_ARGS_REQ(1) | MRB_ARGS_OPT(2));
 
   mrb_define_class_method(mrb, file, "delete", mrb_s_file_delete, MRB_ARGS_REQ(1));
 
@@ -564,10 +653,21 @@ mrb_carbuncle_load_file(mrb_state *mrb, const char *filename, size_t *size)
 {
   char *result;
   PHYSFS_File *file;
+#ifdef __EMSCRIPTEN__
+  mrb_carbuncle_fetch_file(mrb, filename);
+#endif  
   file = PHYSFS_openRead(filename);
-  if (!file) { { raise_physfs_error(mrb, "open"); } }
+  if (!file)
+  {
+    {
+      raise_physfs_error(mrb, "open");
+    }
+  }
   *size = PHYSFS_fileLength(file);
-  if (*size == -1) { raise_physfs_error(mrb, "read"); }
+  if (*size == -1)
+  {
+    raise_physfs_error(mrb, "read");
+  }
   result = mrb_malloc(mrb, (*size) * sizeof *result);
   if (PHYSFS_readBytes(file, result, *size) == -1)
   {
@@ -585,31 +685,32 @@ mrb_carbuncle_load_file(mrb_state *mrb, const char *filename, size_t *size)
 static inline mrb_bool
 is_image_extension(const char *filename)
 {
-  return
-    IsFileExtension(filename, ".png") ||
-    IsFileExtension(filename, ".bmp") ||
-    IsFileExtension(filename, ".tga") ||
-    IsFileExtension(filename, ".jpg") ||
-    IsFileExtension(filename, ".gif") ||
-    IsFileExtension(filename, ".pic") ||
-    IsFileExtension(filename, ".psd")
-  ;
+  return IsFileExtension(filename, ".png") ||
+         IsFileExtension(filename, ".bmp") ||
+         IsFileExtension(filename, ".tga") ||
+         IsFileExtension(filename, ".jpg") ||
+         IsFileExtension(filename, ".gif") ||
+         IsFileExtension(filename, ".pic") ||
+         IsFileExtension(filename, ".psd");
 }
 
 char *
-mrb_carbuncle_load_file_text(mrb_state *mrb, const char *filename) {
+mrb_carbuncle_load_file_text(mrb_state *mrb, const char *filename)
+{
   size_t byte_size;
   char *bytes;
+#ifdef __EMSCRIPTEN__
+  mrb_carbuncle_fetch_file(mrb, filename);
+#endif
   mrb_carbuncle_load_file(mrb, filename, &byte_size);
   bytes = mrb_realloc(mrb, bytes, byte_size + 1);
   bytes[byte_size] = '\0';
   return bytes;
 }
 
-Image
-LoadCarbuncleImage(mrb_state *mrb, const char *filename)
+Image LoadCarbuncleImage(mrb_state *mrb, const char *filename)
 {
-  Image image = { 0 };
+  Image image = {0};
 
   if (is_image_extension(filename))
   {
@@ -622,10 +723,14 @@ LoadCarbuncleImage(mrb_state *mrb, const char *filename)
     mrb_free(mrb, bytes);
     image.mipmaps = 1;
 
-    if (imgBpp == 1) image.format = UNCOMPRESSED_GRAYSCALE;
-    else if (imgBpp == 2) image.format = UNCOMPRESSED_GRAY_ALPHA;
-    else if (imgBpp == 3) image.format = UNCOMPRESSED_R8G8B8;
-    else if (imgBpp == 4) image.format = UNCOMPRESSED_R8G8B8A8;
+    if (imgBpp == 1)
+      image.format = UNCOMPRESSED_GRAYSCALE;
+    else if (imgBpp == 2)
+      image.format = UNCOMPRESSED_GRAY_ALPHA;
+    else if (imgBpp == 3)
+      image.format = UNCOMPRESSED_R8G8B8;
+    else if (imgBpp == 4)
+      image.format = UNCOMPRESSED_R8G8B8A8;
     else
     {
       UnloadImage(image);
@@ -642,9 +747,12 @@ LoadCarbuncleImage(mrb_state *mrb, const char *filename)
     mrb_free(mrb, bytes);
     image.mipmaps = 1;
 
-    if (imgBpp == 1) image.format = UNCOMPRESSED_R32;
-    else if (imgBpp == 3) image.format = UNCOMPRESSED_R32G32B32;
-    else if (imgBpp == 4) image.format = UNCOMPRESSED_R32G32B32A32;
+    if (imgBpp == 1)
+      image.format = UNCOMPRESSED_R32;
+    else if (imgBpp == 3)
+      image.format = UNCOMPRESSED_R32G32B32;
+    else if (imgBpp == 4)
+      image.format = UNCOMPRESSED_R32G32B32A32;
     else
     {
       UnloadImage(image);
@@ -667,8 +775,7 @@ LoadCarbuncleTexture(mrb_state *mrb, const char *filename)
   return texture;
 }
 
-void
-mrb_carbuncle_file_error(mrb_state *mrb, const char *action)
+void mrb_carbuncle_file_error(mrb_state *mrb, const char *action)
 {
   raise_physfs_error(mrb, action);
 }

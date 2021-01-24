@@ -50,6 +50,9 @@ mrb_check_disposed(mrb_state *mrb, mrb_value obj, const struct mrb_data_type *ty
 void
 mrb_carbuncle_check_file(mrb_state *mrb, const char *filename)
 {
+#ifdef __EMSCRIPTEN__
+  mrb_carbuncle_fetch_file(mrb, filename);
+#endif  
   if (!PHYSFS_exists(filename))
   {
     struct RClass *file_not_exists = mrb_carbuncle_class_get(mrb, "FileNotExists");

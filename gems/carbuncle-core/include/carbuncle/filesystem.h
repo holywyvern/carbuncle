@@ -24,6 +24,13 @@ LoadCarbuncleImage(mrb_state *mrb, const char *filename);
 Texture
 LoadCarbuncleTexture(mrb_state *mrb, const char *filename);
 
+#ifdef __EMSCRIPTEN__
+
+void
+mrb_carbuncle_fetch_file(mrb_state *mrb, const char *filename);
+
+#endif
+
 #ifdef __cplusplus
 }
 #endif

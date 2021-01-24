@@ -34,6 +34,11 @@ mrb_check_disposed(mrb_state *mrb, mrb_value obj, const struct mrb_data_type *ty
 void
 mrb_carbuncle_check_file(mrb_state *mrb, const char *filename);
 
+#ifdef __EMSCRIPTEN__
+void
+mrb_carbuncle_fetch_file(mrb_state *mrb, const char *filename);
+#endif
+
 struct RClass *
 mrb_carbuncle_class_get(mrb_state *mrb, const char *name);
 

@@ -19,19 +19,17 @@
 const char *MAIN_FILENAME = "main.rb";
 
 const char *NO_CARBUNCLE_GAME_MSG =
-  "No game was found. To add a game define your extension of the Carbuncle::Game class:\n"
-  "\n"
-  "  class MyGame < Carbuncle::Game\n"
-  "    # ... your game code ...\n"
-  "  end\n"
-  "\n"
-  "after that, Carbuncle will pick it automatically."
-;
+    "No game was found. To add a game define your extension of the Carbuncle::Game class:\n"
+    "\n"
+    "  class MyGame < Carbuncle::Game\n"
+    "    # ... your game code ...\n"
+    "  end\n"
+    "\n"
+    "after that, Carbuncle will pick it automatically.";
 
 const char *MULTIPLE_GAME_MSG =
-  "Multiple games where found.\n"
-  "The current Carbuncle version only supports one game.\n"
-;
+    "Multiple games where found.\n"
+    "The current Carbuncle version only supports one game.\n";
 
 const char *NO_MAIN_FILE_MSG = "Cannot load file main.rb, it wasn't found.";
 
@@ -44,7 +42,7 @@ wait_for_close()
 {
   char key[1];
   puts("Press any key to continue...");
-  fgets(key, 1, stdin);  
+  fgets(key, 1, stdin);
   exit(EXIT_FAILURE);
 }
 
@@ -87,6 +85,9 @@ load_main_file(mrb_state *mrb)
   const char *str;
   struct mrbc_context *ctx;
   mrb_value result;
+#ifdef __EMSCRIPTEN__
+  mrb_carbuncle_fetch_file(mrb, MAIN_FILENAME);
+#endif
   str = mrb_carbuncle_load_file(mrb, MAIN_FILENAME, &length);
   ctx = mrbc_context_new(mrb);
   ctx->filename = (char *)MAIN_FILENAME;
@@ -126,8 +127,7 @@ start_engine(mrb_state *mrb, mrb_value self)
   return self;
 }
 
-int
-main(int argc, char **argv)
+int main(int argc, char **argv)
 {
   mrb_state *mrb = mrb_open();
   if (!PHYSFS_init(argv[0]))
@@ -137,7 +137,8 @@ main(int argc, char **argv)
     mrb_carbuncle_show_fatal("File system error", "Failed to initialize filesystem");
     return EXIT_FAILURE;
   }
-  if (argv[0]) {
+  if (argv[0])
+  {
     set_working_directory(mrb, argv[0]);
     PHYSFS_mount(argv[0], NULL, 0); /* Check if itself is a zip file */
   }

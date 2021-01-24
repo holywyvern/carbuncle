@@ -16,6 +16,8 @@
     "tuple": "c",
     "utility": "c",
     "xmemory0": "c",
-    "xtr1common": "c"
+    "xtr1common": "c",
+    "*.def": "cpp",
+    "typeinfo": "cpp"
   }
 }
