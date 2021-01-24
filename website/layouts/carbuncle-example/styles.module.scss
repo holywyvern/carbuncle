@@ -1,0 +1,49 @@
+.frame {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+
+  iframe {
+    width: 640px;
+    height: 480px;
+    overflow: hidden;
+  }
+}
+
+.code {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  overflow: auto;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.wrapper {
+  position: relative;
+  flex: 1;
+}
+
+.button {
+  background: transparent;
+  color: var(--tutorial-color);
+  border: 0;
+  position: absolute;
+  bottom: var(--padding-sm);
+  left: var(--padding-sm);
+  z-index: 200;
+
+  &:active, &:hover {
+    outline: 0;
+  }
+}
