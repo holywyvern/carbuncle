@@ -44,7 +44,7 @@ class TestGame < Carbuncle::Game
   end
 
   def load_player
-    @player = Player.new
+    @player = Game::Player.new
     @player.position.set(
       screen.width / 2,
       @text.position.y + @text.height + @player.height

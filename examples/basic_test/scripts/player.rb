@@ -1,4 +1,4 @@
-class Player < Carbuncle::Sprite
+class Game::Player < Carbuncle::Sprite
   attr_reader :frame, :pose, :frame_width, :frame_height, :animation_step
 
   def initialize
