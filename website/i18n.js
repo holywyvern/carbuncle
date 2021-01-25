@@ -9,9 +9,6 @@ module.exports = new NextI18Next({
   otherLanguages: ['es'],
   localeSubpaths,
   localePath: path.resolve('./public/static/locales'),
-  saveMissingTo: "current",
-  fallbackLng: process.NODE_ENV !== 'production' ? false : 'en',
-  saveMissing: process.NODE_ENV !== 'production',
   detection: {
     order: ['querystring', 'localStorage', 'cookie', 'navigator', 'htmlTag'],
   },
