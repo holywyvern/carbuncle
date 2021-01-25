@@ -27,6 +27,7 @@
   justify-content: center;
   align-items: center;
   background: rgba(0, 0, 0, 0.5);
+  overflow: hidden;
 }
 
 .wrapper {
@@ -48,4 +49,31 @@
   &:active, &:hover {
     outline: 0;
   }
+}
+
+.copy {
+  background: var(--footer-color);
+  padding: var(--padding-sm);
+  border-radius: var(--padding-sm);
+  color: var(--tutorial-color);
+  border: 0;
+  position: absolute;
+  bottom: var(--padding-sm);
+  right: var(--padding-sm);
+  z-index: 200;
+
+  &:active, &:hover {
+    outline: 0;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+  }
+}
+
+.code-wrapper {
+  max-height: 70%;
+  overflow: auto;
+  padding: var(--padding-md);
+  background: white;
 }
