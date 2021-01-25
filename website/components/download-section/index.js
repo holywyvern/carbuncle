@@ -15,8 +15,8 @@ function DownloadSection({ t }) {
         <div className={styles.platform}>
           <FontAwesomeIcon icon={faWindows} size="4x"/>
           <h4>{t('Windows Builds')}</h4>
-          <a href="https://github.com/holywyvern/carbuncle/releases/download/0.5.1/win32-x64.zip">
-            0.5.1 (x64)
+          <a href="https://github.com/holywyvern/carbuncle/releases/download/0.6.0/win32-x64.zip">
+            0.6.0 (x64)
           </a>
         </div>
         <div className={styles.platform}>
@@ -32,7 +32,9 @@ function DownloadSection({ t }) {
         <div className={styles.platform}>
           <FontAwesomeIcon icon={faGlobe} size="4x"/>
           <h4>{t('Web Builds')}</h4>
-          <a>{t('(Pending)')}</a>
+          <a href="https://github.com/holywyvern/carbuncle/releases/download/0.6.0/web.zip">
+            0.6.0
+          </a>
         </div>
       </div>
     </Panel>
