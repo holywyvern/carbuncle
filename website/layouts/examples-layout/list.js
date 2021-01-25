@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { FontAwesomeIcon }  from "@fortawesome/react-fontawesome";
+import { withTranslation } from '../../i18n';
 
 import cx from "classnames";
 import { useRouter } from "next/router";
@@ -10,7 +11,7 @@ import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import styles from './styles.module.scss';
 import Image from "../../components/image";
 
-function Item({ label, to }) {
+const Item = withTranslation('examples')(({ label, to, t }) => {
   const router = useRouter();
   const link = `/examples${to}`;
   const className = cx({
@@ -21,12 +22,12 @@ function Item({ label, to }) {
     <li>
       <Link href={link}>
         <a className={className}>
-          {label}
+          {t(label)}
         </a>
       </Link>
     </li>
   )
-}
+});
 
 function MenuButton({ onClick, visible }) {
   const icon = visible ? faEye : faEyeSlash;
@@ -37,13 +38,13 @@ function MenuButton({ onClick, visible }) {
   )
 }
 
-function MenuGroup({ label, children }) {
+const MenuGroup = withTranslation('examples')(({ label, children, t }) => {
   const [visible, setVisible] = useState(true);
   const onToggle = () => setVisible(!visible);
   return (
     <div className={styles.group}>
       <div className={styles['group-header']}>
-        <strong>{label}</strong>
+        <strong>{t(label)}</strong>
         <MenuButton onClick={onToggle} visible={visible} />
       </div>
       {visible && (
@@ -53,22 +54,22 @@ function MenuGroup({ label, children }) {
       )}
     </div>
   ) 
-}
+});
 
-function Header() {
+const Header = withTranslation('examples')(({ t }) => {
   return (
     <>
       <header className={styles.header}>
         <Image src="/img/logo.svg" className={styles.logo} />
         <div>
           <h1>Ca<span className={styles.hightlight}>r</span>buncle</h1>
-          <h2>Examples</h2>
+          <h2>{t('Examples')}</h2>
         </div>
       </header>
       <hr />
     </>
   )
-}
+});
 
 function ExampleList() {
   return (

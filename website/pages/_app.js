@@ -1,4 +1,7 @@
+import App from 'next/app';
 import Head from "next/head";
+
+import { appWithTranslation } from '../i18n';
 
 import './reset.global.scss';
 
@@ -25,4 +28,6 @@ function CarbuncleApp({ Component, pageProps }) {
   );
 }
 
-export default CarbuncleApp;
+CarbuncleApp.getInitialProps = App.getInitialProps;
+
+export default appWithTranslation(CarbuncleApp);

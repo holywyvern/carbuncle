@@ -1,4 +1,5 @@
 import Example from "../example";
+import { withTranslation } from '../../i18n';
 
 const example1 = `
 include Carbuncle
@@ -55,10 +56,10 @@ class Example < Game
 end
 `.trim();
 
-function Examples() {
+function Examples({ t }) {
   return (
     <>
-      <h3>Quick examples</h3>
+      <h3>{t('Quick examples')}</h3>
       <Example title="Hello World">
         {example1}        
       </Example>
@@ -72,4 +73,4 @@ function Examples() {
   )
 }
 
-export default Examples;
+export default withTranslation('common')(Examples);
