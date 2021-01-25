@@ -81,6 +81,12 @@ function ExampleList() {
           label="Hello World"
         />
       </MenuGroup>
+      <MenuGroup label="Graphics">
+        <Item
+          to="/graphics/image_generation"
+          label="Image Generation"
+        />
+      </MenuGroup>
     </nav>
   )
 }
