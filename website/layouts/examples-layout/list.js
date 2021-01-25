@@ -38,7 +38,7 @@ function MenuButton({ onClick, visible }) {
   )
 }
 
-const Header = withTranslation('examples')(({ label, children, t }) => {
+const MenuGroup = withTranslation('examples')(({ label, children, t }) => {
   const [visible, setVisible] = useState(true);
   const onToggle = () => setVisible(!visible);
   return (

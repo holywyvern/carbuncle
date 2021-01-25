@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import SyntaxHighlighter from 'react-highlight.js';
 import { FontAwesomeIcon }  from "@fortawesome/react-fontawesome";
-import { withTranslation } from '../../i18n';
+import { i18n, withTranslation } from '../../i18n';
 
 import Panel from "../../components/panel";
 
@@ -11,9 +11,8 @@ import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
 import styles from "./styles.module.scss";
 
-function CodeBlock({ id, t, i18n  }) {
+function CodeBlock({ id, t  }) {
   const [code, setCode] = useState(null);
-
   useEffect(() => {
     fetch(`${process.env.basePath}/data/examples${id}/main_${i18n.language}.rb`)
       .then(response => {
