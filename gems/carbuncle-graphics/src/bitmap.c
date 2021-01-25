@@ -15,6 +15,7 @@
 #include <mruby/numeric.h>
 #include <mruby/variable.h>
 #include <mruby/class.h>
+#include <mruby/array.h>
 
 #define FONT_SYMBOL mrb_intern_cstr(mrb, "#font")
 
@@ -452,6 +453,196 @@ mrb_s_bitmap_get_screenshot(mrb_state *mrb, mrb_value self)
   return img;
 }
 
+static mrb_value
+mrb_bitmap_crop(mrb_state *mrb, mrb_value self)
+{
+  mrb_value rect_value;
+  Rectangle *rect;
+  Image *img;
+  mrb_get_args(mrb, "o", &rect_value);
+  img = mrb_carbuncle_get_bitmap(mrb, self);
+  rect = mrb_carbuncle_get_rect(mrb, rect_value);
+  ImageCrop(img, *rect);
+  return self;
+}
+
+static mrb_value
+mrb_bitmap_cw(mrb_state *mrb, mrb_value self)
+{
+  Image *img = mrb_carbuncle_get_bitmap(mrb, self);
+  ImageRotateCW(img);
+  return self;
+}
+
+static mrb_value
+mrb_bitmap_ccw(mrb_state *mrb, mrb_value self)
+{
+  Image *img = mrb_carbuncle_get_bitmap(mrb, self);
+  ImageRotateCCW(img);
+  return self;
+}
+
+static mrb_value
+mrb_bitmap_invert(mrb_state *mrb, mrb_value self)
+{
+  Image *img = mrb_carbuncle_get_bitmap(mrb, self);
+  ImageColorInvert(img);
+  return self;
+}
+
+static mrb_value
+mrb_bitmap_grayscale(mrb_state *mrb, mrb_value self)
+{
+  Image *img = mrb_carbuncle_get_bitmap(mrb, self);
+  ImageColorGrayscale(img);
+  return self;
+}
+
+static mrb_value
+mrb_bitmap_replace(mrb_state *mrb, mrb_value self)
+{
+  mrb_value a, b;
+  Color *c1, *c2;
+  Image *img = mrb_carbuncle_get_bitmap(mrb, self);
+  mrb_get_args(mrb, "oo", &a, &b);
+  c1 = mrb_carbuncle_get_color(mrb, a);
+  c2 = mrb_carbuncle_get_color(mrb, b);
+  ImageColorReplace(img, *c1, *c2);
+  return self;
+}
+
+static mrb_value
+mrb_bitmap_get_palette(mrb_state *mrb, mrb_value self)
+{
+  mrb_int limit;
+  int size;
+  if (!mrb_get_args(mrb, "|i", &limit))
+  {
+    limit = 2147483647;
+  }
+  Image *img = mrb_carbuncle_get_bitmap(mrb, self);
+  Color *colors = LoadImagePalette(*img, limit, &size);
+  mrb_value items = mrb_ary_new_capa(mrb, size);
+  for (int i = 0; i < size; ++i)
+  {
+    Color c = colors[i];
+    mrb_ary_push(mrb, items, mrb_carbuncle_color_new(mrb, c.r, c.g, c.b, c.a));
+  }
+  UnloadImagePalette(colors);
+  return items;
+}
+
+static mrb_value
+mrb_bitmap_new_blank(mrb_state *mrb)
+{
+  struct RClass *bmp = mrb_carbuncle_class_get(mrb, "Bitmap");
+  mrb_value values[] = {
+    mrb_fixnum_value(1),
+    mrb_fixnum_value(1),
+  };
+  mrb_value obj = mrb_obj_new(mrb, bmp, 2, values);
+  Image *img = DATA_PTR(obj);
+  UnloadImage(*img);
+  return obj;
+}
+
+static mrb_value
+mrb_bitmap_s_color(mrb_state *mrb, mrb_value self)
+{
+  mrb_value color_obj;
+  mrb_int w, h;
+  
+  mrb_get_args(mrb, "iio", &w, &h, &color_obj);
+  mrb_value bmp = mrb_bitmap_new_blank(mrb);
+  Image *img = mrb_carbuncle_get_bitmap(mrb, bmp);
+  Color *color = mrb_carbuncle_get_color(mrb, color_obj);
+  *img = GenImageColor(w, h, *color);
+  return bmp;
+}
+
+#define CARBUNCLE_COLOR(c) *mrb_carbuncle_get_color(mrb, c)
+
+static mrb_value
+mrb_bitmap_s_linear_gradient(mrb_state *mrb, mrb_value self)
+{
+  mrb_bool vertical = FALSE;
+  mrb_int w, h;
+  mrb_value c1, c2;
+  mrb_get_args(mrb, "iioo|b", &w, &h, &c1, &c2, &vertical);
+  mrb_value bmp = mrb_bitmap_new_blank(mrb);
+  Image *img = mrb_carbuncle_get_bitmap(mrb, bmp);
+  if (vertical)
+  {
+    *img = GenImageGradientV(w, h, CARBUNCLE_COLOR(c1), CARBUNCLE_COLOR(c2));
+  } 
+  else
+  {
+    *img = GenImageGradientH(w, h, CARBUNCLE_COLOR(c1), CARBUNCLE_COLOR(c2));
+  }
+  return bmp;
+}
+
+static mrb_value
+mrb_bitmap_s_radial_gradient(mrb_state *mrb, mrb_value self)
+{
+  mrb_int w, h;
+  mrb_float d;
+  mrb_value c1, c2;
+  mrb_get_args(mrb, "iifoo", &w, &h, &d, &c1, &c2);
+  mrb_value bmp = mrb_bitmap_new_blank(mrb);
+  Image *img = mrb_carbuncle_get_bitmap(mrb, bmp);
+  *img = GenImageGradientRadial(w, h, d, CARBUNCLE_COLOR(c1), CARBUNCLE_COLOR(c2));
+  return bmp;
+}
+
+static mrb_value
+mrb_bitmap_s_checked(mrb_state *mrb, mrb_value self)
+{
+  mrb_int w, h, tx, ty;
+  mrb_value c1, c2;
+  mrb_get_args(mrb, "iiiioo", &w, &h, &tx, &ty, &c1, &c2);
+  mrb_value bmp = mrb_bitmap_new_blank(mrb);
+  Image *img = mrb_carbuncle_get_bitmap(mrb, bmp);
+  *img = GenImageChecked(w, h, tx, ty, CARBUNCLE_COLOR(c1), CARBUNCLE_COLOR(c2));
+  return bmp;
+}
+
+static mrb_value
+mrb_bitmap_s_white_noise(mrb_state *mrb, mrb_value self)
+{
+  mrb_int w, h;
+  mrb_float f;
+  mrb_get_args(mrb, "iif", &w, &h, &f);
+  mrb_value bmp = mrb_bitmap_new_blank(mrb);
+  Image *img = mrb_carbuncle_get_bitmap(mrb, bmp);
+  *img = GenImageWhiteNoise(w, h, f);
+  return bmp;
+}
+
+static mrb_value
+mrb_bitmap_s_perlin_noise(mrb_state *mrb, mrb_value self)
+{
+  mrb_int w, h, x, y;
+  mrb_float f;
+  mrb_get_args(mrb, "iiiif", &w, &h, &x, &y, &f);
+  mrb_value bmp = mrb_bitmap_new_blank(mrb);
+  Image *img = mrb_carbuncle_get_bitmap(mrb, bmp);
+  *img = GenImagePerlinNoise(w, h, x, y, f);
+  return bmp;
+}
+
+static mrb_value
+mrb_bitmap_s_cellular(mrb_state *mrb, mrb_value self)
+{
+  mrb_int w, h, f;
+  mrb_get_args(mrb, "iii", &w, &h, &f);
+  mrb_value bmp = mrb_bitmap_new_blank(mrb);
+  Image *img = mrb_carbuncle_get_bitmap(mrb, bmp);
+  *img = GenImageCellular(w, h, f);
+  return bmp;
+}
+
+
 void
 mrb_init_carbuncle_bitmap(mrb_state *mrb)
 {
@@ -484,6 +675,25 @@ mrb_init_carbuncle_bitmap(mrb_state *mrb)
   mrb_define_method(mrb, bitmap, "flip_x", mrb_bitmap_flip_x, MRB_ARGS_NONE());
   mrb_define_method(mrb, bitmap, "flip_y", mrb_bitmap_flip_y, MRB_ARGS_NONE());
   mrb_define_method(mrb, bitmap, "draw_text", mrb_bitmap_draw_text, MRB_ARGS_REQ(3)|MRB_ARGS_OPT(4));
+
+  mrb_define_method(mrb, bitmap, "crop", mrb_bitmap_crop, MRB_ARGS_REQ(1));
+  mrb_define_method(mrb, bitmap, "rotate_cw", mrb_bitmap_cw, MRB_ARGS_NONE());
+  mrb_define_method(mrb, bitmap, "rotate_ccw", mrb_bitmap_ccw, MRB_ARGS_NONE());
+
+  mrb_define_method(mrb, bitmap, "invert", mrb_bitmap_invert, MRB_ARGS_NONE());
+  mrb_define_method(mrb, bitmap, "grayscale", mrb_bitmap_grayscale, MRB_ARGS_NONE());
+  mrb_define_method(mrb, bitmap, "replace", mrb_bitmap_replace, MRB_ARGS_REQ(2));
+  mrb_define_method(mrb, bitmap, "palette", mrb_bitmap_get_palette, MRB_ARGS_OPT(1));
+
+  mrb_define_method(mrb, bitmap, "replace", mrb_bitmap_replace, MRB_ARGS_REQ(2));
+
+  mrb_define_class_method(mrb, bitmap, "color", mrb_bitmap_s_color, MRB_ARGS_REQ(3));
+  mrb_define_class_method(mrb, bitmap, "linear_gradient", mrb_bitmap_s_linear_gradient, MRB_ARGS_REQ(4)|MRB_ARGS_OPT(1));
+  mrb_define_class_method(mrb, bitmap, "radial_gradient", mrb_bitmap_s_radial_gradient, MRB_ARGS_REQ(5));
+  mrb_define_class_method(mrb, bitmap, "checked", mrb_bitmap_s_checked, MRB_ARGS_REQ(6));
+  mrb_define_class_method(mrb, bitmap, "white_noise", mrb_bitmap_s_white_noise, MRB_ARGS_REQ(3));
+  mrb_define_class_method(mrb, bitmap, "perlin_noise", mrb_bitmap_s_perlin_noise, MRB_ARGS_REQ(5));
+  mrb_define_class_method(mrb, bitmap, "cellular", mrb_bitmap_s_cellular, MRB_ARGS_REQ(3));
 
   mrb_define_class_method(mrb, bitmap, "screenshot", mrb_s_bitmap_get_screenshot, MRB_ARGS_NONE());
 }

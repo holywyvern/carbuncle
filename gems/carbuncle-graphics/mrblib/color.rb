@@ -1,6 +1,12 @@
 class Carbuncle::Color
   include Carbuncle::Vectorizable
 
+  class << self
+    def random
+      new(rand(255), rand(255), rand(255))
+    end
+  end
+
   (2..4).each do |i|
     %w[r g b a].permutation(i) do |fields|
       define_method(fields.join) do
