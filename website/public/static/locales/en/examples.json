@@ -1,1 +1,13 @@
-{}
+{
+  "Examples": "Examples",
+  "Core examples": "Core examples",
+  "Hello World": "Hello World",
+  "No example selected": {
+    "": "No example selected."
+  },
+  "Select one from the sidebar": {
+    "": "Select one from the sidebar."
+  },
+  "Show code": "Show code",
+  "Hide code": "Hide code"
+}

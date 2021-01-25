@@ -1,1 +1,13 @@
-{}
+{
+  "Examples": "Ejemplos",
+  "Core examples": "Ejemplos Principales",
+  "Hello World": "Hola Mundo",
+  "No example selected": {
+    "": "No se ha seleccionado ningún ejemplo."
+  },
+  "Select one from the sidebar": {
+    "": "Elije uno de la barra lateral."
+  },
+  "Show code": "Ver código",
+  "Hide code": "Ocultar código"
+}

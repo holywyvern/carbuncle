@@ -1,3 +1,32 @@
 {
-  
+  "Source": "Código Fuente",
+  "Examples": "Ejemplos",
+  "A Game library build with": "Una herramienta hecha con",
+  "and more as a base for developing games while having fun across multiple platforms": {
+    "": "y más para el desarrollo de videojuegos multiplataforma."
+  },
+  "Downloads": "Descargas",
+  "Windows Builds": "Para Windows",
+  "OS X Builds": "Para OS X",
+  "(Pending)": "(Pendiente)",
+  "Linux Builds": "Para Linux",
+  "Web Builds": "Para Web",
+  "Completeley Open Source, and free to use": {
+    "": "Completamente de código abierto y gratis."
+  },
+  "Contains many features including graphics, audio, input, networking and GUI!": "Contiene un ser completo de herramientas como audio, dispositivos de entrada, manejo de redes e interfaz de usuario.",
+  "Works on Windows, Mac OSX and Linux with planned iOS and Android support": {
+    "": "Funciona en Windows, Linux y Mac OSX, con más soporte en camino."
+  },
+  "Deploy it as a website without much effort thanks to": "Puedes tambíen subirlo a la web gracias a",
+  "An Open Source Framework": "Un Framework de Código Abierto",
+  "Out of the Box": "Lleno de herramientas",
+  "Cross Platform": "Multiplataforma",
+  "Web Support": "Con soporte web",
+  "Quick examples": "Ejemplos simples",
+  "Hello World": "Hola Mundo",
+  "Drawing an Image": "Dibujando una Imagen",
+  "Playing music and sound": "Reproduciendo música y sonido",
+  "Special Thanks": "Agradecimientos",
+  "Developers": "Desarrolladores"
 }
