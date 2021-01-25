@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import SyntaxHighlighter from 'react-highlight.js';
 import { FontAwesomeIcon }  from "@fortawesome/react-fontawesome";
+import { withTranslation } from '../../i18n';
 
 import Panel from "../../components/panel";
 
@@ -10,18 +11,24 @@ import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
 import styles from "./styles.module.scss";
 
-function CodeBlock({ id }) {
+function CodeBlock({ id, t, i18n  }) {
   const [code, setCode] = useState(null);
 
   useEffect(() => {
-    fetch(`${process.env.basePath}/data/examples${id}/main.rb`)
-      .then(response => response.text())
+    fetch(`${process.env.basePath}/data/examples${id}/main_${i18n.language}.rb`)
+      .then(response => {
+        if (response.ok && response.status === 200) {
+          return response.text()
+        }
+        return fetch(`${process.env.basePath}/data/examples${id}/main.rb`)
+          .then(r => r.text())
+      })
       .then(text => setCode(text))
       .catch(console.error);
-  }, []);  
+  }, [id, i18n.language]);  
   if (!code) {
     return (
-      <Panel>Loading...</Panel>
+      <Panel>{t('Loading...')}</Panel>
     )
   }
   return (
@@ -33,17 +40,17 @@ function CodeBlock({ id }) {
   )
 }
 
-function Button({ onClick, visible }) {
+function Button({ onClick, visible, t }) {
   const icon = visible ? faEye : faEyeSlash;
   return (
     <button type="button" onClick={onClick} className={styles.button}>
       <FontAwesomeIcon icon={icon} />&nbsp;
-      {visible ? 'Hide code' : 'Show code'}
+      {visible ? t('Hide code') : t('Show code')}
     </button>
   )
 }
 
-function CarbuncleExample({ id }) {
+function CarbuncleExample({ id, t }) {
   const [showCode, setShowCode] = useState(false);
 
   const toggleCode = () => setShowCode(!showCode);
@@ -56,14 +63,14 @@ function CarbuncleExample({ id }) {
         {showCode && (
           <div className={styles.code}>
             <div className={styles['code-wrapper']}>
-              <CodeBlock id={id} />
+              <CodeBlock id={id} t={t} />
             </div>
           </div>          
         )}
-        <Button onClick={toggleCode} visible={showCode} />
+        <Button onClick={toggleCode} visible={showCode} t={t} />
       </div>
     </ExamplesLayout>
   );
 }
 
-export default CarbuncleExample;
+export default withTranslation('examples')(CarbuncleExample);

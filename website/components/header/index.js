@@ -1,9 +1,10 @@
 import styles from "./styles.module.scss";
+import { withTranslation } from '../../i18n';
 
 import Link from "./link";
 import Image from '../image';
 
-function Header() {
+function Header({ t }) {
   return (
     <header className={styles.header}>
       <Image className={styles.logo} src="/img/logo.svg" alt="Carbuncle Logo" width='auto' height='auto' />
@@ -15,8 +16,8 @@ function Header() {
         <div className={styles.subtitle}>
           <h2>Game Engine</h2>
           <div className={styles.links}>
-            <Link to="https://github.com/holywyvern/carbuncle">Source</Link>
-            <Link to={`${process.env.basePath}/examples`}>Examples</Link>
+            <Link to="https://github.com/holywyvern/carbuncle">{t('Source')}</Link>
+            <Link to={`${process.env.basePath}/examples`}>{t('Examples')}</Link>
           </div>
         </div>
       </div>
@@ -24,4 +25,4 @@ function Header() {
   )
 }
 
-export default Header;
+export default withTranslation('common')(Header);
