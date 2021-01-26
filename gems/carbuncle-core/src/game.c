@@ -1,6 +1,7 @@
 #include "carbuncle/core.h"
 #include "carbuncle/game.h"
 #include "carbuncle/screen.h"
+#include "carbuncle/message_box.h"
 
 #include "raylib.h"
 
@@ -8,6 +9,9 @@
 #include <mruby/gc.h>
 #include <mruby/string.h>
 #include <mruby/class.h>
+#include <mruby/error.h>
+
+#include <stdlib.h>
 
 #ifdef __EMSCRIPTEN__
 #include <emscripten/emscripten.h>
@@ -117,10 +121,33 @@ game_frame(mrb_state *mrb, mrb_value game)
 }
 
 #ifdef __EMSCRIPTEN__
+
+void
+mrb_carbuncle_audio_gem_final(mrb_state *mrb);
+
+static mrb_value
+secure_loop(mrb_state *mrb, mrb_value self)
+{
+  game_frame(mrb, mrb_em_state.game);
+  return self;
+}
+
 static void
 carbuncle_emscripten_game_frame()
 {
-  game_frame(mrb_em_state.mrb, mrb_em_state.game);
+  mrb_bool error;
+  mrb_value result = mrb_protect(mrb_em_state.mrb, secure_loop, mrb_nil_value(), &error);
+  if (error)
+  {
+    mrb_carbuncle_show_error(mrb_em_state.mrb, result);
+    emscripten_cancel_main_loop();
+    mrb_carbuncle_audio_gem_final(mrb_em_state.mrb);
+  }
+  if (!carbuncle_game_is_running)
+  {
+    emscripten_cancel_main_loop();
+    mrb_carbuncle_audio_gem_final(mrb_em_state.mrb);
+  }
 }
 #endif
 
