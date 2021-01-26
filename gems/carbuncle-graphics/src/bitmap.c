@@ -19,32 +19,6 @@
 
 #define FONT_SYMBOL mrb_intern_cstr(mrb, "#font")
 
-Image
-LoadImageEx(Color *pixels, int width, int height)
-{
-    Image image = { 0 };
-    image.data = NULL;
-    image.width = width;
-    image.height = height;
-    image.mipmaps = 1;
-    image.format = UNCOMPRESSED_R8G8B8A8;
-
-    int k = 0;
-
-    image.data = (unsigned char *)RL_MALLOC(image.width*image.height*4*sizeof(unsigned char));
-
-    for (int i = 0; i < image.width*image.height*4; i += 4)
-    {
-        ((unsigned char *)image.data)[i] = pixels[k].r;
-        ((unsigned char *)image.data)[i + 1] = pixels[k].g;
-        ((unsigned char *)image.data)[i + 2] = pixels[k].b;
-        ((unsigned char *)image.data)[i + 3] = pixels[k].a;
-        k++;
-    }
-
-    return image;
-}
-
 static void
 mrb_bitmap_free(mrb_state *mrb, void *ptr)
 {
@@ -84,38 +58,44 @@ draw_text(Image *dst, Rectangle dst_rect, struct mrb_Font *font, const char *msg
 static mrb_value
 mrb_bitmap_initialize(mrb_state *mrb, mrb_value self)
 {
+  Image *img;
   mrb_value obj;
-  mrb_int width, height, argc;
-  argc = mrb_get_args(mrb, "o|i", &obj, &height);
-  Image *img = mrb_malloc(mrb, sizeof *img);
-  if (argc == 1)
+  mrb_int argc;
+  argc = mrb_get_argc(mrb);
+  switch (argc)
   {
-    if (mrb_carbuncle_bitmap_p(obj))
-    {
-      Image *src = mrb_carbuncle_get_bitmap(mrb, obj);
-      *img = ImageCopy(*src);
+    case 1: {
+      mrb_get_args(mrb, "o", &obj);
+      img = mrb_malloc(mrb, sizeof *img);
+      if (mrb_carbuncle_bitmap_p(obj))
+      {
+        Image *src = mrb_carbuncle_get_bitmap(mrb, obj);
+        *img = ImageCopy(*src);  
+      }
+      else
+      {
+        const char *filename = mrb_str_to_cstr(mrb, mrb_funcall(mrb, obj, "to_s", 0));    
+        mrb_carbuncle_check_file(mrb, filename);
+        *img = LoadCarbuncleImage(mrb, filename);
+      }
+      break;
     }
-    else
-    {
-      const char *filename = mrb_str_to_cstr(mrb, obj);    
-      mrb_carbuncle_check_file(mrb, filename);
-      *img = LoadCarbuncleImage(mrb, filename);
+    case 2: {
+      mrb_int width, height;
+      mrb_get_args(mrb, "ii", &width, &height);
+      img = mrb_malloc(mrb, sizeof *img);
+      *img = GenImageColor(width, height, BLANK);
+      break;
     }
-  }
-  else
-  {
-    width = mrb_fixnum(mrb_to_int(mrb, obj));
-    if (width <= 0) { width = 1; }
-    if (height <= 0) { height = 1; }
-    Color *colors = mrb_malloc(mrb, width * height);
-    memset(colors, 0, width * height);
-    *img = LoadImageEx(colors, width, height);
-    mrb_free(mrb, colors);
+    default: mrb_carbuncle_arg_error(mrb, "1 or 2", argc);
   }
   ImageFormat(img, UNCOMPRESSED_R8G8B8A8);
   DATA_PTR(self) = img;
   DATA_TYPE(self) = &bitmap_data_type;
-  mrb_iv_set(mrb, self, FONT_SYMBOL, mrb_nil_value());
+  mrb_iv_set(
+    mrb,self, FONT_SYMBOL,
+    mrb_obj_new(mrb, mrb_carbuncle_class_get(mrb, "Font"), 0, NULL)
+  );
   return self;
 }
 
