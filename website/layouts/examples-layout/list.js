@@ -87,6 +87,12 @@ function ExampleList() {
           label="Image Generation"
         />
       </MenuGroup>
+      <MenuGroup label="Demos">
+        <Item
+          to="/demos/snake"
+          label="Snake"
+        />
+      </MenuGroup>
     </nav>
   )
 }
