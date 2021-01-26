@@ -14,15 +14,18 @@ OPPOSITES = {
 }
 
 class Snake
-  attr_accessor :segments, :speed, :score, :texture
+  attr_accessor :segments, :speed, :score, :texture, :game, :opacity
 
+  delegate :tiles_x, :tiles_y, to: :game
   delegate :direction, to: :head
 
-  def initialize(texture)
+  def initialize(game, texture)
+    self.game = game
     self.texture = texture
     self.segments = [Snake::Head.new(self, texture)]
     self.speed = 8
     self.score = 0
+    self.opacity = 0
   end
 
   def head
@@ -34,7 +37,7 @@ class Snake
   end
 
   def draw
-    segments.each(&:draw)
+    segments.reverse_each(&:draw)
   end
 
   def update(dt)
@@ -70,7 +73,8 @@ class Snake::Segment < Sprite
                 :real_position, :direction, :next_direction,
                 :full, :next_segment
 
-  delegate :speed, to: :snake
+  delegate :speed, :game, to: :snake
+  delegate :tiles_x, :tiles_y, to: :game
 
   def initialize(snake, texture)
     super(texture)
@@ -152,6 +156,7 @@ class Snake::Segment < Sprite
     position.x = real_position.x.floor + TILE_SIZE / 2
     position.y = real_position.y.floor + TILE_SIZE / 2
     self.angle = calculate_angle
+    self.opacity = Math.cos(snake.opacity * 4 * Math::PI) * 255
     update_rect
   end
 
@@ -177,6 +182,8 @@ class Snake::Segment < Sprite
 end
 
 class Snake::Head < Snake::Segment
+  delegate :segments, to: :snake
+
   def initialize(snake, texture)
     super(snake, texture)
     src_rect.y = 0
@@ -189,10 +196,34 @@ class Snake::Head < Snake::Segment
     if moving?
       update_movement(dt)
     else
-      update_food
-      update_direction
+      if game_over?
+        game.state = :game_over
+        update_opacity(dt)
+      else
+        update_food
+        update_direction
+      end
     end
     update_sprite
+  end
+
+  def game_over?
+    touch_edge? || bitten?
+  end
+
+  def touch_edge?
+    target.x <= 0 || target.y <= 0 ||
+    target.x - 1 >= tiles_x || target.y - 1 >= tiles_y
+  end
+
+  def bitten?
+    segments.any? do |segment|
+      segment != self && segment.current == self.current
+    end
+  end
+
+  def update_opacity(dt)
+    snake.opacity += dt
   end
 
   def update_direction
@@ -229,7 +260,7 @@ end
 class Fruit < Sprite
   attr_accessor :game, :current
 
-  delegate :snake, :screen, to: :game
+  delegate :snake, :tiles_x, :tiles_y, to: :game
 
   def initialize(game, texture)
     super(texture)
@@ -237,14 +268,6 @@ class Fruit < Sprite
     self.current = Point.new
     src_rect.set(TILE_SIZE, 0, TILE_SIZE, TILE_SIZE)
     relocate
-  end
-
-  def tiles_x
-    @tiles_x ||= screen.width / TILE_SIZE - 2
-  end
-
-  def tiles_y
-    @tiles_y ||= screen.height / TILE_SIZE - 2
   end
 
   def update(dt)
@@ -272,17 +295,75 @@ class Fruit < Sprite
 end
 
 class SnameGame < Game
-  attr_accessor :texture, :snake, :background, :fruit
+  attr_accessor :texture, :snake, :background, :fruit, :state, :title, :game_over, :score
 
   def load
+    self.state = :title
     self.texture = Texture.new('snake.png')
-    self.snake = Snake.new(texture)
     self.background = Background.new(self)
+    self.score = Text.new
+    score.x = 10
+    create_title
+    create_game_over
+    reset
+  end
+
+  def create_title
+    self.title = Text.new
+    title.value = 'Press ENTER to start'
+    title.position.set(
+      (screen.width - title.width) / 2,
+      (screen.height - title.height) / 2
+    )
+    title.color.set(0, 0, 255)
+  end
+
+  def create_game_over
+    self.game_over = Text.new
+    game_over.value = 'Game Over - Press ENTER to restart'
+    game_over.position.set(
+      (screen.width - game_over.width) / 2,
+      (screen.height - game_over.height) / 2
+    )
+    game_over.color.set(255, 0, 0)
+  end
+
+  def reset
+    game_over.color.alpha = 0
+    self.snake = Snake.new(self, texture)
     self.fruit = Fruit.new(self, texture)
   end
 
+  def tiles_x
+    @tiles_x ||= screen.width / TILE_SIZE - 2
+  end
+
+  def tiles_y
+    @tiles_y ||= screen.height / TILE_SIZE - 2
+  end
+
   def update(dt)
-    snake.update(dt)
+    case state
+    when :title
+      update_title(dt)
+    when :play
+      snake.update(dt)
+      fruit.update(dt)
+    when :game_over
+      game_over.color.alpha = 255
+      snake.update(dt)
+      if Keyboard.press?(:enter)
+        reset 
+        self.state = :play
+      end
+    end
+    score.value = "Score: #{snake.score}"
+  end
+
+  def update_title(dt)
+    self.state = :play if Keyboard.press?(:enter)
+
+    snake.segments.each(&:update_sprite)
     fruit.update(dt)
   end
 
@@ -290,5 +371,12 @@ class SnameGame < Game
     background.draw
     fruit.draw
     snake.draw
+    if state == :title
+      title.draw
+    end
+    if state == :game_over
+      game_over.draw
+    end
+    score.draw
   end
 end
