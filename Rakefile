@@ -44,7 +44,7 @@ task docs: :doc_files do
   gem_list = CARBUNCLE_GEMS.map {|i| "carbuncle-#{i}" }.join(',')
   core_gems = CORE_GEMS.join(',')
   carbuncle_dirs = "gems/{#{gem_list}}/{src,mrblib}/{**}/*.{rb,c}"
-  mruby_dirs = "mruby/{src,mrblib}/*.{c,rb} mruby/mrbgems/{#{core_gems}}/{src, mrblib}/*.{c,rb}"
+  mruby_dirs = "mruby/{src,mrblib}/*.{c,rb} mruby/mrbgems/{#{core_gems}}/{src,mrblib}/*.{c,rb}"
   github_dirs = ".doc_tmp/**/{src,mrblib}/*.{c,rb}"
   gem_files = "#{carbuncle_dirs} #{mruby_dirs} #{github_dirs}"
   sh "mrbdoc #{gem_files} -o website/out/docs"
