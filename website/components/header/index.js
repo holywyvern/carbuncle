@@ -17,6 +17,7 @@ function Header({ t }) {
           <h2>Game Engine</h2>
           <div className={styles.links}>
             <Link to="https://github.com/holywyvern/carbuncle">{t('Source')}</Link>
+            <Link to={`${process.env.basePath}/docs`}>{t('API Docs')}</Link>
             <Link to={`${process.env.basePath}/examples`}>{t('Examples')}</Link>
           </div>
         </div>
