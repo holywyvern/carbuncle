@@ -179,7 +179,7 @@
 
 <span class='kw'>def</span> <span class='id identifier rubyid_descendants'>descendants</span>
   <span class='id identifier rubyid_descendants'>descendants</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
-  <span class='const'>ObjectSpace</span><span class='period'>.</span><span class='id identifier rubyid_each_object'>each_object</span><span class='lparen'>(</span><span class='id identifier rubyid_singleton_class'>singleton_class</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_k'>k</span><span class='op'>|</span>
+  <span class='const'><span class='object_link'><a href="ObjectSpace.html" title="ObjectSpace (module)">ObjectSpace</a></span></span><span class='period'>.</span><span class='id identifier rubyid_each_object'>each_object</span><span class='lparen'>(</span><span class='id identifier rubyid_singleton_class'>singleton_class</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_k'>k</span><span class='op'>|</span>
     <span class='kw'>next</span> <span class='kw'>if</span> <span class='id identifier rubyid_k'>k</span><span class='period'>.</span><span class='id identifier rubyid_singleton_class?'>singleton_class?</span>
 
     <span class='id identifier rubyid_descendants'>descendants</span><span class='period'>.</span><span class='id identifier rubyid_unshift'>unshift</span> <span class='id identifier rubyid_k'>k</span> <span class='kw'>unless</span> <span class='id identifier rubyid_k'>k</span> <span class='op'>==</span> <span class='kw'>self</span>
@@ -196,7 +196,7 @@
 </div>
 
       <div id="footer">
-  Generated on Thu Jan 28 16:37:11 2021 by
+  Generated on Thu Jan 28 14:24:01 2021 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.26 in <a href="https://github.com/sagmor/yard-mruby">mruby mode</a> 0.3.0 (ruby-2.7.2).
 </div>
