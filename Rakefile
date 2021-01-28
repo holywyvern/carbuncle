@@ -32,7 +32,7 @@ task :clean do
   sh 'cd mruby && rake deep_clean'
 end
 
-task :doc_files do
+task doc_files: :mruby do
   GITHUB_GEMS.each do |gem|
     unless File.exist?(".doc_tmp/#{gem}")
       sh "git clone https://github.com/#{gem}.git .doc_tmp/#{gem}"
