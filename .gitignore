@@ -5,3 +5,8 @@ build_configs/*.lock
 
 website/node_modules
 website/.next
+website/out
+
+.yardoc
+.doc_tmp
+doc
