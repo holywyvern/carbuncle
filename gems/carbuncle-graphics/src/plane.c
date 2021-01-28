@@ -55,7 +55,15 @@ mrb_plane_initialize(mrb_state *mrb, mrb_value self)
   struct mrb_Plane *plane = mrb_malloc(mrb, sizeof *plane);
   if (argc > 0 && !mrb_nil_p(texture))
   {
-    plane->texture = mrb_carbuncle_get_texture(mrb, texture);
+    if (mrb_carbuncle_texture_p(texture))
+    {
+      plane->texture = mrb_carbuncle_get_texture(mrb, texture);
+    }
+    {
+      mrb_value name = mrb_funcall(mrb, texture, "to_s", 0);
+      texture = mrb_obj_new(mrb, mrb_carbuncle_class_get(mrb, "Texture"), 1, &name);
+      plane->texture = mrb_carbuncle_get_texture(mrb, texture);
+    }
   }
   else
   {
