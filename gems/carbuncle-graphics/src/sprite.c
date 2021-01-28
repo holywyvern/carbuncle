@@ -115,9 +115,17 @@ mrb_sprite_initialize(mrb_state *mrb, mrb_value self)
   mrb_get_args(mrb, "|o", &texture);
   if (!mrb_nil_p(texture))
   {
-    Texture2D *data = mrb_carbuncle_get_texture(mrb, texture);
-    width = data->width;
-    height = data->height;
+    if (mrb_carbuncle_texture_p(texture))
+    {
+      Texture2D *data = mrb_carbuncle_get_texture(mrb, texture);
+      width = data->width;
+      height = data->height;
+    } 
+    else
+    {
+      mrb_value name = mrb_funcall(mrb, texture, "to_s", 0);
+      texture = mrb_obj_new(mrb, mrb_carbuncle_class_get(mrb, "Texture"), 1, &name);
+    }
   }
   position = mrb_carbuncle_point_new(mrb, 0, 0);
   scale = mrb_carbuncle_point_new(mrb, 1, 1);
