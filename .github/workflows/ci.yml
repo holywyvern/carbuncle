@@ -147,7 +147,8 @@ jobs:
           rake
 
       # Test mruby
-      - name: Test
-        run: >
-          MRUBY_CONFIG=build_configs/clang.rb
-          rake test
+      # TODO: Wait until mruby-json fix test on OSX
+      # - name: Test
+      #   run: >
+      #     MRUBY_CONFIG=build_configs/clang.rb
+      #     rake test
