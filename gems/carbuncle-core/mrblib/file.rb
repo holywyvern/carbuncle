@@ -14,6 +14,51 @@ module Carbuncle
         @required_files.keys
       end
 
+      def join(*names)
+        return '' if names.empty?
+
+        names.filter!(&:present?)
+        names.map! do |name|
+          case name
+          when String
+            name
+          when Array
+            raise ArgumentError, 'recursive array' if names == name
+
+            join(*name)
+          else
+            raise TypeError, "no implicit conversion of #{name.class} into String"
+          end
+        end
+        return names[0] if names.size == 1
+
+        s =
+          if names[0][-1] == Carbuncle::File::SEPARATOR
+            names[0][0..-2]
+          else
+            names[0].dup
+          end
+
+        (1..names.size - 2).each do |i|
+          t = names[i]
+          if t[0] == Carbuncle::File::SEPARATOR && t[-1] == Carbuncle::File::SEPARATOR
+            t = t[1..-2]
+          elsif t[0] == Carbuncle::File::SEPARATOR
+            t = t[1..-1]
+          elsif t[-1] == Carbuncle::File::SEPARATOR
+            t = t[0..-2]
+          end
+          s += Carbuncle::File::SEPARATOR + t if t != ''
+        end
+        s +=
+          if names[-1][0] == Carbuncle::File::SEPARATOR
+            Carbuncle::File::SEPARATOR + names[-1][1..-1]
+          else
+            Carbuncle::File::SEPARATOR + names[-1]
+          end
+        s
+      end
+
       def readlines(name, *args)
         open_args = [name]
         read_args = []

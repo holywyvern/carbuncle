@@ -14,6 +14,7 @@
 #include <mruby/error.h>
 #include <mruby/string.h>
 #include <mruby/compile.h>
+#include <mruby/variable.h>
 
 #ifdef __EMSCRIPTEN__
 
@@ -42,8 +43,9 @@ mrb_carbuncle_fetch_file(mrb_state *mrb, const char *filename)
 
 #define E_FILE_ERROR get_class_by_code(mrb, code)
 #define ERROR_MESSAGE PHYSFS_getErrorByCode(code)
+#define LOAD_PATHS mrb_intern_cstr(mrb, "#_load_paths_")
 
-#define SEPARATOR mrb_str_new_cstr(mrb, PHYSFS_getDirSeparator())
+#define SEPARATOR mrb_str_new_cstr(mrb, "/")
 
 static struct RClass *
 get_class_by_code(mrb_state *mrb, PHYSFS_ErrorCode code)
@@ -197,15 +199,6 @@ mrb_s_file_open(mrb_state *mrb, mrb_value self)
   mrb_int size;
   mrb_get_args(mrb, "*&", &values, &size, &block);
   return mrb_funcall_with_block(mrb, self, mrb_intern_cstr(mrb, "new"), size, values, block);
-}
-
-static mrb_value
-mrb_s_file_join(mrb_state *mrb, mrb_value self)
-{
-  mrb_value *argv;
-  mrb_int argc;
-  mrb_get_args(mrb, "*", &argv, &argc);
-  return mrb_funcall(mrb, mrb_ary_new_from_values(mrb, argc, argv), "join", 1, SEPARATOR);
 }
 
 static mrb_value
@@ -530,54 +523,72 @@ static mrb_value
 mrb_s_file_load(mrb_state *mrb, mrb_value self)
 {
   PHYSFS_sint64 length;
-  const char *name;
   PHYSFS_File *file;
-  mrb_value result;
-  mrb_get_args(mrb, "z", &name);
-#ifdef __EMSCRIPTEN__
-  mrb_carbuncle_check_file(mrb, name);
-#endif
-  file = PHYSFS_openRead(name);
-  result = self;
-  if (!file)
+  mrb_value name, result, load_paths;
+  mrb_get_args(mrb, "S", &name);
+  load_paths = mrb_iv_get(mrb, self, LOAD_PATHS);
+  for (mrb_int i = 0; i < RARRAY_LEN(load_paths); ++i)
   {
-    PHYSFS_ErrorCode code = PHYSFS_getLastErrorCode();
-    mrb_raisef(mrb, E_FILE_ERROR, "File '%s' could not be opened (%s)", name, ERROR_MESSAGE);
-  }
-  length = PHYSFS_fileLength(file);
-  if (length < 0)
-  {
-    PHYSFS_ErrorCode code;
-    PHYSFS_close(file);
-    code = PHYSFS_getLastErrorCode();
-    mrb_raisef(mrb, E_FILE_ERROR, "File '%s' could not be read (%s)", name, ERROR_MESSAGE);
-  }
-  if (length == 0)
-  {
-    PHYSFS_close(file);
-    return mrb_false_value();
-  }
-  {
-    mrbc_context *ctx;
-    char str[length];
-    if (PHYSFS_readBytes(file, str, length) == -1)
+    mrb_value path = mrb_funcall(mrb, self, "join", 2, mrb_ary_entry(load_paths, i), name);
+    mrb_value exists = mrb_funcall(mrb, self, "exists?", 1, path);
+    if (mrb_test(exists))
     {
-      PHYSFS_ErrorCode code;
-      PHYSFS_close(file);
-      code = PHYSFS_getLastErrorCode();
-      mrb_raisef(mrb, E_FILE_ERROR, "File '%s' could not be read (%s)", name, ERROR_MESSAGE);
+      const char *vname = mrb_str_to_cstr(mrb, name);
+      const char *load_name = mrb_str_to_cstr(mrb, path);
+      file = PHYSFS_openRead(load_name);
+      result = self;
+      if (!file)
+      {
+        PHYSFS_ErrorCode code = PHYSFS_getLastErrorCode();
+        mrb_raisef(mrb, E_FILE_ERROR, "File '%s' could not be opened (%s)", vname, ERROR_MESSAGE);
+      }
+      length = PHYSFS_fileLength(file);
+      if (length < 0)
+      {
+        PHYSFS_ErrorCode code;
+        PHYSFS_close(file);
+        code = PHYSFS_getLastErrorCode();
+        mrb_raisef(mrb, E_FILE_ERROR, "File '%s' could not be read (%s)", vname, ERROR_MESSAGE);
+      }
+      if (length == 0)
+      {
+        PHYSFS_close(file);
+        return mrb_false_value();
+      }
+      {
+        mrbc_context *ctx;
+        char str[length];
+        if (PHYSFS_readBytes(file, str, length) == -1)
+        {
+          PHYSFS_ErrorCode code;
+          PHYSFS_close(file);
+          code = PHYSFS_getLastErrorCode();
+          mrb_raisef(mrb, E_FILE_ERROR, "File '%s' could not be read (%s)", name, ERROR_MESSAGE);
+        }
+        PHYSFS_close(file);
+        ctx = mrbc_context_new(mrb);
+        ctx->filename = load_name;
+        ctx->capture_errors = TRUE;
+        result = mrb_load_nstring_cxt(mrb, str, length, ctx);
+        if (mrb->exc)
+        {
+          mrb_exc_raise(mrb, mrb_obj_value(mrb->exc));
+        }
+        return result;
+      }      
     }
-    PHYSFS_close(file);
-    ctx = mrbc_context_new(mrb);
-    ctx->filename = name;
-    ctx->capture_errors = TRUE;
-    result = mrb_load_nstring_cxt(mrb, str, length, ctx);
-    if (mrb->exc)
-    {
-      mrb_exc_raise(mrb, mrb_obj_value(mrb->exc));
-    }
+  }
+  {
+    struct RClass *file_not_exists = mrb_carbuncle_class_get(mrb, "FileNotExists");
+    mrb_raisef(mrb, file_not_exists, "File '%s' was not found.", mrb_str_to_cstr(mrb, name));
   }
   return result;
+}
+
+static mrb_value
+mrb_s_file_get_load_paths(mrb_state *mrb, mrb_value self)
+{
+  return mrb_iv_get(mrb, self, LOAD_PATHS);
 }
 
 void mrb_init_carbuncle_filesystem(mrb_state *mrb)
@@ -608,7 +619,6 @@ void mrb_init_carbuncle_filesystem(mrb_state *mrb)
   mrb_define_method(mrb, file, "write", mrb_file_write, MRB_ARGS_REQ(1));
 
   mrb_define_class_method(mrb, file, "open", mrb_s_file_open, MRB_ARGS_REQ(1) | MRB_ARGS_OPT(1) | MRB_ARGS_BLOCK());
-  mrb_define_class_method(mrb, file, "join", mrb_s_file_join, MRB_ARGS_ANY());
 
   mrb_define_class_method(mrb, file, "pwd", mrb_s_file_get_pwd, MRB_ARGS_NONE());
   mrb_define_class_method(mrb, file, "base_dir", mrb_s_file_get_base_dir, MRB_ARGS_NONE());
@@ -646,6 +656,16 @@ void mrb_init_carbuncle_filesystem(mrb_state *mrb)
 
   mrb_define_const(mrb, file, "SEPARATOR", SEPARATOR);
   mrb_define_const(mrb, file, "PATH_SEPARATOR", SEPARATOR);
+
+  {
+    mrb_value load_path[] = {
+      mrb_str_new_cstr(mrb, ""),
+      mrb_str_new_cstr(mrb, "src"),
+      mrb_str_new_cstr(mrb, "scripts"),
+    };
+    mrb_iv_set(mrb, mrb_obj_value(file), LOAD_PATHS, mrb_ary_new_from_values(mrb, 3, load_path));
+    mrb_define_class_method(mrb, file, "load_paths", mrb_s_file_get_load_paths, MRB_ARGS_NONE());
+  }
 }
 
 char *
@@ -659,9 +679,7 @@ mrb_carbuncle_load_file(mrb_state *mrb, const char *filename, size_t *size)
   file = PHYSFS_openRead(filename);
   if (!file)
   {
-    {
-      raise_physfs_error(mrb, "open");
-    }
+    raise_physfs_error(mrb, "open");
   }
   *size = PHYSFS_fileLength(file);
   if (*size == -1)

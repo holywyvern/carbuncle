@@ -81,23 +81,8 @@ set_working_directory(mrb_state *mrb, const char *file)
 static void
 load_main_file(mrb_state *mrb)
 {
-  PHYSFS_sint64 length;
-  const char *str;
-  struct mrbc_context *ctx;
-  mrb_value result;
-#ifdef __EMSCRIPTEN__
-  mrb_carbuncle_fetch_file(mrb, MAIN_FILENAME);
-#endif
-  str = mrb_carbuncle_load_file(mrb, MAIN_FILENAME, &length);
-  ctx = mrbc_context_new(mrb);
-  ctx->filename = (char *)MAIN_FILENAME;
-  ctx->capture_errors = TRUE;
-  result = mrb_load_nstring_cxt(mrb, str, length, ctx);
-  if (mrb->exc)
-  {
-    mrb_exc_raise(mrb, mrb_obj_value(mrb->exc));
-  }
-  mrb_free(mrb, str);
+  mrb_value file = mrb_obj_value(mrb_carbuncle_class_get(mrb, "File"));
+  mrb_funcall(mrb, file, "require", 1, mrb_str_new_cstr(mrb, MAIN_FILENAME));
 }
 
 static void
