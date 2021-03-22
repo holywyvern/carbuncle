@@ -108,7 +108,6 @@ mrb_text_set_value(mrb_state *mrb, mrb_value self)
 {
   mrb_value value;
   mrb_get_args(mrb, "S", &value);
-  struct mrb_Text *text = get_text(mrb, self);
   mrb_iv_set(mrb, self, VALUE_SYMBOL, value);
   return value;
 }
@@ -121,7 +120,6 @@ mrb_text_set_font(mrb_state *mrb, mrb_value self)
   struct mrb_Text *text = get_text(mrb, self);
   text->font = mrb_carbuncle_get_font(mrb, value);
   mrb_iv_set(mrb, self, FONT_SYMBOL, value);
-  const char *message = mrb_str_to_cstr(mrb, mrb_iv_get(mrb, self, VALUE_SYMBOL));
   return value;
 }
 
@@ -151,10 +149,10 @@ static mrb_value
 mrb_text_draw(mrb_state *mrb, mrb_value self)
 {
   const char *msg;
-  FT_Vector kerning;
   struct mrb_Text *text = get_text(mrb, self);
   msg = mrb_str_to_cstr(mrb, mrb_iv_get(mrb, self, VALUE_SYMBOL));
   DrawTextEx(text->font->raylib_font, msg, *text->position, text->font->size, 0, *text->color);
+  return self;
 }
 
 void

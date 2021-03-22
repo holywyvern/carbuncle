@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 MRUBY_CONFIG = File.expand_path(ENV['MRUBY_CONFIG'] || File.join('build_configs', 'ci.rb'))
-MRUBY_VERSION = ENV['MRUBY_VERSION'] || '2.1.2'
+MRUBY_VERSION = ENV['MRUBY_VERSION'] || '3.0.0'
 
 require_relative 'build_configs/utils/gems'
 

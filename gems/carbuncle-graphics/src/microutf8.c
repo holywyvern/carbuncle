@@ -267,7 +267,7 @@ int8_t utf8_check_validity(uint8_t *str)
 
 int8_t utf8_is_bom_present(uint8_t *str)
 {
-    uint8_t maybe_bom[4];
+  uint8_t maybe_bom[4];
 	if (strlen(str) > 2)
 	{
 		strncpy(maybe_bom, str, 3);
@@ -276,9 +276,8 @@ int8_t utf8_is_bom_present(uint8_t *str)
 		{
 			return 1;
 		}
-		else
-            return 0;
-    }
+	}
+	return 0;
 }
 
 #define MAXUNICODE      0x10FFFF

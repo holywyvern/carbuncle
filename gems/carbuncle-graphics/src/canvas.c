@@ -294,12 +294,14 @@ mrb_init_carbuncle_canvas(mrb_state *mrb)
   mrb_define_method(mrb, canvas, "pivot", mrb_canvas_get_pivot, MRB_ARGS_NONE());
   mrb_define_method(mrb, canvas, "width", mrb_canvas_get_width, MRB_ARGS_NONE());
   mrb_define_method(mrb, canvas, "height", mrb_canvas_get_height, MRB_ARGS_NONE());
+  mrb_define_method(mrb, canvas, "angle", mrb_canvas_get_angle, MRB_ARGS_NONE());
 
   mrb_define_method(mrb, canvas, "src_rect=", mrb_canvas_set_src_rect, MRB_ARGS_REQ(1));
   mrb_define_method(mrb, canvas, "position=", mrb_canvas_set_position, MRB_ARGS_REQ(1));
   mrb_define_method(mrb, canvas, "color=", mrb_canvas_set_color, MRB_ARGS_REQ(1));
   mrb_define_method(mrb, canvas, "scale=", mrb_canvas_set_scale, MRB_ARGS_REQ(1));
   mrb_define_method(mrb, canvas, "pivot=", mrb_canvas_set_pivot, MRB_ARGS_REQ(1));
+  mrb_define_method(mrb, canvas, "angle=", mrb_canvas_set_angle, MRB_ARGS_REQ(1));
 
   mrb_define_method(mrb, canvas, "render", mrb_canvas_begin_render, MRB_ARGS_BLOCK());
   mrb_define_method(mrb, canvas, "begin_render", mrb_canvas_begin_render, MRB_ARGS_NONE());

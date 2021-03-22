@@ -702,7 +702,7 @@ mrb_carbuncle_load_file_text(mrb_state *mrb, const char *filename)
 #ifdef __EMSCRIPTEN__
   mrb_carbuncle_fetch_file(mrb, filename);
 #endif
-  mrb_carbuncle_load_file(mrb, filename, &byte_size);
+  bytes = mrb_carbuncle_load_file(mrb, filename, &byte_size);
   bytes = mrb_realloc(mrb, bytes, byte_size + 1);
   bytes[byte_size] = '\0';
   return bytes;

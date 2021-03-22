@@ -82,35 +82,35 @@ mrb_plane_initialize(mrb_state *mrb, mrb_value self)
 mrb_value
 mrb_plane_get_texture(mrb_state *mrb, mrb_value self)
 {
-  struct mrb_Plane *plane = get_plane(mrb, self);
+  get_plane(mrb, self);
   return mrb_iv_get(mrb, self, TEXTURE_SYMBOL);
 }
 
 mrb_value
 mrb_plane_get_origin(mrb_state *mrb, mrb_value self)
 {
-  struct mrb_Plane *plane = get_plane(mrb, self);
+  get_plane(mrb, self);
   return mrb_iv_get(mrb, self, ORIGIN_SYMBOL);
 }
 
 mrb_value
 mrb_plane_get_scale(mrb_state *mrb, mrb_value self)
 {
-  struct mrb_Plane *plane = get_plane(mrb, self);
+  get_plane(mrb, self);
   return mrb_iv_get(mrb, self, SCALE_SYMBOL);
 }
 
 mrb_value
 mrb_plane_get_color(mrb_state *mrb, mrb_value self)
 {
-  struct mrb_Plane *plane = get_plane(mrb, self);
+  get_plane(mrb, self);
   return mrb_iv_get(mrb, self, COLOR_SYMBOL);
 }
 
 mrb_value
 mrb_plane_get_src_rect(mrb_state *mrb, mrb_value self)
 {
-  struct mrb_Plane *plane = get_plane(mrb, self);
+  get_plane(mrb, self);
   return mrb_iv_get(mrb, self, SRC_RECT_SYMBOL);
 }
 
@@ -120,7 +120,7 @@ mrb_plane_set_texture(mrb_state *mrb, mrb_value self)
 {
   struct mrb_Plane *plane = get_plane(mrb, self);
   mrb_value value;
-  mrb_get_args(mrb, "o", value);
+  mrb_get_args(mrb, "o", &value);
   if (!mrb_nil_p(value))
   {
     plane->texture = mrb_carbuncle_get_texture(mrb, value);
@@ -134,7 +134,7 @@ mrb_plane_set_origin(mrb_state *mrb, mrb_value self)
 {
   struct mrb_Plane *plane = get_plane(mrb, self);
   mrb_value value;
-  mrb_get_args(mrb, "o", value);
+  mrb_get_args(mrb, "o", &value);
   if (!mrb_nil_p(value))
   {
     plane->origin = mrb_carbuncle_get_point(mrb, value);
@@ -148,7 +148,7 @@ mrb_plane_set_scale(mrb_state *mrb, mrb_value self)
 {
   struct mrb_Plane *plane = get_plane(mrb, self);
   mrb_value value;
-  mrb_get_args(mrb, "o", value);
+  mrb_get_args(mrb, "o", &value);
   if (!mrb_nil_p(value))
   {
     plane->scale = mrb_carbuncle_get_point(mrb, value);
@@ -162,7 +162,7 @@ mrb_plane_set_color(mrb_state *mrb, mrb_value self)
 {
   struct mrb_Plane *plane = get_plane(mrb, self);
   mrb_value value;
-  mrb_get_args(mrb, "o", value);
+  mrb_get_args(mrb, "o", &value);
   if (!mrb_nil_p(value))
   {
     plane->color = mrb_carbuncle_get_color(mrb, value);
@@ -176,7 +176,7 @@ mrb_plane_set_src_rect(mrb_state *mrb, mrb_value self)
 {
   struct mrb_Plane *plane = get_plane(mrb, self);
   mrb_value value;
-  mrb_get_args(mrb, "o", value);
+  mrb_get_args(mrb, "o", &value);
   if (!mrb_nil_p(value))
   {
     plane->src_rect = mrb_carbuncle_get_rect(mrb, value);
