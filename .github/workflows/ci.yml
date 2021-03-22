@@ -81,7 +81,7 @@ jobs:
       # Build mruby
       - name: Build mruby
         run: >
-          MRUBY_CONFIG=build_configs/mingw_crossbuild.rb
+          MRUBY_CONFIG=build_configs/mingw.rb
           rake
 
 
