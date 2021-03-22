@@ -496,9 +496,11 @@ mrb_s_graphics_draw_rect(mrb_state *mrb, mrb_value self)
   mrb_float x, y, width, height;
   mrb_bool vertical = FALSE;
   mrb_int line_height = 1;
-  const char *kw_names[2] = { "vertical", "line_height" };
+  const mrb_sym *kw_names[2] = {
+    mrb_intern_lit(mrb, "vertical"), mrb_intern_lit(mrb, "line_height")
+  };
   mrb_value kw_values[2] = { mrb_false_value(), mrb_undef_value() };
-  const mrb_kwargs kwargs = { 2, kw_values, kw_names, 0, NULL };
+  const mrb_kwargs kwargs = { 2, 0, kw_names, kw_values, NULL };
   Color *color = get_graphics_color(mrb, self);
   mrb_int argc = mrb_get_argc(mrb);
   switch (argc)

@@ -624,7 +624,6 @@ static mrb_value
 mrb_image_layer_draw(mrb_state *mrb, mrb_value self)
 {
   mrb_value map = mrb_layer_get_map(mrb, self);
-  tmx_map *map_data = mrb_carbuncle_get_tilemap(mrb, map);
   tmx_layer *layer = DATA_PTR(self);
   if (layer)
   {
@@ -644,7 +643,6 @@ static mrb_value
 mrb_object_layer_draw(mrb_state *mrb, mrb_value self)
 {
   mrb_value map = mrb_layer_get_map(mrb, self);
-  tmx_map *map_data = mrb_carbuncle_get_tilemap(mrb, map);
   tmx_layer *layer = DATA_PTR(self);
   if (layer)
   {

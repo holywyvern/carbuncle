@@ -49,12 +49,12 @@ static inline void
 load_glyphs(mrb_state *mrb, struct mrb_Font *font, FT_Open_Args *args)
 {
   FT_UInt index;
-  FT_ULong *glyphs = mrb_alloca(mrb, sizeof(*glyphs) * font->face->num_glyphs);
+  int *glyphs = mrb_alloca(mrb, sizeof(*glyphs) * font->face->num_glyphs);
   FT_UInt i = 0;
   FT_ULong codepoint = FT_Get_First_Char(font->face, &index);
   while (codepoint)
   {
-    glyphs[i] = codepoint;
+    glyphs[i] = (int)codepoint;
     codepoint = FT_Get_Next_Char(font->face, codepoint, &index);
     ++i;
   }

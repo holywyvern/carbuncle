@@ -62,6 +62,7 @@ mrb_bitmap_initialize(mrb_state *mrb, mrb_value self)
   mrb_value obj;
   mrb_int argc;
   argc = mrb_get_argc(mrb);
+  img = NULL;
   switch (argc)
   {
     case 1: {
