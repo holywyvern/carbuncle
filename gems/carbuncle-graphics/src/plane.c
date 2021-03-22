@@ -82,35 +82,35 @@ mrb_plane_initialize(mrb_state *mrb, mrb_value self)
 mrb_value
 mrb_plane_get_texture(mrb_state *mrb, mrb_value self)
 {
-  struct mrb_Plane *plane = get_plane(mrb, self);
+  get_plane(mrb, self);
   return mrb_iv_get(mrb, self, TEXTURE_SYMBOL);
 }
 
 mrb_value
 mrb_plane_get_origin(mrb_state *mrb, mrb_value self)
 {
-  struct mrb_Plane *plane = get_plane(mrb, self);
+  get_plane(mrb, self);
   return mrb_iv_get(mrb, self, ORIGIN_SYMBOL);
 }
 
 mrb_value
 mrb_plane_get_scale(mrb_state *mrb, mrb_value self)
 {
-  struct mrb_Plane *plane = get_plane(mrb, self);
+  get_plane(mrb, self);
   return mrb_iv_get(mrb, self, SCALE_SYMBOL);
 }
 
 mrb_value
 mrb_plane_get_color(mrb_state *mrb, mrb_value self)
 {
-  struct mrb_Plane *plane = get_plane(mrb, self);
+  get_plane(mrb, self);
   return mrb_iv_get(mrb, self, COLOR_SYMBOL);
 }
 
 mrb_value
 mrb_plane_get_src_rect(mrb_state *mrb, mrb_value self)
 {
-  struct mrb_Plane *plane = get_plane(mrb, self);
+  get_plane(mrb, self);
   return mrb_iv_get(mrb, self, SRC_RECT_SYMBOL);
 }
 
