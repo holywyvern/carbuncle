@@ -10,6 +10,7 @@ MRuby::Build.new do |conf|
   add_carbuncle_gems(conf)
 
   conf.enable_test
+  conf.disable_presym
 
   if ENV['DEBUG'] == 'true'
     conf.enable_debug
