@@ -1551,7 +1551,9 @@ mrb_s_graphics_draw_pixel(mrb_state *mrb, mrb_value self)
 553
 554
 555
-556</pre>
+556
+557
+558</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'gems/carbuncle-graphics/src/graphics.c', line 493</span>
@@ -1562,9 +1564,11 @@ mrb_s_graphics_draw_rect(mrb_state *mrb, mrb_value self)
   mrb_float x, y, width, height;
   mrb_bool vertical = FALSE;
   mrb_int line_height = 1;
-  const char *kw_names[2] = { &quot;vertical&quot;, &quot;line_height&quot; };
+  const mrb_sym *kw_names[2] = {
+    mrb_intern_lit(mrb, &quot;vertical&quot;), mrb_intern_lit(mrb, &quot;line_height&quot;)
+  };
   mrb_value kw_values[2] = { mrb_false_value(), mrb_undef_value() };
-  const mrb_kwargs kwargs = { 2, kw_values, kw_names, 0, NULL };
+  const mrb_kwargs kwargs = { 2, 0, kw_names, kw_values, NULL };
   Color *color = get_graphics_color(mrb, self);
   mrb_int argc = mrb_get_argc(mrb);
   switch (argc)
@@ -1834,8 +1838,6 @@ mrb_s_graphics_draw_ring(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-558
-559
 560
 561
 562
@@ -1858,10 +1860,12 @@ mrb_s_graphics_draw_ring(mrb_state *mrb, mrb_value self)
 579
 580
 581
-582</pre>
+582
+583
+584</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-graphics/src/graphics.c', line 558</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-graphics/src/graphics.c', line 560</span>
 
 static mrb_value
 mrb_s_graphics_draw_triangle(mrb_state *mrb, mrb_value self)
@@ -2635,7 +2639,7 @@ mrb_s_graphics_get_time(mrb_state *mrb, mrb_value self)
 </div>
 
       <div id="footer">
-  Generated on Thu Jan 28 17:33:27 2021 by
+  Generated on Mon Mar 22 08:29:45 2021 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.26 in <a href="https://github.com/sagmor/yard-mruby">mruby mode</a> 0.3.0 (ruby-2.7.2).
 </div>

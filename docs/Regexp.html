@@ -1107,7 +1107,6 @@ regexp_pcre_initialize(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-209
 210
 211
 212
@@ -1134,10 +1133,11 @@ regexp_pcre_initialize(mrb_state *mrb, mrb_value self)
 233
 234
 235
-236</pre>
+236
+237</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File '.doc_tmp/iij/mruby-regexp-pcre/src/mruby_regexp_pcre.c', line 209</span>
+      <pre class="code"><span class="info file"># File '.doc_tmp/iij/mruby-regexp-pcre/src/mruby_regexp_pcre.c', line 210</span>
 
 static mrb_value
 regexp_equal(mrb_state *mrb, mrb_value self)
@@ -1508,7 +1508,8 @@ regexp_equal(mrb_state *mrb, mrb_value self)
 204
 205
 206
-207</pre>
+207
+208</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File '.doc_tmp/iij/mruby-regexp-pcre/src/mruby_regexp_pcre.c', line 142</span>
@@ -1522,7 +1523,8 @@ regexp_pcre_match(mrb_state *mrb, mrb_value self)
   int *match;
   struct RClass *c;
   mrb_value md, str;
-  mrb_int i, pos;
+  int i;
+  mrb_int pos;
   pcre_extra extra;
   struct mrb_regexp_pcre *reg;
 
@@ -1828,7 +1830,7 @@ regexp_pcre_match(mrb_state *mrb, mrb_value self)
 </div>
 
       <div id="footer">
-  Generated on Thu Jan 28 17:33:30 2021 by
+  Generated on Mon Mar 22 08:29:48 2021 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.26 in <a href="https://github.com/sagmor/yard-mruby">mruby mode</a> 0.3.0 (ruby-2.7.2).
 </div>

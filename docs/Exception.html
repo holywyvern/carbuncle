@@ -351,7 +351,6 @@
       <pre class="lines">
 
 
-42
 43
 44
 45
@@ -360,10 +359,11 @@
 48
 49
 50
-51</pre>
+51
+52</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/error.c', line 42</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/error.c', line 43</span>
 
 static mrb_value
 exc_initialize(mrb_state *mrb, mrb_value exc)
@@ -371,7 +371,7 @@ exc_initialize(mrb_state *mrb, mrb_value exc)
   mrb_value mesg;
 
   if (mrb_get_args(mrb, &quot;|o&quot;, &amp;mesg) == 1) {
-    mrb_iv_set(mrb, exc, mrb_intern_lit(mrb, &quot;mesg&quot;), mesg);
+    mrb_iv_set(mrb, exc, MRB_SYM(mesg), mesg);
   }
   return exc;
 }</pre>
@@ -432,7 +432,6 @@ exc_initialize(mrb_state *mrb, mrb_value exc)
       <pre class="lines">
 
 
-66
 67
 68
 69
@@ -446,10 +445,11 @@ exc_initialize(mrb_state *mrb, mrb_value exc)
 77
 78
 79
-80</pre>
+80
+81</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/error.c', line 66</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/error.c', line 67</span>
 
 static mrb_value
 exc_exception(mrb_state *mrb, mrb_value self)
@@ -462,7 +462,7 @@ exc_exception(mrb_state *mrb, mrb_value self)
   if (argc == 0) return self;
   if (mrb_obj_equal(mrb, self, a)) return self;
   exc = mrb_obj_clone(mrb, self);
-  mrb_iv_set(mrb, exc, mrb_intern_lit(mrb, &quot;mesg&quot;), a);
+  mrb_iv_set(mrb, exc, MRB_SYM(mesg), a);
 
   return exc;
 }</pre>
@@ -525,22 +525,22 @@ exc_exception(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-130
 131
 132
 133
 134
 135
 136
-137</pre>
+137
+138</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/error.c', line 130</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/error.c', line 131</span>
 
 mrb_value
 mrb_exc_inspect(mrb_state *mrb, mrb_value exc)
 {
-  mrb_value mesg = mrb_attr_get(mrb, exc, mrb_intern_lit(mrb, &quot;mesg&quot;));
+  mrb_value mesg = mrb_attr_get(mrb, exc, MRB_SYM(mesg));
   mrb_value cname = mrb_mod_to_s(mrb, mrb_obj_value(mrb_obj_class(mrb, exc)));
   mesg = mrb_obj_as_string(mrb, mesg);
   return RSTRING_LEN(mesg) == 0 ? cname : mrb_format(mrb, &quot;%v (%v)&quot;, mesg, cname);
@@ -604,19 +604,19 @@ mrb_exc_inspect(mrb_state *mrb, mrb_value exc)
       <pre class="lines">
 
 
-114
 115
 116
 117
-118</pre>
+118
+119</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/error.c', line 114</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/error.c', line 115</span>
 
 static mrb_value
 exc_message(mrb_state *mrb, mrb_value exc)
 {
-  return mrb_funcall(mrb, exc, &quot;to_s&quot;, 0);
+  return mrb_funcall_id(mrb, exc, MRB_SYM(to_s), 0);
 }</pre>
     </td>
   </tr>
@@ -638,17 +638,17 @@ exc_message(mrb_state *mrb, mrb_value exc)
       <pre class="lines">
 
 
-160
 161
 162
 163
 164
 165
 166
-167</pre>
+167
+168</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/error.c', line 160</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/error.c', line 161</span>
 
 static mrb_value
 exc_set_backtrace(mrb_state *mrb, mrb_value exc)
@@ -717,7 +717,6 @@ exc_set_backtrace(mrb_state *mrb, mrb_value exc)
       <pre class="lines">
 
 
-90
 91
 92
 93
@@ -731,15 +730,16 @@ exc_set_backtrace(mrb_state *mrb, mrb_value exc)
 101
 102
 103
-104</pre>
+104
+105</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/error.c', line 90</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/error.c', line 91</span>
 
 mrb_value
 exc_to_s(mrb_state *mrb, mrb_value exc)
 {
-  mrb_value mesg = mrb_attr_get(mrb, exc, mrb_intern_lit(mrb, &quot;mesg&quot;));
+  mrb_value mesg = mrb_attr_get(mrb, exc, MRB_SYM(mesg));
   struct RObject *p;
 
   if (!mrb_string_p(mesg)) {
@@ -761,7 +761,7 @@ exc_to_s(mrb_state *mrb, mrb_value exc)
 </div>
 
       <div id="footer">
-  Generated on Thu Jan 28 17:33:30 2021 by
+  Generated on Mon Mar 22 08:29:48 2021 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.26 in <a href="https://github.com/sagmor/yard-mruby">mruby mode</a> 0.3.0 (ruby-2.7.2).
 </div>

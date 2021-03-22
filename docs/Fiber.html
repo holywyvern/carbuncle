@@ -410,9 +410,7 @@
 129
 130
 131
-132
-133
-134</pre>
+132</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-fiber/src/fiber.c', line 64</span>
@@ -449,7 +447,6 @@ fiber_init(mrb_state *mrb, mrb_value self)
   }
   c-&gt;stbase = (mrb_value *)mrb_malloc(mrb, slen*sizeof(mrb_value));
   c-&gt;stend = c-&gt;stbase + slen;
-  c-&gt;stack = c-&gt;stbase;
 
 #ifdef MRB_NAN_BOXING
   {
@@ -466,20 +463,19 @@ fiber_init(mrb_state *mrb, mrb_value self)
 #endif
 
   /* copy receiver from a block */
-  c-&gt;stack[0] = mrb-&gt;c-&gt;stack[0];
+  c-&gt;stbase[0] = mrb-&gt;c-&gt;ci-&gt;stack[0];
 
   /* initialize callinfo stack */
   c-&gt;cibase = (mrb_callinfo *)mrb_calloc(mrb, FIBER_CI_INIT_SIZE, sizeof(mrb_callinfo));
   c-&gt;ciend = c-&gt;cibase + FIBER_CI_INIT_SIZE;
   c-&gt;ci = c-&gt;cibase;
-  c-&gt;ci-&gt;stackent = c-&gt;stack;
 
   /* adjust return callinfo */
   ci = c-&gt;ci;
-  ci-&gt;target_class = MRB_PROC_TARGET_CLASS(p);
-  ci-&gt;proc = p;
+  mrb_vm_ci_target_class_set(ci, MRB_PROC_TARGET_CLASS(p));
+  mrb_vm_ci_proc_set(ci, p);
   mrb_field_write_barrier(mrb, (struct RBasic*)mrb_obj_ptr(self), (struct RBasic*)p);
-  ci-&gt;pc = p-&gt;body.irep-&gt;iseq;
+  ci-&gt;stack = c-&gt;stbase;
   ci[1] = ci[0];
   c-&gt;ci++;                      /* push dummy callinfo */
 
@@ -515,19 +511,19 @@ fiber_init(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-291
-292
-293
-294
 295
 296
 297
 298
 299
-300</pre>
+300
+301
+302
+303
+304</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-fiber/src/fiber.c', line 291</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-fiber/src/fiber.c', line 295</span>
 
 static mrb_value
 fiber_eq(mrb_state *mrb, mrb_value self)
@@ -636,10 +632,6 @@ fiber_eq(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-255
-256
-257
-258
 259
 260
 261
@@ -648,15 +640,19 @@ fiber_eq(mrb_state *mrb, mrb_value self)
 264
 265
 266
-267</pre>
+267
+268
+269
+270
+271</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-fiber/src/fiber.c', line 255</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-fiber/src/fiber.c', line 259</span>
 
 static mrb_value
 fiber_resume(mrb_state *mrb, mrb_value self)
 {
-  mrb_value *a;
+  const mrb_value *a;
   mrb_int len;
   mrb_bool vmexec = FALSE;
 
@@ -725,10 +721,6 @@ fiber_resume(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-314
-315
-316
-317
 318
 319
 320
@@ -747,16 +739,20 @@ fiber_resume(mrb_state *mrb, mrb_value self)
 333
 334
 335
-336</pre>
+336
+337
+338
+339
+340</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-fiber/src/fiber.c', line 314</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-fiber/src/fiber.c', line 318</span>
 
 static mrb_value
 fiber_transfer(mrb_state *mrb, mrb_value self)
 {
   struct mrb_context *c = fiber_check(mrb, self);
-  mrb_value* a;
+  const mrb_value* a;
   mrb_int len;
 
   fiber_check_cfunc(mrb, mrb-&gt;c);
@@ -785,7 +781,7 @@ fiber_transfer(mrb_state *mrb, mrb_value self)
 </div>
 
       <div id="footer">
-  Generated on Thu Jan 28 17:33:31 2021 by
+  Generated on Mon Mar 22 08:29:49 2021 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.26 in <a href="https://github.com/sagmor/yard-mruby">mruby mode</a> 0.3.0 (ruby-2.7.2).
 </div>

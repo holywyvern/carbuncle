@@ -284,7 +284,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Calls the given block for each element of <code>self</code> and pass the name and value of the respectiev element.</p>
+<p>Calls the given block for each element of <code>self</code> and pass the name and value of the respective element.</p>
 </div></span>
   
 </li>
@@ -614,7 +614,6 @@
       <pre class="lines">
 
 
-343
 344
 345
 346
@@ -622,15 +621,16 @@
 348
 349
 350
-351</pre>
+351
+352</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-struct/src/struct.c', line 343</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-struct/src/struct.c', line 344</span>
 
 static mrb_value
 mrb_struct_initialize(mrb_state *mrb, mrb_value self)
 {
-  mrb_value *argv;
+  const mrb_value *argv;
   mrb_int argc;
 
   mrb_get_args(mrb, &quot;*!&quot;, &amp;argv, &amp;argc);
@@ -710,6 +710,13 @@ mrb_struct_initialize(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
+534
+535
+536
+537
+538
+539
+540
 541
 542
 543
@@ -729,17 +736,10 @@ mrb_struct_initialize(mrb_state *mrb, mrb_value self)
 557
 558
 559
-560
-561
-562
-563
-564
-565
-566
-567</pre>
+560</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-struct/src/struct.c', line 541</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-struct/src/struct.c', line 534</span>
 
 static mrb_value
 mrb_struct_equal(mrb_state *mrb, mrb_value s)
@@ -878,7 +878,6 @@ mrb_struct_equal(mrb_state *mrb, mrb_value s)
       <pre class="lines">
 
 
-425
 426
 427
 428
@@ -892,13 +891,10 @@ mrb_struct_equal(mrb_state *mrb, mrb_value s)
 436
 437
 438
-439
-440
-441
-442</pre>
+439</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-struct/src/struct.c', line 425</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-struct/src/struct.c', line 426</span>
 
 static mrb_value
 mrb_struct_aref(mrb_state *mrb, mrb_value s)
@@ -906,12 +902,8 @@ mrb_struct_aref(mrb_state *mrb, mrb_value s)
   mrb_value idx = mrb_get_arg1(mrb);
 
   if (mrb_string_p(idx)) {
-    mrb_value sym = mrb_check_intern_str(mrb, idx);
-
-    if (mrb_nil_p(sym)) {
-      mrb_name_error(mrb, mrb_intern_str(mrb, idx), &quot;no member &#39;%v&#39; in struct&quot;, idx);
-    }
-    idx = sym;
+    mrb_sym sym = mrb_intern_str(mrb, idx);
+    idx = mrb_symbol_value(sym);
   }
   if (mrb_symbol_p(idx)) {
     return struct_aref_sym(mrb, s, mrb_symbol(idx));
@@ -1030,6 +1022,9 @@ mrb_struct_aref(mrb_state *mrb, mrb_value s)
       <pre class="lines">
 
 
+485
+486
+487
 488
 489
 490
@@ -1056,17 +1051,10 @@ mrb_struct_aref(mrb_state *mrb, mrb_value s)
 511
 512
 513
-514
-515
-516
-517
-518
-519
-520
-521</pre>
+514</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-struct/src/struct.c', line 488</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-struct/src/struct.c', line 485</span>
 
 static mrb_value
 mrb_struct_aset(mrb_state *mrb, mrb_value s)
@@ -1078,12 +1066,8 @@ mrb_struct_aset(mrb_state *mrb, mrb_value s)
   mrb_get_args(mrb, &quot;oo&quot;, &amp;idx, &amp;val);
 
   if (mrb_string_p(idx)) {
-    mrb_value sym = mrb_check_intern_str(mrb, idx);
-
-    if (mrb_nil_p(sym)) {
-      mrb_name_error(mrb, mrb_intern_str(mrb, idx), &quot;no member &#39;%v&#39; in struct&quot;, idx);
-    }
-    idx = sym;
+    mrb_sym sym = mrb_intern_str(mrb, idx);
+    idx = mrb_symbol_value(sym);
   }
   if (mrb_symbol_p(idx)) {
     return mrb_struct_aset_sym(mrb, s, mrb_symbol(idx), val);
@@ -1282,7 +1266,7 @@ mrb_struct_aset(mrb_state *mrb, mrb_value s)
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Calls the given block for each element of <code>self</code> and pass the name and value of the respectiev element.</p>
+<p>Calls the given block for each element of <code>self</code> and pass the name and value of the respective element.</p>
 
 <p>ISO 15.2.18.4.5</p>
 
@@ -1367,6 +1351,13 @@ mrb_struct_aset(mrb_state *mrb, mrb_value s)
       <pre class="lines">
 
 
+570
+571
+572
+573
+574
+575
+576
 577
 578
 579
@@ -1386,17 +1377,10 @@ mrb_struct_aset(mrb_state *mrb, mrb_value s)
 593
 594
 595
-596
-597
-598
-599
-600
-601
-602
-603</pre>
+596</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-struct/src/struct.c', line 577</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-struct/src/struct.c', line 570</span>
 
 static mrb_value
 mrb_struct_eql(mrb_state *mrb, mrb_value s)
@@ -1458,7 +1442,6 @@ mrb_struct_eql(mrb_state *mrb, mrb_value s)
       <pre class="lines">
 
 
-355
 356
 357
 358
@@ -1472,10 +1455,11 @@ mrb_struct_eql(mrb_state *mrb, mrb_value s)
 366
 367
 368
-369</pre>
+369
+370</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-struct/src/struct.c', line 355</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-struct/src/struct.c', line 356</span>
 
 static mrb_value
 mrb_struct_init_copy(mrb_state *mrb, mrb_value copy)
@@ -1556,9 +1540,9 @@ struct.inspect   -&gt; string
   <h3 class="signature " id="length-instance_method">
   
     
-      <span class="overload">#<strong>length</strong>  &#x21d2; <tt><span class='object_link'><a href="Fixnum.html" title="Fixnum (class)">Fixnum</a></span></tt> </span>
+      <span class="overload">#<strong>length</strong>  &#x21d2; <tt><span class='object_link'><a href="Integer.html" title="Integer (class)">Integer</a></span></tt> </span>
     
-      <span class="overload">#<strong>size</strong>  &#x21d2; <tt><span class='object_link'><a href="Fixnum.html" title="Fixnum (class)">Fixnum</a></span></tt> </span>
+      <span class="overload">#<strong>size</strong>  &#x21d2; <tt><span class='object_link'><a href="Integer.html" title="Integer (class)">Integer</a></span></tt> </span>
     
   
 
@@ -1580,7 +1564,7 @@ struct.inspect   -&gt; string
     
       
       <li class="overload_item">
-        <span class="signature">#<strong>length</strong>  &#x21d2; <tt><span class='object_link'><a href="Fixnum.html" title="Fixnum (class)">Fixnum</a></span></tt> </span>
+        <span class="signature">#<strong>length</strong>  &#x21d2; <tt><span class='object_link'><a href="Integer.html" title="Integer (class)">Integer</a></span></tt> </span>
         <div class="docstring">
   <div class="discussion">
     
@@ -1595,7 +1579,7 @@ struct.inspect   -&gt; string
     <li>
       
       
-        <span class='type'>(<tt><span class='object_link'><a href="Fixnum.html" title="Fixnum (class)">Fixnum</a></span></tt>)</span>
+        <span class='type'>(<tt><span class='object_link'><a href="Integer.html" title="Integer (class)">Integer</a></span></tt>)</span>
       
       
       
@@ -1610,7 +1594,7 @@ struct.inspect   -&gt; string
     
       
       <li class="overload_item">
-        <span class="signature">#<strong>size</strong>  &#x21d2; <tt><span class='object_link'><a href="Fixnum.html" title="Fixnum (class)">Fixnum</a></span></tt> </span>
+        <span class="signature">#<strong>size</strong>  &#x21d2; <tt><span class='object_link'><a href="Integer.html" title="Integer (class)">Integer</a></span></tt> </span>
         <div class="docstring">
   <div class="discussion">
     
@@ -1625,7 +1609,7 @@ struct.inspect   -&gt; string
     <li>
       
       
-        <span class='type'>(<tt><span class='object_link'><a href="Fixnum.html" title="Fixnum (class)">Fixnum</a></span></tt>)</span>
+        <span class='type'>(<tt><span class='object_link'><a href="Integer.html" title="Integer (class)">Integer</a></span></tt>)</span>
       
       
       
@@ -1649,14 +1633,14 @@ struct.inspect   -&gt; string
       <pre class="lines">
 
 
-612
-613
-614
-615
-616</pre>
+605
+606
+607
+608
+609</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-struct/src/struct.c', line 612</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-struct/src/struct.c', line 605</span>
 
 static mrb_value
 mrb_struct_len(mrb_state *mrb, mrb_value self)
@@ -1727,14 +1711,14 @@ mrb_struct_len(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-107
 108
 109
 110
-111</pre>
+111
+112</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-struct/src/struct.c', line 107</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-struct/src/struct.c', line 108</span>
 
 static mrb_value
 mrb_struct_members(mrb_state *mrb, mrb_value obj)
@@ -1805,9 +1789,9 @@ mrb_struct_members(mrb_state *mrb, mrb_value obj)
   <h3 class="signature " id="size-instance_method">
   
     
-      <span class="overload">#<strong>length</strong>  &#x21d2; <tt><span class='object_link'><a href="Fixnum.html" title="Fixnum (class)">Fixnum</a></span></tt> </span>
+      <span class="overload">#<strong>length</strong>  &#x21d2; <tt><span class='object_link'><a href="Integer.html" title="Integer (class)">Integer</a></span></tt> </span>
     
-      <span class="overload">#<strong>size</strong>  &#x21d2; <tt><span class='object_link'><a href="Fixnum.html" title="Fixnum (class)">Fixnum</a></span></tt> </span>
+      <span class="overload">#<strong>size</strong>  &#x21d2; <tt><span class='object_link'><a href="Integer.html" title="Integer (class)">Integer</a></span></tt> </span>
     
   
 
@@ -1829,7 +1813,7 @@ mrb_struct_members(mrb_state *mrb, mrb_value obj)
     
       
       <li class="overload_item">
-        <span class="signature">#<strong>length</strong>  &#x21d2; <tt><span class='object_link'><a href="Fixnum.html" title="Fixnum (class)">Fixnum</a></span></tt> </span>
+        <span class="signature">#<strong>length</strong>  &#x21d2; <tt><span class='object_link'><a href="Integer.html" title="Integer (class)">Integer</a></span></tt> </span>
         <div class="docstring">
   <div class="discussion">
     
@@ -1844,7 +1828,7 @@ mrb_struct_members(mrb_state *mrb, mrb_value obj)
     <li>
       
       
-        <span class='type'>(<tt><span class='object_link'><a href="Fixnum.html" title="Fixnum (class)">Fixnum</a></span></tt>)</span>
+        <span class='type'>(<tt><span class='object_link'><a href="Integer.html" title="Integer (class)">Integer</a></span></tt>)</span>
       
       
       
@@ -1859,7 +1843,7 @@ mrb_struct_members(mrb_state *mrb, mrb_value obj)
     
       
       <li class="overload_item">
-        <span class="signature">#<strong>size</strong>  &#x21d2; <tt><span class='object_link'><a href="Fixnum.html" title="Fixnum (class)">Fixnum</a></span></tt> </span>
+        <span class="signature">#<strong>size</strong>  &#x21d2; <tt><span class='object_link'><a href="Integer.html" title="Integer (class)">Integer</a></span></tt> </span>
         <div class="docstring">
   <div class="discussion">
     
@@ -1874,7 +1858,7 @@ mrb_struct_members(mrb_state *mrb, mrb_value obj)
     <li>
       
       
-        <span class='type'>(<tt><span class='object_link'><a href="Fixnum.html" title="Fixnum (class)">Fixnum</a></span></tt>)</span>
+        <span class='type'>(<tt><span class='object_link'><a href="Integer.html" title="Integer (class)">Integer</a></span></tt>)</span>
       
       
       
@@ -1898,14 +1882,14 @@ mrb_struct_members(mrb_state *mrb, mrb_value obj)
       <pre class="lines">
 
 
-612
-613
-614
-615
-616</pre>
+605
+606
+607
+608
+609</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-struct/src/struct.c', line 612</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-struct/src/struct.c', line 605</span>
 
 static mrb_value
 mrb_struct_len(mrb_state *mrb, mrb_value self)
@@ -2014,14 +1998,14 @@ mrb_struct_len(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-625
-626
-627
-628
-629</pre>
+618
+619
+620
+621
+622</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-struct/src/struct.c', line 625</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-struct/src/struct.c', line 618</span>
 
 static mrb_value
 mrb_struct_to_a(mrb_state *mrb, mrb_value self)
@@ -2087,6 +2071,13 @@ mrb_struct_to_a(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
+630
+631
+632
+633
+634
+635
+636
 637
 638
 639
@@ -2094,17 +2085,10 @@ mrb_struct_to_a(mrb_state *mrb, mrb_value self)
 641
 642
 643
-644
-645
-646
-647
-648
-649
-650
-651</pre>
+644</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-struct/src/struct.c', line 637</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-struct/src/struct.c', line 630</span>
 
 static mrb_value
 mrb_struct_to_h(mrb_state *mrb, mrb_value self)
@@ -2223,14 +2207,14 @@ mrb_struct_to_h(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-625
-626
-627
-628
-629</pre>
+618
+619
+620
+621
+622</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-struct/src/struct.c', line 625</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-struct/src/struct.c', line 618</span>
 
 static mrb_value
 mrb_struct_to_a(mrb_state *mrb, mrb_value self)
@@ -2257,25 +2241,25 @@ mrb_struct_to_a(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
+646
+647
+648
+649
+650
+651
+652
 653
 654
-655
-656
-657
-658
-659
-660
-661
-662</pre>
+655</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-struct/src/struct.c', line 653</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-struct/src/struct.c', line 646</span>
 
 static mrb_value
 mrb_struct_values_at(mrb_state *mrb, mrb_value self)
 {
   mrb_int argc;
-  mrb_value *argv;
+  const mrb_value *argv;
 
   mrb_get_args(mrb, &quot;*&quot;, &amp;argv, &amp;argc);
 
@@ -2291,7 +2275,7 @@ mrb_struct_values_at(mrb_state *mrb, mrb_value self)
 </div>
 
       <div id="footer">
-  Generated on Thu Jan 28 17:33:31 2021 by
+  Generated on Mon Mar 22 08:29:49 2021 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.26 in <a href="https://github.com/sagmor/yard-mruby">mruby mode</a> 0.3.0 (ruby-2.7.2).
 </div>

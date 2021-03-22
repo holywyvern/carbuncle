@@ -464,14 +464,14 @@
       <pre class="lines">
 
 
-218
 219
 220
 221
-222</pre>
+222
+223</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/object.c', line 218</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/object.c', line 219</span>
 
 static mrb_value
 false_and(mrb_state *mrb, mrb_value obj)
@@ -580,17 +580,17 @@ false_and(mrb_state *mrb, mrb_value obj)
       <pre class="lines">
 
 
-237
 238
 239
 240
 241
 242
 243
-244</pre>
+244
+245</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/object.c', line 237</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/object.c', line 238</span>
 
 static mrb_value
 false_xor(mrb_state *mrb, mrb_value obj)
@@ -633,16 +633,16 @@ false_xor(mrb_state *mrb, mrb_value obj)
       <pre class="lines">
 
 
-102
 103
 104
 105
 106
 107
-108</pre>
+108
+109</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/object.c', line 102</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/object.c', line 103</span>
 
 static mrb_value
 nil_inspect(mrb_state *mrb, mrb_value obj)
@@ -702,14 +702,14 @@ nil_inspect(mrb_state *mrb, mrb_value obj)
       <pre class="lines">
 
 
-80
 81
 82
 83
-84</pre>
+84
+85</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/object.c', line 80</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/object.c', line 81</span>
 
 static mrb_value
 mrb_true(mrb_state *mrb, mrb_value obj)
@@ -775,14 +775,14 @@ mrb_true(mrb_state *mrb, mrb_value obj)
       <pre class="lines">
 
 
-14
 15
 16
 17
-18</pre>
+18
+19</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-object-ext/src/object.c', line 14</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-object-ext/src/object.c', line 15</span>
 
 static mrb_value
 nil_to_a(mrb_state *mrb, mrb_value obj)
@@ -848,14 +848,14 @@ nil_to_a(mrb_state *mrb, mrb_value obj)
       <pre class="lines">
 
 
-28
 29
 30
 31
-32</pre>
+32
+33</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-object-ext/src/object.c', line 28</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-object-ext/src/object.c', line 29</span>
 
 static mrb_value
 nil_to_f(mrb_state *mrb, mrb_value obj)
@@ -897,14 +897,14 @@ nil_to_f(mrb_state *mrb, mrb_value obj)
       <pre class="lines">
 
 
-42
 43
 44
 45
-46</pre>
+46
+47</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-object-ext/src/object.c', line 42</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-object-ext/src/object.c', line 43</span>
 
 static mrb_value
 nil_to_h(mrb_state *mrb, mrb_value obj)
@@ -970,14 +970,14 @@ nil_to_h(mrb_state *mrb, mrb_value obj)
       <pre class="lines">
 
 
-55
 56
 57
 58
-59</pre>
+59
+60</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-object-ext/src/object.c', line 55</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-object-ext/src/object.c', line 56</span>
 
 static mrb_value
 nil_to_i(mrb_state *mrb, mrb_value obj)
@@ -1019,21 +1019,21 @@ nil_to_i(mrb_state *mrb, mrb_value obj)
       <pre class="lines">
 
 
-94
 95
 96
 97
 98
 99
-100</pre>
+100
+101</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/object.c', line 94</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/object.c', line 95</span>
 
 static mrb_value
 nil_to_s(mrb_state *mrb, mrb_value obj)
 {
-  mrb_value str = mrb_str_new_frozen(mrb, 0, 0);
+  mrb_value str = mrb_str_new_frozen(mrb, NULL, 0);
   RSTR_SET_ASCII_FLAG(mrb_str_ptr(str));
   return str;
 }</pre>
@@ -1139,17 +1139,17 @@ nil_to_s(mrb_state *mrb, mrb_value obj)
       <pre class="lines">
 
 
-257
 258
 259
 260
 261
 262
 263
-264</pre>
+264
+265</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/object.c', line 257</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/object.c', line 258</span>
 
 static mrb_value
 false_or(mrb_state *mrb, mrb_value obj)
@@ -1169,7 +1169,7 @@ false_or(mrb_state *mrb, mrb_value obj)
 </div>
 
       <div id="footer">
-  Generated on Thu Jan 28 17:33:31 2021 by
+  Generated on Mon Mar 22 08:29:48 2021 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.26 in <a href="https://github.com/sagmor/yard-mruby">mruby mode</a> 0.3.0 (ruby-2.7.2).
 </div>

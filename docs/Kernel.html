@@ -83,7 +83,7 @@
   <dl>
     <dt>Defined in:</dt>
     <dd>mruby/mrblib/kernel.rb<span class="defines">,<br />
-  mruby/src/kernel.c,<br /> mruby/mrbgems/mruby-sprintf/src/kernel.c,<br /> mruby/mrbgems/mruby-print/mrblib/print.rb,<br /> mruby/mrbgems/mruby-method/mrblib/kernel.rb,<br /> mruby/mrbgems/mruby-object-ext/mrblib/object.rb,<br /> mruby/mrbgems/mruby-rational/mrblib/rational.rb,<br /> mruby/mrbgems/mruby-enumerator/mrblib/enumerator.rb</span>
+  mruby/src/kernel.c,<br /> mruby/mrbgems/mruby-print/mrblib/print.rb,<br /> mruby/mrbgems/mruby-method/mrblib/kernel.rb,<br /> mruby/mrbgems/mruby-object-ext/mrblib/object.rb,<br /> mruby/mrbgems/mruby-rational/mrblib/rational.rb,<br /> mruby/mrbgems/mruby-enumerator/mrblib/enumerator.rb</span>
 </dd>
   </dl>
   
@@ -216,6 +216,30 @@
         <li class="public ">
   <span class="summary_signature">
     
+      <a href="#format-class_method" title="format (class method)">.<strong>format</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the string resulting from applying <em>format_string</em> to any additional arguments.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
       <a href="#Hash-class_method" title="Hash (class method)">.<strong>Hash</strong>(arg)  &#x21d2; Hash </a>
     
 
@@ -255,7 +279,31 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Converts <em>arg</em> to a <code>Fixnum</code>.</p>
+<p>Converts <em>arg</em> to a <code>Integer</code>.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#sprintf-class_method" title="sprintf (class method)">.<strong>sprintf</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the string resulting from applying <em>format_string</em> to any additional arguments.</p>
 </div></span>
   
 </li>
@@ -407,9 +455,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>
-<p>15.3.1.3.34.</p>
-</div></span>
+    <span class="summary_desc"><div class='inline'></div></span>
   
 </li>
 
@@ -681,30 +727,6 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#format-instance_method" title="#format (instance method)">#<strong>format</strong>  &#x21d2; Object </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'>
-<p>in sprintf.c.</p>
-</div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
       <a href="#freeze-instance_method" title="#freeze (instance method)">#<strong>freeze</strong>  &#x21d2; Object </a>
     
 
@@ -790,7 +812,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Generates a <code>Fixnum</code> hash value for this object.</p>
+<p>Generates a <code>Integer</code> hash value for this object.</p>
 </div></span>
   
 </li>
@@ -1207,7 +1229,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#print-instance_method" title="#print (instance method)">#<strong>print</strong>(*args)  &#x21d2; Object </a>
+      <a href="#print-instance_method" title="#print (instance method)">#<strong>print</strong>  &#x21d2; Object </a>
     
 
     
@@ -1222,7 +1244,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Invoke method <code>print</code> on STDOUT and passing <tt>*args</tt>.</p>
+<p>15.3.1.3.35.</p>
 </div></span>
   
 </li>
@@ -1325,7 +1347,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#puts-instance_method" title="#puts (instance method)">#<strong>puts</strong>(*args)  &#x21d2; Object </a>
+      <a href="#puts-instance_method" title="#puts (instance method)">#<strong>puts</strong>  &#x21d2; Object </a>
     
 
     
@@ -1340,7 +1362,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Invoke method <code>puts</code> on STDOUT and passing <tt><strong>args</strong></tt>.</p>
+<p>15.3.1.3.39.</p>
 </div></span>
   
 </li>
@@ -1366,28 +1388,6 @@
     <span class="summary_desc"><div class='inline'>
 <p>With no arguments, raises a <code>RuntimeError</code> With a single <code>String</code> argument, raises a <code>RuntimeError</code> with the string as a message.</p>
 </div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#Rational-instance_method" title="#Rational (instance method)">#<strong>Rational</strong>(numerator, denominator = 1)  &#x21d2; Object </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'></div></span>
   
 </li>
 
@@ -1458,7 +1458,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Invokes the method identified by <em>symbol</em>, passing it any arguments specified.</p>
+<p>implementation of #send method.</p>
 </div></span>
   
 </li>
@@ -1529,30 +1529,6 @@
   
     <span class="summary_desc"><div class='inline'>
 <p>Returns an array of the names of singleton methods for <em>obj</em>.</p>
-</div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#sprintf-instance_method" title="#sprintf (instance method)">#<strong>sprintf</strong>  &#x21d2; Object </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'>
-<p>in sprintf.c.</p>
 </div></span>
   
 </li>
@@ -1714,27 +1690,27 @@
       <pre class="lines">
 
 
-686
-687
-688
-689
-690
-691
-692
-693
-694
-695
-696
-697</pre>
+523
+524
+525
+526
+527
+528
+529
+530
+531
+532
+533
+534</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/kernel.c', line 686</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/kernel.c', line 523</span>
 
 static mrb_value
 mrb_obj_missing(mrb_state *mrb, mrb_value mod)
 {
   mrb_sym name;
-  mrb_value *a;
+  const mrb_value *a;
   mrb_int alen;
 
   mrb_get_args(mrb, &quot;n*!&quot;, &amp;name, &amp;a, &amp;alen);
@@ -1811,7 +1787,6 @@ mrb_obj_missing(mrb_state *mrb, mrb_value mod)
       <pre class="lines">
 
 
-167
 168
 169
 170
@@ -1823,10 +1798,11 @@ mrb_obj_missing(mrb_state *mrb, mrb_value mod)
 176
 177
 178
-179</pre>
+179
+180</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-kernel-ext/src/kernel.c', line 167</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-kernel-ext/src/kernel.c', line 168</span>
 
 static mrb_value
 mrb_f_array(mrb_state *mrb, mrb_value self)
@@ -1834,7 +1810,7 @@ mrb_f_array(mrb_state *mrb, mrb_value self)
   mrb_value arg = mrb_get_arg1(mrb);
   mrb_value tmp;
 
-  tmp = mrb_check_convert_type(mrb, arg, MRB_TT_ARRAY, &quot;Array&quot;, &quot;to_a&quot;);
+  tmp = mrb_type_convert_check(mrb, arg, MRB_TT_ARRAY, MRB_SYM(to_a));
   if (mrb_nil_p(tmp)) {
     return mrb_ary_new_from_values(mrb, 1, &amp;arg);
   }
@@ -1861,7 +1837,6 @@ mrb_f_array(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-7
 8
 9
 10
@@ -1915,10 +1890,11 @@ mrb_f_array(mrb_state *mrb, mrb_value self)
 58
 59
 60
-61</pre>
+61
+62</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-kernel-ext/src/kernel.c', line 7</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-kernel-ext/src/kernel.c', line 8</span>
 
 static mrb_value
 mrb_f_caller(mrb_state *mrb, mrb_value self)
@@ -1973,7 +1949,7 @@ mrb_f_caller(mrb_state *mrb, mrb_value self)
     return mrb_ary_new(mrb);
   }
 
-  return mrb_funcall(mrb, bt, &quot;[]&quot;, 2, mrb_fixnum_value(lev), mrb_fixnum_value(n));
+  return mrb_funcall_id(mrb, bt, MRB_OPSYM(aref), 2, mrb_fixnum_value(lev), mrb_fixnum_value(n));
 }</pre>
     </td>
   </tr>
@@ -2018,35 +1994,35 @@ mrb_f_caller(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-583
-584
-585
-586
-587
-588
-589
-590
-591
-592
-593
-594
-595
-596
-597
-598
-599
-600
-601
-602
-603
-604
-605
-606
-607
-608</pre>
+420
+421
+422
+423
+424
+425
+426
+427
+428
+429
+430
+431
+432
+433
+434
+435
+436
+437
+438
+439
+440
+441
+442
+443
+444
+445</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/kernel.c', line 583</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/kernel.c', line 420</span>
 
 MRB_API mrb_value
 mrb_f_raise(mrb_state *mrb, mrb_value self)
@@ -2139,16 +2115,16 @@ mrb_f_raise(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-128
 129
 130
 131
 132
 133
-134</pre>
+134
+135</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-kernel-ext/src/kernel.c', line 128</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-kernel-ext/src/kernel.c', line 129</span>
 
 static mrb_value
 mrb_f_float(mrb_state *mrb, mrb_value self)
@@ -2156,6 +2132,390 @@ mrb_f_float(mrb_state *mrb, mrb_value self)
   mrb_value arg = mrb_get_arg1(mrb);
 
   return mrb_Float(mrb, arg);
+}</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="format-class_method">
+  
+    
+      <span class="overload">.<strong>format</strong>(format_string[, arguments...])  &#x21d2; <tt><span class='object_link'><a href="#String-class_method" title="Kernel.String (method)">String</a></span></tt> </span>
+    
+      <span class="overload">.<strong>sprintf</strong>(format_string[, arguments...])  &#x21d2; <tt><span class='object_link'><a href="#String-class_method" title="Kernel.String (method)">String</a></span></tt> </span>
+    
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the string resulting from applying <em>format_string</em> to any additional arguments.  Within the format string, any characters other than format sequences are copied to the result.</p>
+
+<p>The syntax of a format sequence is follows.</p>
+
+<pre class="code"><code class="">%[flags][width][.precision]type
+</code></pre>
+
+<p>A format sequence consists of a percent sign, followed by optional flags, width, and precision indicators, then terminated with a field type character.  The field type controls how the corresponding <code>sprintf</code> argument is to be interpreted, while the flags modify that interpretation.</p>
+
+<p>The field type characters are:</p>
+
+<pre class="code"><code class="">Field |  Integer Format
+------+--------------------------------------------------------------
+  b   | Convert argument as a binary number.
+      | Negative numbers will be displayed as a two&#39;s complement
+      | prefixed with &#39;..1&#39;.
+  B   | Equivalent to &#39;b&#39;, but uses an uppercase 0B for prefix
+      | in the alternative format by #.
+  d   | Convert argument as a decimal number.
+  i   | Identical to &#39;d&#39;.
+  o   | Convert argument as an octal number.
+      | Negative numbers will be displayed as a two&#39;s complement
+      | prefixed with &#39;..7&#39;.
+  u   | Identical to &#39;d&#39;.
+  x   | Convert argument as a hexadecimal number.
+      | Negative numbers will be displayed as a two&#39;s complement
+      | prefixed with &#39;..f&#39; (representing an infinite string of
+      | leading &#39;ff&#39;s).
+  X   | Equivalent to &#39;x&#39;, but uses uppercase letters.
+
+Field |  Float Format
+------+--------------------------------------------------------------
+  e   | Convert floating point argument into exponential notation
+      | with one digit before the decimal point as [-]d.dddddde[+-]dd.
+      | The precision specifies the number of digits after the decimal
+      | point (defaulting to six).
+  E   | Equivalent to &#39;e&#39;, but uses an uppercase E to indicate
+      | the exponent.
+  f   | Convert floating point argument as [-]ddd.dddddd,
+      | where the precision specifies the number of digits after
+      | the decimal point.
+  g   | Convert a floating point number using exponential form
+      | if the exponent is less than -4 or greater than or
+      | equal to the precision, or in dd.dddd form otherwise.
+      | The precision specifies the number of significant digits.
+  G   | Equivalent to &#39;g&#39;, but use an uppercase &#39;E&#39; in exponent form.
+  a   | Convert floating point argument as [-]0xh.hhhhp[+-]dd,
+      | which is consisted from optional sign, &quot;0x&quot;, fraction part
+      | as hexadecimal, &quot;p&quot;, and exponential part as decimal.
+  A   | Equivalent to &#39;a&#39;, but use uppercase &#39;X&#39; and &#39;P&#39;.
+
+Field |  Other Format
+------+--------------------------------------------------------------
+  c   | Argument is the numeric code for a single character or
+      | a single character string itself.
+  p   | The valuing of argument.inspect.
+  s   | Argument is a string to be substituted.  If the format
+      | sequence contains a precision, at most that many characters
+      | will be copied.
+  %   | A percent sign itself will be displayed.  No argument taken.
+</code></pre>
+
+<p>The flags modifies the behavior of the formats. The flag characters are:</p>
+
+<pre class="code"><code class="">Flag     | Applies to    | Meaning
+---------+---------------+-----------------------------------------
+space    | bBdiouxX      | Leave a space at the start of
+         | aAeEfgG       | non-negative numbers.
+         | (numeric fmt) | For &#39;o&#39;, &#39;x&#39;, &#39;X&#39;, &#39;b&#39; and &#39;B&#39;, use
+         |               | a minus sign with absolute value for
+         |               | negative values.
+---------+---------------+-----------------------------------------
+(digit)$ | all           | Specifies the absolute argument number
+         |               | for this field.  Absolute and relative
+         |               | argument numbers cannot be mixed in a
+         |               | sprintf string.
+---------+---------------+-----------------------------------------
+ #       | bBoxX         | Use an alternative format.
+         | aAeEfgG       | For the conversions &#39;o&#39;, increase the precision
+         |               | until the first digit will be &#39;0&#39; if
+         |               | it is not formatted as complements.
+         |               | For the conversions &#39;x&#39;, &#39;X&#39;, &#39;b&#39; and &#39;B&#39;
+         |               | on non-zero, prefix the result with &quot;0x&quot;,
+         |               | &quot;0X&quot;, &quot;0b&quot; and &quot;0B&quot;, respectively.
+         |               | For &#39;a&#39;, &#39;A&#39;, &#39;e&#39;, &#39;E&#39;, &#39;f&#39;, &#39;g&#39;, and &#39;G&#39;,
+         |               | force a decimal point to be added,
+         |               | even if no digits follow.
+         |               | For &#39;g&#39; and &#39;G&#39;, do not remove trailing zeros.
+---------+---------------+-----------------------------------------
++        | bBdiouxX      | Add a leading plus sign to non-negative
+         | aAeEfgG       | numbers.
+         | (numeric fmt) | For &#39;o&#39;, &#39;x&#39;, &#39;X&#39;, &#39;b&#39; and &#39;B&#39;, use
+         |               | a minus sign with absolute value for
+         |               | negative values.
+---------+---------------+-----------------------------------------
+-        | all           | Left-justify the result of this conversion.
+---------+---------------+-----------------------------------------
+0 (zero) | bBdiouxX      | Pad with zeros, not spaces.
+         | aAeEfgG       | For &#39;o&#39;, &#39;x&#39;, &#39;X&#39;, &#39;b&#39; and &#39;B&#39;, radix-1
+         | (numeric fmt) | is used for negative numbers formatted as
+         |               | complements.
+---------+---------------+-----------------------------------------
+*        | all           | Use the next argument as the field width.
+         |               | If negative, left-justify the result. If the
+         |               | asterisk is followed by a number and a dollar
+         |               | sign, use the indicated argument as the width.
+</code></pre>
+
+<p>Examples of flags:</p>
+
+<pre class="code"><code class=""><span class='comment'># &#39;+&#39; and space flag specifies the sign of non-negative numbers.
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%d</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='int'>123</span><span class='rparen'>)</span>  <span class='comment'>#=&gt; &quot;123&quot;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%+d</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='int'>123</span><span class='rparen'>)</span> <span class='comment'>#=&gt; &quot;+123&quot;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>% d</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='int'>123</span><span class='rparen'>)</span> <span class='comment'>#=&gt; &quot; 123&quot;
+</span>
+<span class='comment'># &#39;#&#39; flag for &#39;o&#39; increases number of digits to show &#39;0&#39;.
+</span><span class='comment'># &#39;+&#39; and space flag changes format of negative numbers.
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%o</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='int'>123</span><span class='rparen'>)</span>   <span class='comment'>#=&gt; &quot;173&quot;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%#o</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='int'>123</span><span class='rparen'>)</span>  <span class='comment'>#=&gt; &quot;0173&quot;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%+o</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='op'>-</span><span class='int'>123</span><span class='rparen'>)</span> <span class='comment'>#=&gt; &quot;-173&quot;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%o</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='op'>-</span><span class='int'>123</span><span class='rparen'>)</span>  <span class='comment'>#=&gt; &quot;..7605&quot;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%#o</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='op'>-</span><span class='int'>123</span><span class='rparen'>)</span> <span class='comment'>#=&gt; &quot;..7605&quot;
+</span>
+<span class='comment'># &#39;#&#39; flag for &#39;x&#39; add a prefix &#39;0x&#39; for non-zero numbers.
+</span><span class='comment'># &#39;+&#39; and space flag disables complements for negative numbers.
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%x</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='int'>123</span><span class='rparen'>)</span>   <span class='comment'>#=&gt; &quot;7b&quot;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%#x</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='int'>123</span><span class='rparen'>)</span>  <span class='comment'>#=&gt; &quot;0x7b&quot;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%+x</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='op'>-</span><span class='int'>123</span><span class='rparen'>)</span> <span class='comment'>#=&gt; &quot;-7b&quot;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%x</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='op'>-</span><span class='int'>123</span><span class='rparen'>)</span>  <span class='comment'>#=&gt; &quot;..f85&quot;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%#x</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='op'>-</span><span class='int'>123</span><span class='rparen'>)</span> <span class='comment'>#=&gt; &quot;0x..f85&quot;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%#x</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='int'>0</span><span class='rparen'>)</span>    <span class='comment'>#=&gt; &quot;0&quot;
+</span>
+<span class='comment'># &#39;#&#39; for &#39;X&#39; uses the prefix &#39;0X&#39;.
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%X</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='int'>123</span><span class='rparen'>)</span>  <span class='comment'>#=&gt; &quot;7B&quot;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%#X</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='int'>123</span><span class='rparen'>)</span> <span class='comment'>#=&gt; &quot;0X7B&quot;
+</span>
+<span class='comment'># &#39;#&#39; flag for &#39;b&#39; add a prefix &#39;0b&#39; for non-zero numbers.
+</span><span class='comment'># &#39;+&#39; and space flag disables complements for negative numbers.
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%b</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='int'>123</span><span class='rparen'>)</span>   <span class='comment'>#=&gt; &quot;1111011&quot;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%#b</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='int'>123</span><span class='rparen'>)</span>  <span class='comment'>#=&gt; &quot;0b1111011&quot;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%+b</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='op'>-</span><span class='int'>123</span><span class='rparen'>)</span> <span class='comment'>#=&gt; &quot;-1111011&quot;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%b</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='op'>-</span><span class='int'>123</span><span class='rparen'>)</span>  <span class='comment'>#=&gt; &quot;..10000101&quot;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%#b</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='op'>-</span><span class='int'>123</span><span class='rparen'>)</span> <span class='comment'>#=&gt; &quot;0b..10000101&quot;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%#b</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='int'>0</span><span class='rparen'>)</span>    <span class='comment'>#=&gt; &quot;0&quot;
+</span>
+<span class='comment'># &#39;#&#39; for &#39;B&#39; uses the prefix &#39;0B&#39;.
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%B</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='int'>123</span><span class='rparen'>)</span>  <span class='comment'>#=&gt; &quot;1111011&quot;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%#B</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='int'>123</span><span class='rparen'>)</span> <span class='comment'>#=&gt; &quot;0B1111011&quot;
+</span>
+<span class='comment'># &#39;#&#39; for &#39;e&#39; forces to show the decimal point.
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%.0e</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='int'>1</span><span class='rparen'>)</span>  <span class='comment'>#=&gt; &quot;1e+00&quot;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%#.0e</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='int'>1</span><span class='rparen'>)</span> <span class='comment'>#=&gt; &quot;1.e+00&quot;
+</span>
+<span class='comment'># &#39;#&#39; for &#39;f&#39; forces to show the decimal point.
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%.0f</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='int'>1234</span><span class='rparen'>)</span>  <span class='comment'>#=&gt; &quot;1234&quot;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%#.0f</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='int'>1234</span><span class='rparen'>)</span> <span class='comment'>#=&gt; &quot;1234.&quot;
+</span>
+<span class='comment'># &#39;#&#39; for &#39;g&#39; forces to show the decimal point.
+</span><span class='comment'># It also disables stripping lowest zeros.
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%g</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='float'>123.4</span><span class='rparen'>)</span>   <span class='comment'>#=&gt; &quot;123.4&quot;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%#g</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='float'>123.4</span><span class='rparen'>)</span>  <span class='comment'>#=&gt; &quot;123.400&quot;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%g</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='int'>123456</span><span class='rparen'>)</span>  <span class='comment'>#=&gt; &quot;123456&quot;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%#g</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='int'>123456</span><span class='rparen'>)</span> <span class='comment'>#=&gt; &quot;123456.&quot;
+</span></code></pre>
+
+<p>The field width is an optional integer, followed optionally by a period and a precision.  The width specifies the minimum number of characters that will be written to the result for this field.</p>
+
+<p>Examples of width:</p>
+
+<pre class="code"><code class=""><span class='comment'># padding is done by spaces,       width=20
+</span><span class='comment'># 0 or radix-1.             &lt;------------------&gt;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%20d</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='int'>123</span><span class='rparen'>)</span>   <span class='comment'>#=&gt; &quot;                 123&quot;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%+20d</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='int'>123</span><span class='rparen'>)</span>  <span class='comment'>#=&gt; &quot;                +123&quot;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%020d</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='int'>123</span><span class='rparen'>)</span>  <span class='comment'>#=&gt; &quot;00000000000000000123&quot;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%+020d</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='int'>123</span><span class='rparen'>)</span> <span class='comment'>#=&gt; &quot;+0000000000000000123&quot;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>% 020d</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='int'>123</span><span class='rparen'>)</span> <span class='comment'>#=&gt; &quot; 0000000000000000123&quot;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%-20d</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='int'>123</span><span class='rparen'>)</span>  <span class='comment'>#=&gt; &quot;123                 &quot;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%-+20d</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='int'>123</span><span class='rparen'>)</span> <span class='comment'>#=&gt; &quot;+123                &quot;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%- 20d</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='int'>123</span><span class='rparen'>)</span> <span class='comment'>#=&gt; &quot; 123                &quot;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%020x</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='op'>-</span><span class='int'>123</span><span class='rparen'>)</span> <span class='comment'>#=&gt; &quot;..ffffffffffffffff85&quot;
+</span></code></pre>
+
+<p>For numeric fields, the precision controls the number of decimal places displayed.  For string fields, the precision determines the maximum number of characters to be copied from the string.  (Thus, the format sequence <code>%10.10s</code> will always contribute exactly ten characters to the result.)</p>
+
+<p>Examples of precisions:</p>
+
+<pre class="code"><code class=""><span class='comment'># precision for &#39;d&#39;, &#39;o&#39;, &#39;x&#39; and &#39;b&#39; is
+</span><span class='comment'># minimum number of digits               &lt;------&gt;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%20.8d</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='int'>123</span><span class='rparen'>)</span>  <span class='comment'>#=&gt; &quot;            00000123&quot;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%20.8o</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='int'>123</span><span class='rparen'>)</span>  <span class='comment'>#=&gt; &quot;            00000173&quot;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%20.8x</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='int'>123</span><span class='rparen'>)</span>  <span class='comment'>#=&gt; &quot;            0000007b&quot;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%20.8b</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='int'>123</span><span class='rparen'>)</span>  <span class='comment'>#=&gt; &quot;            01111011&quot;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%20.8d</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='op'>-</span><span class='int'>123</span><span class='rparen'>)</span> <span class='comment'>#=&gt; &quot;           -00000123&quot;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%20.8o</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='op'>-</span><span class='int'>123</span><span class='rparen'>)</span> <span class='comment'>#=&gt; &quot;            ..777605&quot;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%20.8x</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='op'>-</span><span class='int'>123</span><span class='rparen'>)</span> <span class='comment'>#=&gt; &quot;            ..ffff85&quot;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%20.8b</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='op'>-</span><span class='int'>11</span><span class='rparen'>)</span>  <span class='comment'>#=&gt; &quot;            ..110101&quot;
+</span>
+<span class='comment'># &quot;0x&quot; and &quot;0b&quot; for &#39;#x&#39; and &#39;#b&#39; is not counted for
+</span><span class='comment'># precision but &quot;0&quot; for &#39;#o&#39; is counted.  &lt;------&gt;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%#20.8d</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='int'>123</span><span class='rparen'>)</span>  <span class='comment'>#=&gt; &quot;            00000123&quot;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%#20.8o</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='int'>123</span><span class='rparen'>)</span>  <span class='comment'>#=&gt; &quot;            00000173&quot;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%#20.8x</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='int'>123</span><span class='rparen'>)</span>  <span class='comment'>#=&gt; &quot;          0x0000007b&quot;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%#20.8b</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='int'>123</span><span class='rparen'>)</span>  <span class='comment'>#=&gt; &quot;          0b01111011&quot;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%#20.8d</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='op'>-</span><span class='int'>123</span><span class='rparen'>)</span> <span class='comment'>#=&gt; &quot;           -00000123&quot;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%#20.8o</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='op'>-</span><span class='int'>123</span><span class='rparen'>)</span> <span class='comment'>#=&gt; &quot;            ..777605&quot;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%#20.8x</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='op'>-</span><span class='int'>123</span><span class='rparen'>)</span> <span class='comment'>#=&gt; &quot;          0x..ffff85&quot;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%#20.8b</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='op'>-</span><span class='int'>11</span><span class='rparen'>)</span>  <span class='comment'>#=&gt; &quot;          0b..110101&quot;
+</span>
+<span class='comment'># precision for &#39;e&#39; is number of
+</span><span class='comment'># digits after the decimal point           &lt;------&gt;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%20.8e</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='float'>1234.56789</span><span class='rparen'>)</span> <span class='comment'>#=&gt; &quot;      1.23456789e+03&quot;
+</span>
+<span class='comment'># precision for &#39;f&#39; is number of
+</span><span class='comment'># digits after the decimal point               &lt;------&gt;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%20.8f</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='float'>1234.56789</span><span class='rparen'>)</span> <span class='comment'>#=&gt; &quot;       1234.56789000&quot;
+</span>
+<span class='comment'># precision for &#39;g&#39; is number of
+</span><span class='comment'># significant digits                          &lt;-------&gt;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%20.8g</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='float'>1234.56789</span><span class='rparen'>)</span> <span class='comment'>#=&gt; &quot;           1234.5679&quot;
+</span>
+<span class='comment'>#                                         &lt;-------&gt;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%20.8g</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='int'>123456789</span><span class='rparen'>)</span>  <span class='comment'>#=&gt; &quot;       1.2345679e+08&quot;
+</span>
+<span class='comment'># precision for &#39;s&#39; is
+</span><span class='comment'># maximum number of characters                    &lt;------&gt;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%20.8s</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>string test</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='comment'>#=&gt; &quot;            string t&quot;
+</span></code></pre>
+
+<p>Examples:</p>
+
+<pre class="code"><code class=""><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%d %04x</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='int'>123</span><span class='comma'>,</span> <span class='int'>123</span><span class='rparen'>)</span>               <span class='comment'>#=&gt; &quot;123 007b&quot;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%08b &#39;%4s&#39;</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='int'>123</span><span class='comma'>,</span> <span class='int'>123</span><span class='rparen'>)</span>            <span class='comment'>#=&gt; &quot;01111011 &#39; 123&#39;&quot;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%1$*2$s %2$d %1$s</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>hello</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='int'>8</span><span class='rparen'>)</span>   <span class='comment'>#=&gt; &quot;   hello 8 hello&quot;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%1$*2$s %2$d</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>hello</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='op'>-</span><span class='int'>8</span><span class='rparen'>)</span>       <span class='comment'>#=&gt; &quot;hello    -8&quot;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%+g:% g:%-g</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='float'>1.23</span><span class='comma'>,</span> <span class='float'>1.23</span><span class='comma'>,</span> <span class='float'>1.23</span><span class='rparen'>)</span>   <span class='comment'>#=&gt; &quot;+1.23: 1.23:1.23&quot;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%u</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='op'>-</span><span class='int'>123</span><span class='rparen'>)</span>                        <span class='comment'>#=&gt; &quot;-123&quot;
+</span></code></pre>
+
+<p>For more complex formatting, Ruby supports a reference by name. %&lt;name&gt;s style uses format style, but %name style doesn&#39;t.</p>
+
+<p>Examples:</p>
+
+<pre class="code"><code class=""><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%&lt;foo&gt;d : %&lt;bar&gt;f</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='lbrace'>{</span> <span class='symbol'>:foo</span> <span class='op'>=&gt;</span> <span class='int'>1</span><span class='comma'>,</span> <span class='symbol'>:bar</span> <span class='op'>=&gt;</span> <span class='int'>2</span> <span class='rbrace'>}</span><span class='rparen'>)</span>
+  <span class='comment'>#=&gt; 1 : 2.000000
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%{foo}f</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='lbrace'>{</span> <span class='symbol'>:foo</span> <span class='op'>=&gt;</span> <span class='int'>1</span> <span class='rbrace'>}</span><span class='rparen'>)</span>
+  <span class='comment'># =&gt; &quot;1f&quot;
+</span></code></pre>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <p class="tag_title">Overloads:</p>
+  <ul class="overload">
+    
+      
+      <li class="overload_item">
+        <span class="signature">.<strong>format</strong>(format_string[, arguments...])  &#x21d2; <tt><span class='object_link'><a href="#String-class_method" title="Kernel.String (method)">String</a></span></tt> </span>
+        <div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="#String-class_method" title="Kernel.String (method)">String</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div>
+
+
+      </li>
+    
+      
+      <li class="overload_item">
+        <span class="signature">.<strong>sprintf</strong>(format_string[, arguments...])  &#x21d2; <tt><span class='object_link'><a href="#String-class_method" title="Kernel.String (method)">String</a></span></tt> </span>
+        <div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="#String-class_method" title="Kernel.String (method)">String</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div>
+
+
+      </li>
+    
+  </ul>
+
+
+</div>
+
+<table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+533
+534
+535
+536
+537
+538
+539
+540
+541
+542
+543
+544
+545
+546
+547
+548</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-sprintf/src/sprintf.c', line 533</span>
+
+static mrb_value
+mrb_f_sprintf(mrb_state *mrb, mrb_value obj)
+{
+  mrb_int argc;
+  const mrb_value *argv;
+
+  mrb_get_args(mrb, &quot;*&quot;, &amp;argv, &amp;argc);
+
+  if (argc &lt;= 0) {
+    mrb_raise(mrb, E_ARGUMENT_ERROR, &quot;too few arguments&quot;);
+    return mrb_nil_value();
+  }
+  else {
+    return mrb_str_format(mrb, argc - 1, argv + 1, argv[0]);
+  }
 }</pre>
     </td>
   </tr>
@@ -2222,7 +2582,6 @@ mrb_f_float(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-195
 196
 197
 198
@@ -2231,10 +2590,11 @@ mrb_f_float(mrb_state *mrb, mrb_value self)
 201
 202
 203
-204</pre>
+204
+205</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-kernel-ext/src/kernel.c', line 195</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-kernel-ext/src/kernel.c', line 196</span>
 
 static mrb_value
 mrb_f_hash(mrb_state *mrb, mrb_value self)
@@ -2263,7 +2623,7 @@ mrb_f_hash(mrb_state *mrb, mrb_value self)
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Converts <em>arg</em> to a <code>Fixnum</code>. Numeric types are converted directly (with floating point numbers being truncated).    <em>base</em> (0, or between 2 and 36) is a base for integer string representation.  If <em>arg</em> is a <code>String</code>, when <em>base</em> is omitted or equals to zero, radix indicators (<code>0</code>, <code>0b</code>, and <code>0x</code>) are honored. In any case, strings should be strictly conformed to numeric representation. This behavior is different from that of <code>String#to_i</code>.  Non string values will be treated as integers. Passing <code>nil</code> raises a TypeError.</p>
+<p>Converts <em>arg</em> to a <code>Integer</code>. Numeric types are converted directly (with floating point numbers being truncated).    <em>base</em> (0, or between 2 and 36) is a base for integer string representation.  If <em>arg</em> is a <code>String</code>, when <em>base</em> is omitted or equals to zero, radix indicators (<code>0</code>, <code>0b</code>, and <code>0x</code>) are honored. In any case, strings should be strictly conformed to numeric representation. This behavior is different from that of <code>String#to_i</code>.  Non string values will be treated as integers. Passing <code>nil</code> raises a TypeError.</p>
 
 <pre class="code"><code class=""><span class='const'>Integer</span><span class='lparen'>(</span><span class='float'>123.999</span><span class='rparen'>)</span>    <span class='comment'>#=&gt; 123
 </span><span class='const'>Integer</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>0x1a</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>     <span class='comment'>#=&gt; 26
@@ -2313,7 +2673,6 @@ mrb_f_hash(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-105
 106
 107
 108
@@ -2321,10 +2680,11 @@ mrb_f_hash(mrb_state *mrb, mrb_value self)
 110
 111
 112
-113</pre>
+113
+114</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-kernel-ext/src/kernel.c', line 105</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-kernel-ext/src/kernel.c', line 106</span>
 
 static mrb_value
 mrb_f_integer(mrb_state *mrb, mrb_value self)
@@ -2334,6 +2694,390 @@ mrb_f_integer(mrb_state *mrb, mrb_value self)
 
   mrb_get_args(mrb, &quot;o|i&quot;, &amp;arg, &amp;base);
   return mrb_convert_to_integer(mrb, arg, base);
+}</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="sprintf-class_method">
+  
+    
+      <span class="overload">.<strong>format</strong>(format_string[, arguments...])  &#x21d2; <tt><span class='object_link'><a href="#String-class_method" title="Kernel.String (method)">String</a></span></tt> </span>
+    
+      <span class="overload">.<strong>sprintf</strong>(format_string[, arguments...])  &#x21d2; <tt><span class='object_link'><a href="#String-class_method" title="Kernel.String (method)">String</a></span></tt> </span>
+    
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the string resulting from applying <em>format_string</em> to any additional arguments.  Within the format string, any characters other than format sequences are copied to the result.</p>
+
+<p>The syntax of a format sequence is follows.</p>
+
+<pre class="code"><code class="">%[flags][width][.precision]type
+</code></pre>
+
+<p>A format sequence consists of a percent sign, followed by optional flags, width, and precision indicators, then terminated with a field type character.  The field type controls how the corresponding <code>sprintf</code> argument is to be interpreted, while the flags modify that interpretation.</p>
+
+<p>The field type characters are:</p>
+
+<pre class="code"><code class="">Field |  Integer Format
+------+--------------------------------------------------------------
+  b   | Convert argument as a binary number.
+      | Negative numbers will be displayed as a two&#39;s complement
+      | prefixed with &#39;..1&#39;.
+  B   | Equivalent to &#39;b&#39;, but uses an uppercase 0B for prefix
+      | in the alternative format by #.
+  d   | Convert argument as a decimal number.
+  i   | Identical to &#39;d&#39;.
+  o   | Convert argument as an octal number.
+      | Negative numbers will be displayed as a two&#39;s complement
+      | prefixed with &#39;..7&#39;.
+  u   | Identical to &#39;d&#39;.
+  x   | Convert argument as a hexadecimal number.
+      | Negative numbers will be displayed as a two&#39;s complement
+      | prefixed with &#39;..f&#39; (representing an infinite string of
+      | leading &#39;ff&#39;s).
+  X   | Equivalent to &#39;x&#39;, but uses uppercase letters.
+
+Field |  Float Format
+------+--------------------------------------------------------------
+  e   | Convert floating point argument into exponential notation
+      | with one digit before the decimal point as [-]d.dddddde[+-]dd.
+      | The precision specifies the number of digits after the decimal
+      | point (defaulting to six).
+  E   | Equivalent to &#39;e&#39;, but uses an uppercase E to indicate
+      | the exponent.
+  f   | Convert floating point argument as [-]ddd.dddddd,
+      | where the precision specifies the number of digits after
+      | the decimal point.
+  g   | Convert a floating point number using exponential form
+      | if the exponent is less than -4 or greater than or
+      | equal to the precision, or in dd.dddd form otherwise.
+      | The precision specifies the number of significant digits.
+  G   | Equivalent to &#39;g&#39;, but use an uppercase &#39;E&#39; in exponent form.
+  a   | Convert floating point argument as [-]0xh.hhhhp[+-]dd,
+      | which is consisted from optional sign, &quot;0x&quot;, fraction part
+      | as hexadecimal, &quot;p&quot;, and exponential part as decimal.
+  A   | Equivalent to &#39;a&#39;, but use uppercase &#39;X&#39; and &#39;P&#39;.
+
+Field |  Other Format
+------+--------------------------------------------------------------
+  c   | Argument is the numeric code for a single character or
+      | a single character string itself.
+  p   | The valuing of argument.inspect.
+  s   | Argument is a string to be substituted.  If the format
+      | sequence contains a precision, at most that many characters
+      | will be copied.
+  %   | A percent sign itself will be displayed.  No argument taken.
+</code></pre>
+
+<p>The flags modifies the behavior of the formats. The flag characters are:</p>
+
+<pre class="code"><code class="">Flag     | Applies to    | Meaning
+---------+---------------+-----------------------------------------
+space    | bBdiouxX      | Leave a space at the start of
+         | aAeEfgG       | non-negative numbers.
+         | (numeric fmt) | For &#39;o&#39;, &#39;x&#39;, &#39;X&#39;, &#39;b&#39; and &#39;B&#39;, use
+         |               | a minus sign with absolute value for
+         |               | negative values.
+---------+---------------+-----------------------------------------
+(digit)$ | all           | Specifies the absolute argument number
+         |               | for this field.  Absolute and relative
+         |               | argument numbers cannot be mixed in a
+         |               | sprintf string.
+---------+---------------+-----------------------------------------
+ #       | bBoxX         | Use an alternative format.
+         | aAeEfgG       | For the conversions &#39;o&#39;, increase the precision
+         |               | until the first digit will be &#39;0&#39; if
+         |               | it is not formatted as complements.
+         |               | For the conversions &#39;x&#39;, &#39;X&#39;, &#39;b&#39; and &#39;B&#39;
+         |               | on non-zero, prefix the result with &quot;0x&quot;,
+         |               | &quot;0X&quot;, &quot;0b&quot; and &quot;0B&quot;, respectively.
+         |               | For &#39;a&#39;, &#39;A&#39;, &#39;e&#39;, &#39;E&#39;, &#39;f&#39;, &#39;g&#39;, and &#39;G&#39;,
+         |               | force a decimal point to be added,
+         |               | even if no digits follow.
+         |               | For &#39;g&#39; and &#39;G&#39;, do not remove trailing zeros.
+---------+---------------+-----------------------------------------
++        | bBdiouxX      | Add a leading plus sign to non-negative
+         | aAeEfgG       | numbers.
+         | (numeric fmt) | For &#39;o&#39;, &#39;x&#39;, &#39;X&#39;, &#39;b&#39; and &#39;B&#39;, use
+         |               | a minus sign with absolute value for
+         |               | negative values.
+---------+---------------+-----------------------------------------
+-        | all           | Left-justify the result of this conversion.
+---------+---------------+-----------------------------------------
+0 (zero) | bBdiouxX      | Pad with zeros, not spaces.
+         | aAeEfgG       | For &#39;o&#39;, &#39;x&#39;, &#39;X&#39;, &#39;b&#39; and &#39;B&#39;, radix-1
+         | (numeric fmt) | is used for negative numbers formatted as
+         |               | complements.
+---------+---------------+-----------------------------------------
+*        | all           | Use the next argument as the field width.
+         |               | If negative, left-justify the result. If the
+         |               | asterisk is followed by a number and a dollar
+         |               | sign, use the indicated argument as the width.
+</code></pre>
+
+<p>Examples of flags:</p>
+
+<pre class="code"><code class=""><span class='comment'># &#39;+&#39; and space flag specifies the sign of non-negative numbers.
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%d</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='int'>123</span><span class='rparen'>)</span>  <span class='comment'>#=&gt; &quot;123&quot;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%+d</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='int'>123</span><span class='rparen'>)</span> <span class='comment'>#=&gt; &quot;+123&quot;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>% d</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='int'>123</span><span class='rparen'>)</span> <span class='comment'>#=&gt; &quot; 123&quot;
+</span>
+<span class='comment'># &#39;#&#39; flag for &#39;o&#39; increases number of digits to show &#39;0&#39;.
+</span><span class='comment'># &#39;+&#39; and space flag changes format of negative numbers.
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%o</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='int'>123</span><span class='rparen'>)</span>   <span class='comment'>#=&gt; &quot;173&quot;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%#o</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='int'>123</span><span class='rparen'>)</span>  <span class='comment'>#=&gt; &quot;0173&quot;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%+o</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='op'>-</span><span class='int'>123</span><span class='rparen'>)</span> <span class='comment'>#=&gt; &quot;-173&quot;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%o</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='op'>-</span><span class='int'>123</span><span class='rparen'>)</span>  <span class='comment'>#=&gt; &quot;..7605&quot;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%#o</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='op'>-</span><span class='int'>123</span><span class='rparen'>)</span> <span class='comment'>#=&gt; &quot;..7605&quot;
+</span>
+<span class='comment'># &#39;#&#39; flag for &#39;x&#39; add a prefix &#39;0x&#39; for non-zero numbers.
+</span><span class='comment'># &#39;+&#39; and space flag disables complements for negative numbers.
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%x</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='int'>123</span><span class='rparen'>)</span>   <span class='comment'>#=&gt; &quot;7b&quot;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%#x</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='int'>123</span><span class='rparen'>)</span>  <span class='comment'>#=&gt; &quot;0x7b&quot;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%+x</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='op'>-</span><span class='int'>123</span><span class='rparen'>)</span> <span class='comment'>#=&gt; &quot;-7b&quot;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%x</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='op'>-</span><span class='int'>123</span><span class='rparen'>)</span>  <span class='comment'>#=&gt; &quot;..f85&quot;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%#x</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='op'>-</span><span class='int'>123</span><span class='rparen'>)</span> <span class='comment'>#=&gt; &quot;0x..f85&quot;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%#x</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='int'>0</span><span class='rparen'>)</span>    <span class='comment'>#=&gt; &quot;0&quot;
+</span>
+<span class='comment'># &#39;#&#39; for &#39;X&#39; uses the prefix &#39;0X&#39;.
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%X</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='int'>123</span><span class='rparen'>)</span>  <span class='comment'>#=&gt; &quot;7B&quot;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%#X</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='int'>123</span><span class='rparen'>)</span> <span class='comment'>#=&gt; &quot;0X7B&quot;
+</span>
+<span class='comment'># &#39;#&#39; flag for &#39;b&#39; add a prefix &#39;0b&#39; for non-zero numbers.
+</span><span class='comment'># &#39;+&#39; and space flag disables complements for negative numbers.
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%b</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='int'>123</span><span class='rparen'>)</span>   <span class='comment'>#=&gt; &quot;1111011&quot;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%#b</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='int'>123</span><span class='rparen'>)</span>  <span class='comment'>#=&gt; &quot;0b1111011&quot;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%+b</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='op'>-</span><span class='int'>123</span><span class='rparen'>)</span> <span class='comment'>#=&gt; &quot;-1111011&quot;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%b</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='op'>-</span><span class='int'>123</span><span class='rparen'>)</span>  <span class='comment'>#=&gt; &quot;..10000101&quot;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%#b</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='op'>-</span><span class='int'>123</span><span class='rparen'>)</span> <span class='comment'>#=&gt; &quot;0b..10000101&quot;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%#b</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='int'>0</span><span class='rparen'>)</span>    <span class='comment'>#=&gt; &quot;0&quot;
+</span>
+<span class='comment'># &#39;#&#39; for &#39;B&#39; uses the prefix &#39;0B&#39;.
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%B</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='int'>123</span><span class='rparen'>)</span>  <span class='comment'>#=&gt; &quot;1111011&quot;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%#B</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='int'>123</span><span class='rparen'>)</span> <span class='comment'>#=&gt; &quot;0B1111011&quot;
+</span>
+<span class='comment'># &#39;#&#39; for &#39;e&#39; forces to show the decimal point.
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%.0e</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='int'>1</span><span class='rparen'>)</span>  <span class='comment'>#=&gt; &quot;1e+00&quot;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%#.0e</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='int'>1</span><span class='rparen'>)</span> <span class='comment'>#=&gt; &quot;1.e+00&quot;
+</span>
+<span class='comment'># &#39;#&#39; for &#39;f&#39; forces to show the decimal point.
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%.0f</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='int'>1234</span><span class='rparen'>)</span>  <span class='comment'>#=&gt; &quot;1234&quot;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%#.0f</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='int'>1234</span><span class='rparen'>)</span> <span class='comment'>#=&gt; &quot;1234.&quot;
+</span>
+<span class='comment'># &#39;#&#39; for &#39;g&#39; forces to show the decimal point.
+</span><span class='comment'># It also disables stripping lowest zeros.
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%g</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='float'>123.4</span><span class='rparen'>)</span>   <span class='comment'>#=&gt; &quot;123.4&quot;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%#g</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='float'>123.4</span><span class='rparen'>)</span>  <span class='comment'>#=&gt; &quot;123.400&quot;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%g</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='int'>123456</span><span class='rparen'>)</span>  <span class='comment'>#=&gt; &quot;123456&quot;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%#g</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='int'>123456</span><span class='rparen'>)</span> <span class='comment'>#=&gt; &quot;123456.&quot;
+</span></code></pre>
+
+<p>The field width is an optional integer, followed optionally by a period and a precision.  The width specifies the minimum number of characters that will be written to the result for this field.</p>
+
+<p>Examples of width:</p>
+
+<pre class="code"><code class=""><span class='comment'># padding is done by spaces,       width=20
+</span><span class='comment'># 0 or radix-1.             &lt;------------------&gt;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%20d</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='int'>123</span><span class='rparen'>)</span>   <span class='comment'>#=&gt; &quot;                 123&quot;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%+20d</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='int'>123</span><span class='rparen'>)</span>  <span class='comment'>#=&gt; &quot;                +123&quot;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%020d</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='int'>123</span><span class='rparen'>)</span>  <span class='comment'>#=&gt; &quot;00000000000000000123&quot;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%+020d</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='int'>123</span><span class='rparen'>)</span> <span class='comment'>#=&gt; &quot;+0000000000000000123&quot;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>% 020d</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='int'>123</span><span class='rparen'>)</span> <span class='comment'>#=&gt; &quot; 0000000000000000123&quot;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%-20d</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='int'>123</span><span class='rparen'>)</span>  <span class='comment'>#=&gt; &quot;123                 &quot;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%-+20d</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='int'>123</span><span class='rparen'>)</span> <span class='comment'>#=&gt; &quot;+123                &quot;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%- 20d</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='int'>123</span><span class='rparen'>)</span> <span class='comment'>#=&gt; &quot; 123                &quot;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%020x</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='op'>-</span><span class='int'>123</span><span class='rparen'>)</span> <span class='comment'>#=&gt; &quot;..ffffffffffffffff85&quot;
+</span></code></pre>
+
+<p>For numeric fields, the precision controls the number of decimal places displayed.  For string fields, the precision determines the maximum number of characters to be copied from the string.  (Thus, the format sequence <code>%10.10s</code> will always contribute exactly ten characters to the result.)</p>
+
+<p>Examples of precisions:</p>
+
+<pre class="code"><code class=""><span class='comment'># precision for &#39;d&#39;, &#39;o&#39;, &#39;x&#39; and &#39;b&#39; is
+</span><span class='comment'># minimum number of digits               &lt;------&gt;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%20.8d</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='int'>123</span><span class='rparen'>)</span>  <span class='comment'>#=&gt; &quot;            00000123&quot;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%20.8o</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='int'>123</span><span class='rparen'>)</span>  <span class='comment'>#=&gt; &quot;            00000173&quot;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%20.8x</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='int'>123</span><span class='rparen'>)</span>  <span class='comment'>#=&gt; &quot;            0000007b&quot;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%20.8b</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='int'>123</span><span class='rparen'>)</span>  <span class='comment'>#=&gt; &quot;            01111011&quot;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%20.8d</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='op'>-</span><span class='int'>123</span><span class='rparen'>)</span> <span class='comment'>#=&gt; &quot;           -00000123&quot;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%20.8o</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='op'>-</span><span class='int'>123</span><span class='rparen'>)</span> <span class='comment'>#=&gt; &quot;            ..777605&quot;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%20.8x</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='op'>-</span><span class='int'>123</span><span class='rparen'>)</span> <span class='comment'>#=&gt; &quot;            ..ffff85&quot;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%20.8b</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='op'>-</span><span class='int'>11</span><span class='rparen'>)</span>  <span class='comment'>#=&gt; &quot;            ..110101&quot;
+</span>
+<span class='comment'># &quot;0x&quot; and &quot;0b&quot; for &#39;#x&#39; and &#39;#b&#39; is not counted for
+</span><span class='comment'># precision but &quot;0&quot; for &#39;#o&#39; is counted.  &lt;------&gt;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%#20.8d</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='int'>123</span><span class='rparen'>)</span>  <span class='comment'>#=&gt; &quot;            00000123&quot;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%#20.8o</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='int'>123</span><span class='rparen'>)</span>  <span class='comment'>#=&gt; &quot;            00000173&quot;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%#20.8x</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='int'>123</span><span class='rparen'>)</span>  <span class='comment'>#=&gt; &quot;          0x0000007b&quot;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%#20.8b</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='int'>123</span><span class='rparen'>)</span>  <span class='comment'>#=&gt; &quot;          0b01111011&quot;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%#20.8d</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='op'>-</span><span class='int'>123</span><span class='rparen'>)</span> <span class='comment'>#=&gt; &quot;           -00000123&quot;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%#20.8o</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='op'>-</span><span class='int'>123</span><span class='rparen'>)</span> <span class='comment'>#=&gt; &quot;            ..777605&quot;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%#20.8x</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='op'>-</span><span class='int'>123</span><span class='rparen'>)</span> <span class='comment'>#=&gt; &quot;          0x..ffff85&quot;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%#20.8b</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='op'>-</span><span class='int'>11</span><span class='rparen'>)</span>  <span class='comment'>#=&gt; &quot;          0b..110101&quot;
+</span>
+<span class='comment'># precision for &#39;e&#39; is number of
+</span><span class='comment'># digits after the decimal point           &lt;------&gt;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%20.8e</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='float'>1234.56789</span><span class='rparen'>)</span> <span class='comment'>#=&gt; &quot;      1.23456789e+03&quot;
+</span>
+<span class='comment'># precision for &#39;f&#39; is number of
+</span><span class='comment'># digits after the decimal point               &lt;------&gt;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%20.8f</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='float'>1234.56789</span><span class='rparen'>)</span> <span class='comment'>#=&gt; &quot;       1234.56789000&quot;
+</span>
+<span class='comment'># precision for &#39;g&#39; is number of
+</span><span class='comment'># significant digits                          &lt;-------&gt;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%20.8g</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='float'>1234.56789</span><span class='rparen'>)</span> <span class='comment'>#=&gt; &quot;           1234.5679&quot;
+</span>
+<span class='comment'>#                                         &lt;-------&gt;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%20.8g</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='int'>123456789</span><span class='rparen'>)</span>  <span class='comment'>#=&gt; &quot;       1.2345679e+08&quot;
+</span>
+<span class='comment'># precision for &#39;s&#39; is
+</span><span class='comment'># maximum number of characters                    &lt;------&gt;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%20.8s</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>string test</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='comment'>#=&gt; &quot;            string t&quot;
+</span></code></pre>
+
+<p>Examples:</p>
+
+<pre class="code"><code class=""><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%d %04x</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='int'>123</span><span class='comma'>,</span> <span class='int'>123</span><span class='rparen'>)</span>               <span class='comment'>#=&gt; &quot;123 007b&quot;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%08b &#39;%4s&#39;</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='int'>123</span><span class='comma'>,</span> <span class='int'>123</span><span class='rparen'>)</span>            <span class='comment'>#=&gt; &quot;01111011 &#39; 123&#39;&quot;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%1$*2$s %2$d %1$s</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>hello</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='int'>8</span><span class='rparen'>)</span>   <span class='comment'>#=&gt; &quot;   hello 8 hello&quot;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%1$*2$s %2$d</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>hello</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='op'>-</span><span class='int'>8</span><span class='rparen'>)</span>       <span class='comment'>#=&gt; &quot;hello    -8&quot;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%+g:% g:%-g</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='float'>1.23</span><span class='comma'>,</span> <span class='float'>1.23</span><span class='comma'>,</span> <span class='float'>1.23</span><span class='rparen'>)</span>   <span class='comment'>#=&gt; &quot;+1.23: 1.23:1.23&quot;
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%u</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='op'>-</span><span class='int'>123</span><span class='rparen'>)</span>                        <span class='comment'>#=&gt; &quot;-123&quot;
+</span></code></pre>
+
+<p>For more complex formatting, Ruby supports a reference by name. %&lt;name&gt;s style uses format style, but %name style doesn&#39;t.</p>
+
+<p>Examples:</p>
+
+<pre class="code"><code class=""><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%&lt;foo&gt;d : %&lt;bar&gt;f</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='lbrace'>{</span> <span class='symbol'>:foo</span> <span class='op'>=&gt;</span> <span class='int'>1</span><span class='comma'>,</span> <span class='symbol'>:bar</span> <span class='op'>=&gt;</span> <span class='int'>2</span> <span class='rbrace'>}</span><span class='rparen'>)</span>
+  <span class='comment'>#=&gt; 1 : 2.000000
+</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>%{foo}f</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='lbrace'>{</span> <span class='symbol'>:foo</span> <span class='op'>=&gt;</span> <span class='int'>1</span> <span class='rbrace'>}</span><span class='rparen'>)</span>
+  <span class='comment'># =&gt; &quot;1f&quot;
+</span></code></pre>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <p class="tag_title">Overloads:</p>
+  <ul class="overload">
+    
+      
+      <li class="overload_item">
+        <span class="signature">.<strong>format</strong>(format_string[, arguments...])  &#x21d2; <tt><span class='object_link'><a href="#String-class_method" title="Kernel.String (method)">String</a></span></tt> </span>
+        <div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="#String-class_method" title="Kernel.String (method)">String</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div>
+
+
+      </li>
+    
+      
+      <li class="overload_item">
+        <span class="signature">.<strong>sprintf</strong>(format_string[, arguments...])  &#x21d2; <tt><span class='object_link'><a href="#String-class_method" title="Kernel.String (method)">String</a></span></tt> </span>
+        <div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="#String-class_method" title="Kernel.String (method)">String</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div>
+
+
+      </li>
+    
+  </ul>
+
+
+</div>
+
+<table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+533
+534
+535
+536
+537
+538
+539
+540
+541
+542
+543
+544
+545
+546
+547
+548</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-sprintf/src/sprintf.c', line 533</span>
+
+static mrb_value
+mrb_f_sprintf(mrb_state *mrb, mrb_value obj)
+{
+  mrb_int argc;
+  const mrb_value *argv;
+
+  mrb_get_args(mrb, &quot;*&quot;, &amp;argv, &amp;argc);
+
+  if (argc &lt;= 0) {
+    mrb_raise(mrb, E_ARGUMENT_ERROR, &quot;too few arguments&quot;);
+    return mrb_nil_value();
+  }
+  else {
+    return mrb_str_format(mrb, argc - 1, argv + 1, argv[0]);
+  }
 }</pre>
     </td>
   </tr>
@@ -2399,7 +3143,6 @@ mrb_f_integer(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-148
 149
 150
 151
@@ -2407,10 +3150,11 @@ mrb_f_integer(mrb_state *mrb, mrb_value self)
 153
 154
 155
-156</pre>
+156
+157</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-kernel-ext/src/kernel.c', line 148</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-kernel-ext/src/kernel.c', line 149</span>
 
 static mrb_value
 mrb_f_string(mrb_state *mrb, mrb_value self)
@@ -2418,7 +3162,7 @@ mrb_f_string(mrb_state *mrb, mrb_value self)
   mrb_value arg = mrb_get_arg1(mrb);
   mrb_value tmp;
 
-  tmp = mrb_convert_type(mrb, arg, MRB_TT_STRING, &quot;String&quot;, &quot;to_s&quot;);
+  tmp = mrb_type_convert(mrb, arg, MRB_TT_STRING, MRB_SYM(to_s));
   return tmp;
 }</pre>
     </td>
@@ -2529,16 +3273,16 @@ mrb_f_string(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-71
 72
 73
 74
 75
 76
-77</pre>
+77
+78</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/kernel.c', line 71</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/kernel.c', line 72</span>
 
 static mrb_value
 mrb_equal_m(mrb_state *mrb, mrb_value self)
@@ -2580,33 +3324,69 @@ mrb_equal_m(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-742
-743
-744
-745
-746
-747
-748
-749
-750
-751
-752
-753
-754
-755
-756</pre>
+579
+580
+581
+582
+583
+584
+585
+586
+587
+588
+589
+590
+591
+592
+593
+594
+595
+596
+597
+598
+599
+600
+601
+602
+603
+604
+605
+606
+607
+608
+609
+610
+611</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/kernel.c', line 742</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/kernel.c', line 579</span>
 
 static mrb_value
 mrb_obj_ceqq(mrb_state *mrb, mrb_value self)
 {
   mrb_value v = mrb_get_arg1(mrb);
   mrb_int i, len;
-  mrb_sym eqq = mrb_intern_lit(mrb, &quot;===&quot;);
-  mrb_value ary = mrb_ary_splat(mrb, self);
+  mrb_sym eqq = MRB_OPSYM(eqq);
+  mrb_value ary;
 
+  if (mrb_array_p(self)) {
+    ary = self;
+  }
+  else if (mrb_nil_p(self)) {
+    return mrb_false_value();
+  }
+  else if (!mrb_respond_to(mrb, self, mrb_intern_lit(mrb, &quot;to_a&quot;))) {
+    mrb_value c = mrb_funcall_argv(mrb, self, eqq, 1, &amp;v);
+    if (mrb_test(c)) return mrb_true_value();
+    return mrb_false_value();
+  }
+  else {
+    ary = mrb_funcall(mrb, self, &quot;to_a&quot;, 0);
+    if (mrb_nil_p(ary)) {
+      return mrb_funcall_argv(mrb, self, eqq, 1, &amp;v);
+    }
+    mrb_ensure_array_type(mrb, ary);
+  }
   len = RARRAY_LEN(ary);
   for (i=0; i&lt;len; i++) {
     mrb_value c = mrb_funcall_argv(mrb, mrb_ary_entry(ary, i), eqq, 1, &amp;v);
@@ -2649,7 +3429,6 @@ mrb_obj_ceqq(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-72
 73
 74
 75
@@ -2658,10 +3437,11 @@ mrb_obj_ceqq(mrb_state *mrb, mrb_value self)
 78
 79
 80
-81</pre>
+81
+82</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-kernel-ext/src/kernel.c', line 72</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-kernel-ext/src/kernel.c', line 73</span>
 
 static mrb_value
 mrb_f_method(mrb_state *mrb, mrb_value self)
@@ -2687,46 +3467,35 @@ mrb_f_method(mrb_state *mrb, mrb_value self)
   
 
   
-</h3><div class="docstring">
-  <div class="discussion">
-    
-<p>15.3.1.3.34</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-
-</div>
-
-<table class="source_code">
+</h3><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
+39
+40
+41
+42
+43
+44
 45
 46
 47
-48
-49
-50
-51
-52
-53</pre>
+48</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-print/src/print.c', line 45</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-print/src/print.c', line 39</span>
 
-mrb_value
+static mrb_value
 mrb_printstr(mrb_state *mrb, mrb_value self)
 {
-  mrb_value argv = mrb_get_arg1(mrb);
+  mrb_value s = mrb_get_arg1(mrb);
 
-  printstr(mrb, argv);
-
-  return argv;
+  if (mrb_string_p(s)) {
+    printstr(mrb, RSTRING_PTR(s), RSTRING_LEN(s));
+  }
+  return s;
 }</pre>
     </td>
   </tr>
@@ -2991,19 +3760,6 @@ mrb_printstr(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-126
-127
-128
-129
-130
-131
-132
-133
-134
-135
-136
-137
-138
 139
 140
 141
@@ -3044,10 +3800,32 @@ mrb_printstr(mrb_state *mrb, mrb_value self)
 176
 177
 178
-179</pre>
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/kernel.c', line 126</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/kernel.c', line 139</span>
 
 static mrb_value
 mrb_f_block_given_p_m(mrb_state *mrb, mrb_value self)
@@ -3055,7 +3833,9 @@ mrb_f_block_given_p_m(mrb_state *mrb, mrb_value self)
   mrb_callinfo *ci = &amp;mrb-&gt;c-&gt;ci[-1];
   mrb_callinfo *cibase = mrb-&gt;c-&gt;cibase;
   mrb_value *bp;
-  struct RProc *p;
+  int bidx;
+  struct REnv *e = NULL;
+  const struct RProc *p;
 
   if (ci &lt;= cibase) {
     /* toplevel does not have block */
@@ -3065,33 +3845,39 @@ mrb_f_block_given_p_m(mrb_state *mrb, mrb_value self)
   /* search method/class/module proc */
   while (p) {
     if (MRB_PROC_SCOPE_P(p)) break;
+    e = MRB_PROC_ENV(p);
     p = p-&gt;upper;
   }
   if (p == NULL) return mrb_false_value();
+  if (e) {
+    bidx = env_bidx(e);
+    if (bidx &lt; 0) return mrb_false_value();
+    bp = &amp;e-&gt;stack[bidx];
+    goto block_given;
+  }
   /* search ci corresponding to proc */
   while (cibase &lt; ci) {
     if (ci-&gt;proc == p) break;
     ci--;
   }
   if (ci == cibase) {
-    return mrb_false_value();
+    /* proc is closure */
+    if (!MRB_PROC_ENV_P(p)) return mrb_false_value();
+    e = MRB_PROC_ENV(p);
+    bidx = env_bidx(e);
+    if (bidx &lt; 0) return mrb_false_value();
+    bp = &amp;e-&gt;stack[bidx];
   }
-  else if (ci-&gt;env) {
-    struct REnv *e = ci-&gt;env;
-    int bidx;
-
+  else if ((e = mrb_vm_ci_env(ci)) != NULL) {
     /* top-level does not have block slot (always false) */
-    if (e-&gt;stack == mrb-&gt;c-&gt;stbase)
-      return mrb_false_value();
-    /* use saved block arg position */
-    bidx = MRB_ENV_BIDX(e);
+    if (e-&gt;stack == mrb-&gt;c-&gt;stbase) return mrb_false_value();
+    bidx = env_bidx(e);
     /* bidx may be useless (e.g. define_method) */
-    if (bidx &gt;= MRB_ENV_LEN(e))
-      return mrb_false_value();
+    if (bidx &lt; 0) return mrb_false_value();
     bp = &amp;e-&gt;stack[bidx];
   }
   else {
-    bp = ci[1].stackent+1;
+    bp = ci-&gt;stack+1;
     if (ci-&gt;argc &gt;= 0) {
       bp += ci-&gt;argc;
     }
@@ -3099,6 +3885,7 @@ mrb_f_block_given_p_m(mrb_state *mrb, mrb_value self)
       bp++;
     }
   }
+ block_given:
   if (mrb_nil_p(*bp))
     return mrb_false_value();
   return mrb_true_value();
@@ -3122,7 +3909,7 @@ mrb_f_block_given_p_m(mrb_state *mrb, mrb_value self)
     
 <p>Returns the class of <em>obj</em>. This method must always be called with an explicit receiver, as <code>class</code> is also a reserved word in Ruby.</p>
 
-<pre class="code"><code class=""><span class='int'>1</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span>      <span class='comment'>#=&gt; Fixnum
+<pre class="code"><code class=""><span class='int'>1</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span>      <span class='comment'>#=&gt; Integer
 </span><span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span>   <span class='comment'>#=&gt; Object
 </span></code></pre>
 
@@ -3166,14 +3953,14 @@ mrb_f_block_given_p_m(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-193
-194
-195
-196
-197</pre>
+215
+216
+217
+218
+219</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/kernel.c', line 193</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/kernel.c', line 215</span>
 
 static mrb_value
 mrb_obj_class_m(mrb_state *mrb, mrb_value self)
@@ -3212,7 +3999,7 @@ mrb_obj_class_m(mrb_state *mrb, mrb_value self)
 
 <p>This method may have class-specific behavior.  If so, that behavior will be documented under the #<code>initialize_copy</code> method of the class.</p>
 
-<p>Some Class(True False Nil Symbol Fixnum Float) Object  cannot clone.</p>
+<p>Some Class(True False Nil Symbol Integer Float) Object  cannot clone.</p>
 
 
   </div>
@@ -3254,30 +4041,30 @@ mrb_obj_class_m(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-320
-321
-322
-323
-324
-325
-326
-327
-328
-329
-330
-331
-332
-333
-334
-335
-336
-337
-338
-339
-340</pre>
+2725
+2726
+2727
+2728
+2729
+2730
+2731
+2732
+2733
+2734
+2735
+2736
+2737
+2738
+2739
+2740
+2741
+2742
+2743
+2744
+2745</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/kernel.c', line 320</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/class.c', line 2725</span>
 
 MRB_API mrb_value
 mrb_obj_clone(mrb_state *mrb, mrb_value self)
@@ -3333,41 +4120,19 @@ mrb_obj_clone(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-394
-395
-396
-397
-398
-399
-400
-401
-402
-403
-404
-405
-406
 407
 408
-409</pre>
+409
+410
+411</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-metaprog/src/metaprog.c', line 394</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-metaprog/src/metaprog.c', line 407</span>
 
 static mrb_value
 mod_define_singleton_method(mrb_state *mrb, mrb_value self)
 {
-  struct RProc *p;
-  mrb_method_t m;
-  mrb_sym mid;
-  mrb_value blk = mrb_nil_value();
-
-  mrb_get_args(mrb, &quot;n&amp;!&quot;, &amp;mid, &amp;blk);
-  p = (struct RProc*)mrb_obj_alloc(mrb, MRB_TT_PROC, mrb-&gt;proc_class);
-  mrb_proc_copy(p, mrb_proc_ptr(blk));
-  p-&gt;flags |= MRB_PROC_STRICT;
-  MRB_METHOD_FROM_PROC(m, p);
-  mrb_define_method_raw(mrb, mrb_class_ptr(mrb_singleton_class(mrb, self)), mid, m);
-  return mrb_symbol_value(mid);
+  return mrb_mod_define_method_m(mrb, mrb_class_ptr(mrb_singleton_class(mrb, self)));
 }</pre>
     </td>
   </tr>
@@ -3430,27 +4195,27 @@ mod_define_singleton_method(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-361
-362
-363
-364
-365
-366
-367
-368
-369
-370
-371
-372
-373
-374
-375
-376
-377
-378</pre>
+2766
+2767
+2768
+2769
+2770
+2771
+2772
+2773
+2774
+2775
+2776
+2777
+2778
+2779
+2780
+2781
+2782
+2783</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/kernel.c', line 361</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/class.c', line 2766</span>
 
 MRB_API mrb_value
 mrb_obj_dup(mrb_state *mrb, mrb_value obj)
@@ -3612,16 +4377,16 @@ mrb_obj_dup(mrb_state *mrb, mrb_value obj)
       <pre class="lines">
 
 
-1678
-1679
-1680
-1681
-1682
-1683
-1684</pre>
+2046
+2047
+2048
+2049
+2050
+2051
+2052</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/class.c', line 1678</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/class.c', line 2046</span>
 
 mrb_value
 mrb_obj_equal_m(mrb_state *mrb, mrb_value self)
@@ -3707,67 +4472,28 @@ mrb_obj_equal_m(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-423
-424
-425
-426
-427
-428
-429
-430
-431</pre>
+264
+265
+266
+267
+268
+269
+270
+271
+272</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/kernel.c', line 423</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/kernel.c', line 264</span>
 
 static mrb_value
 mrb_obj_extend_m(mrb_state *mrb, mrb_value self)
 {
-  mrb_value *argv;
+  const mrb_value *argv;
   mrb_int argc;
 
   mrb_get_args(mrb, &quot;*&quot;, &amp;argv, &amp;argc);
   return mrb_obj_extend(mrb, argc, argv, self);
 }</pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="format-instance_method">
-  
-    #<strong>format</strong>  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    
-<p>in sprintf.c</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-
-</div>
-
-<table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-9</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-sprintf/src/kernel.c', line 9</span>
-
-mrb_value mrb_f_sprintf(mrb_state *mrb, mrb_value obj);</pre>
     </td>
   </tr>
 </table>
@@ -3801,21 +4527,21 @@ mrb_value mrb_f_sprintf(mrb_state *mrb, mrb_value obj);</pre>
       <pre class="lines">
 
 
-433
-434
-435
-436
-437
-438
-439
-440
-441
-442
-443
-444</pre>
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/kernel.c', line 433</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/kernel.c', line 274</span>
 
 MRB_API mrb_value
 mrb_obj_freeze(mrb_state *mrb, mrb_value self)
@@ -3873,14 +4599,14 @@ mrb_obj_freeze(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-446
-447
-448
-449
-450</pre>
+287
+288
+289
+290
+291</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/kernel.c', line 446</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/kernel.c', line 287</span>
 
 static mrb_value
 mrb_obj_frozen(mrb_state *mrb, mrb_value self)
@@ -3949,18 +4675,18 @@ mrb_obj_frozen(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-985
-986
-987
-988
-989
-990
-991
-992
-993</pre>
+977
+978
+979
+980
+981
+982
+983
+984
+985</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/variable.c', line 985</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/variable.c', line 977</span>
 
 mrb_value
 mrb_f_global_variables(mrb_state *mrb, mrb_value self)
@@ -3979,7 +4705,7 @@ mrb_f_global_variables(mrb_state *mrb, mrb_value self)
       <div class="method_details ">
   <h3 class="signature " id="hash-instance_method">
   
-    #<strong>hash</strong>  &#x21d2; <tt><span class='object_link'><a href="Fixnum.html" title="Fixnum (class)">Fixnum</a></span></tt> 
+    #<strong>hash</strong>  &#x21d2; <tt>Fixnum</tt> 
   
 
   
@@ -3988,7 +4714,7 @@ mrb_f_global_variables(mrb_state *mrb, mrb_value self)
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Generates a <code>Fixnum</code> hash value for this object. This function must have the property that <code>a.eql?(b)</code> implies <code>a.hash == b.hash</code>. The hash value is used by class <code>Hash</code>. Any hash value that exceeds the capacity of a <code>Fixnum</code> will be truncated before being used.</p>
+<p>Generates a <code>Integer</code> hash value for this object. This function must have the property that <code>a.eql?(b)</code> implies <code>a.hash == b.hash</code>. The hash value is used by class <code>Hash</code>. Any hash value that exceeds the capacity of a <code>Integer</code> will be truncated before being used.</p>
 
 
   </div>
@@ -4009,7 +4735,7 @@ mrb_f_global_variables(mrb_state *mrb, mrb_value self)
     <li>
       
       
-        <span class='type'>(<tt><span class='object_link'><a href="Fixnum.html" title="Fixnum (class)">Fixnum</a></span></tt>)</span>
+        <span class='type'>(<tt>Fixnum</tt>)</span>
       
       
       
@@ -4030,19 +4756,19 @@ mrb_f_global_variables(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-463
-464
-465
-466
-467</pre>
+304
+305
+306
+307
+308</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/kernel.c', line 463</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/kernel.c', line 304</span>
 
 static mrb_value
 mrb_obj_hash(mrb_state *mrb, mrb_value self)
 {
-  return mrb_fixnum_value(mrb_obj_id(self));
+  return mrb_int_value(mrb, mrb_obj_id(self));
 }</pre>
     </td>
   </tr>
@@ -4077,22 +4803,22 @@ mrb_obj_hash(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-470
-471
-472
-473
-474
-475
-476
-477
-478
-479
-480</pre>
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/kernel.c', line 470</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/kernel.c', line 311</span>
 
-static mrb_value
+mrb_value
 mrb_obj_init_copy(mrb_state *mrb, mrb_value self)
 {
   mrb_value orig = mrb_get_arg1(mrb);
@@ -4166,17 +4892,17 @@ mrb_obj_init_copy(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-53
 54
 55
 56
 57
 58
 59
-60</pre>
+60
+61</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/kernel.c', line 53</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/kernel.c', line 54</span>
 
 MRB_API mrb_value
 mrb_obj_inspect(mrb_state *mrb, mrb_value obj)
@@ -4245,27 +4971,27 @@ mrb_obj_inspect(mrb_state *mrb, mrb_value obj)
       <pre class="lines">
 
 
-498
-499
-500
-501
-502
-503
-504
-505
-506</pre>
+338
+339
+340
+341
+342
+343
+344
+345
+346</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/kernel.c', line 498</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/kernel.c', line 338</span>
 
 static mrb_value
 obj_is_instance_of(mrb_state *mrb, mrb_value self)
 {
-  mrb_value arg;
+  struct RClass *c;
 
-  mrb_get_args(mrb, &quot;C&quot;, &amp;arg);
+  mrb_get_args(mrb, &quot;c&quot;, &amp;c);
 
-  return mrb_bool_value(mrb_obj_is_instance_of(mrb, self, mrb_class_ptr(arg)));
+  return mrb_bool_value(mrb_obj_is_instance_of(mrb, self, c));
 }</pre>
     </td>
   </tr>
@@ -4337,7 +5063,6 @@ obj_is_instance_of(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-47
 48
 49
 50
@@ -4345,10 +5070,11 @@ obj_is_instance_of(mrb_state *mrb, mrb_value self)
 52
 53
 54
-55</pre>
+55
+56</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-metaprog/src/metaprog.c', line 47</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-metaprog/src/metaprog.c', line 48</span>
 
 static mrb_value
 mrb_obj_ivar_defined(mrb_state *mrb, mrb_value self)
@@ -4428,7 +5154,6 @@ mrb_obj_ivar_defined(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-77
 78
 79
 80
@@ -4436,10 +5161,11 @@ mrb_obj_ivar_defined(mrb_state *mrb, mrb_value self)
 82
 83
 84
-85</pre>
+85
+86</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-metaprog/src/metaprog.c', line 77</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-metaprog/src/metaprog.c', line 78</span>
 
 static mrb_value
 mrb_obj_ivar_get(mrb_state *mrb, mrb_value self)
@@ -4520,7 +5246,6 @@ mrb_obj_ivar_get(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-107
 108
 109
 110
@@ -4530,10 +5255,11 @@ mrb_obj_ivar_get(mrb_state *mrb, mrb_value self)
 114
 115
 116
-117</pre>
+117
+118</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-metaprog/src/metaprog.c', line 107</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-metaprog/src/metaprog.c', line 108</span>
 
 static mrb_value
 mrb_obj_ivar_set(mrb_state *mrb, mrb_value self)
@@ -4614,20 +5340,20 @@ mrb_obj_ivar_set(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-568
-569
-570
-571
-572
-573
-574
-575
-576
-577
-578</pre>
+554
+555
+556
+557
+558
+559
+560
+561
+562
+563
+564</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/variable.c', line 568</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/variable.c', line 554</span>
 
 mrb_value
 mrb_obj_instance_variables(mrb_state *mrb, mrb_value self)
@@ -4759,27 +5485,27 @@ mrb_obj_instance_variables(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-535
-536
-537
-538
-539
-540
-541
-542
-543</pre>
+375
+376
+377
+378
+379
+380
+381
+382
+383</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/kernel.c', line 535</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/kernel.c', line 375</span>
 
 static mrb_value
 mrb_obj_is_kind_of_m(mrb_state *mrb, mrb_value self)
 {
-  mrb_value arg;
+  struct RClass *c;
 
-  mrb_get_args(mrb, &quot;C&quot;, &amp;arg);
+  mrb_get_args(mrb, &quot;c&quot;, &amp;c);
 
-  return mrb_bool_value(mrb_obj_is_kind_of(mrb, self, mrb_class_ptr(arg)));
+  return mrb_bool_value(mrb_obj_is_kind_of(mrb, self, c));
 }</pre>
     </td>
   </tr>
@@ -4895,19 +5621,6 @@ mrb_obj_is_kind_of_m(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-126
-127
-128
-129
-130
-131
-132
-133
-134
-135
-136
-137
-138
 139
 140
 141
@@ -4948,10 +5661,32 @@ mrb_obj_is_kind_of_m(mrb_state *mrb, mrb_value self)
 176
 177
 178
-179</pre>
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/kernel.c', line 126</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/kernel.c', line 139</span>
 
 static mrb_value
 mrb_f_block_given_p_m(mrb_state *mrb, mrb_value self)
@@ -4959,7 +5694,9 @@ mrb_f_block_given_p_m(mrb_state *mrb, mrb_value self)
   mrb_callinfo *ci = &amp;mrb-&gt;c-&gt;ci[-1];
   mrb_callinfo *cibase = mrb-&gt;c-&gt;cibase;
   mrb_value *bp;
-  struct RProc *p;
+  int bidx;
+  struct REnv *e = NULL;
+  const struct RProc *p;
 
   if (ci &lt;= cibase) {
     /* toplevel does not have block */
@@ -4969,33 +5706,39 @@ mrb_f_block_given_p_m(mrb_state *mrb, mrb_value self)
   /* search method/class/module proc */
   while (p) {
     if (MRB_PROC_SCOPE_P(p)) break;
+    e = MRB_PROC_ENV(p);
     p = p-&gt;upper;
   }
   if (p == NULL) return mrb_false_value();
+  if (e) {
+    bidx = env_bidx(e);
+    if (bidx &lt; 0) return mrb_false_value();
+    bp = &amp;e-&gt;stack[bidx];
+    goto block_given;
+  }
   /* search ci corresponding to proc */
   while (cibase &lt; ci) {
     if (ci-&gt;proc == p) break;
     ci--;
   }
   if (ci == cibase) {
-    return mrb_false_value();
+    /* proc is closure */
+    if (!MRB_PROC_ENV_P(p)) return mrb_false_value();
+    e = MRB_PROC_ENV(p);
+    bidx = env_bidx(e);
+    if (bidx &lt; 0) return mrb_false_value();
+    bp = &amp;e-&gt;stack[bidx];
   }
-  else if (ci-&gt;env) {
-    struct REnv *e = ci-&gt;env;
-    int bidx;
-
+  else if ((e = mrb_vm_ci_env(ci)) != NULL) {
     /* top-level does not have block slot (always false) */
-    if (e-&gt;stack == mrb-&gt;c-&gt;stbase)
-      return mrb_false_value();
-    /* use saved block arg position */
-    bidx = MRB_ENV_BIDX(e);
+    if (e-&gt;stack == mrb-&gt;c-&gt;stbase) return mrb_false_value();
+    bidx = env_bidx(e);
     /* bidx may be useless (e.g. define_method) */
-    if (bidx &gt;= MRB_ENV_LEN(e))
-      return mrb_false_value();
+    if (bidx &lt; 0) return mrb_false_value();
     bp = &amp;e-&gt;stack[bidx];
   }
   else {
-    bp = ci[1].stackent+1;
+    bp = ci-&gt;stack+1;
     if (ci-&gt;argc &gt;= 0) {
       bp += ci-&gt;argc;
     }
@@ -5003,6 +5746,7 @@ mrb_f_block_given_p_m(mrb_state *mrb, mrb_value self)
       bp++;
     }
   }
+ block_given:
   if (mrb_nil_p(*bp))
     return mrb_false_value();
   return mrb_true_value();
@@ -5126,27 +5870,27 @@ mrb_f_block_given_p_m(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-535
-536
-537
-538
-539
-540
-541
-542
-543</pre>
+375
+376
+377
+378
+379
+380
+381
+382
+383</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/kernel.c', line 535</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/kernel.c', line 375</span>
 
 static mrb_value
 mrb_obj_is_kind_of_m(mrb_state *mrb, mrb_value self)
 {
-  mrb_value arg;
+  struct RClass *c;
 
-  mrb_get_args(mrb, &quot;C&quot;, &amp;arg);
+  mrb_get_args(mrb, &quot;c&quot;, &amp;c);
 
-  return mrb_bool_value(mrb_obj_is_kind_of(mrb, self, mrb_class_ptr(arg)));
+  return mrb_bool_value(mrb_obj_is_kind_of(mrb, self, c));
 }</pre>
     </td>
   </tr>
@@ -5211,7 +5955,6 @@ mrb_obj_is_kind_of_m(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-132
 133
 134
 135
@@ -5248,16 +5991,17 @@ mrb_obj_is_kind_of_m(mrb_state *mrb, mrb_value self)
 166
 167
 168
-169</pre>
+169
+170</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-metaprog/src/metaprog.c', line 132</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-metaprog/src/metaprog.c', line 133</span>
 
 static mrb_value
 mrb_local_variables(mrb_state *mrb, mrb_value self)
 {
-  struct RProc *proc;
-  mrb_irep *irep;
+  const struct RProc *proc;
+  const mrb_irep *irep;
   mrb_value vars;
   size_t i;
 
@@ -5272,8 +6016,8 @@ mrb_local_variables(mrb_state *mrb, mrb_value self)
     irep = proc-&gt;body.irep;
     if (irep-&gt;lv) {
       for (i = 0; i + 1 &lt; irep-&gt;nlocals; ++i) {
-        if (irep-&gt;lv[i].name) {
-          mrb_sym sym = irep-&gt;lv[i].name;
+        if (irep-&gt;lv[i]) {
+          mrb_sym sym = irep-&gt;lv[i];
           const char *name = mrb_sym_name(mrb, sym);
           switch (name[0]) {
           case &#39;*&#39;: case &#39;&amp;&#39;:
@@ -5418,16 +6162,16 @@ mrb_local_variables(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-260
-261
-262
-263
-264
-265
-266</pre>
+271
+272
+273
+274
+275
+276
+277</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-metaprog/src/metaprog.c', line 260</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-metaprog/src/metaprog.c', line 271</span>
 
 static mrb_value
 mrb_obj_methods_m(mrb_state *mrb, mrb_value self)
@@ -5488,37 +6232,15 @@ mrb_obj_methods_m(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-545
-546
-547
-548
-549
-550
-551
-552
-553
-554
-555
-556
-557
-558
-559
-560</pre>
+393
+394
+395
+396
+397</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/kernel.c', line 545</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/kernel.c', line 393</span>
 
-KHASH_DECLARE(st, mrb_sym, char, FALSE)
-KHASH_DEFINE(st, mrb_sym, char, FALSE, kh_int_hash_func, kh_int_hash_equal)
-
-/* 15.3.1.3.32 */
-/*
- * call_seq:
- *   nil.nil?               -&gt; true
- *   &lt;anything_else&gt;.nil?   -&gt; false
- *
- * Only the object &lt;i&gt;nil&lt;/i&gt; responds &lt;code&gt;true&lt;/code&gt; to &lt;code&gt;nil?&lt;/code&gt;.
- */
 static mrb_value
 mrb_false(mrb_state *mrb, mrb_value self)
 {
@@ -5563,19 +6285,19 @@ obj.object_id    -&gt; fixnum
       <pre class="lines">
 
 
-96
 97
 98
 99
-100</pre>
+100
+101</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/kernel.c', line 96</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/kernel.c', line 97</span>
 
 mrb_value
 mrb_obj_id_m(mrb_state *mrb, mrb_value self)
 {
-  return mrb_fixnum_value(mrb_obj_id(self));
+  return mrb_int_value(mrb, mrb_obj_id(self));
 }</pre>
     </td>
   </tr>
@@ -5596,7 +6318,7 @@ mrb_obj_id_m(mrb_state *mrb, mrb_value self)
     
 <p>Print human readable object description</p>
 
-<p>ISO 15.3.1.3.34</p>
+<p>ISO 15.3.1.2.9 ISO 15.3.1.3.34</p>
 
 
   </div>
@@ -5612,19 +6334,19 @@ mrb_obj_id_m(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-40
-41
-42
-43
-44
-45
-46
-47
-48
-49</pre>
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-print/mrblib/print.rb', line 40</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-print/mrblib/print.rb', line 11</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_p'>p</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_i'>i</span> <span class='op'>=</span> <span class='int'>0</span>
@@ -5644,7 +6366,7 @@ mrb_obj_id_m(mrb_state *mrb, mrb_value self)
       <div class="method_details ">
   <h3 class="signature " id="print-instance_method">
   
-    #<strong>print</strong>(*args)  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+    #<strong>print</strong>  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
   
 
   
@@ -5653,9 +6375,7 @@ mrb_obj_id_m(mrb_state *mrb, mrb_value self)
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Invoke method <code>print</code> on STDOUT and passing <tt>*args</tt></p>
-
-<p>ISO 15.3.1.2.10</p>
+<p>15.3.1.3.35</p>
 
 
   </div>
@@ -5671,26 +6391,36 @@ mrb_obj_id_m(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-10
-11
-12
-13
-14
-15
-16
-17</pre>
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-print/mrblib/print.rb', line 10</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-print/src/print.c', line 52</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_print'>print</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_i'>i</span> <span class='op'>=</span> <span class='int'>0</span>
-  <span class='id identifier rubyid_len'>len</span> <span class='op'>=</span> <span class='id identifier rubyid_args'>args</span><span class='period'>.</span><span class='id identifier rubyid_size'>size</span>
-  <span class='kw'>while</span> <span class='id identifier rubyid_i'>i</span> <span class='op'>&lt;</span> <span class='id identifier rubyid_len'>len</span>
-    <span class='id identifier rubyid___printstr__'>__printstr__</span> <span class='id identifier rubyid_args'>args</span><span class='lbracket'>[</span><span class='id identifier rubyid_i'>i</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
-    <span class='id identifier rubyid_i'>i</span> <span class='op'>+=</span> <span class='int'>1</span>
-  <span class='kw'>end</span>
-<span class='kw'>end</span></pre>
+static mrb_value
+mrb_print(mrb_state *mrb, mrb_value self)
+{
+  mrb_int argc, i;
+  const mrb_value *argv;
+
+  mrb_get_args(mrb, &quot;*&quot;, &amp;argv, &amp;argc);
+  for (i=0; i&lt;argc; i++) {
+    mrb_value s = mrb_obj_as_string(mrb, argv[i]);
+    printstr(mrb, RSTRING_PTR(s), RSTRING_LEN(s));
+  }
+  return mrb_nil_value();
+}</pre>
     </td>
   </tr>
 </table>
@@ -5711,13 +6441,13 @@ mrb_obj_id_m(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-51
-52
-53
-54</pre>
+22
+23
+24
+25</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-print/mrblib/print.rb', line 51</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-print/mrblib/print.rb', line 22</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_printf'>printf</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
   <span class='id identifier rubyid___printstr__'>__printstr__</span><span class='lparen'>(</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span><span class='rparen'>)</span>
@@ -5782,16 +6512,16 @@ mrb_obj_id_m(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-277
-278
-279
-280
-281
-282
-283</pre>
+288
+289
+290
+291
+292
+293
+294</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-metaprog/src/metaprog.c', line 277</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-metaprog/src/metaprog.c', line 288</span>
 
 static mrb_value
 mrb_obj_private_methods(mrb_state *mrb, mrb_value self)
@@ -5859,16 +6589,16 @@ mrb_obj_private_methods(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-294
-295
-296
-297
-298
-299
-300</pre>
+305
+306
+307
+308
+309
+310
+311</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-metaprog/src/metaprog.c', line 294</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-metaprog/src/metaprog.c', line 305</span>
 
 static mrb_value
 mrb_obj_protected_methods(mrb_state *mrb, mrb_value self)
@@ -5936,16 +6666,16 @@ mrb_obj_protected_methods(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-311
-312
-313
-314
-315
-316
-317</pre>
+322
+323
+324
+325
+326
+327
+328</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-metaprog/src/metaprog.c', line 311</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-metaprog/src/metaprog.c', line 322</span>
 
 static mrb_value
 mrb_obj_public_methods(mrb_state *mrb, mrb_value self)
@@ -5962,7 +6692,7 @@ mrb_obj_public_methods(mrb_state *mrb, mrb_value self)
       <div class="method_details ">
   <h3 class="signature " id="puts-instance_method">
   
-    #<strong>puts</strong>(*args)  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+    #<strong>puts</strong>  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
   
 
   
@@ -5971,9 +6701,7 @@ mrb_obj_public_methods(mrb_state *mrb, mrb_value self)
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Invoke method <code>puts</code> on STDOUT and passing <tt><strong>args</strong></tt></p>
-
-<p>ISO 15.3.1.2.11</p>
+<p>15.3.1.3.39</p>
 
 
   </div>
@@ -5989,34 +6717,50 @@ mrb_obj_public_methods(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34</pre>
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-print/mrblib/print.rb', line 23</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-print/src/print.c', line 68</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_puts'>puts</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_i'>i</span> <span class='op'>=</span> <span class='int'>0</span>
-  <span class='id identifier rubyid_len'>len</span> <span class='op'>=</span> <span class='id identifier rubyid_args'>args</span><span class='period'>.</span><span class='id identifier rubyid_size'>size</span>
-  <span class='kw'>while</span> <span class='id identifier rubyid_i'>i</span> <span class='op'>&lt;</span> <span class='id identifier rubyid_len'>len</span>
-    <span class='id identifier rubyid_s'>s</span> <span class='op'>=</span> <span class='id identifier rubyid_args'>args</span><span class='lbracket'>[</span><span class='id identifier rubyid_i'>i</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
-    <span class='id identifier rubyid___printstr__'>__printstr__</span> <span class='id identifier rubyid_s'>s</span>
-    <span class='id identifier rubyid___printstr__'>__printstr__</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\n</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>if</span> <span class='lparen'>(</span><span class='id identifier rubyid_s'>s</span><span class='lbracket'>[</span><span class='op'>-</span><span class='int'>1</span><span class='rbracket'>]</span> <span class='op'>!=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\n</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
-    <span class='id identifier rubyid_i'>i</span> <span class='op'>+=</span> <span class='int'>1</span>
-  <span class='kw'>end</span>
-  <span class='id identifier rubyid___printstr__'>__printstr__</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\n</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>if</span> <span class='id identifier rubyid_len'>len</span> <span class='op'>==</span> <span class='int'>0</span>
-  <span class='kw'>nil</span>
-<span class='kw'>end</span></pre>
+static mrb_value
+mrb_puts(mrb_state *mrb, mrb_value self)
+{
+  mrb_int argc, i;
+  const mrb_value *argv;
+
+  mrb_get_args(mrb, &quot;*&quot;, &amp;argv, &amp;argc);
+  for (i=0; i&lt;argc; i++) {
+    mrb_value s = mrb_obj_as_string(mrb, argv[i]);
+    mrb_int len = RSTRING_LEN(s);
+    printstr(mrb, RSTRING_PTR(s), len);
+    if (len == 0 || RSTRING_PTR(s)[len-1] != &#39;\n&#39;) {
+      printstr(mrb, &quot;\n&quot;, 1);
+    }
+  }
+  if (argc == 0) {
+    printstr(mrb, &quot;\n&quot;, 1);
+  }
+  return mrb_nil_value();
+}</pre>
     </td>
   </tr>
 </table>
@@ -6060,35 +6804,35 @@ mrb_obj_public_methods(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-583
-584
-585
-586
-587
-588
-589
-590
-591
-592
-593
-594
-595
-596
-597
-598
-599
-600
-601
-602
-603
-604
-605
-606
-607
-608</pre>
+420
+421
+422
+423
+424
+425
+426
+427
+428
+429
+430
+431
+432
+433
+434
+435
+436
+437
+438
+439
+440
+441
+442
+443
+444
+445</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/kernel.c', line 583</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/kernel.c', line 420</span>
 
 MRB_API mrb_value
 mrb_f_raise(mrb_state *mrb, mrb_value self)
@@ -6116,42 +6860,6 @@ mrb_f_raise(mrb_state *mrb, mrb_value self)
   }
   return mrb_nil_value();            /* not reached */
 }</pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="Rational-instance_method">
-  
-    #<strong>Rational</strong>(numerator, denominator = 1)  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
-  
-
-  
-
-  
-</h3><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-86
-87
-88
-89
-90
-91</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-rational/mrblib/rational.rb', line 86</span>
-
-<span class='kw'>def</span> <span class='const'>Rational</span><span class='lparen'>(</span><span class='id identifier rubyid_numerator'>numerator</span><span class='comma'>,</span> <span class='id identifier rubyid_denominator'>denominator</span> <span class='op'>=</span> <span class='int'>1</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_a'>a</span> <span class='op'>=</span> <span class='id identifier rubyid_numerator'>numerator</span>
-  <span class='id identifier rubyid_b'>b</span> <span class='op'>=</span> <span class='id identifier rubyid_denominator'>denominator</span>
-  <span class='id identifier rubyid_a'>a</span><span class='comma'>,</span> <span class='id identifier rubyid_b'>b</span> <span class='op'>=</span> <span class='id identifier rubyid_b'>b</span><span class='comma'>,</span> <span class='id identifier rubyid_a'>a</span> <span class='op'>%</span> <span class='id identifier rubyid_b'>b</span> <span class='kw'>until</span> <span class='id identifier rubyid_b'>b</span> <span class='op'>==</span> <span class='int'>0</span>
-  <span class='const'>Rational</span><span class='period'>.</span><span class='id identifier rubyid__new'>_new</span><span class='lparen'>(</span><span class='id identifier rubyid_numerator'>numerator</span><span class='period'>.</span><span class='id identifier rubyid_div'>div</span><span class='lparen'>(</span><span class='id identifier rubyid_a'>a</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='id identifier rubyid_denominator'>denominator</span><span class='period'>.</span><span class='id identifier rubyid_div'>div</span><span class='lparen'>(</span><span class='id identifier rubyid_a'>a</span><span class='rparen'>)</span><span class='rparen'>)</span>
-<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -6226,23 +6934,23 @@ mrb_f_raise(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-632
-633
-634
-635
-636
-637
-638
-639
-640
-641
-642
-643
-644
-645</pre>
+469
+470
+471
+472
+473
+474
+475
+476
+477
+478
+479
+480
+481
+482</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/kernel.c', line 632</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/kernel.c', line 469</span>
 
 static mrb_value
 mrb_obj_remove_instance_variable(mrb_state *mrb, mrb_value self)
@@ -6321,29 +7029,29 @@ mrb_obj_remove_instance_variable(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-721
-722
-723
-724
-725
-726
-727
-728
-729
-730
-731
-732
-733
-734
-735
-736
-737
-738
-739
-740</pre>
+558
+559
+560
+561
+562
+563
+564
+565
+566
+567
+568
+569
+570
+571
+572
+573
+574
+575
+576
+577</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/kernel.c', line 721</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/kernel.c', line 558</span>
 
 static mrb_value
 obj_respond_to(mrb_state *mrb, mrb_value self)
@@ -6354,7 +7062,7 @@ obj_respond_to(mrb_state *mrb, mrb_value self)
   mrb_get_args(mrb, &quot;n|b&quot;, &amp;id, &amp;priv);
   respond_to_p = basic_obj_respond_to(mrb, self, id, !priv);
   if (!respond_to_p) {
-    rtm_id = mrb_intern_lit(mrb, &quot;respond_to_missing?&quot;);
+    rtm_id = MRB_SYM_Q(respond_to_missing);
     if (basic_obj_respond_to(mrb, self, rtm_id, !priv)) {
       mrb_value args[2], v;
       args[0] = mrb_symbol_value(id);
@@ -6373,11 +7081,7 @@ obj_respond_to(mrb_state *mrb, mrb_value self)
       <div class="method_details ">
   <h3 class="signature " id="send-instance_method">
   
-    
-      <span class="overload">#<strong>send</strong>(symbol[, args...])  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> </span>
-    
-      <span class="overload">#<strong>__send__</strong>(symbol[, args...])  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> </span>
-    
+    #<strong>send</strong>  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
   
 
   
@@ -6386,87 +7090,13 @@ obj_respond_to(mrb_state *mrb, mrb_value self)
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Invokes the method identified by <em>symbol</em>, passing it any arguments specified. You can use <code>__send__</code> if the name <code>send</code> clashes with an existing method in <em>obj</em>.</p>
-
-<pre class="code"><code class=""><span class='kw'>class</span> <span class='const'>Klass</span>
-  <span class='kw'>def</span> <span class='id identifier rubyid_hello'>hello</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
-    <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Hello </span><span class='tstring_end'>&quot;</span></span> <span class='op'>+</span> <span class='id identifier rubyid_args'>args</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'> </span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
-  <span class='kw'>end</span>
-<span class='kw'>end</span>
-<span class='id identifier rubyid_k'>k</span> <span class='op'>=</span> <span class='const'>Klass</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
-<span class='id identifier rubyid_k'>k</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span> <span class='symbol'>:hello</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>gentle</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>readers</span><span class='tstring_end'>&quot;</span></span>   <span class='comment'>#=&gt; &quot;Hello gentle readers&quot;
-</span></code></pre>
+<p>implementation of #send method</p>
 
 
   </div>
 </div>
 <div class="tags">
   
-  <p class="tag_title">Overloads:</p>
-  <ul class="overload">
-    
-      
-      <li class="overload_item">
-        <span class="signature">#<strong>send</strong>(symbol[, args...])  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> </span>
-        <div class="docstring">
-  <div class="discussion">
-    
-
-  </div>
-</div>
-<div class="tags">
-  
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt>)</span>
-      
-      
-      
-    </li>
-  
-</ul>
-
-</div>
-
-
-      </li>
-    
-      
-      <li class="overload_item">
-        <span class="signature">#<strong>__send__</strong>(symbol[, args...])  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> </span>
-        <div class="docstring">
-  <div class="discussion">
-    
-
-  </div>
-</div>
-<div class="tags">
-  
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt>)</span>
-      
-      
-      
-    </li>
-  
-</ul>
-
-</div>
-
-
-      </li>
-    
-  </ul>
-
 
 </div>
 
@@ -6476,100 +7106,12 @@ obj_respond_to(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-596
-597
-598
-599
-600
-601
-602
-603
-604
-605
-606
-607
-608
-609
-610
-611
-612
-613
-614
-615
-616
-617
-618
-619
-620
-621
-622
-623
-624
-625
-626
-627
-628
-629
-630
-631
-632
-633
-634
-635
-636
-637
-638
-639
-640</pre>
+670</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/vm.c', line 596</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-metaprog/src/metaprog.c', line 670</span>
 
-mrb_value
-mrb_f_send(mrb_state *mrb, mrb_value self)
-{
-  mrb_sym name;
-  mrb_value block, *argv, *regs;
-  mrb_int argc, i, len;
-  mrb_method_t m;
-  struct RClass *c;
-  mrb_callinfo *ci;
-
-  mrb_get_args(mrb, &quot;n*&amp;&quot;, &amp;name, &amp;argv, &amp;argc, &amp;block);
-  ci = mrb-&gt;c-&gt;ci;
-  if (ci-&gt;acc &lt; 0) {
-  funcall:
-    return mrb_funcall_with_block(mrb, self, name, argc, argv, block);
-  }
-
-  c = mrb_class(mrb, self);
-  m = mrb_method_search_vm(mrb, &amp;c, name);
-  if (MRB_METHOD_UNDEF_P(m)) {            /* call method_mising */
-    goto funcall;
-  }
-
-  ci-&gt;mid = name;
-  ci-&gt;target_class = c;
-  regs = mrb-&gt;c-&gt;stack+1;
-  /* remove first symbol from arguments */
-  if (ci-&gt;argc &gt;= 0) {
-    for (i=0,len=ci-&gt;argc; i&lt;len; i++) {
-      regs[i] = regs[i+1];
-    }
-    ci-&gt;argc--;
-  }
-  else {                     /* variable length arguments */
-    regs[0] = mrb_ary_subseq(mrb, regs[0], 1, RARRAY_LEN(regs[0]) - 1);
-  }
-
-  if (MRB_METHOD_CFUNC_P(m)) {
-    if (MRB_METHOD_PROC_P(m)) {
-      ci-&gt;proc = MRB_METHOD_PROC(m);
-    }
-    return MRB_METHOD_CFUNC(m)(mrb, self);
-  }
-  return mrb_exec_irep(mrb, self, MRB_METHOD_PROC(m));
-}</pre>
+mrb_value mrb_f_send(mrb_state *mrb, mrb_value self);</pre>
     </td>
   </tr>
 </table>
@@ -6603,19 +7145,19 @@ mrb_f_send(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-1291
-1292
-1293
-1294
-1295
-1296
-1297
-1298
-1299
-1300</pre>
+1656
+1657
+1658
+1659
+1660
+1661
+1662
+1663
+1664
+1665</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/class.c', line 1291</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/class.c', line 1656</span>
 
 MRB_API mrb_value
 mrb_singleton_class(mrb_state *mrb, mrb_value v)
@@ -6750,16 +7292,16 @@ mrb_singleton_class(mrb_state *mrb, mrb_value v)
       <pre class="lines">
 
 
-386
-387
-388
-389
-390
-391
-392</pre>
+397
+398
+399
+400
+401
+402
+403</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-metaprog/src/metaprog.c', line 386</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-metaprog/src/metaprog.c', line 397</span>
 
 static mrb_value
 mrb_obj_singleton_methods_m(mrb_state *mrb, mrb_value self)
@@ -6768,45 +7310,6 @@ mrb_obj_singleton_methods_m(mrb_state *mrb, mrb_value self)
   mrb_get_args(mrb, &quot;|b&quot;, &amp;recur);
   return mrb_obj_singleton_methods(mrb, recur, self);
 }</pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="sprintf-instance_method">
-  
-    #<strong>sprintf</strong>  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    
-<p>in sprintf.c</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-
-</div>
-
-<table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-9</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-sprintf/src/kernel.c', line 9</span>
-
-mrb_value mrb_f_sprintf(mrb_state *mrb, mrb_value obj);</pre>
     </td>
   </tr>
 </table>
@@ -6979,12 +7482,12 @@ obj.enum_for(method = :each, *args)                -&gt; enum
       <pre class="lines">
 
 
-647
 648
-649</pre>
+649
+650</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-enumerator/mrblib/enumerator.rb', line 647</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-enumerator/mrblib/enumerator.rb', line 648</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_to_enum'>to_enum</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_a'>a</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_raise'>raise</span> <span class='const'><span class='object_link'><a href="NotImplementedError.html" title="NotImplementedError (class)">NotImplementedError</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Exception.html#initialize-instance_method" title="Exception#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>fiber required for enumerator</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
@@ -7082,7 +7585,7 @@ obj.then {|_obj|...}       -&gt; an_object
 </div>
 
       <div id="footer">
-  Generated on Thu Jan 28 17:33:28 2021 by
+  Generated on Mon Mar 22 08:29:46 2021 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.26 in <a href="https://github.com/sagmor/yard-mruby">mruby mode</a> 0.3.0 (ruby-2.7.2).
 </div>

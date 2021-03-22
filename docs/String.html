@@ -324,7 +324,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Element Reference—If passed a single <code>Fixnum</code>, returns the code of the character at that position.</p>
+<p>Element Reference—If passed a single <code>Integer</code>, returns the code of the character at that position.</p>
 </div></span>
   
 </li>
@@ -396,6 +396,28 @@
     <span class="summary_desc"><div class='inline'>
 <p>private method for gsub/sub.</p>
 </div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#__upto_endless-instance_method" title="#__upto_endless (instance method)">#<strong>__upto_endless</strong>(&amp;block)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
   
 </li>
 
@@ -1499,30 +1521,6 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#last-instance_method" title="#last (instance method)">#<strong>last</strong>  &#x21d2; Object </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'>
-<p>Returns the last object in the range, or an array of the last <code>n</code> elements.</p>
-</div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
       <a href="#length-instance_method" title="#length (instance method)">#<strong>length</strong>  &#x21d2; Integer </a>
     
 
@@ -1844,7 +1842,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Element Reference—If passed a single <code>Fixnum</code>, returns the code of the character at that position.</p>
+<p>Element Reference—If passed a single <code>Integer</code>, returns the code of the character at that position.</p>
 </div></span>
   
 </li>
@@ -2924,21 +2922,21 @@
       <pre class="lines">
 
 
-1922
-1923
-1924
-1925
-1926
-1927
-1928
-1929
-1930
-1931
-1932
-1933</pre>
+1872
+1873
+1874
+1875
+1876
+1877
+1878
+1879
+1880
+1881
+1882
+1883</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/string.c', line 1922</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/string.c', line 1872</span>
 
 static mrb_value
 mrb_str_init(mrb_state *mrb, mrb_value self)
@@ -3059,42 +3057,42 @@ mrb_str_init(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-971
-972
-973
-974
-975
-976
-977
-978
-979
-980
-981
-982
-983
-984
-985
-986
-987
-988
-989
-990
-991
-992
-993
-994
-995
-996
-997
-998
-999
-1000
-1001
-1002
-1003</pre>
+935
+936
+937
+938
+939
+940
+941
+942
+943
+944
+945
+946
+947
+948
+949
+950
+951
+952
+953
+954
+955
+956
+957
+958
+959
+960
+961
+962
+963
+964
+965
+966
+967</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/string.c', line 971</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/string.c', line 935</span>
 
 static mrb_value
 mrb_str_times(mrb_state *mrb, mrb_value self)
@@ -3191,17 +3189,17 @@ mrb_str_times(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-930
-931
-932
-933
-934
-935
-936
-937</pre>
+894
+895
+896
+897
+898
+899
+900
+901</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/string.c', line 930</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/string.c', line 894</span>
 
 static mrb_value
 mrb_str_plus_m(mrb_state *mrb, mrb_value self)
@@ -3407,7 +3405,7 @@ mrb_str_concat_m(mrb_state *mrb, mrb_value self)
 {
   mrb_value str = mrb_get_arg1(mrb);
 
-  if (mrb_fixnum_p(str) || mrb_float_p(str))
+  if (mrb_integer_p(str) || mrb_float_p(str))
 #ifdef MRB_UTF8_STRING
     str = int_chr_utf8(mrb, str);
 #else
@@ -3485,23 +3483,23 @@ mrb_str_concat_m(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-1061
-1062
-1063
-1064
-1065
-1066
-1067
-1068
-1069
-1070
-1071
-1072
-1073
-1074</pre>
+1025
+1026
+1027
+1028
+1029
+1030
+1031
+1032
+1033
+1034
+1035
+1036
+1037
+1038</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/string.c', line 1061</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/string.c', line 1025</span>
 
 static mrb_value
 mrb_str_cmp_m(mrb_state *mrb, mrb_value str1)
@@ -3579,16 +3577,16 @@ mrb_str_cmp_m(mrb_state *mrb, mrb_value str1)
       <pre class="lines">
 
 
-1105
-1106
-1107
-1108
-1109
-1110
-1111</pre>
+1069
+1070
+1071
+1072
+1073
+1074
+1075</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/string.c', line 1105</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/string.c', line 1069</span>
 
 static mrb_value
 mrb_str_equal_m(mrb_state *mrb, mrb_value str1)
@@ -3644,7 +3642,7 @@ mrb_str_equal_m(mrb_state *mrb, mrb_value str1)
   <h3 class="signature " id="[]-instance_method">
   
     
-      <span class="overload">#<strong>[]</strong>(fixnum)  &#x21d2; <tt><span class='object_link'><a href="Fixnum.html" title="Fixnum (class)">Fixnum</a></span></tt><sup>?</sup> </span>
+      <span class="overload">#<strong>[]</strong>(fixnum)  &#x21d2; <tt>Fixnum</tt><sup>?</sup> </span>
     
       <span class="overload">#<strong>[]</strong>(fixnum, fixnum)  &#x21d2; <tt><span class='object_link'><a href="" title="String (class)">String</a></span></tt><sup>?</sup> </span>
     
@@ -3652,7 +3650,7 @@ mrb_str_equal_m(mrb_state *mrb, mrb_value str1)
     
       <span class="overload">#<strong>[]</strong>(other_str)  &#x21d2; <tt><span class='object_link'><a href="" title="String (class)">String</a></span></tt><sup>?</sup> </span>
     
-      <span class="overload">#<strong>slice</strong>(fixnum)  &#x21d2; <tt><span class='object_link'><a href="Fixnum.html" title="Fixnum (class)">Fixnum</a></span></tt><sup>?</sup> </span>
+      <span class="overload">#<strong>slice</strong>(fixnum)  &#x21d2; <tt>Fixnum</tt><sup>?</sup> </span>
     
       <span class="overload">#<strong>slice</strong>(fixnum, fixnum)  &#x21d2; <tt><span class='object_link'><a href="" title="String (class)">String</a></span></tt><sup>?</sup> </span>
     
@@ -3672,7 +3670,7 @@ mrb_str_equal_m(mrb_state *mrb, mrb_value str1)
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Element Reference—If passed a single <code>Fixnum</code>, returns the code of the character at that position. If passed two <code>Fixnum</code> objects, returns a substring starting at the offset given by the first, and a length given by the second. If given a range, a substring containing characters at offsets given by the range is returned. In all three cases, if an offset is negative, it is counted from the end of <em>str</em>. Returns <code>nil</code> if the initial offset falls outside the string, the length is negative, or the beginning of the range is greater than the end.</p>
+<p>Element Reference—If passed a single <code>Integer</code>, returns the code of the character at that position. If passed two <code>Integer</code> objects, returns a substring starting at the offset given by the first, and a length given by the second. If given a range, a substring containing characters at offsets given by the range is returned. In all three cases, if an offset is negative, it is counted from the end of <em>str</em>. Returns <code>nil</code> if the initial offset falls outside the string, the length is negative, or the beginning of the range is greater than the end.</p>
 
 <p>If a <code>String</code> is given, that string is returned if it occurs in <em>str</em>. In both cases, <code>nil</code> is returned if there is no match.</p>
 
@@ -3699,7 +3697,7 @@ mrb_str_equal_m(mrb_state *mrb, mrb_value str1)
     
       
       <li class="overload_item">
-        <span class="signature">#<strong>[]</strong>(fixnum)  &#x21d2; <tt><span class='object_link'><a href="Fixnum.html" title="Fixnum (class)">Fixnum</a></span></tt><sup>?</sup> </span>
+        <span class="signature">#<strong>[]</strong>(fixnum)  &#x21d2; <tt>Fixnum</tt><sup>?</sup> </span>
         <div class="docstring">
   <div class="discussion">
     
@@ -3714,7 +3712,7 @@ mrb_str_equal_m(mrb_state *mrb, mrb_value str1)
     <li>
       
       
-        <span class='type'>(<tt><span class='object_link'><a href="Fixnum.html" title="Fixnum (class)">Fixnum</a></span></tt>, <tt>nil</tt>)</span>
+        <span class='type'>(<tt>Fixnum</tt>, <tt>nil</tt>)</span>
       
       
       
@@ -3819,7 +3817,7 @@ mrb_str_equal_m(mrb_state *mrb, mrb_value str1)
     
       
       <li class="overload_item">
-        <span class="signature">#<strong>slice</strong>(fixnum)  &#x21d2; <tt><span class='object_link'><a href="Fixnum.html" title="Fixnum (class)">Fixnum</a></span></tt><sup>?</sup> </span>
+        <span class="signature">#<strong>slice</strong>(fixnum)  &#x21d2; <tt>Fixnum</tt><sup>?</sup> </span>
         <div class="docstring">
   <div class="discussion">
     
@@ -3834,7 +3832,7 @@ mrb_str_equal_m(mrb_state *mrb, mrb_value str1)
     <li>
       
       
-        <span class='type'>(<tt><span class='object_link'><a href="Fixnum.html" title="Fixnum (class)">Fixnum</a></span></tt>, <tt>nil</tt>)</span>
+        <span class='type'>(<tt>Fixnum</tt>, <tt>nil</tt>)</span>
       
       
       
@@ -3948,20 +3946,20 @@ mrb_str_equal_m(mrb_state *mrb, mrb_value str1)
       <pre class="lines">
 
 
-1283
-1284
-1285
-1286
-1287
-1288
-1289
-1290
-1291
-1292
-1293</pre>
+1229
+1230
+1231
+1232
+1233
+1234
+1235
+1236
+1237
+1238
+1239</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/string.c', line 1283</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/string.c', line 1229</span>
 
 static mrb_value
 mrb_str_aref_m(mrb_state *mrb, mrb_value str)
@@ -4007,25 +4005,25 @@ mrb_str_aref_m(mrb_state *mrb, mrb_value str)
       <pre class="lines">
 
 
-1464
-1465
-1466
-1467
-1468
-1469
-1470
-1471
-1472
-1473
-1474
-1475
-1476
-1477
-1478
-1479</pre>
+1410
+1411
+1412
+1413
+1414
+1415
+1416
+1417
+1418
+1419
+1420
+1421
+1422
+1423
+1424
+1425</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/string.c', line 1464</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/string.c', line 1410</span>
 
 static mrb_value
 mrb_str_aset_m(mrb_state *mrb, mrb_value str)
@@ -4063,10 +4061,6 @@ mrb_str_aset_m(mrb_state *mrb, mrb_value str)
       <pre class="lines">
 
 
-1173
-1174
-1175
-1176
 1177
 1178
 1179
@@ -4084,10 +4078,14 @@ mrb_str_aset_m(mrb_state *mrb, mrb_value str)
 1191
 1192
 1193
-1194</pre>
+1194
+1195
+1196
+1197
+1198</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-string-ext/src/string.c', line 1173</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-string-ext/src/string.c', line 1177</span>
 
 static mrb_value
 mrb_str_lines(mrb_state *mrb, mrb_value self)
@@ -4195,6 +4193,74 @@ mrb_str_lines(mrb_state *mrb, mrb_value self)
     <span class='id identifier rubyid_i'>i</span> <span class='op'>=</span> <span class='id identifier rubyid_j'>j</span> <span class='op'>+</span> <span class='int'>2</span>
   <span class='kw'>end</span>
   <span class='id identifier rubyid_s'>s</span> <span class='op'>+</span> <span class='kw'>self</span><span class='lbracket'>[</span><span class='id identifier rubyid_i'>i</span><span class='comma'>,</span> <span class='id identifier rubyid_length'>length</span><span class='op'>-</span><span class='id identifier rubyid_i'>i</span><span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="__upto_endless-instance_method">
+  
+    #<strong>__upto_endless</strong>(&amp;block)  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+447
+448
+449
+450
+451
+452
+453
+454
+455
+456
+457
+458
+459
+460
+461
+462
+463
+464
+465
+466
+467
+468</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-string-ext/mrblib/string.rb', line 447</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid___upto_endless'>__upto_endless</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+  <span class='kw'>return</span> <span class='id identifier rubyid_to_enum'>to_enum</span><span class='lparen'>(</span><span class='symbol'>:__upto_endless</span><span class='rparen'>)</span> <span class='kw'>unless</span> <span class='id identifier rubyid_block'>block</span>
+
+  <span class='id identifier rubyid_len'>len</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span>
+  <span class='comment'># both edges are all digits
+</span>  <span class='id identifier rubyid_bi'>bi</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span><span class='lparen'>(</span><span class='int'>10</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_bi'>bi</span> <span class='op'>&gt;</span> <span class='int'>0</span> <span class='kw'>or</span> <span class='id identifier rubyid_bi'>bi</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>0</span><span class='tstring_end'>&quot;</span></span><span class='op'>*</span><span class='id identifier rubyid_len'>len</span>
+    <span class='kw'>while</span> <span class='kw'>true</span>
+      <span class='id identifier rubyid_s'>s</span> <span class='op'>=</span> <span class='id identifier rubyid_bi'>bi</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
+      <span class='id identifier rubyid_s'>s</span> <span class='op'>=</span> <span class='id identifier rubyid_s'>s</span><span class='period'>.</span><span class='id identifier rubyid_rjust'>rjust</span><span class='lparen'>(</span><span class='id identifier rubyid_len'>len</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>0</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_s'>s</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span> <span class='op'>&lt;</span> <span class='id identifier rubyid_len'>len</span>
+      <span class='kw'>yield</span> <span class='id identifier rubyid_s'>s</span>
+      <span class='id identifier rubyid_bi'>bi</span> <span class='op'>+=</span> <span class='int'>1</span>
+    <span class='kw'>end</span>
+    <span class='kw'>return</span> <span class='kw'>self</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_bs'>bs</span> <span class='op'>=</span> <span class='kw'>self</span>
+  <span class='kw'>while</span> <span class='kw'>true</span>
+    <span class='kw'>yield</span> <span class='id identifier rubyid_bs'>bs</span>
+    <span class='id identifier rubyid_bs'>bs</span> <span class='op'>=</span> <span class='id identifier rubyid_bs'>bs</span><span class='period'>.</span><span class='id identifier rubyid_succ'>succ</span>
+  <span class='kw'>end</span>
+  <span class='kw'>self</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -4350,22 +4416,22 @@ mrb_str_lines(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-2803
-2804
-2805
-2806
-2807
-2808
-2809
-2810
-2811
-2812
-2813
-2814
-2815</pre>
+2761
+2762
+2763
+2764
+2765
+2766
+2767
+2768
+2769
+2770
+2771
+2772
+2773</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/string.c', line 2803</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/string.c', line 2761</span>
 
 static mrb_value
 mrb_str_bytes(mrb_state *mrb, mrb_value str)
@@ -4400,15 +4466,15 @@ mrb_str_bytes(mrb_state *mrb, mrb_value str)
       <pre class="lines">
 
 
-954
-955
-956
-957
-958
-959</pre>
+918
+919
+920
+921
+922
+923</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/string.c', line 954</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/string.c', line 918</span>
 
 static mrb_value
 mrb_str_bytesize(mrb_state *mrb, mrb_value self)
@@ -4557,45 +4623,45 @@ mrb_str_bytesize(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-2885
-2886
-2887
-2888
-2889
-2890
-2891
-2892
-2893
-2894
-2895
-2896
-2897
-2898
-2899
-2900
-2901
-2902
-2903
-2904
-2905
-2906
-2907
-2908
-2909
-2910
-2911
-2912
-2913
-2914
-2915
-2916
-2917
-2918
-2919
-2920</pre>
+2843
+2844
+2845
+2846
+2847
+2848
+2849
+2850
+2851
+2852
+2853
+2854
+2855
+2856
+2857
+2858
+2859
+2860
+2861
+2862
+2863
+2864
+2865
+2866
+2867
+2868
+2869
+2870
+2871
+2872
+2873
+2874
+2875
+2876
+2877
+2878</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/string.c', line 2885</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/string.c', line 2843</span>
 
 static mrb_value
 mrb_str_byteslice(mrb_state *mrb, mrb_value str)
@@ -4617,7 +4683,7 @@ mrb_str_byteslice(mrb_state *mrb, mrb_value str)
       }
     }
     else {
-      beg = mrb_fixnum(mrb_to_int(mrb, a1));
+      beg = mrb_integer(mrb_to_int(mrb, a1));
       len = 1;
       empty = FALSE;
     }
@@ -4697,18 +4763,18 @@ mrb_str_byteslice(mrb_state *mrb, mrb_value str)
       <pre class="lines">
 
 
-1530
-1531
-1532
-1533
-1534
-1535
-1536
-1537
-1538</pre>
+1476
+1477
+1478
+1479
+1480
+1481
+1482
+1483
+1484</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/string.c', line 1530</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/string.c', line 1476</span>
 
 static mrb_value
 mrb_str_capitalize(mrb_state *mrb, mrb_value self)
@@ -4784,32 +4850,32 @@ mrb_str_capitalize(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-1494
-1495
-1496
-1497
-1498
-1499
-1500
-1501
-1502
-1503
-1504
-1505
-1506
-1507
-1508
-1509
-1510
-1511
-1512
-1513
-1514
-1515
-1516</pre>
+1440
+1441
+1442
+1443
+1444
+1445
+1446
+1447
+1448
+1449
+1450
+1451
+1452
+1453
+1454
+1455
+1456
+1457
+1458
+1459
+1460
+1461
+1462</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/string.c', line 1494</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/string.c', line 1440</span>
 
 static mrb_value
 mrb_str_capitalize_bang(mrb_state *mrb, mrb_value str)
@@ -5069,18 +5135,18 @@ mrb_str_capitalize_bang(mrb_state *mrb, mrb_value str)
       <pre class="lines">
 
 
-1634
-1635
-1636
-1637
-1638
-1639
-1640
-1641
-1642</pre>
+1580
+1581
+1582
+1583
+1584
+1585
+1586
+1587
+1588</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/string.c', line 1634</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/string.c', line 1580</span>
 
 static mrb_value
 mrb_str_chomp(mrb_state *mrb, mrb_value self)
@@ -5150,6 +5216,60 @@ mrb_str_chomp(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
+1494
+1495
+1496
+1497
+1498
+1499
+1500
+1501
+1502
+1503
+1504
+1505
+1506
+1507
+1508
+1509
+1510
+1511
+1512
+1513
+1514
+1515
+1516
+1517
+1518
+1519
+1520
+1521
+1522
+1523
+1524
+1525
+1526
+1527
+1528
+1529
+1530
+1531
+1532
+1533
+1534
+1535
+1536
+1537
+1538
+1539
+1540
+1541
+1542
+1543
+1544
+1545
+1546
+1547
 1548
 1549
 1550
@@ -5162,64 +5282,10 @@ mrb_str_chomp(mrb_state *mrb, mrb_value self)
 1557
 1558
 1559
-1560
-1561
-1562
-1563
-1564
-1565
-1566
-1567
-1568
-1569
-1570
-1571
-1572
-1573
-1574
-1575
-1576
-1577
-1578
-1579
-1580
-1581
-1582
-1583
-1584
-1585
-1586
-1587
-1588
-1589
-1590
-1591
-1592
-1593
-1594
-1595
-1596
-1597
-1598
-1599
-1600
-1601
-1602
-1603
-1604
-1605
-1606
-1607
-1608
-1609
-1610
-1611
-1612
-1613
-1614</pre>
+1560</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/string.c', line 1548</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/string.c', line 1494</span>
 
 static mrb_value
 mrb_str_chomp_bang(mrb_state *mrb, mrb_value str)
@@ -5354,17 +5420,17 @@ mrb_str_chomp_bang(mrb_state *mrb, mrb_value str)
       <pre class="lines">
 
 
-1703
-1704
-1705
-1706
-1707
-1708
-1709
-1710</pre>
+1649
+1650
+1651
+1652
+1653
+1654
+1655
+1656</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/string.c', line 1703</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/string.c', line 1649</span>
 
 static mrb_value
 mrb_str_chop(mrb_state *mrb, mrb_value self)
@@ -5433,41 +5499,41 @@ mrb_str_chop(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-1653
-1654
-1655
-1656
-1657
-1658
-1659
-1660
-1661
-1662
-1663
-1664
-1665
-1666
-1667
-1668
-1669
-1670
-1671
-1672
-1673
-1674
-1675
-1676
-1677
-1678
-1679
-1680
-1681
-1682
-1683
-1684</pre>
+1599
+1600
+1601
+1602
+1603
+1604
+1605
+1606
+1607
+1608
+1609
+1610
+1611
+1612
+1613
+1614
+1615
+1616
+1617
+1618
+1619
+1620
+1621
+1622
+1623
+1624
+1625
+1626
+1627
+1628
+1629
+1630</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/string.c', line 1653</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/string.c', line 1599</span>
 
 static mrb_value
 mrb_str_chop_bang(mrb_state *mrb, mrb_value str)
@@ -5564,14 +5630,14 @@ mrb_str_chop_bang(mrb_state *mrb, mrb_value str)
       <pre class="lines">
 
 
-854
-855
 856
 857
-858</pre>
+858
+859
+860</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-string-ext/src/string.c', line 854</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-string-ext/src/string.c', line 856</span>
 
 static mrb_value
 mrb_str_chr(mrb_state *mrb, mrb_value self)
@@ -5878,7 +5944,7 @@ mrb_str_concat_m(mrb_state *mrb, mrb_value self)
 {
   mrb_value str = mrb_get_arg1(mrb);
 
-  if (mrb_fixnum_p(str) || mrb_float_p(str))
+  if (mrb_integer_p(str) || mrb_float_p(str))
 #ifdef MRB_UTF8_STRING
     str = int_chr_utf8(mrb, str);
 #else
@@ -5927,8 +5993,6 @@ mrb_str_concat_m(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-809
-810
 811
 812
 813
@@ -5949,10 +6013,12 @@ mrb_str_concat_m(mrb_state *mrb, mrb_value self)
 828
 829
 830
-831</pre>
+831
+832
+833</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-string-ext/src/string.c', line 809</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-string-ext/src/string.c', line 811</span>
 
 static mrb_value
 mrb_str_count(mrb_state *mrb, mrb_value str)
@@ -6065,7 +6131,10 @@ mrb_str_count(mrb_state *mrb, mrb_value str)
 53
 54
 55
-56</pre>
+56
+57
+58
+59</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-range-ext/src/range.c', line 34</span>
@@ -6081,6 +6150,9 @@ range_cover(mrb_state *mrb, mrb_value range)
   end = RANGE_END(r);
 
   if (r_le(mrb, beg, val)) {
+    if (mrb_nil_p(end)) {
+      return mrb_true_value();
+    }
     if (RANGE_EXCL(r)) {
       if (r_lt(mrb, val, end))
         return mrb_true_value();
@@ -6113,8 +6185,6 @@ range_cover(mrb_state *mrb, mrb_value range)
       <pre class="lines">
 
 
-774
-775
 776
 777
 778
@@ -6123,10 +6193,12 @@ range_cover(mrb_state *mrb, mrb_value range)
 781
 782
 783
-784</pre>
+784
+785
+786</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-string-ext/src/string.c', line 774</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-string-ext/src/string.c', line 776</span>
 
 static mrb_value
 mrb_str_delete(mrb_state *mrb, mrb_value str)
@@ -6159,8 +6231,6 @@ mrb_str_delete(mrb_state *mrb, mrb_value str)
       <pre class="lines">
 
 
-786
-787
 788
 789
 790
@@ -6169,10 +6239,12 @@ mrb_str_delete(mrb_state *mrb, mrb_value str)
 793
 794
 795
-796</pre>
+796
+797
+798</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-string-ext/src/string.c', line 786</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-string-ext/src/string.c', line 788</span>
 
 static mrb_value
 mrb_str_delete_bang(mrb_state *mrb, mrb_value str)
@@ -6248,9 +6320,6 @@ mrb_str_delete_bang(mrb_state *mrb, mrb_value str)
       <pre class="lines">
 
 
-1104
-1105
-1106
 1107
 1108
 1109
@@ -6260,16 +6329,19 @@ mrb_str_delete_bang(mrb_state *mrb, mrb_value str)
 1113
 1114
 1115
-1116</pre>
+1116
+1117
+1118
+1119</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-string-ext/src/string.c', line 1104</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-string-ext/src/string.c', line 1107</span>
 
 static mrb_value
 mrb_str_del_prefix(mrb_state *mrb, mrb_value self)
 {
   mrb_int plen, slen;
-  char *ptr;
+  const char *ptr;
 
   mrb_get_args(mrb, &quot;s&quot;, &amp;ptr, &amp;plen);
   slen = RSTRING_LEN(self);
@@ -6341,8 +6413,6 @@ mrb_str_del_prefix(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-1071
-1072
 1073
 1074
 1075
@@ -6363,16 +6433,20 @@ mrb_str_del_prefix(mrb_state *mrb, mrb_value self)
 1090
 1091
 1092
-1093</pre>
+1093
+1094
+1095
+1096</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-string-ext/src/string.c', line 1071</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-string-ext/src/string.c', line 1073</span>
 
 static mrb_value
 mrb_str_del_prefix_bang(mrb_state *mrb, mrb_value self)
 {
   mrb_int plen, slen;
-  char *ptr, *s;
+  const char *ptr;
+  char *s;
   struct RString *str = RSTRING(self);
 
   mrb_get_args(mrb, &quot;s&quot;, &amp;ptr, &amp;plen);
@@ -6454,10 +6528,6 @@ mrb_str_del_prefix_bang(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-1159
-1160
-1161
-1162
 1163
 1164
 1165
@@ -6466,16 +6536,20 @@ mrb_str_del_prefix_bang(mrb_state *mrb, mrb_value self)
 1168
 1169
 1170
-1171</pre>
+1171
+1172
+1173
+1174
+1175</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-string-ext/src/string.c', line 1159</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-string-ext/src/string.c', line 1163</span>
 
 static mrb_value
 mrb_str_del_suffix(mrb_state *mrb, mrb_value self)
 {
   mrb_int plen, slen;
-  char *ptr;
+  const char *ptr;
 
   mrb_get_args(mrb, &quot;s&quot;, &amp;ptr, &amp;plen);
   slen = RSTRING_LEN(self);
@@ -6547,9 +6621,6 @@ mrb_str_del_suffix(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-1128
-1129
-1130
 1131
 1132
 1133
@@ -6567,16 +6638,21 @@ mrb_str_del_suffix(mrb_state *mrb, mrb_value self)
 1145
 1146
 1147
-1148</pre>
+1148
+1149
+1150
+1151
+1152</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-string-ext/src/string.c', line 1128</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-string-ext/src/string.c', line 1131</span>
 
 static mrb_value
 mrb_str_del_suffix_bang(mrb_state *mrb, mrb_value self)
 {
   mrb_int plen, slen;
-  char *ptr, *s;
+  const char *ptr;
+  char *s;
   struct RString *str = RSTRING(self);
 
   mrb_get_args(mrb, &quot;s&quot;, &amp;ptr, &amp;plen);
@@ -6655,18 +6731,18 @@ mrb_str_del_suffix_bang(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-1753
-1754
-1755
-1756
-1757
-1758
-1759
-1760
-1761</pre>
+1699
+1700
+1701
+1702
+1703
+1704
+1705
+1706
+1707</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/string.c', line 1753</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/string.c', line 1699</span>
 
 static mrb_value
 mrb_str_downcase(mrb_state *mrb, mrb_value self)
@@ -6736,30 +6812,30 @@ mrb_str_downcase(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-1720
-1721
-1722
-1723
-1724
-1725
-1726
-1727
-1728
-1729
-1730
-1731
-1732
-1733
-1734
-1735
-1736
-1737
-1738
-1739
-1740</pre>
+1666
+1667
+1668
+1669
+1670
+1671
+1672
+1673
+1674
+1675
+1676
+1677
+1678
+1679
+1680
+1681
+1682
+1683
+1684
+1685
+1686</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/string.c', line 1720</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/string.c', line 1666</span>
 
 static mrb_value
 mrb_str_downcase_bang(mrb_state *mrb, mrb_value str)
@@ -6841,14 +6917,14 @@ mrb_str_downcase_bang(mrb_state *mrb, mrb_value str)
       <pre class="lines">
 
 
-2704
-2705
-2706
-2707
-2708</pre>
+2662
+2663
+2664
+2665
+2666</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/string.c', line 2704</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/string.c', line 2662</span>
 
 mrb_value
 mrb_str_dump(mrb_state *mrb, mrb_value str)
@@ -7160,16 +7236,16 @@ mrb_str_dump(mrb_state *mrb, mrb_value str)
       <pre class="lines">
 
 
-1773
-1774
-1775
-1776
-1777
-1778
-1779</pre>
+1719
+1720
+1721
+1722
+1723
+1724
+1725</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/string.c', line 1773</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/string.c', line 1719</span>
 
 static mrb_value
 mrb_str_empty_p(mrb_state *mrb, mrb_value self)
@@ -7237,7 +7313,6 @@ mrb_str_empty_p(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-223
 224
 225
 226
@@ -7260,15 +7335,18 @@ mrb_str_empty_p(mrb_state *mrb, mrb_value self)
 243
 244
 245
-246</pre>
+246
+247
+248</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-string-ext/src/string.c', line 223</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-string-ext/src/string.c', line 224</span>
 
 static mrb_value
 mrb_str_end_with(mrb_state *mrb, mrb_value self)
 {
-  mrb_value *argv, sub;
+  const mrb_value *argv;
+  mrb_value sub;
   mrb_int argc, i;
   mrb_get_args(mrb, &quot;*&quot;, &amp;argv, &amp;argc);
 
@@ -7348,19 +7426,19 @@ mrb_str_end_with(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-1788
-1789
-1790
-1791
-1792
-1793
-1794
-1795
-1796
-1797</pre>
+1734
+1735
+1736
+1737
+1738
+1739
+1740
+1741
+1742
+1743</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/string.c', line 1788</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/string.c', line 1734</span>
 
 static mrb_value
 mrb_str_eql(mrb_state *mrb, mrb_value self)
@@ -7431,22 +7509,22 @@ mrb_str_eql(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-2823
-2824
-2825
-2826
-2827
-2828
-2829
-2830
-2831
-2832
-2833
-2834
-2835</pre>
+2781
+2782
+2783
+2784
+2785
+2786
+2787
+2788
+2789
+2790
+2791
+2792
+2793</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/string.c', line 2823</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/string.c', line 2781</span>
 
 static mrb_value
 mrb_str_getbyte(mrb_state *mrb, mrb_value str)
@@ -7647,7 +7725,7 @@ mrb_str_getbyte(mrb_state *mrb, mrb_value str)
       <div class="method_details ">
   <h3 class="signature " id="hash-instance_method">
   
-    #<strong>hash</strong>  &#x21d2; <tt><span class='object_link'><a href="Fixnum.html" title="Fixnum (class)">Fixnum</a></span></tt> 
+    #<strong>hash</strong>  &#x21d2; <tt>Fixnum</tt> 
   
 
   
@@ -7677,7 +7755,7 @@ mrb_str_getbyte(mrb_state *mrb, mrb_value str)
     <li>
       
       
-        <span class='type'>(<tt><span class='object_link'><a href="Fixnum.html" title="Fixnum (class)">Fixnum</a></span></tt>)</span>
+        <span class='type'>(<tt>Fixnum</tt>)</span>
       
       
       
@@ -7698,15 +7776,15 @@ mrb_str_getbyte(mrb_state *mrb, mrb_value str)
       <pre class="lines">
 
 
-1828
-1829
-1830
-1831
-1832
-1833</pre>
+1778
+1779
+1780
+1781
+1782
+1783</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/string.c', line 1828</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/string.c', line 1778</span>
 
 static mrb_value
 mrb_str_hash_m(mrb_state *mrb, mrb_value self)
@@ -7734,14 +7812,14 @@ mrb_str_hash_m(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-833
-834
 835
 836
-837</pre>
+837
+838
+839</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-string-ext/src/string.c', line 833</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-string-ext/src/string.c', line 835</span>
 
 static mrb_value
 mrb_str_hex(mrb_state *mrb, mrb_value self)
@@ -7855,19 +7933,19 @@ mrb_str_hex(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-1848
-1849
-1850
-1851
-1852
-1853
-1854
-1855
-1856
-1857</pre>
+1798
+1799
+1800
+1801
+1802
+1803
+1804
+1805
+1806
+1807</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/string.c', line 1848</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/string.c', line 1798</span>
 
 static mrb_value
 mrb_str_include(mrb_state *mrb, mrb_value self)
@@ -7887,7 +7965,7 @@ mrb_str_include(mrb_state *mrb, mrb_value self)
       <div class="method_details ">
   <h3 class="signature " id="index-instance_method">
   
-    #<strong>index</strong>(substring[, offset])  &#x21d2; <tt><span class='object_link'><a href="Fixnum.html" title="Fixnum (class)">Fixnum</a></span></tt><sup>?</sup> 
+    #<strong>index</strong>(substring[, offset])  &#x21d2; <tt>Fixnum</tt><sup>?</sup> 
   
 
   
@@ -7923,7 +8001,7 @@ mrb_str_include(mrb_state *mrb, mrb_value self)
     <li>
       
       
-        <span class='type'>(<tt><span class='object_link'><a href="Fixnum.html" title="Fixnum (class)">Fixnum</a></span></tt>, <tt>nil</tt>)</span>
+        <span class='type'>(<tt>Fixnum</tt>, <tt>nil</tt>)</span>
       
       
       
@@ -7944,31 +8022,31 @@ mrb_str_include(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-1874
-1875
-1876
-1877
-1878
-1879
-1880
-1881
-1882
-1883
-1884
-1885
-1886
-1887
-1888
-1889
-1890
-1891
-1892
-1893
-1894
-1895</pre>
+1824
+1825
+1826
+1827
+1828
+1829
+1830
+1831
+1832
+1833
+1834
+1835
+1836
+1837
+1838
+1839
+1840
+1841
+1842
+1843
+1844
+1845</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/string.c', line 1874</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/string.c', line 1824</span>
 
 static mrb_value
 mrb_str_index_m(mrb_state *mrb, mrb_value str)
@@ -8054,17 +8132,17 @@ mrb_str_index_m(mrb_state *mrb, mrb_value str)
       <pre class="lines">
 
 
-1906
-1907
-1908
-1909
-1910
-1911
-1912
-1913</pre>
+1856
+1857
+1858
+1859
+1860
+1861
+1862
+1863</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/string.c', line 1906</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/string.c', line 1856</span>
 
 static mrb_value
 mrb_str_replace(mrb_state *mrb, mrb_value str)
@@ -8208,14 +8286,14 @@ The intent is insert &lt;i&gt;aString&lt;/i&gt; so that it starts at the given
       <pre class="lines">
 
 
-2788
-2789
-2790
-2791
-2792</pre>
+2746
+2747
+2748
+2749
+2750</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/string.c', line 2788</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/string.c', line 2746</span>
 
 mrb_value
 mrb_str_inspect(mrb_state *mrb, mrb_value str)
@@ -8271,159 +8349,19 @@ mrb_str_inspect(mrb_state *mrb, mrb_value str)
       <pre class="lines">
 
 
-1956
-1957
-1958
-1959
-1960</pre>
+1906
+1907
+1908
+1909
+1910</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/string.c', line 1956</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/string.c', line 1906</span>
 
 MRB_API mrb_value
 mrb_str_intern(mrb_state *mrb, mrb_value self)
 {
   return mrb_symbol_value(mrb_intern_str(mrb, self));
-}</pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="last-instance_method">
-  
-    
-      <span class="overload">#<strong>last</strong>  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> </span>
-    
-      <span class="overload">#<strong>last</strong>(n)  &#x21d2; <tt><span class='object_link'><a href="Array.html" title="Array (class)">Array</a></span></tt> </span>
-    
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    
-<p>Returns the last object in the range, or an array of the last <code>n</code> elements.</p>
-
-<p>Note that with no arguments <code>last</code> will return the object that defines the end of the range even if #exclude_end? is <code>true</code>.</p>
-
-<pre class="code"><code class=""><span class='lparen'>(</span><span class='int'>10</span><span class='op'>..</span><span class='int'>20</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_last'>last</span>      <span class='comment'>#=&gt; 20
-</span><span class='lparen'>(</span><span class='int'>10</span><span class='op'>...</span><span class='int'>20</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_last'>last</span>     <span class='comment'>#=&gt; 20
-</span><span class='lparen'>(</span><span class='int'>10</span><span class='op'>..</span><span class='int'>20</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_last'>last</span><span class='lparen'>(</span><span class='int'>3</span><span class='rparen'>)</span>   <span class='comment'>#=&gt; [18, 19, 20]
-</span><span class='lparen'>(</span><span class='int'>10</span><span class='op'>...</span><span class='int'>20</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_last'>last</span><span class='lparen'>(</span><span class='int'>3</span><span class='rparen'>)</span>  <span class='comment'>#=&gt; [17, 18, 19]
-</span></code></pre>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-  <p class="tag_title">Overloads:</p>
-  <ul class="overload">
-    
-      
-      <li class="overload_item">
-        <span class="signature">#<strong>last</strong>  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> </span>
-        <div class="docstring">
-  <div class="discussion">
-    
-
-  </div>
-</div>
-<div class="tags">
-  
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt>)</span>
-      
-      
-      
-    </li>
-  
-</ul>
-
-</div>
-
-
-      </li>
-    
-      
-      <li class="overload_item">
-        <span class="signature">#<strong>last</strong>(n)  &#x21d2; <tt><span class='object_link'><a href="Array.html" title="Array (class)">Array</a></span></tt> </span>
-        <div class="docstring">
-  <div class="discussion">
-    
-
-  </div>
-</div>
-<div class="tags">
-  
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt><span class='object_link'><a href="Array.html" title="Array (class)">Array</a></span></tt>)</span>
-      
-      
-      
-    </li>
-  
-</ul>
-
-</div>
-
-
-      </li>
-    
-  </ul>
-
-
-</div>
-
-<table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-74
-75
-76
-77
-78
-79
-80
-81
-82
-83
-84
-85
-86</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-range-ext/src/range.c', line 74</span>
-
-static mrb_value
-range_last(mrb_state *mrb, mrb_value range)
-{
-  mrb_value num;
-  mrb_value array;
-
-  if (mrb_get_args(mrb, &quot;|o&quot;, &amp;num) == 0) {
-    return mrb_range_end(mrb, range);
-  }
-
-  array = mrb_funcall(mrb, range, &quot;to_a&quot;, 0);
-  return mrb_funcall(mrb, array, &quot;last&quot;, 1, mrb_to_int(mrb, num));
 }</pre>
     </td>
   </tr>
@@ -8484,15 +8422,15 @@ range_last(mrb_state *mrb, mrb_value range)
       <pre class="lines">
 
 
-947
-948
-949
-950
-951
-952</pre>
+911
+912
+913
+914
+915
+916</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/string.c', line 947</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/string.c', line 911</span>
 
 static mrb_value
 mrb_str_size(mrb_state *mrb, mrb_value self)
@@ -8818,18 +8756,18 @@ and padded with &lt;i&gt;padstr&lt;/i&gt;; otherwise, returns &lt;i&gt;str&lt;/i
       <pre class="lines">
 
 
-985
-986
 987
 988
 989
 990
 991
 992
-993</pre>
+993
+994
+995</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-string-ext/src/string.c', line 985</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-string-ext/src/string.c', line 987</span>
 
 static mrb_value
 mrb_str_succ(mrb_state *mrb, mrb_value self)
@@ -8903,8 +8841,6 @@ mrb_str_succ(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-907
-908
 909
 910
 911
@@ -8979,10 +8915,12 @@ mrb_str_succ(mrb_state *mrb, mrb_value self)
 980
 981
 982
-983</pre>
+983
+984
+985</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-string-ext/src/string.c', line 907</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-string-ext/src/string.c', line 909</span>
 
 static mrb_value
 mrb_str_succ_bang(mrb_state *mrb, mrb_value self)
@@ -9081,14 +9019,14 @@ mrb_str_succ_bang(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-839
-840
 841
 842
-843</pre>
+843
+844
+845</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-string-ext/src/string.c', line 839</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-string-ext/src/string.c', line 841</span>
 
 static mrb_value
 mrb_str_oct(mrb_state *mrb, mrb_value self)
@@ -9215,7 +9153,7 @@ mrb_str_oct(mrb_state *mrb, mrb_value self)
       <div class="method_details ">
   <h3 class="signature " id="old_index-instance_method">
   
-    #<strong>index</strong>(substring[, offset])  &#x21d2; <tt><span class='object_link'><a href="Fixnum.html" title="Fixnum (class)">Fixnum</a></span></tt><sup>?</sup> 
+    #<strong>index</strong>(substring[, offset])  &#x21d2; <tt>Fixnum</tt><sup>?</sup> 
   
 
   
@@ -9251,7 +9189,7 @@ mrb_str_oct(mrb_state *mrb, mrb_value self)
     <li>
       
       
-        <span class='type'>(<tt><span class='object_link'><a href="Fixnum.html" title="Fixnum (class)">Fixnum</a></span></tt>, <tt>nil</tt>)</span>
+        <span class='type'>(<tt>Fixnum</tt>, <tt>nil</tt>)</span>
       
       
       
@@ -9796,7 +9734,7 @@ mrb_str_split_m(mrb_state *mrb, mrb_value str)
   <h3 class="signature " id="old_square_brancket-instance_method">
   
     
-      <span class="overload">#<strong>[]</strong>(fixnum)  &#x21d2; <tt><span class='object_link'><a href="Fixnum.html" title="Fixnum (class)">Fixnum</a></span></tt><sup>?</sup> </span>
+      <span class="overload">#<strong>[]</strong>(fixnum)  &#x21d2; <tt>Fixnum</tt><sup>?</sup> </span>
     
       <span class="overload">#<strong>[]</strong>(fixnum, fixnum)  &#x21d2; <tt><span class='object_link'><a href="" title="String (class)">String</a></span></tt><sup>?</sup> </span>
     
@@ -9804,7 +9742,7 @@ mrb_str_split_m(mrb_state *mrb, mrb_value str)
     
       <span class="overload">#<strong>[]</strong>(other_str)  &#x21d2; <tt><span class='object_link'><a href="" title="String (class)">String</a></span></tt><sup>?</sup> </span>
     
-      <span class="overload">#<strong>slice</strong>(fixnum)  &#x21d2; <tt><span class='object_link'><a href="Fixnum.html" title="Fixnum (class)">Fixnum</a></span></tt><sup>?</sup> </span>
+      <span class="overload">#<strong>slice</strong>(fixnum)  &#x21d2; <tt>Fixnum</tt><sup>?</sup> </span>
     
       <span class="overload">#<strong>slice</strong>(fixnum, fixnum)  &#x21d2; <tt><span class='object_link'><a href="" title="String (class)">String</a></span></tt><sup>?</sup> </span>
     
@@ -9820,7 +9758,7 @@ mrb_str_split_m(mrb_state *mrb, mrb_value str)
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Element Reference—If passed a single <code>Fixnum</code>, returns the code of the character at that position. If passed two <code>Fixnum</code> objects, returns a substring starting at the offset given by the first, and a length given by the second. If given a range, a substring containing characters at offsets given by the range is returned. In all three cases, if an offset is negative, it is counted from the end of <em>str</em>. Returns <code>nil</code> if the initial offset falls outside the string, the length is negative, or the beginning of the range is greater than the end.</p>
+<p>Element Reference—If passed a single <code>Integer</code>, returns the code of the character at that position. If passed two <code>Integer</code> objects, returns a substring starting at the offset given by the first, and a length given by the second. If given a range, a substring containing characters at offsets given by the range is returned. In all three cases, if an offset is negative, it is counted from the end of <em>str</em>. Returns <code>nil</code> if the initial offset falls outside the string, the length is negative, or the beginning of the range is greater than the end.</p>
 
 <p>If a <code>String</code> is given, that string is returned if it occurs in <em>str</em>. In both cases, <code>nil</code> is returned if there is no match.</p>
 
@@ -9847,7 +9785,7 @@ mrb_str_split_m(mrb_state *mrb, mrb_value str)
     
       
       <li class="overload_item">
-        <span class="signature">#<strong>[]</strong>(fixnum)  &#x21d2; <tt><span class='object_link'><a href="Fixnum.html" title="Fixnum (class)">Fixnum</a></span></tt><sup>?</sup> </span>
+        <span class="signature">#<strong>[]</strong>(fixnum)  &#x21d2; <tt>Fixnum</tt><sup>?</sup> </span>
         <div class="docstring">
   <div class="discussion">
     
@@ -9862,7 +9800,7 @@ mrb_str_split_m(mrb_state *mrb, mrb_value str)
     <li>
       
       
-        <span class='type'>(<tt><span class='object_link'><a href="Fixnum.html" title="Fixnum (class)">Fixnum</a></span></tt>, <tt>nil</tt>)</span>
+        <span class='type'>(<tt>Fixnum</tt>, <tt>nil</tt>)</span>
       
       
       
@@ -9967,7 +9905,7 @@ mrb_str_split_m(mrb_state *mrb, mrb_value str)
     
       
       <li class="overload_item">
-        <span class="signature">#<strong>slice</strong>(fixnum)  &#x21d2; <tt><span class='object_link'><a href="Fixnum.html" title="Fixnum (class)">Fixnum</a></span></tt><sup>?</sup> </span>
+        <span class="signature">#<strong>slice</strong>(fixnum)  &#x21d2; <tt>Fixnum</tt><sup>?</sup> </span>
         <div class="docstring">
   <div class="discussion">
     
@@ -9982,7 +9920,7 @@ mrb_str_split_m(mrb_state *mrb, mrb_value str)
     <li>
       
       
-        <span class='type'>(<tt><span class='object_link'><a href="Fixnum.html" title="Fixnum (class)">Fixnum</a></span></tt>, <tt>nil</tt>)</span>
+        <span class='type'>(<tt>Fixnum</tt>, <tt>nil</tt>)</span>
       
       
       
@@ -10235,16 +10173,16 @@ mrb_str_aref_m(mrb_state *mrb, mrb_value str)
       <pre class="lines">
 
 
-1052
-1053
 1054
 1055
 1056
 1057
-1058</pre>
+1058
+1059
+1060</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-string-ext/src/string.c', line 1052</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-string-ext/src/string.c', line 1054</span>
 
 static mrb_value
 mrb_str_ord(mrb_state* mrb, mrb_value str)
@@ -10438,17 +10376,17 @@ mrb_str_ord(mrb_state* mrb, mrb_value str)
       <pre class="lines">
 
 
-1906
-1907
-1908
-1909
-1910
-1911
-1912
-1913</pre>
+1856
+1857
+1858
+1859
+1860
+1861
+1862
+1863</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/string.c', line 1906</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/string.c', line 1856</span>
 
 static mrb_value
 mrb_str_replace(mrb_state *mrb, mrb_value str)
@@ -10520,16 +10458,16 @@ mrb_str_replace(mrb_state *mrb, mrb_value str)
       <pre class="lines">
 
 
-2067
-2068
-2069
-2070
-2071
-2072
-2073</pre>
+2027
+2028
+2029
+2030
+2031
+2032
+2033</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/string.c', line 2067</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/string.c', line 2027</span>
 
 static mrb_value
 mrb_str_reverse(mrb_state *mrb, mrb_value str)
@@ -10597,45 +10535,45 @@ mrb_str_reverse(mrb_state *mrb, mrb_value str)
       <pre class="lines">
 
 
-2020
-2021
-2022
-2023
-2024
-2025
-2026
-2027
-2028
-2029
-2030
-2031
-2032
-2033
-2034
-2035
-2036
-2037
-2038
-2039
-2040
-2041
-2042
-2043
-2044
-2045
-2046
-2047
-2048
-2049
-2050
-2051
-2052
-2053
-2054
-2055</pre>
+1980
+1981
+1982
+1983
+1984
+1985
+1986
+1987
+1988
+1989
+1990
+1991
+1992
+1993
+1994
+1995
+1996
+1997
+1998
+1999
+2000
+2001
+2002
+2003
+2004
+2005
+2006
+2007
+2008
+2009
+2010
+2011
+2012
+2013
+2014
+2015</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/string.c', line 2020</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/string.c', line 1980</span>
 
 static mrb_value
 mrb_str_reverse_bang(mrb_state *mrb, mrb_value str)
@@ -10681,7 +10619,7 @@ mrb_str_reverse_bang(mrb_state *mrb, mrb_value str)
       <div class="method_details ">
   <h3 class="signature " id="rindex-instance_method">
   
-    #<strong>rindex</strong>(substring[, offset])  &#x21d2; <tt><span class='object_link'><a href="Fixnum.html" title="Fixnum (class)">Fixnum</a></span></tt><sup>?</sup> 
+    #<strong>rindex</strong>(substring[, offset])  &#x21d2; <tt>Fixnum</tt><sup>?</sup> 
   
 
   
@@ -10717,7 +10655,7 @@ mrb_str_reverse_bang(mrb_state *mrb, mrb_value str)
     <li>
       
       
-        <span class='type'>(<tt><span class='object_link'><a href="Fixnum.html" title="Fixnum (class)">Fixnum</a></span></tt>, <tt>nil</tt>)</span>
+        <span class='type'>(<tt>Fixnum</tt>, <tt>nil</tt>)</span>
       
       
       
@@ -10738,36 +10676,36 @@ mrb_str_reverse_bang(mrb_state *mrb, mrb_value str)
       <pre class="lines">
 
 
-2090
-2091
-2092
-2093
-2094
-2095
-2096
-2097
-2098
-2099
-2100
-2101
-2102
-2103
-2104
-2105
-2106
-2107
-2108
-2109
-2110
-2111
-2112
-2113
-2114
-2115
-2116</pre>
+2050
+2051
+2052
+2053
+2054
+2055
+2056
+2057
+2058
+2059
+2060
+2061
+2062
+2063
+2064
+2065
+2066
+2067
+2068
+2069
+2070
+2071
+2072
+2073
+2074
+2075
+2076</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/string.c', line 2090</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/string.c', line 2050</span>
 
 static mrb_value
 mrb_str_rindex(mrb_state *mrb, mrb_value str)
@@ -11199,28 +11137,28 @@ and padded with &lt;i&gt;padstr&lt;/i&gt;; otherwise, returns &lt;i&gt;str&lt;/i
       <pre class="lines">
 
 
-2843
-2844
-2845
-2846
-2847
-2848
-2849
-2850
-2851
-2852
-2853
-2854
-2855
-2856
-2857
-2858
-2859
-2860
-2861</pre>
+2801
+2802
+2803
+2804
+2805
+2806
+2807
+2808
+2809
+2810
+2811
+2812
+2813
+2814
+2815
+2816
+2817
+2818
+2819</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/string.c', line 2843</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/string.c', line 2801</span>
 
 static mrb_value
 mrb_str_setbyte(mrb_state *mrb, mrb_value str)
@@ -11300,15 +11238,15 @@ mrb_str_setbyte(mrb_state *mrb, mrb_value str)
       <pre class="lines">
 
 
-947
-948
-949
-950
-951
-952</pre>
+911
+912
+913
+914
+915
+916</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/string.c', line 947</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/string.c', line 911</span>
 
 static mrb_value
 mrb_str_size(mrb_state *mrb, mrb_value self)
@@ -11595,6 +11533,46 @@ str.slice!(other_str)        -&gt; new_str or nil
       <pre class="lines">
 
 
+2111
+2112
+2113
+2114
+2115
+2116
+2117
+2118
+2119
+2120
+2121
+2122
+2123
+2124
+2125
+2126
+2127
+2128
+2129
+2130
+2131
+2132
+2133
+2134
+2135
+2136
+2137
+2138
+2139
+2140
+2141
+2142
+2143
+2144
+2145
+2146
+2147
+2148
+2149
+2150
 2151
 2152
 2153
@@ -11661,50 +11639,10 @@ str.slice!(other_str)        -&gt; new_str or nil
 2214
 2215
 2216
-2217
-2218
-2219
-2220
-2221
-2222
-2223
-2224
-2225
-2226
-2227
-2228
-2229
-2230
-2231
-2232
-2233
-2234
-2235
-2236
-2237
-2238
-2239
-2240
-2241
-2242
-2243
-2244
-2245
-2246
-2247
-2248
-2249
-2250
-2251
-2252
-2253
-2254
-2255
-2256
-2257</pre>
+2217</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/string.c', line 2151</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/string.c', line 2111</span>
 
 static mrb_value
 mrb_str_split_m(mrb_state *mrb, mrb_value str)
@@ -11877,8 +11815,6 @@ mrb_str_split_m(mrb_state *mrb, mrb_value str)
       <pre class="lines">
 
 
-711
-712
 713
 714
 715
@@ -11887,10 +11823,12 @@ mrb_str_split_m(mrb_state *mrb, mrb_value str)
 718
 719
 720
-721</pre>
+721
+722
+723</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-string-ext/src/string.c', line 711</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-string-ext/src/string.c', line 713</span>
 
 static mrb_value
 mrb_str_squeeze(mrb_state *mrb, mrb_value str)
@@ -11962,8 +11900,6 @@ mrb_str_squeeze(mrb_state *mrb, mrb_value str)
       <pre class="lines">
 
 
-730
-731
 732
 733
 734
@@ -11972,10 +11908,12 @@ mrb_str_squeeze(mrb_state *mrb, mrb_value str)
 737
 738
 739
-740</pre>
+740
+741
+742</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-string-ext/src/string.c', line 730</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-string-ext/src/string.c', line 732</span>
 
 static mrb_value
 mrb_str_squeeze_bang(mrb_state *mrb, mrb_value str)
@@ -12076,7 +12014,8 @@ mrb_str_squeeze_bang(mrb_state *mrb, mrb_value str)
 212
 213
 214
-215</pre>
+215
+216</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-string-ext/src/string.c', line 194</span>
@@ -12084,7 +12023,8 @@ mrb_str_squeeze_bang(mrb_state *mrb, mrb_value str)
 static mrb_value
 mrb_str_start_with(mrb_state *mrb, mrb_value self)
 {
-  mrb_value *argv, sub;
+  const mrb_value *argv;
+  mrb_value sub;
   mrb_int argc, i;
   mrb_get_args(mrb, &quot;*&quot;, &amp;argv, &amp;argc);
 
@@ -12436,18 +12376,18 @@ Removes leading and trailing whitespace from &lt;i&gt;str&lt;/i&gt;. Returns
       <pre class="lines">
 
 
-985
-986
 987
 988
 989
 990
 991
 992
-993</pre>
+993
+994
+995</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-string-ext/src/string.c', line 985</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-string-ext/src/string.c', line 987</span>
 
 static mrb_value
 mrb_str_succ(mrb_state *mrb, mrb_value self)
@@ -12521,8 +12461,6 @@ mrb_str_succ(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-907
-908
 909
 910
 911
@@ -12597,10 +12535,12 @@ mrb_str_succ(mrb_state *mrb, mrb_value self)
 980
 981
 982
-983</pre>
+983
+984
+985</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-string-ext/src/string.c', line 907</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-string-ext/src/string.c', line 909</span>
 
 static mrb_value
 mrb_str_succ_bang(mrb_state *mrb, mrb_value self)
@@ -12941,14 +12881,14 @@ mrb_str_swapcase_bang(mrb_state *mrb, mrb_value str)
       <pre class="lines">
 
 
-2623
-2624
-2625
-2626
-2627</pre>
+2581
+2582
+2583
+2584
+2585</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/string.c', line 2623</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/string.c', line 2581</span>
 
 static mrb_value
 mrb_str_to_f(mrb_state *mrb, mrb_value self)
@@ -13025,20 +12965,20 @@ mrb_str_to_f(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-2495
-2496
-2497
-2498
-2499
-2500
-2501
-2502
-2503
-2504
-2505</pre>
+2453
+2454
+2455
+2456
+2457
+2458
+2459
+2460
+2461
+2462
+2463</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/string.c', line 2495</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/string.c', line 2453</span>
 
 static mrb_value
 mrb_str_to_i(mrb_state *mrb, mrb_value self)
@@ -13110,17 +13050,17 @@ mrb_str_to_i(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-2637
-2638
-2639
-2640
-2641
-2642
-2643
-2644</pre>
+2595
+2596
+2597
+2598
+2599
+2600
+2601
+2602</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/string.c', line 2637</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/string.c', line 2595</span>
 
 static mrb_value
 mrb_str_to_s(mrb_state *mrb, mrb_value self)
@@ -13189,17 +13129,17 @@ mrb_str_to_s(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-2637
-2638
-2639
-2640
-2641
-2642
-2643
-2644</pre>
+2595
+2596
+2597
+2598
+2599
+2600
+2601
+2602</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/string.c', line 2637</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/string.c', line 2595</span>
 
 static mrb_value
 mrb_str_to_s(mrb_state *mrb, mrb_value self)
@@ -13258,14 +13198,14 @@ mrb_str_to_s(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-1956
-1957
-1958
-1959
-1960</pre>
+1906
+1907
+1908
+1909
+1910</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/string.c', line 1956</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/string.c', line 1906</span>
 
 MRB_API mrb_value
 mrb_str_intern(mrb_state *mrb, mrb_value self)
@@ -13357,8 +13297,6 @@ Note: conversion is effective only in ASCII region.
       <pre class="lines">
 
 
-575
-576
 577
 578
 579
@@ -13367,10 +13305,12 @@ Note: conversion is effective only in ASCII region.
 582
 583
 584
-585</pre>
+585
+586
+587</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-string-ext/src/string.c', line 575</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-string-ext/src/string.c', line 577</span>
 
 static mrb_value
 mrb_str_tr(mrb_state *mrb, mrb_value str)
@@ -13442,8 +13382,6 @@ mrb_str_tr(mrb_state *mrb, mrb_value str)
       <pre class="lines">
 
 
-594
-595
 596
 597
 598
@@ -13452,10 +13390,12 @@ mrb_str_tr(mrb_state *mrb, mrb_value str)
 601
 602
 603
-604</pre>
+604
+605
+606</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-string-ext/src/string.c', line 594</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-string-ext/src/string.c', line 596</span>
 
 static mrb_value
 mrb_str_tr_bang(mrb_state *mrb, mrb_value str)
@@ -13532,8 +13472,6 @@ mrb_str_tr_bang(mrb_state *mrb, mrb_value str)
       <pre class="lines">
 
 
-617
-618
 619
 620
 621
@@ -13542,10 +13480,12 @@ mrb_str_tr_bang(mrb_state *mrb, mrb_value str)
 624
 625
 626
-627</pre>
+627
+628
+629</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-string-ext/src/string.c', line 617</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-string-ext/src/string.c', line 619</span>
 
 static mrb_value
 mrb_str_tr_s(mrb_state *mrb, mrb_value str)
@@ -13617,8 +13557,6 @@ mrb_str_tr_s(mrb_state *mrb, mrb_value str)
       <pre class="lines">
 
 
-636
-637
 638
 639
 640
@@ -13627,10 +13565,12 @@ mrb_str_tr_s(mrb_state *mrb, mrb_value str)
 643
 644
 645
-646</pre>
+646
+647
+648</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-string-ext/src/string.c', line 636</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-string-ext/src/string.c', line 638</span>
 
 static mrb_value
 mrb_str_tr_s_bang(mrb_state *mrb, mrb_value str)
@@ -13745,18 +13685,18 @@ mrb_str_tr_s_bang(mrb_state *mrb, mrb_value str)
       <pre class="lines">
 
 
-2687
-2688
-2689
-2690
-2691
-2692
-2693
-2694
-2695</pre>
+2645
+2646
+2647
+2648
+2649
+2650
+2651
+2652
+2653</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/string.c', line 2687</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/string.c', line 2645</span>
 
 static mrb_value
 mrb_str_upcase(mrb_state *mrb, mrb_value self)
@@ -13826,30 +13766,30 @@ mrb_str_upcase(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-2654
-2655
-2656
-2657
-2658
-2659
-2660
-2661
-2662
-2663
-2664
-2665
-2666
-2667
-2668
-2669
-2670
-2671
-2672
-2673
-2674</pre>
+2612
+2613
+2614
+2615
+2616
+2617
+2618
+2619
+2620
+2621
+2622
+2623
+2624
+2625
+2626
+2627
+2628
+2629
+2630
+2631
+2632</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/string.c', line 2654</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/string.c', line 2612</span>
 
 static mrb_value
 mrb_str_upcase_bang(mrb_state *mrb, mrb_value str)
@@ -13988,8 +13928,7 @@ string (e.g. leading zeros) is handled appropriately.
 442
 443
 444
-445
-446</pre>
+445</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-string-ext/mrblib/string.rb', line 405</span>
@@ -14014,7 +13953,6 @@ string (e.g. leading zeros) is handled appropriately.
   <span class='comment'># both edges are all digits
 </span>  <span class='id identifier rubyid_bi'>bi</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span><span class='lparen'>(</span><span class='int'>10</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_ei'>ei</span> <span class='op'>=</span> <span class='id identifier rubyid_max'>max</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span><span class='lparen'>(</span><span class='int'>10</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_len'>len</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span>
   <span class='kw'>if</span> <span class='lparen'>(</span><span class='id identifier rubyid_bi'>bi</span> <span class='op'>&gt;</span> <span class='int'>0</span> <span class='kw'>or</span> <span class='id identifier rubyid_bi'>bi</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>0</span><span class='tstring_end'>&quot;</span></span><span class='op'>*</span><span class='id identifier rubyid_len'>len</span><span class='rparen'>)</span> <span class='kw'>and</span> <span class='lparen'>(</span><span class='id identifier rubyid_ei'>ei</span> <span class='op'>&gt;</span> <span class='int'>0</span> <span class='kw'>or</span> <span class='id identifier rubyid_ei'>ei</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>0</span><span class='tstring_end'>&quot;</span></span><span class='op'>*</span><span class='id identifier rubyid_maxlen'>maxlen</span><span class='rparen'>)</span>
     <span class='kw'>while</span> <span class='id identifier rubyid_bi'>bi</span> <span class='op'>&lt;=</span> <span class='id identifier rubyid_ei'>ei</span>
       <span class='kw'>break</span> <span class='kw'>if</span> <span class='id identifier rubyid_exclusive'>exclusive</span> <span class='kw'>and</span> <span class='id identifier rubyid_bi'>bi</span> <span class='op'>==</span> <span class='id identifier rubyid_ei'>ei</span>
@@ -14046,7 +13984,7 @@ string (e.g. leading zeros) is handled appropriately.
 </div>
 
       <div id="footer">
-  Generated on Thu Jan 28 17:33:30 2021 by
+  Generated on Mon Mar 22 08:29:48 2021 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.26 in <a href="https://github.com/sagmor/yard-mruby">mruby mode</a> 0.3.0 (ruby-2.7.2).
 </div>

@@ -1113,11 +1113,6 @@
       <pre class="lines">
 
 
-738
-739
-740
-741
-742
 743
 744
 745
@@ -1137,10 +1132,15 @@
 759
 760
 761
-762</pre>
+762
+763
+764
+765
+766
+767</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-time/src/time.c', line 738</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-time/src/time.c', line 743</span>
 
 static mrb_value
 mrb_time_initialize(mrb_state *mrb, mrb_value self)
@@ -1207,20 +1207,20 @@ mrb_time_initialize(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-554
-555
-556
-557
-558
 559
 560
 561
 562
 563
-564</pre>
+564
+565
+566
+567
+568
+569</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-time/src/time.c', line 554</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-time/src/time.c', line 559</span>
 
 static mrb_value
 mrb_time_plus(mrb_state *mrb, mrb_value self)
@@ -1266,11 +1266,6 @@ mrb_time_plus(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-566
-567
-568
-569
-570
 571
 572
 573
@@ -1292,10 +1287,15 @@ mrb_time_plus(mrb_state *mrb, mrb_value self)
 589
 590
 591
-592</pre>
+592
+593
+594
+595
+596
+597</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-time/src/time.c', line 566</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-time/src/time.c', line 571</span>
 
 static mrb_value
 mrb_time_minus(mrb_state *mrb, mrb_value self)
@@ -1306,7 +1306,7 @@ mrb_time_minus(mrb_state *mrb, mrb_value self)
   tm = time_get_ptr(mrb, self);
   tm2 = DATA_CHECK_GET_PTR(mrb, other, &amp;mrb_time_type, struct mrb_time);
   if (tm2) {
-#ifndef MRB_WITHOUT_FLOAT
+#ifndef MRB_NO_FLOAT
     mrb_float f;
     f = (mrb_sec)(tm-&gt;sec - tm2-&gt;sec)
       + (mrb_sec)(tm-&gt;usec - tm2-&gt;usec) / 1.0e6;
@@ -1315,7 +1315,7 @@ mrb_time_minus(mrb_state *mrb, mrb_value self)
     mrb_int f;
     f = tm-&gt;sec - tm2-&gt;sec;
     if (tm-&gt;usec &lt; tm2-&gt;usec) f--;
-    return mrb_fixnum_value(f);
+    return mrb_int_value(mrb, f);
 #endif
   }
   else {
@@ -1357,11 +1357,6 @@ mrb_time_minus(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-529
-530
-531
-532
-533
 534
 535
 536
@@ -1380,10 +1375,15 @@ mrb_time_minus(mrb_state *mrb, mrb_value self)
 549
 550
 551
-552</pre>
+552
+553
+554
+555
+556
+557</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-time/src/time.c', line 529</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-time/src/time.c', line 534</span>
 
 static mrb_value
 mrb_time_cmp(mrb_state *mrb, mrb_value self)
@@ -1442,11 +1442,6 @@ mrb_time_cmp(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-515
-516
-517
-518
-519
 520
 521
 522
@@ -1454,10 +1449,15 @@ mrb_time_cmp(mrb_state *mrb, mrb_value self)
 524
 525
 526
-527</pre>
+527
+528
+529
+530
+531
+532</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-time/src/time.c', line 515</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-time/src/time.c', line 520</span>
 
 static mrb_value
 mrb_time_eq(mrb_state *mrb, mrb_value self)
@@ -1505,11 +1505,6 @@ mrb_time_eq(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-644
-645
-646
-647
-648
 649
 650
 651
@@ -1530,10 +1525,15 @@ mrb_time_eq(mrb_state *mrb, mrb_value self)
 666
 667
 668
-669</pre>
+669
+670
+671
+672
+673
+674</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-time/src/time.c', line 644</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-time/src/time.c', line 649</span>
 
 static mrb_value
 mrb_time_asctime(mrb_state *mrb, mrb_value self)
@@ -1542,7 +1542,7 @@ mrb_time_asctime(mrb_state *mrb, mrb_value self)
   struct tm *d = &amp;tm-&gt;datetime;
   int len;
 
-#if defined(MRB_DISABLE_STDIO)
+#if defined(MRB_NO_STDIO)
   char *s;
 # ifdef NO_ASCTIME_R
   s = asctime(d);
@@ -1594,11 +1594,6 @@ mrb_time_asctime(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-644
-645
-646
-647
-648
 649
 650
 651
@@ -1619,10 +1614,15 @@ mrb_time_asctime(mrb_state *mrb, mrb_value self)
 666
 667
 668
-669</pre>
+669
+670
+671
+672
+673
+674</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-time/src/time.c', line 644</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-time/src/time.c', line 649</span>
 
 static mrb_value
 mrb_time_asctime(mrb_state *mrb, mrb_value self)
@@ -1631,7 +1631,7 @@ mrb_time_asctime(mrb_state *mrb, mrb_value self)
   struct tm *d = &amp;tm-&gt;datetime;
   int len;
 
-#if defined(MRB_DISABLE_STDIO)
+#if defined(MRB_NO_STDIO)
   char *s;
 # ifdef NO_ASCTIME_R
   s = asctime(d);
@@ -1683,17 +1683,17 @@ mrb_time_asctime(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-673
-674
-675
-676
-677
 678
 679
-680</pre>
+680
+681
+682
+683
+684
+685</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-time/src/time.c', line 673</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-time/src/time.c', line 678</span>
 
 static mrb_value
 mrb_time_day(mrb_state *mrb, mrb_value self)
@@ -1749,17 +1749,17 @@ mrb_time_day(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-685
-686
-687
-688
-689
 690
 691
-692</pre>
+692
+693
+694
+695
+696
+697</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-time/src/time.c', line 685</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-time/src/time.c', line 690</span>
 
 static mrb_value
 mrb_time_dst_p(mrb_state *mrb, mrb_value self)
@@ -1852,21 +1852,21 @@ mrb_time_dst_p(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-697
-698
-699
-700
-701
 702
 703
 704
 705
 706
 707
-708</pre>
+708
+709
+710
+711
+712
+713</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-time/src/time.c', line 697</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-time/src/time.c', line 702</span>
 
 static mrb_value
 mrb_time_getutc(mrb_state *mrb, mrb_value self)
@@ -1913,21 +1913,21 @@ mrb_time_getutc(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-712
-713
-714
-715
-716
 717
 718
 719
 720
 721
 722
-723</pre>
+723
+724
+725
+726
+727
+728</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-time/src/time.c', line 712</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-time/src/time.c', line 717</span>
 
 static mrb_value
 mrb_time_getlocal(mrb_state *mrb, mrb_value self)
@@ -1974,21 +1974,21 @@ mrb_time_getlocal(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-697
-698
-699
-700
-701
 702
 703
 704
 705
 706
 707
-708</pre>
+708
+709
+710
+711
+712
+713</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-time/src/time.c', line 697</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-time/src/time.c', line 702</span>
 
 static mrb_value
 mrb_time_getutc(mrb_state *mrb, mrb_value self)
@@ -2158,17 +2158,17 @@ mrb_time_utc(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-727
-728
-729
-730
-731
 732
 733
-734</pre>
+734
+735
+736
+737
+738
+739</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-time/src/time.c', line 727</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-time/src/time.c', line 732</span>
 
 static mrb_value
 mrb_time_hour(mrb_state *mrb, mrb_value self)
@@ -2211,11 +2211,6 @@ mrb_time_hour(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-766
-767
-768
-769
-770
 771
 772
 773
@@ -2232,10 +2227,15 @@ mrb_time_hour(mrb_state *mrb, mrb_value self)
 784
 785
 786
-787</pre>
+787
+788
+789
+790
+791
+792</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-time/src/time.c', line 766</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-time/src/time.c', line 771</span>
 
 static mrb_value
 mrb_time_initialize_copy(mrb_state *mrb, mrb_value copy)
@@ -2338,19 +2338,19 @@ mrb_time_to_s(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-791
-792
-793
-794
-795
 796
 797
 798
 799
-800</pre>
+800
+801
+802
+803
+804
+805</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-time/src/time.c', line 791</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-time/src/time.c', line 796</span>
 
 static mrb_value
 mrb_time_localtime(mrb_state *mrb, mrb_value self)
@@ -2395,17 +2395,17 @@ mrb_time_localtime(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-804
-805
-806
-807
-808
 809
 810
-811</pre>
+811
+812
+813
+814
+815
+816</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-time/src/time.c', line 804</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-time/src/time.c', line 809</span>
 
 static mrb_value
 mrb_time_mday(mrb_state *mrb, mrb_value self)
@@ -2448,17 +2448,17 @@ mrb_time_mday(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-815
-816
-817
-818
-819
 820
 821
-822</pre>
+822
+823
+824
+825
+826
+827</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-time/src/time.c', line 815</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-time/src/time.c', line 820</span>
 
 static mrb_value
 mrb_time_min(mrb_state *mrb, mrb_value self)
@@ -2501,17 +2501,17 @@ mrb_time_min(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-826
-827
-828
-829
-830
 831
 832
-833</pre>
+833
+834
+835
+836
+837
+838</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-time/src/time.c', line 826</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-time/src/time.c', line 831</span>
 
 static mrb_value
 mrb_time_mon(mrb_state *mrb, mrb_value self)
@@ -2604,17 +2604,17 @@ mrb_time_mon(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-826
-827
-828
-829
-830
 831
 832
-833</pre>
+833
+834
+835
+836
+837
+838</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-time/src/time.c', line 826</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-time/src/time.c', line 831</span>
 
 static mrb_value
 mrb_time_mon(mrb_state *mrb, mrb_value self)
@@ -2707,17 +2707,17 @@ mrb_time_mon(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-837
-838
-839
-840
-841
 842
 843
-844</pre>
+844
+845
+846
+847
+848
+849</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-time/src/time.c', line 837</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-time/src/time.c', line 842</span>
 
 static mrb_value
 mrb_time_sec(mrb_state *mrb, mrb_value self)
@@ -2860,17 +2860,17 @@ mrb_time_sec(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-849
-850
-851
-852
-853
 854
 855
-856</pre>
+856
+857
+858
+859
+860
+861</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-time/src/time.c', line 849</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-time/src/time.c', line 854</span>
 
 static mrb_value
 mrb_time_to_f(mrb_state *mrb, mrb_value self)
@@ -2913,11 +2913,6 @@ mrb_time_to_f(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-861
-862
-863
-864
-865
 866
 867
 868
@@ -2925,10 +2920,15 @@ mrb_time_to_f(mrb_state *mrb, mrb_value self)
 870
 871
 872
-873</pre>
+873
+874
+875
+876
+877
+878</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-time/src/time.c', line 861</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-time/src/time.c', line 866</span>
 
 static mrb_value
 mrb_time_to_i(mrb_state *mrb, mrb_value self)
@@ -2936,12 +2936,12 @@ mrb_time_to_i(mrb_state *mrb, mrb_value self)
   struct mrb_time *tm;
 
   tm = time_get_ptr(mrb, self);
-#ifndef MRB_WITHOUT_FLOAT
+#ifndef MRB_NO_FLOAT
   if (!fixable_time_t_p(tm-&gt;sec)) {
     return mrb_float_value(mrb, (mrb_float)tm-&gt;sec);
   }
 #endif
-  return mrb_fixnum_value((mrb_int)tm-&gt;sec);
+  return mrb_int_value(mrb, (mrb_int)tm-&gt;sec);
 }</pre>
     </td>
   </tr>
@@ -3085,11 +3085,6 @@ mrb_time_to_s(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-877
-878
-879
-880
-881
 882
 883
 884
@@ -3100,7 +3095,7 @@ mrb_time_to_s(mrb_state *mrb, mrb_value self)
 889</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-time/src/time.c', line 877</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-time/src/time.c', line 882</span>
 
 static mrb_value
 mrb_time_usec(mrb_state *mrb, mrb_value self)
@@ -3108,11 +3103,6 @@ mrb_time_usec(mrb_state *mrb, mrb_value self)
   struct mrb_time *tm;
 
   tm = time_get_ptr(mrb, self);
-#ifndef MRB_WITHOUT_FLOAT
-  if (!fixable_time_t_p(tm-&gt;usec)) {
-    return mrb_float_value(mrb, (mrb_float)tm-&gt;usec);
-  }
-#endif
   return mrb_fixnum_value((mrb_int)tm-&gt;usec);
 }</pre>
     </td>
@@ -3271,17 +3261,17 @@ mrb_time_utc_p(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-596
-597
-598
-599
-600
 601
 602
-603</pre>
+603
+604
+605
+606
+607
+608</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-time/src/time.c', line 596</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-time/src/time.c', line 601</span>
 
 static mrb_value
 mrb_time_wday(mrb_state *mrb, mrb_value self)
@@ -3374,17 +3364,17 @@ mrb_time_wday(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-607
-608
-609
-610
-611
 612
 613
-614</pre>
+614
+615
+616
+617
+618
+619</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-time/src/time.c', line 607</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-time/src/time.c', line 612</span>
 
 static mrb_value
 mrb_time_yday(mrb_state *mrb, mrb_value self)
@@ -3427,17 +3417,17 @@ mrb_time_yday(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-618
-619
-620
-621
-622
 623
 624
-625</pre>
+625
+626
+627
+628
+629
+630</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-time/src/time.c', line 618</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-time/src/time.c', line 623</span>
 
 static mrb_value
 mrb_time_year(mrb_state *mrb, mrb_value self)
@@ -3480,21 +3470,21 @@ mrb_time_year(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-629
-630
-631
-632
-633
 634
 635
 636
 637
 638
 639
-640</pre>
+640
+641
+642
+643
+644
+645</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-time/src/time.c', line 629</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-time/src/time.c', line 634</span>
 
 static mrb_value
 mrb_time_zone(mrb_state *mrb, mrb_value self)
@@ -3518,7 +3508,7 @@ mrb_time_zone(mrb_state *mrb, mrb_value self)
 </div>
 
       <div id="footer">
-  Generated on Thu Jan 28 17:33:31 2021 by
+  Generated on Mon Mar 22 08:29:49 2021 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.26 in <a href="https://github.com/sagmor/yard-mruby">mruby mode</a> 0.3.0 (ruby-2.7.2).
 </div>

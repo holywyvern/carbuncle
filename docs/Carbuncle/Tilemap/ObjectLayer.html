@@ -183,6 +183,7 @@
       <pre class="lines">
 
 
+642
 643
 644
 645
@@ -199,18 +200,15 @@
 656
 657
 658
-659
-660
-661</pre>
+659</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-graphics/src/tilemap.c', line 643</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-graphics/src/tilemap.c', line 642</span>
 
 static mrb_value
 mrb_object_layer_draw(mrb_state *mrb, mrb_value self)
 {
   mrb_value map = mrb_layer_get_map(mrb, self);
-  tmx_map *map_data = mrb_carbuncle_get_tilemap(mrb, map);
   tmx_layer *layer = DATA_PTR(self);
   if (layer)
   {
@@ -235,7 +233,7 @@ mrb_object_layer_draw(mrb_state *mrb, mrb_value self)
 </div>
 
       <div id="footer">
-  Generated on Thu Jan 28 17:33:29 2021 by
+  Generated on Mon Mar 22 08:29:47 2021 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.26 in <a href="https://github.com/sagmor/yard-mruby">mruby mode</a> 0.3.0 (ruby-2.7.2).
 </div>
