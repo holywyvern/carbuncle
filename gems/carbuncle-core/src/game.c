@@ -94,19 +94,18 @@ update_file_drop(mrb_state *mrb, mrb_value instance)
   if (IsFileDropped())
   {
     mrb_int arena;
-    int size;
-    char **files = GetDroppedFiles(&size);
+    FilePathList files = LoadDroppedFiles();
+    arena = mrb_gc_arena_save(mrb);
     {
-      mrb_value file_values[size];
-      arena = mrb_gc_arena_save(mrb);
-      for (int i = 0; i < size; ++i)
+      mrb_value file_values[files.count];
+      for (int i = 0; i < files.count; ++i)
       {
-        file_values[i] = mrb_str_new_cstr(mrb, files[i]);
-      }
-      mrb_funcall_argv(mrb, instance, mrb_intern_cstr(mrb, "file_dropped"), size, file_values);
-      mrb_gc_arena_restore(mrb, arena);
-      ClearDroppedFiles();
+        file_values[i] = mrb_str_new_cstr(mrb, files.paths[i]);
+      }        
+      mrb_funcall_argv(mrb, instance, mrb_intern_cstr(mrb, "file_dropped"), files.count, file_values);
     }
+    mrb_gc_arena_restore(mrb, arena);
+    UnloadDroppedFiles(files);
   }
 }
 

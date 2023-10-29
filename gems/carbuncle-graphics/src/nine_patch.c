@@ -310,7 +310,7 @@ mrb_nine_patch_draw(mrb_state *mrb, mrb_value self)
     .top = patch->top,
     .right = patch->right,
     .bottom = patch->bottom,
-    .type = NPT_9PATCH
+    .layout = NPATCH_NINE_PATCH
   };
   dest = (Rectangle){
     patch->position->x,

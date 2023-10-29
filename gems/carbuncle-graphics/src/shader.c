@@ -69,7 +69,7 @@ load_shader(mrb_state *mrb, struct mrb_Shader *shader, const char *vertex, const
     fragment = mrb_carbuncle_load_file_text(mrb, fragment);
     free_fragment = TRUE;
   }
-  shader->shader = LoadShaderCode(vertex, fragment);
+  shader->shader = LoadShaderFromMemory(vertex, fragment);
   if (free_vertex) { mrb_free(mrb, vertex); }
   if (free_fragment) {mrb_free(mrb, fragment); }
 }
@@ -77,41 +77,41 @@ load_shader(mrb_state *mrb, struct mrb_Shader *shader, const char *vertex, const
 static void
 send_integer(struct mrb_Shader *shader, mrb_int location, int value)
 {
-  SetShaderValue(shader->shader, location, &value, UNIFORM_INT);
+  SetShaderValue(shader->shader, location, &value, SHADER_UNIFORM_INT);
 }
 
 static void
 send_float(struct mrb_Shader *shader, mrb_int location, float value)
 {
-  SetShaderValue(shader->shader, location, &value, UNIFORM_FLOAT);
+  SetShaderValue(shader->shader, location, &value, SHADER_UNIFORM_FLOAT);
 }
 
 static void
 send_point(struct mrb_Shader *shader, mrb_int location, Vector2 *point)
 {
   float value[2] = { point->x, point->y };
-  SetShaderValue(shader->shader, location, &value, UNIFORM_VEC2);
+  SetShaderValue(shader->shader, location, &value, SHADER_UNIFORM_VEC2);
 }
 
 static void
 send_vector3(struct mrb_Shader *shader, mrb_int location, Vector3 *vector)
 {
   float value[3] = { vector->x, vector->y, vector->z };
-  SetShaderValue(shader->shader, location, &value, UNIFORM_VEC3);
+  SetShaderValue(shader->shader, location, &value, SHADER_UNIFORM_VEC3);
 }
 
 static void
 send_vector4(struct mrb_Shader *shader, mrb_int location, Vector4 *vector)
 {
   float value[4] = { vector->x, vector->y, vector->z, vector->w };
-  SetShaderValue(shader->shader, location, &value, UNIFORM_VEC4);
+  SetShaderValue(shader->shader, location, &value, SHADER_UNIFORM_VEC4);
 }
 
 static void
 send_rect(struct mrb_Shader *shader, mrb_int location, Rectangle *rect)
 {
   float value[4] = { rect->x, rect->y, rect->width, rect->height };
-  SetShaderValue(shader->shader, location, &value, UNIFORM_VEC4);
+  SetShaderValue(shader->shader, location, &value, SHADER_UNIFORM_VEC4);
 }
 
 static void
@@ -123,7 +123,7 @@ send_color(struct mrb_Shader *shader, mrb_int location, Color *color)
     (float)color->b / 255.0f,
     (float)color->a / 255.0f
   };
-  SetShaderValue(shader->shader, location, &value, UNIFORM_VEC4);
+  SetShaderValue(shader->shader, location, &value, SHADER_UNIFORM_VEC4);
 }
 
 static void
@@ -156,7 +156,6 @@ mrb_shader_initialize(mrb_state *mrb, mrb_value self)
     case 0:
     {
       shader->default_shader = TRUE;
-      shader->shader = GetShaderDefault();
       break;
     }
     case 1:
@@ -272,12 +271,13 @@ mrb_shader_begin_render(mrb_state *mrb, mrb_value self)
   struct mrb_Shader *data = get_shader(mrb, self);
   mrb_value block = mrb_nil_value();
   mrb_get_args(mrb, "|&", &block);
-  BeginShaderMode(data->shader);
+  if (!data->default_shader) BeginShaderMode(data->shader);
   if (!mrb_nil_p(block))
   {
     mrb_bool raised = FALSE;
     mrb_value result = mrb_protect(mrb, mrb_carbuncle_call_block, block, &raised);
-    EndShaderMode();
+
+    if (!data->default_shader) EndShaderMode();
     if (raised) { mrb_exc_raise(mrb, result); }
   }
   return self;
@@ -286,7 +286,8 @@ mrb_shader_begin_render(mrb_state *mrb, mrb_value self)
 mrb_value
 mrb_shader_end_render(mrb_state *mrb, mrb_value self)
 {
-  EndShaderMode();
+  struct mrb_Shader *data = get_shader(mrb, self);
+  if (!data->default_shader) EndShaderMode();
   return self;
 }
 

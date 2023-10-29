@@ -2,22 +2,33 @@ CARBUNCLE_GEMS = %w[
   dependencies support core audio doc-ext graphics
   input math scene
 ].freeze
-  
-CORE_GEMS = %w[
-  mruby-metaprog mruby-pack mruby-sprintf mruby-print mruby-math
-  mruby-time mruby-struct mruby-compar-ext mruby-enum-ext
-  mruby-string-ext mruby-numeric-ext mruby-array-ext mruby-hash-ext
-  mruby-range-ext mruby-proc-ext mruby-symbol-ext mruby-random
-  mruby-object-ext mruby-objectspace mruby-fiber mruby-enumerator
-  mruby-enum-lazy mruby-toplevel-ext mruby-rational mruby-complex
-  mruby-kernel-ext mruby-class-ext mruby-method mruby-eval
-  mruby-compiler
+
+STDLIB_GEMS = %w[
+  mruby-compar-ext mruby-enum-ext mruby-string-ext mruby-numeric-ext
+  mruby-array-ext mruby-hash-ext mruby-range-ext mruby-proc-ext
+  mruby-symbol-ext mruby-object-ext mruby-objectspace mruby-set
+  mruby-fiber mruby-enumerator mruby-enum-lazy mruby-toplevel-ext
+  mruby-kernel-ext mruby-class-ext
 ].freeze
+
+MATH_GEMS = %w[
+  mruby-math mruby-rational mruby-complex mruby-cmath mruby-bigint
+].freeze
+
+METAPROG_GEMS = %w[
+  mruby-metaprog mruby-method mruby-eval mruby-compiler
+].freeze
+
+MRUBY_BINARIES = %w[
+  mruby-bin-mrbc mruby-bin-mirb
+].freeze
+
+CORE_GEMS = (STDLIB_GEMS + MATH_GEMS + METAPROG_GEMS + MRUBY_BINARIES).freeze
   
 GITHUB_GEMS = %w[
   iij/mruby-regexp-pcre mattn/mruby-json
 ].freeze
-  
+
 def add_core_gems(conf)
   CORE_GEMS.each do |gem|
     conf.gem core: gem

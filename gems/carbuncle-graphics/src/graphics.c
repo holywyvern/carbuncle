@@ -93,7 +93,7 @@ mrb_s_graphics_get_model_view(mrb_state *mrb, mrb_value self)
 {
   mrb_value matrix = mrb_obj_new(mrb, mrb_carbuncle_class_get(mrb, "Matrix"), 0, NULL);
   Matrix *data = mrb_carbuncle_get_matrix(mrb, matrix);
-  *data = GetMatrixModelview();
+  *data = rlGetMatrixModelview();
   return matrix;
 }
 
@@ -160,7 +160,7 @@ mrb_s_graphics_set_model_view(mrb_state *mrb, mrb_value self)
   mrb_value obj;
   mrb_get_args(mrb, "o", &obj);
   Matrix *matrix = mrb_carbuncle_get_matrix(mrb, obj);
-  SetMatrixModelview(*matrix);
+  rlSetMatrixModelview(*matrix);
   return obj;
 }
 
@@ -370,7 +370,7 @@ mrb_s_graphics_draw_arc(mrb_state *mrb, mrb_value self)
       }
       else
       {
-        pos.x = mrb_to_flo(mrb, arg1);
+        pos.x = mrb_as_float(mrb, arg1);
         pos.y = arg2;
         r = arg3;
         start = arg4;
@@ -456,7 +456,7 @@ mrb_s_graphics_draw_ring(mrb_state *mrb, mrb_value self)
       }
       else
       {
-        pos.x = mrb_to_flo(mrb, arg1);
+        pos.x = mrb_as_float(mrb, arg1);
         pos.y = arg2;
         inner = arg3;
         outer = arg4;
@@ -496,11 +496,17 @@ mrb_s_graphics_draw_rect(mrb_state *mrb, mrb_value self)
   mrb_float x, y, width, height;
   mrb_bool vertical = FALSE;
   mrb_int line_height = 1;
-  const mrb_sym *kw_names[2] = {
+  const mrb_sym kw_names[2] = { 
     mrb_intern_lit(mrb, "vertical"), mrb_intern_lit(mrb, "line_height")
-  };
+   };
   mrb_value kw_values[2] = { mrb_false_value(), mrb_undef_value() };
-  const mrb_kwargs kwargs = { 2, 0, kw_names, kw_values, NULL };
+  const mrb_kwargs kwargs = (mrb_kwargs){
+    .num = 2,
+    .table = kw_names,
+    .values = kw_values,
+    .required = 0,
+    .rest = NULL
+  };
   Color *color = get_graphics_color(mrb, self);
   mrb_int argc = mrb_get_argc(mrb);
   switch (argc)
@@ -514,7 +520,7 @@ mrb_s_graphics_draw_rect(mrb_state *mrb, mrb_value self)
       x = rect->x; y = rect->y; width = rect->width; height = rect->height;
       if (mrb_undef_p(kw_values[1])) { kw_values[1] = mrb_float_value(mrb, 1); }
       vertical = mrb_test(kw_values[0]);
-      line_height = mrb_to_flo(mrb, kw_values[1]);
+      line_height = mrb_as_float(mrb, kw_values[1]);
       break;
     }
     case 4: case 5:
@@ -522,7 +528,7 @@ mrb_s_graphics_draw_rect(mrb_state *mrb, mrb_value self)
       mrb_get_args(mrb, "ffff:", &x, &y, &width, &height, &kwargs);
       if (mrb_undef_p(kw_values[1])) { kw_values[1] = mrb_float_value(mrb, 1); }
       vertical = mrb_test(kw_values[0]);
-      line_height = mrb_to_flo(mrb, kw_values[1]);
+      line_height = mrb_as_float(mrb, kw_values[1]);
       break;
     }
     default: { mrb_carbuncle_arg_error(mrb, "1 or 4", argc);  }

@@ -16,7 +16,7 @@ mrb_touch_get_points(mrb_state *mrb, mrb_value self)
 {
   int arena;
   mrb_value result, *values;
-  mrb_int size = GetTouchPointsCount();
+  mrb_int size = GetTouchPointCount();
   if (size <= 0)
   {
     return mrb_ary_new(mrb);
@@ -36,7 +36,7 @@ mrb_touch_get_points(mrb_state *mrb, mrb_value self)
 static mrb_value
 mrb_touch_get_size(mrb_state *mrb, mrb_value self)
 {
-  return mrb_fixnum_value(GetTouchPointsCount());
+  return mrb_fixnum_value(GetTouchPointCount());
 }
 
 static mrb_value
@@ -44,7 +44,7 @@ mrb_touch_subscript(mrb_state *mrb, mrb_value self)
 {
   Vector2 point;
   mrb_int index;
-  mrb_int size = GetTouchPointsCount();
+  mrb_int size = GetTouchPointCount();
   mrb_get_args(mrb, "i", &index);
   if (size < 1)
   {

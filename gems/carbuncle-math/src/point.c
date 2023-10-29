@@ -35,7 +35,7 @@ set_point_values(mrb_state *mrb, mrb_value self, mrb_bool from_initialize)
       break;
     }
     case 2: {
-      *data = (Vector2){mrb_to_flo(mrb, first), y};
+      *data = (Vector2){mrb_as_float(mrb, first), y};
       break;
     }
     default: {

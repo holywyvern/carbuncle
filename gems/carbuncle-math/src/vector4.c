@@ -33,7 +33,7 @@ set_vector_values(mrb_state *mrb, mrb_value self, mrb_bool from_initialize)
     }
     case 4:
     {
-      *data = (Vector4){mrb_to_flo(mrb, other), y, z, w};
+      *data = (Vector4){mrb_as_float(mrb, other), y, z, w};
       break;
     }
     default:

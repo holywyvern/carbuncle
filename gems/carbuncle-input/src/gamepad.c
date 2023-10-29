@@ -21,6 +21,11 @@ struct mrb_Gamepad
   mrb_int axis_count;
 };
 
+#define GAMEPAD_PLAYER1 0
+#define GAMEPAD_PLAYER2 1
+#define GAMEPAD_PLAYER3 2
+#define GAMEPAD_PLAYER4 3
+
 static const mrb_int GAMEPAD_IDS[GAMEPAD_COUNT] = {
     GAMEPAD_PLAYER1,
     GAMEPAD_PLAYER2,

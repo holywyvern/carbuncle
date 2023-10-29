@@ -25,7 +25,7 @@ module Carbuncle
     def download
       puts("Downloading #{name}...")
       FileUtils.mkdir_p(vendor_dir)
-      open(zip_file, 'wb') { |file| file << open(url).read }
+      `wget -O #{zip_file} #{url}`
     end
 
     def unzip

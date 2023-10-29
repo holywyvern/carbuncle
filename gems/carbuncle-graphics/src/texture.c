@@ -129,8 +129,7 @@ mrb_texture_to_bitmap(mrb_state *mrb, mrb_value self)
   mrb_value img = mrb_obj_new(mrb, mrb_carbuncle_class_get(mrb, "Bitmap"), 2, values);
   Image *ptr = mrb_carbuncle_get_bitmap(mrb, img);
   UnloadImage(*ptr);
-  *ptr = GetTextureData(*texture);
-  ImageFormat(ptr, UNCOMPRESSED_R8G8B8A8);
+  *ptr = LoadImageFromTexture(*texture);
   return img;
 }
 

@@ -11,11 +11,11 @@ module Carbuncle
       end
 
       def url
-        'http://zlib.net/zlib1211.zip'
+        'https://github.com/madler/zlib/releases/download/v1.3/zlib13.zip'
       end
 
       def subdir
-        'zlib-1.2.11'
+        'zlib-1.3'
       end
 
       def lib_dir

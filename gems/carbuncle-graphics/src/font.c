@@ -90,7 +90,7 @@ open_font(mrb_state *mrb, struct mrb_Font *font, const char *filename, size_t si
     mrb_raisef(mrb, E_ARGUMENT_ERROR, "cannot set font size for font %s.", filename);
   }
   load_glyphs(mrb, font, &args);
-  SetTextureFilter(font->raylib_font.texture, FILTER_POINT);
+  SetTextureFilter(font->raylib_font.texture, TEXTURE_FILTER_POINT);
 }
 
 static mrb_value

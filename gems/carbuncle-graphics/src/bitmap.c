@@ -90,7 +90,7 @@ mrb_bitmap_initialize(mrb_state *mrb, mrb_value self)
     }
     default: mrb_carbuncle_arg_error(mrb, "1 or 2", argc);
   }
-  ImageFormat(img, UNCOMPRESSED_R8G8B8A8);
+  ImageFormat(img, PIXELFORMAT_UNCOMPRESSED_R8G8B8A8);
   DATA_PTR(self) = img;
   DATA_TYPE(self) = &bitmap_data_type;
   mrb_iv_set(
@@ -429,8 +429,7 @@ mrb_s_bitmap_get_screenshot(mrb_state *mrb, mrb_value self)
   mrb_value img = mrb_obj_new(mrb, mrb_carbuncle_class_get(mrb, "Bitmap"), 2, values);
   Image *data = DATA_PTR(img);
   UnloadImage(*data);
-  *data = GetScreenData();
-  ImageFormat(data, UNCOMPRESSED_R8G8B8A8);
+  *data = LoadImageFromScreen();
   return img;
 }
 

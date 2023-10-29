@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
 MRUBY_CONFIG = File.expand_path(ENV['MRUBY_CONFIG'] || File.join('build_configs', 'ci.rb'))
-MRUBY_VERSION = ENV['MRUBY_VERSION'] || '3.0.0'
+MRUBY_VERSION = ENV['MRUBY_VERSION'] || '3.2.0'
 
 require_relative 'build_configs/utils/gems'
 
 file :mruby do
-  sh 'git clone --depth=1 git://github.com/mruby/mruby.git'
+  sh 'git clone --depth=1 https://github.com/mruby/mruby.git'
   if MRUBY_VERSION != 'master'
     Dir.chdir 'mruby' do
       sh 'git fetch --tags'

@@ -728,60 +728,10 @@ mrb_carbuncle_load_file_text(mrb_state *mrb, const char *filename)
 
 Image LoadCarbuncleImage(mrb_state *mrb, const char *filename)
 {
-  Image image = {0};
-
-  if (is_image_extension(filename))
-  {
-    size_t byte_size;
-    char *bytes;
-    int imgBpp = 0;
-
-    bytes = mrb_carbuncle_load_file(mrb, filename, &byte_size);
-    image.data = stbi_load_from_memory(bytes, byte_size, &image.width, &image.height, &imgBpp, 0);
-    mrb_free(mrb, bytes);
-    image.mipmaps = 1;
-
-    if (imgBpp == 1)
-      image.format = UNCOMPRESSED_GRAYSCALE;
-    else if (imgBpp == 2)
-      image.format = UNCOMPRESSED_GRAY_ALPHA;
-    else if (imgBpp == 3)
-      image.format = UNCOMPRESSED_R8G8B8;
-    else if (imgBpp == 4)
-      image.format = UNCOMPRESSED_R8G8B8A8;
-    else
-    {
-      UnloadImage(image);
-      mrb_raisef(mrb, E_NOTIMP_ERROR, "File format not supported for '%s'", filename);
-    }
-  }
-  else if (IsFileExtension(filename, ".hdr"))
-  {
-    size_t byte_size;
-    char *bytes;
-    int imgBpp = 0;
-    bytes = mrb_carbuncle_load_file(mrb, filename, &byte_size);
-    image.data = stbi_loadf_from_memory(bytes, byte_size, &image.width, &image.height, &imgBpp, 0);
-    mrb_free(mrb, bytes);
-    image.mipmaps = 1;
-
-    if (imgBpp == 1)
-      image.format = UNCOMPRESSED_R32;
-    else if (imgBpp == 3)
-      image.format = UNCOMPRESSED_R32G32B32;
-    else if (imgBpp == 4)
-      image.format = UNCOMPRESSED_R32G32B32A32;
-    else
-    {
-      UnloadImage(image);
-      mrb_raisef(mrb, E_NOTIMP_ERROR, "File format not supported for '%s'", filename);
-    }
-  }
-  else
-  {
-    mrb_raisef(mrb, E_NOTIMP_ERROR, "Cannot load file '%s'", filename);
-  }
-  return image;
+  char *bytes;
+  size_t byte_size;
+  bytes = mrb_carbuncle_load_file(mrb, filename, &byte_size);
+  return LoadImageFromMemory(GetFileExtension(filename), bytes, byte_size);
 }
 
 Texture

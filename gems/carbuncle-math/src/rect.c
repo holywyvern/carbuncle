@@ -42,7 +42,7 @@ set_rect_values(mrb_state *mrb, mrb_value self, mrb_bool from_initialize)
     case 4: {
       validate_size(mrb, "width", width);
       validate_size(mrb, "height", height);
-      *data = (Rectangle){mrb_to_flo(mrb, first), y, width, height};
+      *data = (Rectangle){mrb_as_float(mrb, first), y, width, height};
       break;
     }
     default: {
