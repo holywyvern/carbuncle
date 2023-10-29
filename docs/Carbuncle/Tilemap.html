@@ -776,7 +776,7 @@ static mrb_value
 mrb_tilemap_get_height(mrb_state *mrb, mrb_value self)
 {
   tmx_map *map = mrb_carbuncle_get_tilemap(mrb, self);
-  return mrb_fixnum_value(map-&gt;height);
+  return mrb_int_value(mrb, map-&gt;height);
 }</pre>
     </td>
   </tr>
@@ -986,7 +986,7 @@ static mrb_value
 mrb_tilemap_get_tile_height(mrb_state *mrb, mrb_value self)
 {
   tmx_map *map = mrb_carbuncle_get_tilemap(mrb, self);
-  return mrb_fixnum_value(map-&gt;tile_height);
+  return mrb_int_value(mrb, map-&gt;tile_height);
 }</pre>
     </td>
   </tr>
@@ -1052,7 +1052,7 @@ static mrb_value
 mrb_tilemap_get_tile_width(mrb_state *mrb, mrb_value self)
 {
   tmx_map *map = mrb_carbuncle_get_tilemap(mrb, self);
-  return mrb_fixnum_value(map-&gt;tile_width);
+  return mrb_int_value(mrb, map-&gt;tile_width);
 }</pre>
     </td>
   </tr>
@@ -1248,7 +1248,7 @@ static mrb_value
 mrb_tilemap_get_width(mrb_state *mrb, mrb_value self)
 {
   tmx_map *map = mrb_carbuncle_get_tilemap(mrb, self);
-  return mrb_fixnum_value(map-&gt;width);
+  return mrb_int_value(mrb, map-&gt;width);
 }</pre>
     </td>
   </tr>
@@ -1260,7 +1260,7 @@ mrb_tilemap_get_width(mrb_state *mrb, mrb_value self)
 </div>
 
       <div id="footer">
-  Generated on Sun Oct 29 10:27:19 2023 by
+  Generated on Sun Oct 29 21:24:52 2023 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.34 in <a href="https://github.com/sagmor/yard-mruby">mruby mode</a> 0.3.0 (ruby-3.2.2).
 </div>

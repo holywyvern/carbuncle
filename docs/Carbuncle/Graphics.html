@@ -2025,7 +2025,7 @@ mrb_s_graphics_set_end_color(mrb_state *mrb, mrb_value self)
 static mrb_value
 mrb_s_graphics_get_fps(mrb_state *mrb, mrb_value self)
 {
-  return mrb_fixnum_value(GetFPS());
+  return mrb_int_value(mrb, GetFPS());
 }</pre>
     </td>
   </tr>
@@ -2059,7 +2059,7 @@ mrb_s_graphics_get_fps(mrb_state *mrb, mrb_value self)
 static mrb_value
 mrb_s_graphics_get_style(mrb_state *mrb, mrb_value self)
 {
-  return mrb_fixnum_value(carbuncle_graphics_style);
+  return mrb_int_value(mrb, carbuncle_graphics_style);
 }</pre>
     </td>
   </tr>
@@ -2451,7 +2451,7 @@ mrb_s_graphics_set_color(mrb_state *mrb, mrb_value self)
 static mrb_value
 mrb_s_graphics_get_style(mrb_state *mrb, mrb_value self)
 {
-  return mrb_fixnum_value(carbuncle_graphics_style);
+  return mrb_int_value(mrb, carbuncle_graphics_style);
 }</pre>
     </td>
   </tr>
@@ -2561,7 +2561,7 @@ mrb_s_graphics_set_style(mrb_state *mrb, mrb_value self)
 static mrb_value
 mrb_s_graphics_get_target_fps(mrb_state *mrb, mrb_value self)
 {
-  return mrb_fixnum_value(carbuncle_target_fps);
+  return mrb_int_value(mrb, carbuncle_target_fps);
 }</pre>
     </td>
   </tr>
@@ -2605,7 +2605,7 @@ mrb_s_graphics_set_target_fps(mrb_state *mrb, mrb_value self)
   target = target &lt; 0 ? 0 : target;
   carbuncle_target_fps = target;
   SetTargetFPS(carbuncle_target_fps);
-  return mrb_fixnum_value(carbuncle_target_fps);
+  return mrb_int_value(mrb, carbuncle_target_fps);
 }</pre>
     </td>
   </tr>
@@ -2651,7 +2651,7 @@ mrb_s_graphics_get_time(mrb_state *mrb, mrb_value self)
 </div>
 
       <div id="footer">
-  Generated on Sun Oct 29 10:27:16 2023 by
+  Generated on Sun Oct 29 21:24:49 2023 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.34 in <a href="https://github.com/sagmor/yard-mruby">mruby mode</a> 0.3.0 (ruby-3.2.2).
 </div>

@@ -1291,7 +1291,7 @@ static mrb_value
 mrb_file_get_size(mrb_state *mrb, mrb_value self)
 {
   PHYSFS_File *file = get_file(mrb, self);
-  return mrb_fixnum_value(PHYSFS_fileLength(file));
+  return mrb_int_value(mrb, PHYSFS_fileLength(file));
 }</pre>
     </td>
   </tr>
@@ -1337,7 +1337,7 @@ mrb_file_tell(mrb_state *mrb, mrb_value self)
   {
     raise_physfs_error(mrb, &quot;tell&quot;);
   }
-  return mrb_fixnum_value(pos);
+  return mrb_int_value(mrb, pos);
 }</pre>
     </td>
   </tr>
@@ -1621,7 +1621,7 @@ static mrb_value
 mrb_file_get_size(mrb_state *mrb, mrb_value self)
 {
   PHYSFS_File *file = get_file(mrb, self);
-  return mrb_fixnum_value(PHYSFS_fileLength(file));
+  return mrb_int_value(mrb, PHYSFS_fileLength(file));
 }</pre>
     </td>
   </tr>
@@ -1667,7 +1667,7 @@ mrb_file_tell(mrb_state *mrb, mrb_value self)
   {
     raise_physfs_error(mrb, &quot;tell&quot;);
   }
-  return mrb_fixnum_value(pos);
+  return mrb_int_value(mrb, pos);
 }</pre>
     </td>
   </tr>
@@ -1721,7 +1721,7 @@ mrb_file_write(mrb_state *mrb, mrb_value self)
   {
     raise_physfs_error(mrb, &quot;write&quot;);
   }
-  return mrb_fixnum_value(bytes);
+  return mrb_int_value(mrb, bytes);
 }</pre>
     </td>
   </tr>
@@ -1733,7 +1733,7 @@ mrb_file_write(mrb_state *mrb, mrb_value self)
 </div>
 
       <div id="footer">
-  Generated on Sun Oct 29 10:27:18 2023 by
+  Generated on Sun Oct 29 21:24:51 2023 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.34 in <a href="https://github.com/sagmor/yard-mruby">mruby mode</a> 0.3.0 (ruby-3.2.2).
 </div>

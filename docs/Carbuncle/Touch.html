@@ -316,7 +316,7 @@ mrb_touch_subscript(mrb_state *mrb, mrb_value self)
 static mrb_value
 mrb_touch_get_size(mrb_state *mrb, mrb_value self)
 {
-  return mrb_fixnum_value(GetTouchPointCount());
+  return mrb_int_value(mrb, GetTouchPointCount());
 }</pre>
     </td>
   </tr>
@@ -350,7 +350,7 @@ mrb_touch_get_size(mrb_state *mrb, mrb_value self)
 static mrb_value
 mrb_touch_get_size(mrb_state *mrb, mrb_value self)
 {
-  return mrb_fixnum_value(GetTouchPointCount());
+  return mrb_int_value(mrb, GetTouchPointCount());
 }</pre>
     </td>
   </tr>
@@ -450,7 +450,7 @@ mrb_touch_get_points(mrb_state *mrb, mrb_value self)
 static mrb_value
 mrb_touch_get_size(mrb_state *mrb, mrb_value self)
 {
-  return mrb_fixnum_value(GetTouchPointCount());
+  return mrb_int_value(mrb, GetTouchPointCount());
 }</pre>
     </td>
   </tr>
@@ -462,7 +462,7 @@ mrb_touch_get_size(mrb_state *mrb, mrb_value self)
 </div>
 
       <div id="footer">
-  Generated on Sun Oct 29 10:27:16 2023 by
+  Generated on Sun Oct 29 21:24:49 2023 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.34 in <a href="https://github.com/sagmor/yard-mruby">mruby mode</a> 0.3.0 (ruby-3.2.2).
 </div>
