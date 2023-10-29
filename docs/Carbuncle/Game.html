@@ -6,7 +6,7 @@
 <title>
   Class: Carbuncle::Game
   
-    &mdash; Documentation by YARD 0.9.26
+    &mdash; Documentation by YARD 0.9.34
   
 </title>
 
@@ -108,7 +108,7 @@
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
     
-<p>This class represents a game. It handles screen creation and the game&#39;s main loop.</p>
+<p>This class represents a game. It handles screen creation and the game’s main loop.</p>
 
 
   </div>
@@ -148,7 +148,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>The current game, that&#39;s already running.</p>
+<p>The current game, that’s already running.</p>
 </div></span>
   
 </li>
@@ -422,7 +422,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Closes the game and destroys the game&#39;s window.</p>
+<p>Closes the game and destroys the game’s window.</p>
 </div></span>
   
 </li>
@@ -494,7 +494,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Resizes the game&#39;s window.</p>
+<p>Resizes the game’s window.</p>
 </div></span>
   
 </li>
@@ -556,16 +556,16 @@
       <pre class="lines">
 
 
+229
 230
 231
 232
 233
 234
-235
-236</pre>
+235</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-core/src/game.c', line 230</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-core/src/game.c', line 229</span>
 
 static mrb_value
 mrb_game_initialize(mrb_state *mrb, mrb_value self)
@@ -598,7 +598,7 @@ mrb_game_initialize(mrb_state *mrb, mrb_value self)
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>The current game, that&#39;s already running.</p>
+<p>The current game, that’s already running.</p>
 
 
   </div>
@@ -679,14 +679,14 @@ mrb_game_initialize(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
+220
 221
 222
 223
-224
-225</pre>
+224</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-core/src/game.c', line 221</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-core/src/game.c', line 220</span>
 
 static mrb_value
 mrb_game_get_screen(mrb_state *mrb, mrb_value self)
@@ -925,7 +925,7 @@ mrb_game_get_screen(mrb_state *mrb, mrb_value self)
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Closes the game and destroys the game&#39;s window.</p>
+<p>Closes the game and destroys the game’s window.</p>
 
 
   </div>
@@ -954,15 +954,15 @@ mrb_game_get_screen(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
+253
 254
 255
 256
 257
-258
-259</pre>
+258</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-core/src/game.c', line 254</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-core/src/game.c', line 253</span>
 
 static mrb_value
 mrb_game_close(mrb_state *mrb, mrb_value self)
@@ -987,7 +987,7 @@ mrb_game_close(mrb_state *mrb, mrb_value self)
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>An method called when the user clicks on the cross button. It should return true/false depending if the user can and can&#39;t close the screen. Useful to redirect your close button to another action.</p>
+<p>An method called when the user clicks on the cross button. It should return true/false depending if the user can and can’t close the screen. Useful to redirect your close button to another action.</p>
 
 
   </div>
@@ -1016,14 +1016,14 @@ mrb_game_close(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
+243
 244
 245
 246
-247
-248</pre>
+247</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-core/src/game.c', line 244</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-core/src/game.c', line 243</span>
 
 static mrb_value
 mrb_game_closeQ(mrb_state *mrb, mrb_value self)
@@ -1228,7 +1228,7 @@ mrb_game_closeQ(mrb_state *mrb, mrb_value self)
   <div class="docstring">
   <div class="discussion">
     
-<p>Resizes the game&#39;s window.</p>
+<p>Resizes the game’s window.</p>
 
 
   </div>
@@ -1262,17 +1262,17 @@ mrb_game_closeQ(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
+267
 268
 269
 270
 271
 272
 273
-274
-275</pre>
+274</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-core/src/game.c', line 268</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-core/src/game.c', line 267</span>
 
 static mrb_value
 mrb_game_resize(mrb_state *mrb, mrb_value self)
@@ -1351,7 +1351,7 @@ mrb_game_resize(mrb_state *mrb, mrb_value self)
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>This method is called after an update, usually once per frame. If the application skips frames, this method won&#39;t be called.</p>
+<p>This method is called after an update, usually once per frame. If the application skips frames, this method won’t be called.</p>
 
 
   </div>
@@ -1396,9 +1396,9 @@ mrb_game_resize(mrb_state *mrb, mrb_value self)
 </div>
 
       <div id="footer">
-  Generated on Mon Mar 22 18:11:09 2021 by
+  Generated on Sun Oct 29 05:51:30 2023 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.26 in <a href="https://github.com/sagmor/yard-mruby">mruby mode</a> 0.3.0 (ruby-2.7.2).
+  0.9.34 in <a href="https://github.com/sagmor/yard-mruby">mruby mode</a> 0.3.0 (ruby-3.2.2).
 </div>
 
     </div>

@@ -6,7 +6,7 @@
 <title>
   Exception: Exception
   
-    &mdash; Documentation by YARD 0.9.26
+    &mdash; Documentation by YARD 0.9.34
   
 </title>
 
@@ -98,7 +98,9 @@
   
   <dl>
     <dt>Defined in:</dt>
-    <dd>mruby/src/error.c</dd>
+    <dd>mruby/src/error.c<span class="defines">,<br />
+  mruby/mrblib/10error.rb</span>
+</dd>
   </dl>
   
 </div>
@@ -225,7 +227,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Returns this exception&#39;s file name, line number, message and class name.</p>
+<p>Returns this exception’s file name, line number, message and class name.</p>
 </div></span>
   
 </li>
@@ -234,7 +236,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#message-instance_method" title="#message (instance method)">#<strong>message</strong>  &#x21d2; String </a>
+      <a href="#message-instance_method" title="#message (instance method)">#<strong>message</strong>  &#x21d2; Object </a>
     
 
     
@@ -249,7 +251,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Returns the result of invoking <code>exception.to_s</code>.</p>
+<p>call-seq:   exception.message   -&gt;  string.</p>
 </div></span>
   
 </li>
@@ -295,7 +297,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Returns exception&#39;s message (or the name of the exception if no message is set).</p>
+<p>Returns exception’s message (or the name of the exception if no message is set).</p>
 </div></span>
   
 </li>
@@ -351,19 +353,19 @@
       <pre class="lines">
 
 
-43
-44
-45
-46
-47
-48
-49
-50
-51
-52</pre>
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/error.c', line 43</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/error.c', line 63</span>
 
 static mrb_value
 exc_initialize(mrb_state *mrb, mrb_value exc)
@@ -371,7 +373,7 @@ exc_initialize(mrb_state *mrb, mrb_value exc)
   mrb_value mesg;
 
   if (mrb_get_args(mrb, &quot;|o&quot;, &amp;mesg) == 1) {
-    mrb_iv_set(mrb, exc, MRB_SYM(mesg), mesg);
+    mrb_exc_mesg_set(mrb, mrb_exc_ptr(exc), mesg);
   }
   return exc;
 }</pre>
@@ -432,24 +434,24 @@ exc_initialize(mrb_state *mrb, mrb_value exc)
       <pre class="lines">
 
 
-67
-68
-69
-70
-71
-72
-73
-74
-75
-76
-77
-78
-79
-80
-81</pre>
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/error.c', line 67</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/error.c', line 87</span>
 
 static mrb_value
 exc_exception(mrb_state *mrb, mrb_value self)
@@ -462,7 +464,7 @@ exc_exception(mrb_state *mrb, mrb_value self)
   if (argc == 0) return self;
   if (mrb_obj_equal(mrb, self, a)) return self;
   exc = mrb_obj_clone(mrb, self);
-  mrb_iv_set(mrb, exc, MRB_SYM(mesg), a);
+  mrb_exc_mesg_set(mrb, mrb_exc_ptr(exc), a);
 
   return exc;
 }</pre>
@@ -483,7 +485,7 @@ exc_exception(mrb_state *mrb, mrb_value self)
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Returns this exception&#39;s file name, line number, message and class name. If file name or line number is not set, returns message and class name.</p>
+<p>Returns this exception’s file name, line number, message and class name. If file name or line number is not set, returns message and class name.</p>
 
 
   </div>
@@ -525,25 +527,23 @@ exc_exception(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-131
-132
-133
-134
-135
-136
 137
-138</pre>
+138
+139
+140
+141
+142
+143</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/error.c', line 131</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/error.c', line 137</span>
 
 mrb_value
 mrb_exc_inspect(mrb_state *mrb, mrb_value exc)
 {
-  mrb_value mesg = mrb_attr_get(mrb, exc, MRB_SYM(mesg));
   mrb_value cname = mrb_mod_to_s(mrb, mrb_obj_value(mrb_obj_class(mrb, exc)));
-  mesg = mrb_obj_as_string(mrb, mesg);
-  return RSTRING_LEN(mesg) == 0 ? cname : mrb_format(mrb, &quot;%v (%v)&quot;, mesg, cname);
+  mrb_value mesg = mrb_exc_mesg_get(mrb, mrb_exc_ptr(exc)); /* string or nil */
+  return (mrb_nil_p(mesg)||RSTRING_LEN(mesg)==0) ? cname : mrb_format(mrb, &quot;%v (%v)&quot;, mesg, cname);
 }</pre>
     </td>
   </tr>
@@ -553,7 +553,7 @@ mrb_exc_inspect(mrb_state *mrb, mrb_value exc)
       <div class="method_details ">
   <h3 class="signature " id="message-instance_method">
   
-    #<strong>message</strong>  &#x21d2; <tt><span class='object_link'><a href="String.html" title="String (class)">String</a></span></tt> 
+    #<strong>message</strong>  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
   
 
   
@@ -562,39 +562,18 @@ mrb_exc_inspect(mrb_state *mrb, mrb_value exc)
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Returns the result of invoking <code>exception.to_s</code>. Normally this returns the exception&#39;s message or name.</p>
+<p>call-seq:</p>
+
+<pre class="code ruby"><code class="ruby">exception.message   -&gt;  string
+</code></pre>
+
+<p>Returns the result of invoking <code>exception.to_s</code>. Normally this returns the exception’s message or name.</p>
 
 
   </div>
 </div>
 <div class="tags">
   
-  <div class="docstring">
-  <div class="discussion">
-    
-
-  </div>
-</div>
-<div class="tags">
-  
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt><span class='object_link'><a href="String.html" title="String (class)">String</a></span></tt>)</span>
-      
-      
-      
-    </li>
-  
-</ul>
-
-</div>
-
-
-
 
 </div>
 
@@ -604,20 +583,16 @@ mrb_exc_inspect(mrb_state *mrb, mrb_value exc)
       <pre class="lines">
 
 
-115
-116
-117
-118
-119</pre>
+9
+10
+11</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/error.c', line 115</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrblib/10error.rb', line 9</span>
 
-static mrb_value
-exc_message(mrb_state *mrb, mrb_value exc)
-{
-  return mrb_funcall_id(mrb, exc, MRB_SYM(to_s), 0);
-}</pre>
+<span class='kw'>def</span> <span class='id identifier rubyid_message'>message</span>
+  <span class='id identifier rubyid_to_s'>to_s</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -638,17 +613,17 @@ exc_message(mrb_state *mrb, mrb_value exc)
       <pre class="lines">
 
 
-161
-162
-163
-164
-165
-166
 167
-168</pre>
+168
+169
+170
+171
+172
+173
+174</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/error.c', line 161</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/error.c', line 167</span>
 
 static mrb_value
 exc_set_backtrace(mrb_state *mrb, mrb_value exc)
@@ -675,7 +650,7 @@ exc_set_backtrace(mrb_state *mrb, mrb_value exc)
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Returns exception&#39;s message (or the name of the exception if no message is set).</p>
+<p>Returns exception’s message (or the name of the exception if no message is set).</p>
 
 
   </div>
@@ -717,29 +692,29 @@ exc_set_backtrace(mrb_state *mrb, mrb_value exc)
       <pre class="lines">
 
 
-91
-92
-93
-94
-95
-96
-97
-98
-99
-100
-101
-102
-103
-104
-105</pre>
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/error.c', line 91</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/error.c', line 111</span>
 
-mrb_value
+static mrb_value
 exc_to_s(mrb_state *mrb, mrb_value exc)
 {
-  mrb_value mesg = mrb_attr_get(mrb, exc, MRB_SYM(mesg));
+  mrb_value mesg = mrb_exc_mesg_get(mrb, mrb_exc_ptr(exc));
   struct RObject *p;
 
   if (!mrb_string_p(mesg)) {
@@ -761,9 +736,9 @@ exc_to_s(mrb_state *mrb, mrb_value exc)
 </div>
 
       <div id="footer">
-  Generated on Mon Mar 22 18:11:12 2021 by
+  Generated on Sun Oct 29 05:51:33 2023 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.26 in <a href="https://github.com/sagmor/yard-mruby">mruby mode</a> 0.3.0 (ruby-2.7.2).
+  0.9.34 in <a href="https://github.com/sagmor/yard-mruby">mruby mode</a> 0.3.0 (ruby-3.2.2).
 </div>
 
     </div>

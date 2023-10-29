@@ -6,7 +6,7 @@
 <title>
   Class: Integer
   
-    &mdash; Documentation by YARD 0.9.26
+    &mdash; Documentation by YARD 0.9.34
   
 </title>
 
@@ -101,7 +101,7 @@
   <dl>
     <dt>Defined in:</dt>
     <dd>mruby/mrblib/numeric.rb<span class="defines">,<br />
-  mruby/src/numeric.c</span>
+  mruby/src/numeric.c,<br /> mruby/mrbgems/mruby-numeric-ext/mrblib/numeric_ext.rb</span>
 </dd>
   </dl>
   
@@ -140,7 +140,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#%25-instance_method" title="#% (instance method)">#<strong>%</strong>  &#x21d2; Object </a>
+      <a href="#%25-instance_method" title="#% (instance method)">#<strong>%</strong>(num)  &#x21d2; Numeric </a>
     
 
     
@@ -155,7 +155,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Returns <code>fix</code> modulo <code>other</code>.</p>
+<p>Returns <code>int</code> modulo <code>other</code>.</p>
 </div></span>
   
 </li>
@@ -260,7 +260,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#--instance_method" title="#- (instance method)">#<strong>-</strong>(numeric)  &#x21d2; Object </a>
+      <a href="#--instance_method" title="#- (instance method)">#<strong>-</strong>(numeric)  &#x21d2; Numeric </a>
     
 
     
@@ -284,7 +284,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#%2F-instance_method" title="#/ (instance method)">#<strong>/</strong>(other)  &#x21d2; Integer </a>
+      <a href="#%2F-instance_method" title="#/ (instance method)">#<strong>/</strong>(num)  &#x21d2; Numeric </a>
     
 
     
@@ -347,7 +347,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Shifts <em>fix</em> left <em>count</em> positions (right if <em>count</em> is negative).</p>
+<p>Shifts <em>int</em> left <em>count</em> positions (right if <em>count</em> is negative).</p>
 </div></span>
   
 </li>
@@ -393,7 +393,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>&gt;  =&gt; <tt>1  Comparison—Returns -1, 0, or </tt>1 depending on whether <em>fix</em> is  less than, equal to, or greater than <em>numeric</em>.</p>
+<p>&gt;  =&gt; <tt>1  Comparison—Returns -1, 0, or </tt>1 depending on whether <em>int</em> is  less than, equal to, or greater than <em>numeric</em>.</p>
 </div></span>
   
 </li>
@@ -417,7 +417,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Return <code>true</code> if <code>fix</code> equals <code>other</code> numerically.</p>
+<p>Return <code>true</code> if <code>int</code> equals <code>other</code> numerically.</p>
 </div></span>
   
 </li>
@@ -485,7 +485,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Shifts <em>fix</em> right <em>count</em> positions (left if <em>count</em> is negative).</p>
+<p>Shifts <em>int</em> right <em>count</em> positions (left if <em>count</em> is negative).</p>
 </div></span>
   
 </li>
@@ -533,7 +533,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>15.2.8.3.30 (x).</p>
+<p>15.2.8.3.30(x).</p>
 </div></span>
   
 </li>
@@ -557,7 +557,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Returns the receiver simply.</p>
+<p>Returns self.</p>
 </div></span>
   
 </li>
@@ -566,7 +566,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#div-instance_method" title="#/ (instance method)">#<strong>/</strong>(other)  &#x21d2; Integer </a>
+      <a href="#ceildiv-instance_method" title="#ceildiv (instance method)">#<strong>ceildiv</strong>(other)  &#x21d2; Object </a>
     
 
     
@@ -581,7 +581,31 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Performs division: the class of the resulting object depends on the class of <code>num</code> and on the magnitude of the result.</p>
+<p>call-seq:    ceildiv(other) -&gt; integer.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#div-instance_method" title="#div (instance method)">#<strong>div</strong>(other)  &#x21d2; Integer </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Performs division: resulting integer.</p>
 </div></span>
   
 </li>
@@ -638,7 +662,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#eql%3F-instance_method" title="#eql? (instance method)">#<strong>eql?</strong>(numeric)  &#x21d2; Boolean </a>
+      <a href="#floor-instance_method" title="#floor (instance method)">#<strong>floor</strong>  &#x21d2; Object </a>
     
 
     
@@ -653,7 +677,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Returns <code>true</code> if <em>num</em> and <em>numeric</em> are the same type and have equal values.</p>
+<p>Returns self.</p>
 </div></span>
   
 </li>
@@ -662,11 +686,9 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#floor-instance_method" title="#floor (instance method)">#<strong>floor</strong>  &#x21d2; Object </a>
+      <a href="#hash-instance_method" title="#hash (instance method)">#<strong>hash</strong>  &#x21d2; Object </a>
     
 
-    
-      (also: #round, #truncate)
     
   </span>
   
@@ -679,7 +701,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Returns the receiver simply.</p>
+<p>15.2.8.3.18.</p>
 </div></span>
   
 </li>
@@ -703,7 +725,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Returns a string containing the representation of <em>fix</em> radix <em>base</em> (between 2 and 36).</p>
+<p>Returns a string containing the representation of <em>int</em> radix <em>base</em> (between 2 and 36).</p>
 </div></span>
   
 </li>
@@ -738,7 +760,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#quo-instance_method" title="#quo (instance method)">#<strong>quo</strong>(numeric)  &#x21d2; Object </a>
+      <a href="#quo-instance_method" title="#quo (instance method)">#<strong>quo</strong>  &#x21d2; Object </a>
     
 
     
@@ -753,7 +775,31 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Returns most exact division.</p>
+<p>15.2.7.4.5(x).</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#round-instance_method" title="#round (instance method)">#<strong>round</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns self.</p>
 </div></span>
   
 </li>
@@ -897,7 +943,31 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Returns a string containing the representation of <em>fix</em> radix <em>base</em> (between 2 and 36).</p>
+<p>Returns a string containing the representation of <em>int</em> radix <em>base</em> (between 2 and 36).</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#truncate-instance_method" title="#truncate (instance method)">#<strong>truncate</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns self.</p>
 </div></span>
   
 </li>
@@ -969,7 +1039,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>One&#39;s complement: returns a number where each bit is flipped.</p>
+<p>One’s complement: returns a number where each bit is flipped.</p>
 </div></span>
   
 </li>
@@ -988,7 +1058,7 @@
   
   
   <h3 class="inherited">Methods inherited from <span class='object_link'><a href="Numeric.html" title="Numeric (class)">Numeric</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="Numeric.html#%2B@-instance_method" title="Numeric#+@ (method)">#+@</a></span>, <span class='object_link'><a href="Numeric.html#-@-instance_method" title="Numeric#-@ (method)">#-@</a></span>, <span class='object_link'><a href="Numeric.html#abs-instance_method" title="Numeric#abs (method)">#abs</a></span>, <span class='object_link'><a href="Numeric.html#finite%3F-instance_method" title="Numeric#finite? (method)">#finite?</a></span>, <span class='object_link'><a href="Numeric.html#infinite%3F-instance_method" title="Numeric#infinite? (method)">#infinite?</a></span>, <span class='object_link'><a href="Numeric.html#negative%3F-instance_method" title="Numeric#negative? (method)">#negative?</a></span>, <span class='object_link'><a href="Numeric.html#nonzero%3F-instance_method" title="Numeric#nonzero? (method)">#nonzero?</a></span>, <span class='object_link'><a href="Numeric.html#positive%3F-instance_method" title="Numeric#positive? (method)">#positive?</a></span>, <span class='object_link'><a href="Numeric.html#to_r-instance_method" title="Numeric#to_r (method)">#to_r</a></span>, <span class='object_link'><a href="Numeric.html#zero%3F-instance_method" title="Numeric#zero? (method)">#zero?</a></span></p>
+  <p class="inherited"><span class='object_link'><a href="Numeric.html#%2B@-instance_method" title="Numeric#+@ (method)">#+@</a></span>, <span class='object_link'><a href="Numeric.html#-@-instance_method" title="Numeric#-@ (method)">#-@</a></span>, <span class='object_link'><a href="Numeric.html#abs-instance_method" title="Numeric#abs (method)">#abs</a></span>, <span class='object_link'><a href="Numeric.html#allbits%3F-instance_method" title="Numeric#allbits? (method)">#allbits?</a></span>, <span class='object_link'><a href="Numeric.html#anybits%3F-instance_method" title="Numeric#anybits? (method)">#anybits?</a></span>, <span class='object_link'><a href="Numeric.html#eql%3F-instance_method" title="Numeric#eql? (method)">#eql?</a></span>, <span class='object_link'><a href="Numeric.html#finite%3F-instance_method" title="Numeric#finite? (method)">#finite?</a></span>, <span class='object_link'><a href="Numeric.html#infinite%3F-instance_method" title="Numeric#infinite? (method)">#infinite?</a></span>, <span class='object_link'><a href="Numeric.html#negative%3F-instance_method" title="Numeric#negative? (method)">#negative?</a></span>, <span class='object_link'><a href="Numeric.html#nobits%3F-instance_method" title="Numeric#nobits? (method)">#nobits?</a></span>, <span class='object_link'><a href="Numeric.html#nonzero%3F-instance_method" title="Numeric#nonzero? (method)">#nonzero?</a></span>, <span class='object_link'><a href="Numeric.html#positive%3F-instance_method" title="Numeric#positive? (method)">#positive?</a></span>, <span class='object_link'><a href="Numeric.html#to_c-instance_method" title="Numeric#to_c (method)">#to_c</a></span>, <span class='object_link'><a href="Numeric.html#to_r-instance_method" title="Numeric#to_r (method)">#to_r</a></span>, <span class='object_link'><a href="Numeric.html#zero%3F-instance_method" title="Numeric#zero? (method)">#zero?</a></span></p>
 
   
   
@@ -1009,11 +1079,7 @@
       <div class="method_details first">
   <h3 class="signature first" id="%-instance_method">
   
-    
-      <span class="overload">#<strong>%</strong>(other)  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> </span>
-    
-      <span class="overload">#<strong>modulo</strong>(other)  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> </span>
-    
+    #<strong>%</strong>(num)  &#x21d2; <tt><span class='object_link'><a href="Numeric.html" title="Numeric (class)">Numeric</a></span></tt> 
   
 
   
@@ -1022,13 +1088,39 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Returns <code>fix</code> modulo <code>other</code>. See <code>numeric.divmod</code> for more information.</p>
+<p>Returns <code>int</code> modulo <code>other</code>. See <code>numeric.divmod</code> for more information.</p>
 
 
   </div>
 </div>
 <div class="tags">
   
+  <div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Numeric.html" title="Numeric (class)">Numeric</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div>
+
+
+
 
 </div>
 
@@ -1038,33 +1130,41 @@
       <pre class="lines">
 
 
-959
-960
-961
-962
-963
-964
-965
-966
-967
-968
-969
-970
-971
-972
-973
-974
-975
-976
-977
-978
-979
-980
-981
-982</pre>
+1232
+1233
+1234
+1235
+1236
+1237
+1238
+1239
+1240
+1241
+1242
+1243
+1244
+1245
+1246
+1247
+1248
+1249
+1250
+1251
+1252
+1253
+1254
+1255
+1256
+1257
+1258
+1259
+1260
+1261
+1262
+1263</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/numeric.c', line 959</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/numeric.c', line 1232</span>
 
 static mrb_value
 int_mod(mrb_state *mrb, mrb_value x)
@@ -1072,22 +1172,30 @@ int_mod(mrb_state *mrb, mrb_value x)
   mrb_value y = mrb_get_arg1(mrb);
   mrb_int a, b;
 
+#ifdef MRB_USE_BIGINT
+  if (mrb_bigint_p(x)) {
+    return mrb_bint_mod(mrb, x, y);
+  }
+#endif
   a = mrb_integer(x);
-  if (mrb_integer_p(y) &amp;&amp; a != MRB_INT_MIN &amp;&amp; (b=mrb_integer(y)) != MRB_INT_MIN) {
-    mrb_int mod;
-
-    fixdivmod(mrb, a, b, NULL, &amp;mod);
-    return mrb_fixnum_value(mod);
+  if (a == 0) return x;
+  if (mrb_integer_p(y)) {
+    b = mrb_integer(y);
+    if (b == 0) mrb_int_zerodiv(mrb);
+    if (a == MRB_INT_MIN &amp;&amp; b == -1) return mrb_fixnum_value(0);
+    mrb_int mod = a % b;
+    if ((a &lt; 0) != (b &lt; 0) &amp;&amp; mod != 0) {
+      mod += b;
+    }
+    return mrb_int_value(mrb, mod);
   }
 #ifdef MRB_NO_FLOAT
-  mrb_raise(mrb, E_TYPE_ERROR, &quot;non fixnum value&quot;);
+  mrb_raise(mrb, E_TYPE_ERROR, &quot;non integer modulo&quot;);
 #else
-  else {
-    mrb_float mod;
+  mrb_float mod;
 
-    flodivmod(mrb, (mrb_float)a, mrb_to_flo(mrb, y), NULL, &amp;mod);
-    return mrb_float_value(mrb, mod);
-  }
+  flodivmod(mrb, (mrb_float)a, mrb_as_float(mrb, y), NULL, &amp;mod);
+  return mrb_float_value(mrb, mod);
 #endif
 }</pre>
     </td>
@@ -1125,22 +1233,38 @@ int_mod(mrb_state *mrb, mrb_value x)
       <pre class="lines">
 
 
-1101
-1102
-1103
-1104
-1105
-1106
-1107</pre>
+1409
+1410
+1411
+1412
+1413
+1414
+1415
+1416
+1417
+1418
+1419
+1420
+1421
+1422
+1423</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/numeric.c', line 1101</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/numeric.c', line 1409</span>
 
 static mrb_value
 int_and(mrb_state *mrb, mrb_value x)
 {
   mrb_value y = mrb_get_arg1(mrb);
 
+#ifdef MRB_USE_BIGINT
+  if (mrb_bigint_p(x)) {
+    return mrb_bint_and(mrb, x, y);
+  }
+  if (mrb_bigint_p(y)) {
+    return mrb_bint_and(mrb, mrb_as_bint(mrb, x), y);
+  }
+#endif
   bit_op(x, y, and, &amp;);
 }</pre>
     </td>
@@ -1178,23 +1302,33 @@ int_and(mrb_state *mrb, mrb_value x)
       <pre class="lines">
 
 
-919
-920
-921
-922
-923
-924
-925</pre>
+1188
+1189
+1190
+1191
+1192
+1193
+1194
+1195
+1196
+1197
+1198
+1199</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/numeric.c', line 919</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/numeric.c', line 1188</span>
 
 static mrb_value
 int_mul(mrb_state *mrb, mrb_value x)
 {
   mrb_value y = mrb_get_arg1(mrb);
 
-  return fixnum_mul(mrb, x, y);
+#ifdef MRB_USE_BIGINT
+  if (mrb_bigint_p(x)) {
+    return mrb_bint_mul(mrb, x, y);
+  }
+#endif
+  return mrb_int_mul(mrb, x, y);
 }</pre>
     </td>
   </tr>
@@ -1258,97 +1392,19 @@ int_mul(mrb_state *mrb, mrb_value x)
       <pre class="lines">
 
 
-76
-77
-78
-79
-80
-81
-82
-83
-84
-85
-86
-87
-88
-89
-90
-91
-92
-93
-94
-95
-96
-97
-98
-99
-100
-101
-102
-103
-104
-105
-106
-107
-108
-109
 110
 111
 112
 113
-114
-115
-116
-117
-118
-119</pre>
+114</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/numeric.c', line 76</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/numeric.c', line 110</span>
 
 static mrb_value
 int_pow(mrb_state *mrb, mrb_value x)
 {
-  mrb_int base = mrb_int(mrb, x);
-  mrb_int exp;
-#ifndef MRB_NO_FLOAT
-  mrb_value y = mrb_get_arg1(mrb);
-  mrb_float z;
-
-  if (!mrb_integer_p(y)) {
-    mrb_get_args(mrb, &quot;f&quot;, &amp;z);
-    z = pow((mrb_float)base, z);
-    return mrb_float_value(mrb, z);
-  }
-  else {
-    mrb_get_args(mrb, &quot;i&quot;, &amp;exp);
-    z = pow((double)base, (double)exp);
-    if (exp &lt; 0 || z &lt; (mrb_float)MRB_INT_MIN || (mrb_float)MRB_INT_MAX &lt; z) {
-      return mrb_float_value(mrb, z);
-    }
-  }
-  return mrb_int_value(mrb, (mrb_int)z);
-#else
-  mrb_int result = 1;
-
-  mrb_get_args(mrb, &quot;i&quot;, &amp;exp);
-  if (exp &lt; 0) {
-    return mrb_fixnum_value(0);
-  }
-  for (;;) {
-    if (exp &amp; 1) {
-      if (mrb_int_mul_overflow(result, base, &amp;result)) {
-        int_overflow(mrb, &quot;multiplication&quot;);
-      }
-    }
-    exp &gt;&gt;= 1;
-    if (exp == 0) break;
-    if (mrb_int_mul_overflow(base, base, &amp;base)) {
-      int_overflow(mrb, &quot;multiplication&quot;);
-    }
-  }
-  return mrb_int_value(mrb, result);
-#endif
+  return mrb_int_pow(mrb, x, mrb_get_arg1(mrb));
 }</pre>
     </td>
   </tr>
@@ -1385,23 +1441,33 @@ int_pow(mrb_state *mrb, mrb_value x)
       <pre class="lines">
 
 
-1329
-1330
-1331
-1332
-1333
-1334
-1335</pre>
+1831
+1832
+1833
+1834
+1835
+1836
+1837
+1838
+1839
+1840
+1841
+1842</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/numeric.c', line 1329</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/numeric.c', line 1831</span>
 
 static mrb_value
-int_plus(mrb_state *mrb, mrb_value self)
+int_add(mrb_state *mrb, mrb_value self)
 {
   mrb_value other = mrb_get_arg1(mrb);
 
-  return fixnum_plus(mrb, self, other);
+#ifdef MRB_USE_BIGINT
+  if (mrb_bigint_p(self)) {
+    return mrb_bint_add(mrb, self, other);
+  }
+#endif
+  return mrb_int_add(mrb, self, other);
 }</pre>
     </td>
   </tr>
@@ -1411,7 +1477,7 @@ int_plus(mrb_state *mrb, mrb_value self)
       <div class="method_details ">
   <h3 class="signature " id="--instance_method">
   
-    #<strong>-</strong>(numeric)  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+    #<strong>-</strong>(numeric)  &#x21d2; <tt><span class='object_link'><a href="Numeric.html" title="Numeric (class)">Numeric</a></span></tt> 
   
 
   
@@ -1427,7 +1493,31 @@ int_plus(mrb_state *mrb, mrb_value self)
 </div>
 <div class="tags">
   
+  <div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
   
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Numeric.html" title="Numeric (class)">Numeric</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div>
+
+
 
 
 </div>
@@ -1438,23 +1528,33 @@ int_plus(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-1384
-1385
-1386
-1387
-1388
-1389
-1390</pre>
+1895
+1896
+1897
+1898
+1899
+1900
+1901
+1902
+1903
+1904
+1905
+1906</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/numeric.c', line 1384</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/numeric.c', line 1895</span>
 
 static mrb_value
-int_minus(mrb_state *mrb, mrb_value self)
+int_sub(mrb_state *mrb, mrb_value self)
 {
   mrb_value other = mrb_get_arg1(mrb);
 
-  return fixnum_minus(mrb, self, other);
+#ifdef MRB_USE_BIGINT
+  if (mrb_bigint_p(self)) {
+    return mrb_bint_sub(mrb, self, other);
+  }
+#endif
+  return mrb_int_sub(mrb, self, other);
 }</pre>
     </td>
   </tr>
@@ -1464,7 +1564,7 @@ int_minus(mrb_state *mrb, mrb_value self)
       <div class="method_details ">
   <h3 class="signature " id="/-instance_method">
   
-    #<strong>/</strong>(other)  &#x21d2; <tt><span class='object_link'><a href="" title="Integer (class)">Integer</a></span></tt> 
+    #<strong>/</strong>(num)  &#x21d2; <tt><span class='object_link'><a href="Numeric.html" title="Numeric (class)">Numeric</a></span></tt> 
   
 
   
@@ -1494,7 +1594,7 @@ int_minus(mrb_state *mrb, mrb_value self)
     <li>
       
       
-        <span class='type'>(<tt><span class='object_link'><a href="" title="Integer (class)">Integer</a></span></tt>)</span>
+        <span class='type'>(<tt><span class='object_link'><a href="Numeric.html" title="Numeric (class)">Numeric</a></span></tt>)</span>
       
       
       
@@ -1515,6 +1615,7 @@ int_minus(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
+152
 153
 154
 155
@@ -1523,19 +1624,72 @@ int_minus(mrb_state *mrb, mrb_value self)
 158
 159
 160
-161</pre>
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/numeric.c', line 153</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/numeric.c', line 152</span>
 
 static mrb_value
-int_div(mrb_state *mrb, mrb_value xv)
+int_div(mrb_state *mrb, mrb_value x)
 {
-  mrb_int y, div;
+  mrb_value y = mrb_get_arg1(mrb);
+#ifdef MRB_USE_BIGINT
+  if (mrb_bigint_p(x)) {
+    return mrb_bint_div(mrb, x, y);
+  }
+#endif
+ mrb_int a = mrb_integer(x);
 
-  mrb_get_args(mrb, &quot;i&quot;, &amp;y);
-  div = mrb_num_div_int(mrb, mrb_integer(xv), y);
-  return mrb_int_value(mrb, div);
+  if (mrb_integer_p(y)) {
+    return mrb_div_int_value(mrb, a, mrb_integer(y));
+  }
+  switch (mrb_type(y)) {
+#ifdef MRB_USE_BIGINT
+  case MRB_TT_BIGINT:
+    return mrb_bint_div(mrb, mrb_bint_new_int(mrb, a), y);
+#endif
+#ifdef MRB_USE_RATIONAL
+  case MRB_TT_RATIONAL:
+    return mrb_rational_div(mrb, mrb_rational_new(mrb, a, 1), y);
+#endif
+#ifdef MRB_USE_COMPLEX
+  case MRB_TT_COMPLEX:
+    x = mrb_complex_new(mrb, (mrb_float)a, 0);
+    return mrb_complex_div(mrb, x, y);
+#endif
+#ifndef MRB_NO_FLOAT
+  case MRB_TT_FLOAT:
+    return mrb_float_value(mrb, mrb_div_float((mrb_float)a, mrb_as_float(mrb, y)));
+#endif
+  default:
+    mrb_int_noconv(mrb, y);
+  }
 }</pre>
     </td>
   </tr>
@@ -1570,20 +1724,20 @@ int_div(mrb_state *mrb, mrb_value xv)
       <pre class="lines">
 
 
-1519
-1520
-1521
-1522
-1523
-1524
-1525
-1526
-1527
-1528
-1529</pre>
+2080
+2081
+2082
+2083
+2084
+2085
+2086
+2087
+2088
+2089
+2090</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/numeric.c', line 1519</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/numeric.c', line 2080</span>
 
 static mrb_value
 num_lt(mrb_state *mrb, mrb_value self)
@@ -1613,7 +1767,7 @@ num_lt(mrb_state *mrb, mrb_value self)
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Shifts <em>fix</em> left <em>count</em> positions (right if <em>count</em> is negative).</p>
+<p>Shifts <em>int</em> left <em>count</em> positions (right if <em>count</em> is negative).</p>
 
 
   </div>
@@ -1655,26 +1809,35 @@ num_lt(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-1184
-1185
-1186
-1187
-1188
-1189
-1190
-1191
-1192
-1193
-1194
-1195
-1196
-1197
-1198
-1199
-1200</pre>
+1519
+1520
+1521
+1522
+1523
+1524
+1525
+1526
+1527
+1528
+1529
+1530
+1531
+1532
+1533
+1534
+1535
+1536
+1537
+1538
+1539
+1540
+1541
+1542
+1543
+1544</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/numeric.c', line 1184</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/numeric.c', line 1519</span>
 
 static mrb_value
 int_lshift(mrb_state *mrb, mrb_value x)
@@ -1685,13 +1848,22 @@ int_lshift(mrb_state *mrb, mrb_value x)
   if (width == 0) {
     return x;
   }
+  if (width == MRB_INT_MIN) mrb_int_overflow(mrb, &quot;bit shift&quot;);
+#ifdef MRB_USE_BIGINT
+  if (mrb_bigint_p(x)) {
+    return mrb_bint_lshift(mrb, x, width);
+  }
+#endif
   val = mrb_integer(x);
   if (val == 0) return x;
-  if (width &lt; 0) {
-    if (width == MRB_INT_MIN) return rshift(mrb, val, MRB_INT_BIT);
-    return rshift(mrb, val, -width);
+  if (!mrb_num_shift(mrb, val, width, &amp;val)) {
+#ifdef MRB_USE_BIGINT
+    return mrb_bint_lshift(mrb, mrb_bint_new_int(mrb, val), width);
+#else
+    mrb_int_overflow(mrb, &quot;bit shift&quot;);
+#endif
   }
-  return lshift(mrb, val, width);
+  return mrb_int_value(mrb, val);
 }</pre>
     </td>
   </tr>
@@ -1713,20 +1885,20 @@ int_lshift(mrb_state *mrb, mrb_value x)
       <pre class="lines">
 
 
-1531
-1532
-1533
-1534
-1535
-1536
-1537
-1538
-1539
-1540
-1541</pre>
+2092
+2093
+2094
+2095
+2096
+2097
+2098
+2099
+2100
+2101
+2102</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/numeric.c', line 1531</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/numeric.c', line 2092</span>
 
 static mrb_value
 num_le(mrb_state *mrb, mrb_value self)
@@ -1762,7 +1934,7 @@ num_le(mrb_state *mrb, mrb_value self)
     
 <p>&gt;  =&gt; +1</p>
 
-<pre class="code"><code class="">Comparison---Returns -1, 0, or +1 depending on whether &lt;i&gt;fix&lt;/i&gt; is
+<pre class="code"><code class="">Comparison---Returns -1, 0, or +1 depending on whether &lt;i&gt;int&lt;/i&gt; is
 less than, equal to, or greater than &lt;i&gt;numeric&lt;/i&gt;. This is the
 basis for the tests in &lt;code&gt;Comparable&lt;/code&gt;. When the operands are
 not comparable, it returns nil instead of raising an exception.
@@ -1847,19 +2019,19 @@ not comparable, it returns nil instead of raising an exception.
       <pre class="lines">
 
 
-1502
-1503
-1504
-1505
-1506
-1507
-1508
-1509
-1510
-1511</pre>
+2063
+2064
+2065
+2066
+2067
+2068
+2069
+2070
+2071
+2072</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/numeric.c', line 1502</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/numeric.c', line 2063</span>
 
 static mrb_value
 num_cmp(mrb_state *mrb, mrb_value self)
@@ -1888,7 +2060,7 @@ num_cmp(mrb_state *mrb, mrb_value self)
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Return <code>true</code> if <code>fix</code> equals <code>other</code> numerically.</p>
+<p>Return <code>true</code> if <code>int</code> equals <code>other</code> numerically.</p>
 
 <pre class="code"><code class=""><span class='int'>1</span> <span class='op'>==</span> <span class='int'>2</span>      <span class='comment'>#=&gt; false
 </span><span class='int'>1</span> <span class='op'>==</span> <span class='float'>1.0</span>    <span class='comment'>#=&gt; true
@@ -1934,25 +2106,37 @@ num_cmp(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-1043
-1044
-1045
-1046
-1047
-1048
-1049
-1050
-1051
-1052
-1053
-1054
-1055
-1056
-1057
-1058</pre>
+1334
+1335
+1336
+1337
+1338
+1339
+1340
+1341
+1342
+1343
+1344
+1345
+1346
+1347
+1348
+1349
+1350
+1351
+1352
+1353
+1354
+1355
+1356
+1357
+1358
+1359
+1360
+1361</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/numeric.c', line 1043</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/numeric.c', line 1334</span>
 
 static mrb_value
 int_equal(mrb_state *mrb, mrb_value x)
@@ -1965,6 +2149,18 @@ int_equal(mrb_state *mrb, mrb_value x)
 #ifndef MRB_NO_FLOAT
   case MRB_TT_FLOAT:
     return mrb_bool_value((mrb_float)mrb_integer(x) == mrb_float(y));
+#endif
+#ifdef MRB_USE_BIGINT
+  case MRB_TT_BIGINT:
+    return mrb_bool_value(mrb_bint_cmp(mrb, y, x) == 0);
+#endif
+#ifdef MRB_USE_RATIONAL
+  case MRB_TT_RATIONAL:
+    return mrb_bool_value(mrb_equal(mrb, y, x));
+#endif
+#ifdef MRB_USE_COMPLEX
+  case MRB_TT_COMPLEX:
+    return mrb_bool_value(mrb_equal(mrb, y, x));
 #endif
   default:
     return mrb_false_value();
@@ -1990,20 +2186,20 @@ int_equal(mrb_state *mrb, mrb_value x)
       <pre class="lines">
 
 
-1543
-1544
-1545
-1546
-1547
-1548
-1549
-1550
-1551
-1552
-1553</pre>
+2104
+2105
+2106
+2107
+2108
+2109
+2110
+2111
+2112
+2113
+2114</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/numeric.c', line 1543</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/numeric.c', line 2104</span>
 
 static mrb_value
 num_gt(mrb_state *mrb, mrb_value self)
@@ -2036,20 +2232,20 @@ num_gt(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-1555
-1556
-1557
-1558
-1559
-1560
-1561
-1562
-1563
-1564
-1565</pre>
+2116
+2117
+2118
+2119
+2120
+2121
+2122
+2123
+2124
+2125
+2126</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/numeric.c', line 1555</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/numeric.c', line 2116</span>
 
 static mrb_value
 num_ge(mrb_state *mrb, mrb_value self)
@@ -2079,7 +2275,7 @@ num_ge(mrb_state *mrb, mrb_value self)
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Shifts <em>fix</em> right <em>count</em> positions (left if <em>count</em> is negative).</p>
+<p>Shifts <em>int</em> right <em>count</em> positions (left if <em>count</em> is negative).</p>
 
 
   </div>
@@ -2121,26 +2317,35 @@ num_ge(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-1210
-1211
-1212
-1213
-1214
-1215
-1216
-1217
-1218
-1219
-1220
-1221
-1222
-1223
-1224
-1225
-1226</pre>
+1554
+1555
+1556
+1557
+1558
+1559
+1560
+1561
+1562
+1563
+1564
+1565
+1566
+1567
+1568
+1569
+1570
+1571
+1572
+1573
+1574
+1575
+1576
+1577
+1578
+1579</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/numeric.c', line 1210</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/numeric.c', line 1554</span>
 
 static mrb_value
 int_rshift(mrb_state *mrb, mrb_value x)
@@ -2151,13 +2356,22 @@ int_rshift(mrb_state *mrb, mrb_value x)
   if (width == 0) {
     return x;
   }
+  if (width == MRB_INT_MIN) mrb_int_overflow(mrb, &quot;bit shift&quot;);
+#ifdef MRB_USE_BIGINT
+  if (mrb_bigint_p(x)) {
+    return mrb_bint_rshift(mrb, x, width);
+  }
+#endif
   val = mrb_integer(x);
   if (val == 0) return x;
-  if (width &lt; 0) {
-    if (width == MRB_INT_MIN) int_overflow(mrb, &quot;bit shift&quot;);
-    return lshift(mrb, val, -width);
+  if (!mrb_num_shift(mrb, val, -width, &amp;val)) {
+#ifdef MRB_USE_BIGINT
+    return mrb_bint_rshift(mrb, mrb_bint_new_int(mrb, val), width);
+#else
+    mrb_int_overflow(mrb, &quot;bit shift&quot;);
+#endif
   }
-  return rshift(mrb, val, width);
+  return mrb_int_value(mrb, val);
 }</pre>
     </td>
   </tr>
@@ -2194,22 +2408,38 @@ int_rshift(mrb_state *mrb, mrb_value x)
       <pre class="lines">
 
 
-1133
-1134
-1135
-1136
-1137
-1138
-1139</pre>
+1457
+1458
+1459
+1460
+1461
+1462
+1463
+1464
+1465
+1466
+1467
+1468
+1469
+1470
+1471</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/numeric.c', line 1133</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/numeric.c', line 1457</span>
 
 static mrb_value
 int_xor(mrb_state *mrb, mrb_value x)
 {
   mrb_value y = mrb_get_arg1(mrb);
 
+#ifdef MRB_USE_BIGINT
+  if (mrb_bigint_p(x)) {
+    return mrb_bint_xor(mrb, x, y);
+  }
+  if (mrb_bigint_p(y)) {
+    return mrb_bint_xor(mrb, mrb_as_bint(mrb, x), y);
+  }
+#endif
   bit_op(x, y, or, ^);
 }</pre>
     </td>
@@ -2229,7 +2459,7 @@ int_xor(mrb_state *mrb, mrb_value x)
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>15.2.8.3.30 (x)</p>
+<p>15.2.8.3.30(x)</p>
 
 
   </div>
@@ -2245,24 +2475,25 @@ int_xor(mrb_state *mrb, mrb_value x)
       <pre class="lines">
 
 
-193
-194
-195
-196
-197
-198
-199
-200
-201
-202
-203
-204
-205
-206
-207</pre>
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/numeric.c', line 193</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/numeric.c', line 258</span>
 
 static mrb_value
 coerce_step_counter(mrb_state *mrb, mrb_value self)
@@ -2272,8 +2503,9 @@ coerce_step_counter(mrb_state *mrb, mrb_value self)
   mrb_get_args(mrb, &quot;oo&quot;, &amp;num, &amp;step);
 
 #ifndef MRB_NO_FLOAT
-  if (mrb_float_p(self) || mrb_float_p(num) || mrb_float_p(step)) {
-    return mrb_Float(mrb, self);
+  mrb-&gt;c-&gt;ci-&gt;mid = 0;
+  if (mrb_float_p(num) || mrb_float_p(step)) {
+    return mrb_ensure_float_type(mrb, self);
   }
 #endif
 
@@ -2287,7 +2519,11 @@ coerce_step_counter(mrb_state *mrb, mrb_value self)
       <div class="method_details ">
   <h3 class="signature " id="ceil-instance_method">
   
-    #<strong>ceil</strong>  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+    
+      <span class="overload">#<strong>ceil</strong>  &#x21d2; <tt><span class='object_link'><a href="" title="Integer (class)">Integer</a></span></tt> </span>
+    
+      <span class="overload">#<strong>ceil</strong>(ndigits)  &#x21d2; <tt><span class='object_link'><a href="" title="Integer (class)">Integer</a></span></tt> </span>
+    
   
 
   
@@ -2296,9 +2532,166 @@ coerce_step_counter(mrb_state *mrb, mrb_value self)
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Returns the receiver simply.</p>
+<p>Returns self.</p>
 
-<p>ISO 15.2.8.3.14</p>
+<p>When the precision (ndigits) is negative, the returned value is an integer with at least <code>ndigits.abs</code> trailing zeros.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <p class="tag_title">Overloads:</p>
+  <ul class="overload">
+    
+      
+      <li class="overload_item">
+        <span class="signature">#<strong>ceil</strong>  &#x21d2; <tt><span class='object_link'><a href="" title="Integer (class)">Integer</a></span></tt> </span>
+        <div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="" title="Integer (class)">Integer</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div>
+
+
+      </li>
+    
+      
+      <li class="overload_item">
+        <span class="signature">#<strong>ceil</strong>(ndigits)  &#x21d2; <tt><span class='object_link'><a href="" title="Integer (class)">Integer</a></span></tt> </span>
+        <div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="" title="Integer (class)">Integer</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div>
+
+
+      </li>
+    
+  </ul>
+
+
+</div>
+
+<table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+1615
+1616
+1617
+1618
+1619
+1620
+1621
+1622
+1623
+1624
+1625
+1626
+1627
+1628
+1629
+1630
+1631
+1632
+1633
+1634</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'mruby/src/numeric.c', line 1615</span>
+
+static mrb_value
+int_ceil(mrb_state *mrb, mrb_value x)
+{
+  mrb_value f = prepare_int_rounding(mrb, x);
+  if (mrb_undef_p(f)) return mrb_fixnum_value(0);
+  if (mrb_nil_p(f)) return x;
+#ifdef MRB_USE_BIGINT
+  if (mrb_bigint_p(x)) {
+    return mrb_bint_add(mrb, x, mrb_bint_sub(mrb, x, mrb_bint_mod(mrb, x, f)));
+  }
+#endif
+  mrb_int a = mrb_integer(x);
+  mrb_int b = mrb_integer(f);
+  int neg = a &lt; 0;
+  if (neg) a = -a;
+  else a += b - 1;
+  a = a / b * b;
+  if (neg) a = -a;
+  return mrb_int_value(mrb, a);
+}</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="ceildiv-instance_method">
+  
+    #<strong>ceildiv</strong>(other)  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>call-seq:</p>
+
+<pre class="code ruby"><code class="ruby">  ceildiv(other) -&gt; integer
+
+Returns the result of division +self+ by +other+. The
+result is rounded up to the nearest integer.
+
+  3.ceildiv(3) # =&gt; 1
+  4.ceildiv(3) # =&gt; 2
+
+  4.ceildiv(-3) # =&gt; -1
+  -4.ceildiv(3) # =&gt; -1
+  -4.ceildiv(-3) # =&gt; 2
+
+  3.ceildiv(1.2) # =&gt; 3
+</code></pre>
 
 
   </div>
@@ -2314,20 +2707,16 @@ coerce_step_counter(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-865
-866
-867
-868
-869</pre>
+96
+97
+98</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/numeric.c', line 865</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-numeric-ext/mrblib/numeric_ext.rb', line 96</span>
 
-static mrb_value
-int_to_i(mrb_state *mrb, mrb_value num)
-{
-  return num;
-}</pre>
+<span class='kw'>def</span> <span class='id identifier rubyid_ceildiv'>ceildiv</span><span class='lparen'>(</span><span class='id identifier rubyid_other'>other</span><span class='rparen'>)</span>
+  <span class='op'>-</span><span class='id identifier rubyid_div'>div</span><span class='lparen'>(</span><span class='op'>-</span><span class='id identifier rubyid_other'>other</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -2336,7 +2725,7 @@ int_to_i(mrb_state *mrb, mrb_value num)
       <div class="method_details ">
   <h3 class="signature " id="div-instance_method">
   
-    #<strong>/</strong>(other)  &#x21d2; <tt><span class='object_link'><a href="" title="Integer (class)">Integer</a></span></tt> 
+    #<strong>div</strong>(other)  &#x21d2; <tt><span class='object_link'><a href="" title="Integer (class)">Integer</a></span></tt> 
   
 
   
@@ -2345,7 +2734,7 @@ int_to_i(mrb_state *mrb, mrb_value num)
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Performs division: the class of the resulting object depends on the class of <code>num</code> and on the magnitude of the result.</p>
+<p>Performs division: resulting integer.</p>
 
 
   </div>
@@ -2387,27 +2776,35 @@ int_to_i(mrb_state *mrb, mrb_value num)
       <pre class="lines">
 
 
-153
-154
-155
-156
-157
-158
-159
-160
-161</pre>
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/numeric.c', line 153</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/numeric.c', line 203</span>
 
 static mrb_value
-int_div(mrb_state *mrb, mrb_value xv)
+int_idiv(mrb_state *mrb, mrb_value x)
 {
-  mrb_int y, div;
+#ifdef MRB_USE_BIGINT
+  if (mrb_bigint_p(x)) {
+    return mrb_bint_div(mrb, x, mrb_get_arg1(mrb));
+  }
+#endif
+  mrb_int y;
 
   mrb_get_args(mrb, &quot;i&quot;, &amp;y);
-  div = mrb_num_div_int(mrb, mrb_integer(xv), y);
-  return mrb_int_value(mrb, div);
+  return mrb_div_int_value(mrb, mrb_integer(x), y);
 }</pre>
     </td>
   </tr>
@@ -2468,58 +2865,64 @@ int_div(mrb_state *mrb, mrb_value xv)
       <pre class="lines">
 
 
-990
-991
-992
-993
-994
-995
-996
-997
-998
-999
-1000
-1001
-1002
-1003
-1004
-1005
-1006
-1007
-1008
-1009
-1010
-1011
-1012
-1013
-1014</pre>
+1275
+1276
+1277
+1278
+1279
+1280
+1281
+1282
+1283
+1284
+1285
+1286
+1287
+1288
+1289
+1290
+1291
+1292
+1293
+1294
+1295
+1296
+1297
+1298
+1299
+1300
+1301
+1302</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/numeric.c', line 990</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/numeric.c', line 1275</span>
 
 static mrb_value
 int_divmod(mrb_state *mrb, mrb_value x)
 {
   mrb_value y = mrb_get_arg1(mrb);
 
+#ifdef MRB_USE_BIGINT
+  if (mrb_bigint_p(x)) {
+#ifndef MRB_NO_FLOAT
+    if (mrb_float_p(y)) {
+      mrb_float f = mrb_bint_as_float(mrb, x);
+      return flo_divmod(mrb, mrb_float_value(mrb, f));
+    }
+#endif
+    return mrb_bint_divmod(mrb, x, y);
+  }
+#endif
   if (mrb_integer_p(y)) {
     mrb_int div, mod;
 
-    fixdivmod(mrb, mrb_integer(x), mrb_integer(y), &amp;div, &amp;mod);
+    intdivmod(mrb, mrb_integer(x), mrb_integer(y), &amp;div, &amp;mod);
     return mrb_assoc_new(mrb, mrb_int_value(mrb, div), mrb_int_value(mrb, mod));
   }
 #ifdef MRB_NO_FLOAT
-  mrb_raise(mrb, E_TYPE_ERROR, &quot;non fixnum value&quot;);
+  mrb_raise(mrb, E_TYPE_ERROR, &quot;non integer divmod&quot;);
 #else
-  else {
-    mrb_float div, mod;
-    mrb_value a, b;
-
-    flodivmod(mrb, (mrb_float)mrb_integer(x), mrb_to_flo(mrb, y), &amp;div, &amp;mod);
-    a = mrb_int_value(mrb, (mrb_int)div);
-    b = mrb_float_value(mrb, mod);
-    return mrb_assoc_new(mrb, a, b);
-  }
+  return flo_divmod(mrb, x);
 #endif
 }</pre>
     </td>
@@ -2587,9 +2990,13 @@ int_divmod(mrb_state *mrb, mrb_value x)
 </div>
     
       <div class="method_details ">
-  <h3 class="signature " id="eql?-instance_method">
+  <h3 class="signature " id="floor-instance_method">
   
-    #<strong>eql?</strong>(numeric)  &#x21d2; <tt>Boolean</tt> 
+    
+      <span class="overload">#<strong>floor</strong>  &#x21d2; <tt><span class='object_link'><a href="" title="Integer (class)">Integer</a></span></tt> </span>
+    
+      <span class="overload">#<strong>floor</strong>(ndigits)  &#x21d2; <tt><span class='object_link'><a href="" title="Integer (class)">Integer</a></span></tt> </span>
+    
   
 
   
@@ -2598,19 +3005,22 @@ int_divmod(mrb_state *mrb, mrb_value x)
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Returns <code>true</code> if <em>num</em> and <em>numeric</em> are the same type and have equal values.</p>
+<p>Returns self.</p>
 
-<pre class="code"><code class=""><span class='int'>1</span> <span class='op'>==</span> <span class='float'>1.0</span>          <span class='comment'>#=&gt; true
-</span><span class='int'>1</span><span class='period'>.</span><span class='id identifier rubyid_eql?'>eql?</span><span class='lparen'>(</span><span class='float'>1.0</span><span class='rparen'>)</span>       <span class='comment'>#=&gt; false
-</span><span class='lparen'>(</span><span class='float'>1.0</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_eql?'>eql?</span><span class='lparen'>(</span><span class='float'>1.0</span><span class='rparen'>)</span>   <span class='comment'>#=&gt; true
-</span></code></pre>
+<p>When the precision (ndigits) is negative, the returned value is an integer with at least <code>ndigits.abs</code> trailing zeros.</p>
 
 
   </div>
 </div>
 <div class="tags">
   
-  <div class="docstring">
+  <p class="tag_title">Overloads:</p>
+  <ul class="overload">
+    
+      
+      <li class="overload_item">
+        <span class="signature">#<strong>floor</strong>  &#x21d2; <tt><span class='object_link'><a href="" title="Integer (class)">Integer</a></span></tt> </span>
+        <div class="docstring">
   <div class="discussion">
     
 
@@ -2624,7 +3034,7 @@ int_divmod(mrb_state *mrb, mrb_value x)
     <li>
       
       
-        <span class='type'>(<tt>Boolean</tt>)</span>
+        <span class='type'>(<tt><span class='object_link'><a href="" title="Integer (class)">Integer</a></span></tt>)</span>
       
       
       
@@ -2635,6 +3045,39 @@ int_divmod(mrb_state *mrb, mrb_value x)
 </div>
 
 
+      </li>
+    
+      
+      <li class="overload_item">
+        <span class="signature">#<strong>floor</strong>(ndigits)  &#x21d2; <tt><span class='object_link'><a href="" title="Integer (class)">Integer</a></span></tt> </span>
+        <div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="" title="Integer (class)">Integer</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div>
+
+
+      </li>
+    
+  </ul>
 
 
 </div>
@@ -2645,25 +3088,47 @@ int_divmod(mrb_state *mrb, mrb_value x)
       <pre class="lines">
 
 
-445
-446
-447
-448
-449
-450
-451
-452</pre>
+1647
+1648
+1649
+1650
+1651
+1652
+1653
+1654
+1655
+1656
+1657
+1658
+1659
+1660
+1661
+1662
+1663
+1664
+1665</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/numeric.c', line 445</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/numeric.c', line 1647</span>
 
 static mrb_value
-int_eql(mrb_state *mrb, mrb_value x)
+int_floor(mrb_state *mrb, mrb_value x)
 {
-  mrb_value y = mrb_get_arg1(mrb);
-
-  if (!mrb_integer_p(y)) return mrb_false_value();
-  return mrb_bool_value(mrb_integer(x) == mrb_integer(y));
+  mrb_value f = prepare_int_rounding(mrb, x);
+  if (mrb_undef_p(f)) return mrb_fixnum_value(0);
+  if (mrb_nil_p(f)) return x;
+#ifdef MRB_USE_BIGINT
+  if (mrb_bigint_p(x)) {
+    return mrb_bint_sub(mrb, x, mrb_bint_mod(mrb, x, f));
+  }
+#endif
+  mrb_int a = mrb_integer(x);
+  mrb_int b = mrb_integer(f);
+  int neg = a &lt; 0;
+  if (neg) a = -a + b - 1;
+  a = a / b * b;
+  if (neg) a = -a;
+  return mrb_int_value(mrb, a);
 }</pre>
     </td>
   </tr>
@@ -2671,24 +3136,18 @@ int_eql(mrb_state *mrb, mrb_value x)
 </div>
     
       <div class="method_details ">
-  <h3 class="signature " id="floor-instance_method">
+  <h3 class="signature " id="hash-instance_method">
   
-    #<strong>floor</strong>  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+    #<strong>hash</strong>  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
   
 
-  
-    <span class="aliases">Also known as:
-    <span class="names"><span id='round-instance_method'>round</span>, <span id='truncate-instance_method'>truncate</span></span>
-    </span>
   
 
   
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Returns the receiver simply.</p>
-
-<p>ISO 15.2.8.3.17</p>
+<p>15.2.8.3.18</p>
 
 
   </div>
@@ -2704,19 +3163,31 @@ int_eql(mrb_state *mrb, mrb_value x)
       <pre class="lines">
 
 
-865
-866
-867
-868
-869</pre>
+2038
+2039
+2040
+2041
+2042
+2043
+2044
+2045
+2046
+2047
+2048</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/numeric.c', line 865</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/numeric.c', line 2038</span>
 
 static mrb_value
-int_to_i(mrb_state *mrb, mrb_value num)
+int_hash(mrb_state *mrb, mrb_value self)
 {
-  return num;
+#ifdef MRB_USE_BIGINT
+  if (mrb_bigint_p(self)) {
+    return mrb_bint_hash(mrb, self);
+  }
+#endif
+  mrb_int n = mrb_integer(self);
+  return mrb_int_value(mrb, mrb_byte_hash((uint8_t*)&amp;n, sizeof(n)));
 }</pre>
     </td>
   </tr>
@@ -2735,7 +3206,7 @@ int_to_i(mrb_state *mrb, mrb_value num)
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Returns a string containing the representation of <em>fix</em> radix <em>base</em> (between 2 and 36).</p>
+<p>Returns a string containing the representation of <em>int</em> radix <em>base</em> (between 2 and 36).</p>
 
 <pre class="code"><code class=""><span class='int'>12345</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>       <span class='comment'>#=&gt; &quot;12345&quot;
 </span><span class='int'>12345</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='lparen'>(</span><span class='int'>2</span><span class='rparen'>)</span>    <span class='comment'>#=&gt; &quot;11000000111001&quot;
@@ -2785,17 +3256,17 @@ int_to_i(mrb_state *mrb, mrb_value num)
       <pre class="lines">
 
 
-1441
-1442
-1443
-1444
-1445
-1446
-1447
-1448</pre>
+1978
+1979
+1980
+1981
+1982
+1983
+1984
+1985</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/numeric.c', line 1441</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/numeric.c', line 1978</span>
 
 static mrb_value
 int_to_s(mrb_state *mrb, mrb_value self)
@@ -2803,7 +3274,7 @@ int_to_s(mrb_state *mrb, mrb_value self)
   mrb_int base = 10;
 
   mrb_get_args(mrb, &quot;|i&quot;, &amp;base);
-  return mrb_fixnum_to_str(mrb, self, base);
+  return mrb_integer_to_str(mrb, self, base);
 }</pre>
     </td>
   </tr>
@@ -2862,7 +3333,7 @@ int_to_s(mrb_state *mrb, mrb_value self)
       <div class="method_details ">
   <h3 class="signature " id="quo-instance_method">
   
-    #<strong>quo</strong>(numeric)  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+    #<strong>quo</strong>  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
   
 
   
@@ -2871,14 +3342,200 @@ int_to_s(mrb_state *mrb, mrb_value self)
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Returns most exact division.</p>
+<p>15.2.7.4.5(x)</p>
 
 
   </div>
 </div>
 <div class="tags">
   
+
+</div>
+
+<table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'mruby/src/numeric.c', line 217</span>
+
+static mrb_value
+int_quo(mrb_state *mrb, mrb_value x)
+{
+#ifndef MRB_USE_RATIONAL
+#ifdef MRB_NO_FLOAT
+  return int_idiv(mrb, x);
+#else
+  mrb_float y;
+
+  mrb_get_args(mrb, &quot;f&quot;, &amp;y);
+  if (y == 0) {
+    mrb_int_zerodiv(mrb);
+  }
+#ifdef MRB_USE_BIGINT
+  if (mrb_bigint_p(x)) {
+    return mrb_float_value(mrb, mrb_bint_as_float(mrb, x) / y);
+  }
+#endif
+  return mrb_float_value(mrb, mrb_integer(x) / y);
+#endif
+#else
+  mrb_int a = mrb_integer(x);
+  mrb_value y = mrb_get_arg1(mrb);
+  if (mrb_integer_p(y) &amp;&amp; mrb_class_defined_id(mrb, MRB_SYM(Rational))) {
+    return mrb_rational_new(mrb, a, mrb_integer(y));
+  }
+  switch (mrb_type(y)) {
+  case MRB_TT_RATIONAL:
+    x = mrb_rational_new(mrb, a, 1);
+    return mrb_rational_div(mrb, x, y);
+  default:
+#ifndef MRB_NO_FLOAT
+    return mrb_float_value(mrb, mrb_div_float((mrb_float)a, mrb_as_float(mrb, y)));
+#else
+    mrb_int_noconv(mrb, y);
+    break;
+#endif
+  }
+#endif
+}</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="round-instance_method">
   
+    
+      <span class="overload">#<strong>round</strong>  &#x21d2; <tt><span class='object_link'><a href="" title="Integer (class)">Integer</a></span></tt> </span>
+    
+      <span class="overload">#<strong>round</strong>(ndigits)  &#x21d2; <tt><span class='object_link'><a href="" title="Integer (class)">Integer</a></span></tt> </span>
+    
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns self.</p>
+
+<p>When the precision (ndigits) is negative, the returned value is an integer with at least <code>ndigits.abs</code> trailing zeros.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <p class="tag_title">Overloads:</p>
+  <ul class="overload">
+    
+      
+      <li class="overload_item">
+        <span class="signature">#<strong>round</strong>  &#x21d2; <tt><span class='object_link'><a href="" title="Integer (class)">Integer</a></span></tt> </span>
+        <div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="" title="Integer (class)">Integer</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div>
+
+
+      </li>
+    
+      
+      <li class="overload_item">
+        <span class="signature">#<strong>round</strong>(ndigits)  &#x21d2; <tt><span class='object_link'><a href="" title="Integer (class)">Integer</a></span></tt> </span>
+        <div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="" title="Integer (class)">Integer</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div>
+
+
+      </li>
+    
+  </ul>
 
 
 </div>
@@ -2889,51 +3546,63 @@ int_to_s(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-171
-172
-173
-174
-175
-176
-177
-178
-179
-180
-181
-182
-183
-184
-185
-186
-187
-188
-189
-190
-191</pre>
+1678
+1679
+1680
+1681
+1682
+1683
+1684
+1685
+1686
+1687
+1688
+1689
+1690
+1691
+1692
+1693
+1694
+1695
+1696
+1697
+1698
+1699
+1700
+1701
+1702
+1703
+1704</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/numeric.c', line 171</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/numeric.c', line 1678</span>
 
 static mrb_value
-int_quo(mrb_state *mrb, mrb_value xv)
+int_round(mrb_state *mrb, mrb_value x)
 {
-#ifdef MRB_NO_FLOAT
-  mrb_int y;
-
-  mrb_get_args(mrb, &quot;i&quot;, &amp;y);
-  if (y == 0) {
-    int_zerodiv(mrb);
+  mrb_value f = prepare_int_rounding(mrb, x);
+  if (mrb_undef_p(f)) return mrb_fixnum_value(0);
+  if (mrb_nil_p(f)) return x;
+#ifdef MRB_USE_BIGINT
+  if (mrb_bigint_p(x)) {
+    mrb_value r = mrb_bint_mod(mrb, x, f);
+    mrb_value n = mrb_bint_sub(mrb, x, r);
+    mrb_value h = mrb_bigint_p(f) ? mrb_bint_rshift(mrb, f, 1) : mrb_int_value(mrb, mrb_integer(f)&gt;&gt;1);
+    mrb_int cmp = mrb_bigint_p(r) ? mrb_bint_cmp(mrb, r, h) : (mrb_integer(r) - mrb_integer(h));
+    if ((cmp &gt; 0) || (cmp == 0 &amp;&amp; mrb_bint_cmp(mrb, x, mrb_fixnum_value(0)) &gt; 0)) {
+      n = mrb_as_bint(mrb, n);
+      n = mrb_bint_add(mrb, n, f);
+    }
+    return n;
   }
-  return mrb_fixnum_value(mrb_integer(xv) / y);
-#else
-  mrb_float y;
-
-  mrb_get_args(mrb, &quot;f&quot;, &amp;y);
-  if (y == 0) {
-    int_zerodiv(mrb);
-  }
-  return mrb_float_value(mrb, mrb_integer(xv) / y);
 #endif
+  mrb_int a = mrb_integer(x);
+  mrb_int b = mrb_integer(f);
+  int neg = a &lt; 0;
+  if (neg) a = -a;
+  a = (a + b / 2) / b * b;
+  if (neg) a = -a;
+  return mrb_int_value(mrb, a);
 }</pre>
     </td>
   </tr>
@@ -3127,18 +3796,28 @@ int_quo(mrb_state *mrb, mrb_value xv)
       <pre class="lines">
 
 
-1238
-1239
-1240
-1241
-1242</pre>
+1753
+1754
+1755
+1756
+1757
+1758
+1759
+1760
+1761
+1762</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/numeric.c', line 1238</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/numeric.c', line 1753</span>
 
 static mrb_value
 int_to_f(mrb_state *mrb, mrb_value num)
 {
+#ifdef MRB_USE_BIGINT
+  if (mrb_bigint_p(num)) {
+    return mrb_float_value(mrb, mrb_bint_as_float(mrb, num));
+  }
+#endif
   return mrb_float_value(mrb, (mrb_float)mrb_integer(num));
 }</pre>
     </td>
@@ -3200,14 +3879,14 @@ int_to_f(mrb_state *mrb, mrb_value num)
       <pre class="lines">
 
 
-865
-866
-867
-868
-869</pre>
+1120
+1121
+1122
+1123
+1124</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/numeric.c', line 865</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/numeric.c', line 1120</span>
 
 static mrb_value
 int_to_i(mrb_state *mrb, mrb_value num)
@@ -3273,14 +3952,14 @@ int_to_i(mrb_state *mrb, mrb_value num)
       <pre class="lines">
 
 
-865
-866
-867
-868
-869</pre>
+1120
+1121
+1122
+1123
+1124</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/numeric.c', line 865</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/numeric.c', line 1120</span>
 
 static mrb_value
 int_to_i(mrb_state *mrb, mrb_value num)
@@ -3304,7 +3983,7 @@ int_to_i(mrb_state *mrb, mrb_value num)
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Returns a string containing the representation of <em>fix</em> radix <em>base</em> (between 2 and 36).</p>
+<p>Returns a string containing the representation of <em>int</em> radix <em>base</em> (between 2 and 36).</p>
 
 <pre class="code"><code class=""><span class='int'>12345</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>       <span class='comment'>#=&gt; &quot;12345&quot;
 </span><span class='int'>12345</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='lparen'>(</span><span class='int'>2</span><span class='rparen'>)</span>    <span class='comment'>#=&gt; &quot;11000000111001&quot;
@@ -3354,17 +4033,17 @@ int_to_i(mrb_state *mrb, mrb_value num)
       <pre class="lines">
 
 
-1441
-1442
-1443
-1444
-1445
-1446
-1447
-1448</pre>
+1978
+1979
+1980
+1981
+1982
+1983
+1984
+1985</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/numeric.c', line 1441</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/numeric.c', line 1978</span>
 
 static mrb_value
 int_to_s(mrb_state *mrb, mrb_value self)
@@ -3372,7 +4051,165 @@ int_to_s(mrb_state *mrb, mrb_value self)
   mrb_int base = 10;
 
   mrb_get_args(mrb, &quot;|i&quot;, &amp;base);
-  return mrb_fixnum_to_str(mrb, self, base);
+  return mrb_integer_to_str(mrb, self, base);
+}</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="truncate-instance_method">
+  
+    
+      <span class="overload">#<strong>truncate</strong>  &#x21d2; <tt><span class='object_link'><a href="" title="Integer (class)">Integer</a></span></tt> </span>
+    
+      <span class="overload">#<strong>truncate</strong>(ndigits)  &#x21d2; <tt><span class='object_link'><a href="" title="Integer (class)">Integer</a></span></tt> </span>
+    
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns self.</p>
+
+<p>When the precision (ndigits) is negative, the returned value is an integer with at least <code>ndigits.abs</code> trailing zeros.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <p class="tag_title">Overloads:</p>
+  <ul class="overload">
+    
+      
+      <li class="overload_item">
+        <span class="signature">#<strong>truncate</strong>  &#x21d2; <tt><span class='object_link'><a href="" title="Integer (class)">Integer</a></span></tt> </span>
+        <div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="" title="Integer (class)">Integer</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div>
+
+
+      </li>
+    
+      
+      <li class="overload_item">
+        <span class="signature">#<strong>truncate</strong>(ndigits)  &#x21d2; <tt><span class='object_link'><a href="" title="Integer (class)">Integer</a></span></tt> </span>
+        <div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="" title="Integer (class)">Integer</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div>
+
+
+      </li>
+    
+  </ul>
+
+
+</div>
+
+<table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+1717
+1718
+1719
+1720
+1721
+1722
+1723
+1724
+1725
+1726
+1727
+1728
+1729
+1730
+1731
+1732
+1733
+1734
+1735
+1736
+1737
+1738
+1739
+1740
+1741</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'mruby/src/numeric.c', line 1717</span>
+
+static mrb_value
+int_truncate(mrb_state *mrb, mrb_value x)
+{
+  mrb_value f = prepare_int_rounding(mrb, x);
+  if (mrb_undef_p(f)) return mrb_fixnum_value(0);
+  if (mrb_nil_p(f)) return x;
+#ifdef MRB_USE_BIGINT
+  if (mrb_bigint_p(x)) {
+    mrb_value m = mrb_bint_mod(mrb, x, f);
+    if (mrb_bint_cmp(mrb, x, mrb_fixnum_value(0)) &lt; 0) {
+      return mrb_bint_add(mrb, x, mrb_bint_sub(mrb, x, m));
+    }
+    else {
+      return mrb_bint_sub(mrb, x, m);
+    }
+  }
+#endif
+  mrb_int a = mrb_integer(x);
+  mrb_int b = mrb_integer(f);
+  int neg = a &lt; 0;
+  if (neg) a = -a;
+  a = a / b * b;
+  if (neg) a = -a;
+  return mrb_int_value(mrb, a);
 }</pre>
     </td>
   </tr>
@@ -3468,22 +4305,38 @@ int_to_s(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-1117
-1118
-1119
-1120
-1121
-1122
-1123</pre>
+1433
+1434
+1435
+1436
+1437
+1438
+1439
+1440
+1441
+1442
+1443
+1444
+1445
+1446
+1447</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/numeric.c', line 1117</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/numeric.c', line 1433</span>
 
 static mrb_value
 int_or(mrb_state *mrb, mrb_value x)
 {
   mrb_value y = mrb_get_arg1(mrb);
 
+#ifdef MRB_USE_BIGINT
+  if (mrb_bigint_p(x)) {
+    return mrb_bint_or(mrb, x, y);
+  }
+  if (mrb_bigint_p(y)) {
+    return mrb_bint_or(mrb, mrb_as_bint(mrb, x), y);
+  }
+#endif
   bit_op(x, y, or, |);
 }</pre>
     </td>
@@ -3503,7 +4356,7 @@ int_or(mrb_state *mrb, mrb_value x)
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>One&#39;s complement: returns a number where each bit is flipped.</p>
+<p>One’s complement: returns a number where each bit is flipped.</p>
 
 <pre class="code"><code class="">ex.0---00001 (1)-&gt; 1---11110 (-2)
 ex.0---00010 (2)-&gt; 1---11101 (-3)
@@ -3550,22 +4403,32 @@ ex.0---00100 (4)-&gt; 1---11011 (-5)
       <pre class="lines">
 
 
-1071
-1072
-1073
-1074
-1075
-1076
-1077</pre>
+1374
+1375
+1376
+1377
+1378
+1379
+1380
+1381
+1382
+1383
+1384
+1385</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/numeric.c', line 1071</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/numeric.c', line 1374</span>
 
 static mrb_value
 int_rev(mrb_state *mrb, mrb_value num)
 {
   mrb_int val = mrb_integer(num);
 
+#ifdef MRB_USE_BIGINT
+  if (mrb_bigint_p(num)) {
+    mrb_bint_rev(mrb, num);
+  }
+#endif
   return mrb_int_value(mrb, ~val);
 }</pre>
     </td>
@@ -3578,9 +4441,9 @@ int_rev(mrb_state *mrb, mrb_value num)
 </div>
 
       <div id="footer">
-  Generated on Mon Mar 22 18:11:13 2021 by
+  Generated on Sun Oct 29 05:51:34 2023 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.26 in <a href="https://github.com/sagmor/yard-mruby">mruby mode</a> 0.3.0 (ruby-2.7.2).
+  0.9.34 in <a href="https://github.com/sagmor/yard-mruby">mruby mode</a> 0.3.0 (ruby-3.2.2).
 </div>
 
     </div>

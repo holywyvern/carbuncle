@@ -6,7 +6,7 @@
 <title>
   Class: Fiber
   
-    &mdash; Documentation by YARD 0.9.26
+    &mdash; Documentation by YARD 0.9.34
   
 </title>
 
@@ -182,7 +182,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Creates a fiber, whose execution is suspend until it is explicitly resumed using <code>Fiber#resume</code> method.</p>
+<p>Creates a fiber, whose execution is suspended until it is explicitly resumed using <code>Fiber#resume</code> method.</p>
 </div></span>
   
 </li>
@@ -254,7 +254,7 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Creates a fiber, whose execution is suspend until it is explicitly resumed using <code>Fiber#resume</code> method. The code running inside the fiber can give up control by calling <code>Fiber.yield</code> in which case it yields control back to caller (the caller of the <code>Fiber#resume</code>).</p>
+<p>Creates a fiber, whose execution is suspended until it is explicitly resumed using <code>Fiber#resume</code> method. The code running inside the fiber can give up control by calling <code>Fiber.yield</code> in which case it yields control back to caller (the caller of the <code>Fiber#resume</code>).</p>
 
 <p>Upon yielding or termination the Fiber returns the value of the last executed expression</p>
 
@@ -342,8 +342,6 @@
       <pre class="lines">
 
 
-64
-65
 66
 67
 68
@@ -408,12 +406,10 @@
 127
 128
 129
-130
-131
-132</pre>
+130</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-fiber/src/fiber.c', line 64</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-fiber/src/fiber.c', line 66</span>
 
 static mrb_value
 fiber_init(mrb_state *mrb, mrb_value self)
@@ -448,7 +444,6 @@ fiber_init(mrb_state *mrb, mrb_value self)
   c-&gt;stbase = (mrb_value *)mrb_malloc(mrb, slen*sizeof(mrb_value));
   c-&gt;stend = c-&gt;stbase + slen;
 
-#ifdef MRB_NAN_BOXING
   {
     mrb_value *p = c-&gt;stbase;
     mrb_value *pend = c-&gt;stend;
@@ -458,9 +453,6 @@ fiber_init(mrb_state *mrb, mrb_value self)
       p++;
     }
   }
-#else
-  memset(c-&gt;stbase, 0, slen * sizeof(mrb_value));
-#endif
 
   /* copy receiver from a block */
   c-&gt;stbase[0] = mrb-&gt;c-&gt;ci-&gt;stack[0];
@@ -511,19 +503,19 @@ fiber_init(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-295
-296
-297
-298
-299
-300
-301
-302
-303
-304</pre>
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-fiber/src/fiber.c', line 295</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-fiber/src/fiber.c', line 334</span>
 
 static mrb_value
 fiber_eq(mrb_state *mrb, mrb_value self)
@@ -588,9 +580,11 @@ fiber_eq(mrb_state *mrb, mrb_value self)
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Resumes the fiber from the point at which the last <code>Fiber.yield</code> was called, or starts running it if it is the first call to <code>resume</code>. Arguments passed to resume will be the value of the <code>Fiber.yield</code> expression or will be passed as block parameters to the fiber&#39;s block if this is the first <code>resume</code>.</p>
+<p>Resumes the fiber from the point at which the last <code>Fiber.yield</code> was called, or starts running it if it is the first call to <code>resume</code>. Arguments passed to resume will be the value of the <code>Fiber.yield</code> expression or will be passed as block parameters to the fiber’s block if this is the first <code>resume</code>.</p>
 
-<p>Alternatively, when resume is called it evaluates to the arguments passed to the next <code>Fiber.yield</code> statement inside the fiber&#39;s block or to the block value if it runs to completion without any <code>Fiber.yield</code></p>
+<p>Alternatively, when resume is called it evaluates to the arguments passed to the next <code>Fiber.yield</code> statement inside the fiber’s block or to the block value if it runs to completion without any <code>Fiber.yield</code></p>
+
+<p>This method cannot be called from C using <code>mrb_funcall()</code>. Use <code>mrb_fiber_resume()</code> function instead.</p>
 
 
   </div>
@@ -632,22 +626,23 @@ fiber_eq(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-259
-260
-261
-262
-263
-264
-265
-266
-267
-268
-269
-270
-271</pre>
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-fiber/src/fiber.c', line 259</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-fiber/src/fiber.c', line 298</span>
 
 static mrb_value
 fiber_resume(mrb_state *mrb, mrb_value self)
@@ -656,8 +651,9 @@ fiber_resume(mrb_state *mrb, mrb_value self)
   mrb_int len;
   mrb_bool vmexec = FALSE;
 
+  fiber_check_cfunc(mrb, mrb-&gt;c);
   mrb_get_args(mrb, &quot;*!&quot;, &amp;a, &amp;len);
-  if (mrb-&gt;c-&gt;ci-&gt;acc &lt; 0) {
+  if (mrb-&gt;c-&gt;ci-&gt;cci &gt; 0) {
     vmexec = TRUE;
   }
   return fiber_switch(mrb, self, len, a, TRUE, vmexec);
@@ -679,7 +675,7 @@ fiber_resume(mrb_state *mrb, mrb_value self)
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Transfers control to receiver fiber of the method call. Unlike <code>resume</code> the receiver wouldn&#39;t be pushed to call stack of fibers. Instead it will switch to the call stack of transferring fiber. When resuming a fiber that was transferred to another fiber it would cause double resume error. Though when the fiber is re-transferred and <code>Fiber.yield</code> is called, the fiber would be resumable.</p>
+<p>Transfers control to receiver fiber of the method call. Unlike <code>resume</code> the receiver wouldn’t be pushed to call stack of fibers. Instead it will switch to the call stack of transferring fiber. When resuming a fiber that was transferred to another fiber it would cause double resume error. Though when the fiber is re-transferred and <code>Fiber.yield</code> is called, the fiber would be resumable.</p>
 
 
   </div>
@@ -721,32 +717,36 @@ fiber_resume(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-318
-319
-320
-321
-322
-323
-324
-325
-326
-327
-328
-329
-330
-331
-332
-333
-334
-335
-336
-337
-338
-339
-340</pre>
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366
+367
+368
+369
+370
+371
+372
+373
+374
+375
+376
+377
+378
+379
+380
+381
+382
+383</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-fiber/src/fiber.c', line 318</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-fiber/src/fiber.c', line 357</span>
 
 static mrb_value
 fiber_transfer(mrb_state *mrb, mrb_value self)
@@ -757,6 +757,10 @@ fiber_transfer(mrb_state *mrb, mrb_value self)
 
   fiber_check_cfunc(mrb, mrb-&gt;c);
   mrb_get_args(mrb, &quot;*!&quot;, &amp;a, &amp;len);
+
+  if (c-&gt;status == MRB_FIBER_RESUMED) {
+    mrb_raise(mrb, E_FIBER_ERROR, &quot;attempt to transfer to a resuming fiber&quot;);
+  }
 
   if (c == mrb-&gt;root_c) {
     mrb-&gt;c-&gt;status = MRB_FIBER_TRANSFERRED;
@@ -781,9 +785,9 @@ fiber_transfer(mrb_state *mrb, mrb_value self)
 </div>
 
       <div id="footer">
-  Generated on Mon Mar 22 18:11:13 2021 by
+  Generated on Sun Oct 29 05:51:34 2023 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.26 in <a href="https://github.com/sagmor/yard-mruby">mruby mode</a> 0.3.0 (ruby-2.7.2).
+  0.9.34 in <a href="https://github.com/sagmor/yard-mruby">mruby mode</a> 0.3.0 (ruby-3.2.2).
 </div>
 
     </div>

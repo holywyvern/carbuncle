@@ -6,7 +6,7 @@
 <title>
   Class: Numeric
   
-    &mdash; Documentation by YARD 0.9.26
+    &mdash; Documentation by YARD 0.9.34
   
 </title>
 
@@ -104,7 +104,7 @@
   <dl>
     <dt>Defined in:</dt>
     <dd>mruby/mrblib/numeric.rb<span class="defines">,<br />
-  mruby/src/numeric.c,<br /> mruby/mrbgems/mruby-rational/mrblib/rational.rb,<br /> mruby/mrbgems/mruby-numeric-ext/mrblib/numeric_ext.rb</span>
+  mruby/src/numeric.c,<br /> mruby/mrbgems/mruby-complex/mrblib/complex.rb,<br /> mruby/mrbgems/mruby-rational/mrblib/rational.rb,<br /> mruby/mrbgems/mruby-numeric-ext/mrblib/numeric_ext.rb</span>
 </dd>
   </dl>
   
@@ -186,7 +186,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Returns the receiver&#39;s value, negated.</p>
+<p>Returns the receiver’s value, negated.</p>
 </div></span>
   
 </li>
@@ -211,6 +211,78 @@
   
     <span class="summary_desc"><div class='inline'>
 <p>Returns the absolute value of the receiver.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#allbits%3F-instance_method" title="#allbits? (instance method)">#<strong>allbits?</strong>(mask)  &#x21d2; Boolean </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>call-seq:    int.allbits?(mask)  -&gt;  true or false.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#anybits%3F-instance_method" title="#anybits? (instance method)">#<strong>anybits?</strong>(mask)  &#x21d2; Boolean </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>call-seq:    int.anybits?(mask)  -&gt;  true or false.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#eql%3F-instance_method" title="#eql? (instance method)">#<strong>eql?</strong>(numeric)  &#x21d2; Boolean </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns <code>true</code> if <em>num</em> and <em>numeric</em> are the same type and have equal values.</p>
 </div></span>
   
 </li>
@@ -279,7 +351,33 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>call-seq:    negative? -&gt; true or false.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#nobits%3F-instance_method" title="#nobits? (instance method)">#<strong>nobits?</strong>(mask)  &#x21d2; Boolean </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>call-seq:    int.nobits?(mask)  -&gt;  true or false.</p>
+</div></span>
   
 </li>
 
@@ -301,7 +399,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>call-seq:    nonzero?  -&gt;  self or nil.</p>
+</div></span>
   
 </li>
 
@@ -310,6 +410,30 @@
   <span class="summary_signature">
     
       <a href="#positive%3F-instance_method" title="#positive? (instance method)">#<strong>positive?</strong>  &#x21d2; Boolean </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>call-seq:    positive? -&gt; true or false.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#to_c-instance_method" title="#to_c (instance method)">#<strong>to_c</strong>  &#x21d2; Object </a>
     
 
     
@@ -367,7 +491,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>call-seq:    zero? -&gt; true or false.</p>
+</div></span>
   
 </li>
 
@@ -449,7 +575,7 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Returns the receiver&#39;s value, negated.</p>
+<p>Returns the receiver’s value, negated.</p>
 
 <p>ISO 15.2.7.4.2</p>
 
@@ -536,6 +662,240 @@
 </div>
     
       <div class="method_details ">
+  <h3 class="signature " id="allbits?-instance_method">
+  
+    #<strong>allbits?</strong>(mask)  &#x21d2; <tt>Boolean</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>call-seq:</p>
+
+<pre class="code ruby"><code class="ruby">  int.allbits?(mask)  -&gt;  true or false
+
+Returns +true+ if all bits of &lt;code&gt;+int+ &amp; +mask+&lt;/code&gt; are 1.
+</code></pre>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div>
+
+<table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+56
+57
+58</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-numeric-ext/mrblib/numeric_ext.rb', line 56</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_allbits?'>allbits?</span><span class='lparen'>(</span><span class='id identifier rubyid_mask'>mask</span><span class='rparen'>)</span>
+  <span class='lparen'>(</span><span class='kw'>self</span> <span class='op'>&amp;</span> <span class='id identifier rubyid_mask'>mask</span><span class='rparen'>)</span> <span class='op'>==</span> <span class='id identifier rubyid_mask'>mask</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="anybits?-instance_method">
+  
+    #<strong>anybits?</strong>(mask)  &#x21d2; <tt>Boolean</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>call-seq:</p>
+
+<pre class="code ruby"><code class="ruby">  int.anybits?(mask)  -&gt;  true or false
+
+Returns +true+ if any bits of &lt;code&gt;+int+ &amp; +mask+&lt;/code&gt; are 1.
+</code></pre>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div>
+
+<table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+66
+67
+68</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-numeric-ext/mrblib/numeric_ext.rb', line 66</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_anybits?'>anybits?</span><span class='lparen'>(</span><span class='id identifier rubyid_mask'>mask</span><span class='rparen'>)</span>
+  <span class='lparen'>(</span><span class='kw'>self</span> <span class='op'>&amp;</span> <span class='id identifier rubyid_mask'>mask</span><span class='rparen'>)</span> <span class='op'>!=</span> <span class='int'>0</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="eql?-instance_method">
+  
+    #<strong>eql?</strong>(numeric)  &#x21d2; <tt>Boolean</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns <code>true</code> if <em>num</em> and <em>numeric</em> are the same type and have equal values.</p>
+
+<pre class="code"><code class=""><span class='int'>1</span> <span class='op'>==</span> <span class='float'>1.0</span>          <span class='comment'>#=&gt; true
+</span><span class='int'>1</span><span class='period'>.</span><span class='id identifier rubyid_eql?'>eql?</span><span class='lparen'>(</span><span class='float'>1.0</span><span class='rparen'>)</span>       <span class='comment'>#=&gt; false
+</span><span class='lparen'>(</span><span class='float'>1.0</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_eql?'>eql?</span><span class='lparen'>(</span><span class='float'>1.0</span><span class='rparen'>)</span>   <span class='comment'>#=&gt; true
+</span></code></pre>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div>
+
+
+
+
+</div>
+
+<table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+557
+558
+559
+560
+561
+562
+563
+564
+565
+566
+567
+568
+569
+570
+571
+572
+573
+574
+575
+576
+577
+578</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'mruby/src/numeric.c', line 557</span>
+
+static mrb_value
+num_eql(mrb_state *mrb, mrb_value x)
+{
+  mrb_value y = mrb_get_arg1(mrb);
+
+#ifdef MRB_USE_BIGINT
+  if (mrb_bigint_p(x)) {
+    return mrb_bool_value(mrb_bint_cmp(mrb, x, y) == 0);
+  }
+#endif
+#ifndef MRB_NO_FLOAT
+  if (mrb_float_p(x)) {
+    if (!mrb_float_p(y)) return mrb_false_value();
+    return mrb_bool_value(mrb_float(x) == mrb_float(y));
+  }
+#endif
+  if (mrb_integer_p(x)) {
+    if (!mrb_integer_p(y)) return mrb_false_value();
+    return mrb_bool_value(mrb_integer(x) == mrb_integer(y));
+  }
+  return mrb_bool_value(mrb_equal(mrb, x, y));
+}</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
   <h3 class="signature " id="finite?-instance_method">
   
     #<strong>finite?</strong>  &#x21d2; <tt>Boolean</tt> 
@@ -576,14 +936,14 @@
       <pre class="lines">
 
 
-1588
-1589
-1590
-1591
-1592</pre>
+2151
+2152
+2153
+2154
+2155</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/numeric.c', line 1588</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/numeric.c', line 2151</span>
 
 static mrb_value
 num_finite_p(mrb_state *mrb, mrb_value self)
@@ -634,14 +994,14 @@ num_finite_p(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-1594
-1595
-1596
-1597
-1598</pre>
+2157
+2158
+2159
+2160
+2161</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/src/numeric.c', line 1594</span>
+      <pre class="code"><span class="info file"># File 'mruby/src/numeric.c', line 2157</span>
 
 static mrb_value
 num_infinite_p(mrb_state *mrb, mrb_value self)
@@ -665,6 +1025,13 @@ num_infinite_p(mrb_state *mrb, mrb_value self)
 </h3><div class="docstring">
   <div class="discussion">
     
+<p>call-seq:</p>
+
+<pre class="code ruby"><code class="ruby">  negative? -&gt; true or false
+
+Returns +true+ if +self+ is less than 0, +false+ otherwise.
+</code></pre>
+
 
   </div>
 </div>
@@ -692,15 +1059,76 @@ num_infinite_p(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-18
-19
-20</pre>
+46
+47
+48</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-numeric-ext/mrblib/numeric_ext.rb', line 18</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-numeric-ext/mrblib/numeric_ext.rb', line 46</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_negative?'>negative?</span>
   <span class='kw'>self</span> <span class='op'>&lt;</span> <span class='int'>0</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="nobits?-instance_method">
+  
+    #<strong>nobits?</strong>(mask)  &#x21d2; <tt>Boolean</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>call-seq:</p>
+
+<pre class="code ruby"><code class="ruby">  int.nobits?(mask)  -&gt;  true or false
+
+Returns +true+ if no bits of &lt;code&gt;+int+ &amp; +mask+&lt;/code&gt; are 1.
+</code></pre>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div>
+
+<table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+76
+77
+78</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-numeric-ext/mrblib/numeric_ext.rb', line 76</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_nobits?'>nobits?</span><span class='lparen'>(</span><span class='id identifier rubyid_mask'>mask</span><span class='rparen'>)</span>
+  <span class='lparen'>(</span><span class='kw'>self</span> <span class='op'>&amp;</span> <span class='id identifier rubyid_mask'>mask</span><span class='rparen'>)</span> <span class='op'>==</span> <span class='int'>0</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -719,6 +1147,14 @@ num_infinite_p(mrb_state *mrb, mrb_value self)
 </h3><div class="docstring">
   <div class="discussion">
     
+<p>call-seq:</p>
+
+<pre class="code ruby"><code class="ruby">  nonzero?  -&gt;  self or nil
+
+Returns +self+ if +self+ is not a zero value, +nil+ otherwise;
+uses method &lt;tt&gt;zero?&lt;/tt&gt; for the evaluation.
+</code></pre>
+
 
   </div>
 </div>
@@ -746,16 +1182,16 @@ num_infinite_p(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-6
-7
-8
-9
-10
-11
-12</pre>
+22
+23
+24
+25
+26
+27
+28</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-numeric-ext/mrblib/numeric_ext.rb', line 6</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-numeric-ext/mrblib/numeric_ext.rb', line 22</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_nonzero?'>nonzero?</span>
   <span class='kw'>if</span> <span class='kw'>self</span> <span class='op'>==</span> <span class='int'>0</span>
@@ -781,6 +1217,13 @@ num_infinite_p(mrb_state *mrb, mrb_value self)
 </h3><div class="docstring">
   <div class="discussion">
     
+<p>call-seq:</p>
+
+<pre class="code ruby"><code class="ruby">  positive? -&gt; true or false
+
+Returns +true+ if +self+ is greater than 0, +false+ otherwise.
+</code></pre>
+
 
   </div>
 </div>
@@ -808,15 +1251,45 @@ num_infinite_p(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-14
-15
-16</pre>
+36
+37
+38</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-numeric-ext/mrblib/numeric_ext.rb', line 14</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-numeric-ext/mrblib/numeric_ext.rb', line 36</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_positive?'>positive?</span>
   <span class='kw'>self</span> <span class='op'>&gt;</span> <span class='int'>0</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="to_c-instance_method">
+  
+    #<strong>to_c</strong>  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+79
+80
+81</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-complex/mrblib/complex.rb', line 79</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_to_c'>to_c</span>
+  <span class='const'><span class='object_link'><a href="Complex.html" title="Complex (class)">Complex</a></span></span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='int'>0</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -838,12 +1311,12 @@ num_infinite_p(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-81
-82
-83</pre>
+12
+13
+14</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-rational/mrblib/rational.rb', line 81</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-rational/mrblib/rational.rb', line 12</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_to_r'>to_r</span>
   <span class='const'><span class='object_link'><a href="Rational.html" title="Rational (class)">Rational</a></span></span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='int'>1</span><span class='rparen'>)</span>
@@ -865,6 +1338,16 @@ num_infinite_p(mrb_state *mrb, mrb_value self)
 </h3><div class="docstring">
   <div class="discussion">
     
+<p>call-seq:</p>
+
+<pre class="code ruby"><code class="ruby">  zero? -&gt; true or false
+
+Returns +true+ if +zero+ has a zero value, +false+ otherwise.
+
+Of the Core and Standard Library classes,
+only Rational and Complex use this implementation.
+</code></pre>
+
 
   </div>
 </div>
@@ -892,12 +1375,12 @@ num_infinite_p(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-2
-3
-4</pre>
+11
+12
+13</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-numeric-ext/mrblib/numeric_ext.rb', line 2</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-numeric-ext/mrblib/numeric_ext.rb', line 11</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_zero?'>zero?</span>
   <span class='kw'>self</span> <span class='op'>==</span> <span class='int'>0</span>
@@ -912,9 +1395,9 @@ num_infinite_p(mrb_state *mrb, mrb_value self)
 </div>
 
       <div id="footer">
-  Generated on Mon Mar 22 18:11:13 2021 by
+  Generated on Sun Oct 29 05:51:33 2023 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.26 in <a href="https://github.com/sagmor/yard-mruby">mruby mode</a> 0.3.0 (ruby-2.7.2).
+  0.9.34 in <a href="https://github.com/sagmor/yard-mruby">mruby mode</a> 0.3.0 (ruby-3.2.2).
 </div>
 
     </div>

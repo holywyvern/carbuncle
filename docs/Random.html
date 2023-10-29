@@ -6,7 +6,7 @@
 <title>
   Class: Random
   
-    &mdash; Documentation by YARD 0.9.26
+    &mdash; Documentation by YARD 0.9.34
   
 </title>
 
@@ -121,6 +121,28 @@
         <li class="public ">
   <span class="summary_signature">
     
+      <a href="#bytes-instance_method" title="#bytes (instance method)">#<strong>bytes</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
       <a href="#initialize-instance_method" title="#initialize (instance method)">#<strong>initialize</strong>  &#x21d2; Object </a>
     
 
@@ -207,6 +229,14 @@
       <pre class="lines">
 
 
+174
+175
+176
+177
+178
+179
+180
+181
 182
 183
 184
@@ -214,35 +244,23 @@
 186
 187
 188
-189
-190
-191
-192
-193
-194
-195
-196
-197
-198
-199</pre>
+189</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-random/src/random.c', line 182</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-random/src/random.c', line 174</span>
 
 static mrb_value
 random_m_init(mrb_state *mrb, mrb_value self)
 {
-  mrb_value seed;
+  mrb_int seed;
   rand_state *t;
 
-  seed = get_opt(mrb);
-  /* avoid memory leaks */
   t = random_ptr(self);
-  if (mrb_nil_p(seed)) {
+  if (mrb_get_args(mrb, &quot;|i&quot;, &amp;seed) == 0) {
     rand_init(t);
   }
   else {
-    rand_seed(t, (uint32_t)mrb_integer(seed));
+    rand_seed(t, (uint32_t)seed);
   }
 
   return self;
@@ -260,7 +278,63 @@ random_m_init(mrb_state *mrb, mrb_value self)
 
     
       <div class="method_details first">
-  <h3 class="signature first" id="rand-instance_method">
+  <h3 class="signature first" id="bytes-instance_method">
+  
+    #<strong>bytes</strong>  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-random/src/random.c', line 220</span>
+
+static mrb_value
+random_m_bytes(mrb_state *mrb, mrb_value self)
+{
+  rand_state *t = random_ptr(self);
+
+  mrb_int i;
+  mrb_get_args(mrb, &quot;i&quot;, &amp;i);
+
+  mrb_value bytes = mrb_str_new(mrb, NULL, i);
+  uint8_t *p = (uint8_t*)RSTRING_PTR(bytes);
+  for (; i &gt; 0; i--, p++) {
+    *p = (uint8_t)rand_uint32(t);
+  }
+
+  return bytes;
+}</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="rand-instance_method">
   
     #<strong>rand</strong>  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
   
@@ -274,23 +348,23 @@ random_m_init(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-201
-202
-203
-204
-205
-206
-207
-208
-209</pre>
+191
+192
+193
+194
+195
+196
+197
+198
+199</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-random/src/random.c', line 201</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-random/src/random.c', line 191</span>
 
 static mrb_value
 random_m_rand(mrb_state *mrb, mrb_value self)
 {
-  mrb_value max;
+  mrb_int max;
   rand_state *t = random_ptr(self);
 
   max = get_opt(mrb);
@@ -316,6 +390,16 @@ random_m_rand(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
 211
 212
 213
@@ -323,36 +407,24 @@ random_m_rand(mrb_state *mrb, mrb_value self)
 215
 216
 217
-218
-219
-220
-221
-222
-223
-224
-225
-226
-227
-228
-229</pre>
+218</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-random/src/random.c', line 211</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-random/src/random.c', line 201</span>
 
 static mrb_value
 random_m_srand(mrb_state *mrb, mrb_value self)
 {
   uint32_t seed;
   uint32_t old_seed;
-  mrb_value sv;
+  mrb_int i;
   rand_state *t = random_ptr(self);
 
-  sv = get_opt(mrb);
-  if (mrb_nil_p(sv)) {
-    seed = (uint32_t)time(NULL) + rand_uint32(t);
+  if (mrb_get_args(mrb, &quot;|i&quot;, &amp;i) == 0) {
+    seed = (uint32_t)time(NULL) ^ rand_uint32(t) ^ (uint32_t)(uintptr_t)t;
   }
   else {
-    seed = (uint32_t)mrb_integer(sv);
+    seed = (uint32_t)i;
   }
   old_seed = rand_seed(t, seed);
 
@@ -368,9 +440,9 @@ random_m_srand(mrb_state *mrb, mrb_value self)
 </div>
 
       <div id="footer">
-  Generated on Mon Mar 22 18:11:13 2021 by
+  Generated on Sun Oct 29 05:51:34 2023 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.26 in <a href="https://github.com/sagmor/yard-mruby">mruby mode</a> 0.3.0 (ruby-2.7.2).
+  0.9.34 in <a href="https://github.com/sagmor/yard-mruby">mruby mode</a> 0.3.0 (ruby-3.2.2).
 </div>
 
     </div>

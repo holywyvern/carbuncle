@@ -6,7 +6,7 @@
 <title>
   Class: Struct
   
-    &mdash; Documentation by YARD 0.9.26
+    &mdash; Documentation by YARD 0.9.34
   
 </title>
 
@@ -91,6 +91,11 @@
   
   
   
+  <dl>
+      <dt>Includes:</dt>
+      <dd><span class='object_link'><a href="Enumerable.html" title="Enumerable (module)">Enumerable</a></span></dd>
+  </dl>
+  
   
 
   
@@ -98,11 +103,26 @@
   
   <dl>
     <dt>Defined in:</dt>
-    <dd>mruby/mrbgems/mruby-struct/src/struct.c<span class="defines">,<br />
-  mruby/mrbgems/mruby-struct/mrblib/struct.rb</span>
+    <dd>mruby/mrbgems/mruby-struct/mrblib/struct.rb<span class="defines">,<br />
+  mruby/mrbgems/mruby-struct/src/struct.c</span>
 </dd>
   </dl>
   
+</div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>Struct</p>
+
+<p>ISO 15.2.18</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
 </div>
 
 <div id="subclasses">
@@ -111,6 +131,12 @@
 </div>
 
 
+
+  <h2>Constant Summary</h2>
+  
+  <h3 class="inherited">Constants included
+     from <span class='object_link'><a href="Enumerable.html" title="Enumerable (module)">Enumerable</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Enumerable.html#NONE-constant" title="Enumerable::NONE (constant)">Enumerable::NONE</a></span></p>
 
 
 
@@ -293,7 +319,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#eql%3F-instance_method" title="#eql? (instance method)">#<strong>eql?</strong>  &#x21d2; Boolean </a>
+      <a href="#eql%3F-instance_method" title="#eql? (instance method)">#<strong>eql?</strong>(other)  &#x21d2; Boolean </a>
     
 
     
@@ -308,7 +334,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>code-seq:   struct.eql?(other)   -&gt; true or false.</p>
+<p>Two structures are equal if they are the same object, or if all their fields are equal (using <code>eql?</code>).</p>
 </div></span>
   
 </li>
@@ -583,6 +609,17 @@
     </ul>
   
 
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Enumerable.html" title="Enumerable (module)">Enumerable</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Enumerable.html#__update_hash-class_method" title="Enumerable.__update_hash (method)">__update_hash</a></span>, <span class='object_link'><a href="Enumerable.html#all%3F-instance_method" title="Enumerable#all? (method)">#all?</a></span>, <span class='object_link'><a href="Enumerable.html#any%3F-instance_method" title="Enumerable#any? (method)">#any?</a></span>, <span class='object_link'><a href="Enumerable.html#chain-instance_method" title="Enumerable#chain (method)">#chain</a></span>, <span class='object_link'><a href="Enumerable.html#collect-instance_method" title="Enumerable#collect (method)">#collect</a></span>, <span class='object_link'><a href="Enumerable.html#count-instance_method" title="Enumerable#count (method)">#count</a></span>, <span class='object_link'><a href="Enumerable.html#cycle-instance_method" title="Enumerable#cycle (method)">#cycle</a></span>, <span class='object_link'><a href="Enumerable.html#detect-instance_method" title="Enumerable#detect (method)">#detect</a></span>, <span class='object_link'><a href="Enumerable.html#drop-instance_method" title="Enumerable#drop (method)">#drop</a></span>, <span class='object_link'><a href="Enumerable.html#drop_while-instance_method" title="Enumerable#drop_while (method)">#drop_while</a></span>, <span class='object_link'><a href="Enumerable.html#each_cons-instance_method" title="Enumerable#each_cons (method)">#each_cons</a></span>, <span class='object_link'><a href="Enumerable.html#each_slice-instance_method" title="Enumerable#each_slice (method)">#each_slice</a></span>, <span class='object_link'><a href="Enumerable.html#each_with_index-instance_method" title="Enumerable#each_with_index (method)">#each_with_index</a></span>, <span class='object_link'><a href="Enumerable.html#each_with_object-instance_method" title="Enumerable#each_with_object (method)">#each_with_object</a></span>, <span class='object_link'><a href="Enumerable.html#entries-instance_method" title="Enumerable#entries (method)">#entries</a></span>, <span class='object_link'><a href="Enumerable.html#filter_map-instance_method" title="Enumerable#filter_map (method)">#filter_map</a></span>, <span class='object_link'><a href="Enumerable.html#find_all-instance_method" title="Enumerable#find_all (method)">#find_all</a></span>, <span class='object_link'><a href="Enumerable.html#find_index-instance_method" title="Enumerable#find_index (method)">#find_index</a></span>, <span class='object_link'><a href="Enumerable.html#first-instance_method" title="Enumerable#first (method)">#first</a></span>, <span class='object_link'><a href="Enumerable.html#flat_map-instance_method" title="Enumerable#flat_map (method)">#flat_map</a></span>, <span class='object_link'><a href="Enumerable.html#grep-instance_method" title="Enumerable#grep (method)">#grep</a></span>, <span class='object_link'><a href="Enumerable.html#group_by-instance_method" title="Enumerable#group_by (method)">#group_by</a></span>, <span class='object_link'><a href="Enumerable.html#hash-instance_method" title="Enumerable#hash (method)">#hash</a></span>, <span class='object_link'><a href="Enumerable.html#include%3F-instance_method" title="Enumerable#include? (method)">#include?</a></span>, <span class='object_link'><a href="Enumerable.html#inject-instance_method" title="Enumerable#inject (method)">#inject</a></span>, <span class='object_link'><a href="Enumerable.html#lazy-instance_method" title="Enumerable#lazy (method)">#lazy</a></span>, <span class='object_link'><a href="Enumerable.html#max-instance_method" title="Enumerable#max (method)">#max</a></span>, <span class='object_link'><a href="Enumerable.html#max_by-instance_method" title="Enumerable#max_by (method)">#max_by</a></span>, <span class='object_link'><a href="Enumerable.html#min-instance_method" title="Enumerable#min (method)">#min</a></span>, <span class='object_link'><a href="Enumerable.html#min_by-instance_method" title="Enumerable#min_by (method)">#min_by</a></span>, <span class='object_link'><a href="Enumerable.html#minmax-instance_method" title="Enumerable#minmax (method)">#minmax</a></span>, <span class='object_link'><a href="Enumerable.html#minmax_by-instance_method" title="Enumerable#minmax_by (method)">#minmax_by</a></span>, <span class='object_link'><a href="Enumerable.html#none%3F-instance_method" title="Enumerable#none? (method)">#none?</a></span>, <span class='object_link'><a href="Enumerable.html#one%3F-instance_method" title="Enumerable#one? (method)">#one?</a></span>, <span class='object_link'><a href="Enumerable.html#partition-instance_method" title="Enumerable#partition (method)">#partition</a></span>, <span class='object_link'><a href="Enumerable.html#reject-instance_method" title="Enumerable#reject (method)">#reject</a></span>, <span class='object_link'><a href="Enumerable.html#reverse_each-instance_method" title="Enumerable#reverse_each (method)">#reverse_each</a></span>, <span class='object_link'><a href="Enumerable.html#sort-instance_method" title="Enumerable#sort (method)">#sort</a></span>, <span class='object_link'><a href="Enumerable.html#sort_by-instance_method" title="Enumerable#sort_by (method)">#sort_by</a></span>, <span class='object_link'><a href="Enumerable.html#sum-instance_method" title="Enumerable#sum (method)">#sum</a></span>, <span class='object_link'><a href="Enumerable.html#take-instance_method" title="Enumerable#take (method)">#take</a></span>, <span class='object_link'><a href="Enumerable.html#take_while-instance_method" title="Enumerable#take_while (method)">#take_while</a></span>, <span class='object_link'><a href="Enumerable.html#tally-instance_method" title="Enumerable#tally (method)">#tally</a></span>, <span class='object_link'><a href="Enumerable.html#uniq-instance_method" title="Enumerable#uniq (method)">#uniq</a></span>, <span class='object_link'><a href="Enumerable.html#zip-instance_method" title="Enumerable#zip (method)">#zip</a></span></p>
 <div id="constructor_details" class="method_details_list">
   <h2>Constructor Details</h2>
   
@@ -614,18 +651,18 @@
       <pre class="lines">
 
 
-344
-345
-346
-347
-348
-349
-350
-351
-352</pre>
+330
+331
+332
+333
+334
+335
+336
+337
+338</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-struct/src/struct.c', line 344</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-struct/src/struct.c', line 330</span>
 
 static mrb_value
 mrb_struct_initialize(mrb_state *mrb, mrb_value self)
@@ -710,6 +747,20 @@ mrb_struct_initialize(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
+520
+521
+522
+523
+524
+525
+526
+527
+528
+529
+530
+531
+532
+533
 534
 535
 536
@@ -720,26 +771,10 @@ mrb_struct_initialize(mrb_state *mrb, mrb_value self)
 541
 542
 543
-544
-545
-546
-547
-548
-549
-550
-551
-552
-553
-554
-555
-556
-557
-558
-559
-560</pre>
+544</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-struct/src/struct.c', line 534</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-struct/src/struct.c', line 520</span>
 
 static mrb_value
 mrb_struct_equal(mrb_state *mrb, mrb_value s)
@@ -754,9 +789,7 @@ mrb_struct_equal(mrb_state *mrb, mrb_value s)
   if (mrb_obj_class(mrb, s) != mrb_obj_class(mrb, s2)) {
     return mrb_false_value();
   }
-  if (RSTRUCT_LEN(s) != RSTRUCT_LEN(s2)) {
-    mrb_bug(mrb, &quot;inconsistent struct&quot;); /* should never happen */
-  }
+  mrb_assert(RSTRUCT_LEN(s) == RSTRUCT_LEN(s2));
   ptr = RSTRUCT_PTR(s);
   ptr2 = RSTRUCT_PTR(s2);
   len = RSTRUCT_LEN(s);
@@ -878,23 +911,23 @@ mrb_struct_equal(mrb_state *mrb, mrb_value s)
       <pre class="lines">
 
 
+419
+420
+421
+422
+423
+424
+425
 426
 427
 428
 429
 430
 431
-432
-433
-434
-435
-436
-437
-438
-439</pre>
+432</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-struct/src/struct.c', line 426</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-struct/src/struct.c', line 419</span>
 
 static mrb_value
 mrb_struct_aref(mrb_state *mrb, mrb_value s)
@@ -908,7 +941,7 @@ mrb_struct_aref(mrb_state *mrb, mrb_value s)
   if (mrb_symbol_p(idx)) {
     return struct_aref_sym(mrb, s, mrb_symbol(idx));
   }
-  return struct_aref_int(mrb, s, mrb_int(mrb, idx));
+  return struct_aref_int(mrb, s, mrb_as_int(mrb, idx));
 }</pre>
     </td>
   </tr>
@@ -1022,6 +1055,12 @@ mrb_struct_aref(mrb_state *mrb, mrb_value s)
       <pre class="lines">
 
 
+479
+480
+481
+482
+483
+484
 485
 486
 487
@@ -1037,24 +1076,10 @@ mrb_struct_aref(mrb_state *mrb, mrb_value s)
 497
 498
 499
-500
-501
-502
-503
-504
-505
-506
-507
-508
-509
-510
-511
-512
-513
-514</pre>
+500</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-struct/src/struct.c', line 485</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-struct/src/struct.c', line 479</span>
 
 static mrb_value
 mrb_struct_aset(mrb_state *mrb, mrb_value s)
@@ -1073,17 +1098,9 @@ mrb_struct_aset(mrb_state *mrb, mrb_value s)
     return mrb_struct_aset_sym(mrb, s, mrb_symbol(idx), val);
   }
 
-  i = mrb_int(mrb, idx);
-  if (i &lt; 0) i = RSTRUCT_LEN(s) + i;
-  if (i &lt; 0) {
-    mrb_raisef(mrb, E_INDEX_ERROR,
-               &quot;offset %i too small for struct(size:%i)&quot;, i, RSTRUCT_LEN(s));
-  }
-  if (RSTRUCT_LEN(s) &lt;= i) {
-    mrb_raisef(mrb, E_INDEX_ERROR,
-               &quot;offset %i too large for struct(size:%i)&quot;, i, RSTRUCT_LEN(s));
-  }
+  i = struct_index(mrb, mrb_as_int(mrb, idx), RSTRUCT_LEN(s));
   mrb_struct_modify(mrb, s);
+  mrb_field_write_barrier_value(mrb, mrb_basic_ptr(s), val);
   return RSTRUCT_PTR(s)[i] = val;
 }</pre>
     </td>
@@ -1106,6 +1123,7 @@ mrb_struct_aset(mrb_state *mrb, mrb_value s)
       <pre class="lines">
 
 
+48
 49
 50
 51
@@ -1119,11 +1137,10 @@ mrb_struct_aset(mrb_state *mrb, mrb_value s)
 59
 60
 61
-62
-63</pre>
+62</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-struct/mrblib/struct.rb', line 49</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-struct/mrblib/struct.rb', line 48</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid__inspect'>_inspect</span><span class='lparen'>(</span><span class='id identifier rubyid_recur_list'>recur_list</span><span class='rparen'>)</span>
   <span class='kw'>return</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>#&lt;struct </span><span class='embexpr_beg'>#{</span><span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='embexpr_end'>}</span><span class='tstring_content'>:...&gt;</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>if</span> <span class='id identifier rubyid_recur_list'>recur_list</span><span class='lbracket'>[</span><span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_object_id'>object_id</span><span class='rbracket'>]</span>
@@ -1178,17 +1195,17 @@ mrb_struct_aset(mrb_state *mrb, mrb_value s)
       <pre class="lines">
 
 
+90
 91
 92
 93
 94
 95
 96
-97
-98</pre>
+97</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-struct/mrblib/struct.rb', line 91</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-struct/mrblib/struct.rb', line 90</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_dig'>dig</span><span class='lparen'>(</span><span class='id identifier rubyid_idx'>idx</span><span class='comma'>,</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_n'>n</span> <span class='op'>=</span> <span class='kw'>self</span><span class='lbracket'>[</span><span class='id identifier rubyid_idx'>idx</span><span class='rbracket'>]</span>
@@ -1233,15 +1250,15 @@ mrb_struct_aset(mrb_state *mrb, mrb_value s)
       <pre class="lines">
 
 
+13
 14
 15
 16
 17
-18
-19</pre>
+18</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-struct/mrblib/struct.rb', line 14</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-struct/mrblib/struct.rb', line 13</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_each'>each</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_members'>members</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span><span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_field'>field</span><span class='op'>|</span>
@@ -1284,15 +1301,15 @@ mrb_struct_aset(mrb_state *mrb, mrb_value s)
       <pre class="lines">
 
 
+26
 27
 28
 29
 30
-31
-32</pre>
+31</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-struct/mrblib/struct.rb', line 27</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-struct/mrblib/struct.rb', line 26</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_each_pair'>each_pair</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_members'>members</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span><span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_field'>field</span><span class='op'>|</span>
@@ -1308,7 +1325,7 @@ mrb_struct_aset(mrb_state *mrb, mrb_value s)
       <div class="method_details ">
   <h3 class="signature " id="eql?-instance_method">
   
-    #<strong>eql?</strong>  &#x21d2; <tt>Boolean</tt> 
+    #<strong>eql?</strong>(other)  &#x21d2; <tt>Boolean</tt> 
   
 
   
@@ -1317,13 +1334,16 @@ mrb_struct_aset(mrb_state *mrb, mrb_value s)
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>code-seq:</p>
-
-<pre class="code"><code class="">struct.eql?(other)   -&gt; true or false
-</code></pre>
-
 <p>Two structures are equal if they are the same object, or if all their fields are equal (using <code>eql?</code>).</p>
 
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="docstring">
+  <div class="discussion">
+    
 
   </div>
 </div>
@@ -1345,12 +1365,33 @@ mrb_struct_aset(mrb_state *mrb, mrb_value s)
 
 </div>
 
+
+
+
+</div>
+
 <table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
+554
+555
+556
+557
+558
+559
+560
+561
+562
+563
+564
+565
+566
+567
+568
+569
 570
 571
 572
@@ -1359,28 +1400,10 @@ mrb_struct_aset(mrb_state *mrb, mrb_value s)
 575
 576
 577
-578
-579
-580
-581
-582
-583
-584
-585
-586
-587
-588
-589
-590
-591
-592
-593
-594
-595
-596</pre>
+578</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-struct/src/struct.c', line 570</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-struct/src/struct.c', line 554</span>
 
 static mrb_value
 mrb_struct_eql(mrb_state *mrb, mrb_value s)
@@ -1395,9 +1418,7 @@ mrb_struct_eql(mrb_state *mrb, mrb_value s)
   if (mrb_obj_class(mrb, s) != mrb_obj_class(mrb, s2)) {
     return mrb_false_value();
   }
-  if (RSTRUCT_LEN(s) != RSTRUCT_LEN(s2)) {
-    mrb_bug(mrb, &quot;inconsistent struct&quot;); /* should never happen */
-  }
+  mrb_assert(RSTRUCT_LEN(s) == RSTRUCT_LEN(s2));
   ptr = RSTRUCT_PTR(s);
   ptr2 = RSTRUCT_PTR(s2);
   len = RSTRUCT_LEN(s);
@@ -1442,24 +1463,24 @@ mrb_struct_eql(mrb_state *mrb, mrb_value s)
       <pre class="lines">
 
 
-356
-357
-358
-359
-360
-361
-362
-363
-364
-365
-366
-367
-368
-369
-370</pre>
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-struct/src/struct.c', line 356</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-struct/src/struct.c', line 342</span>
 
 static mrb_value
 mrb_struct_init_copy(mrb_state *mrb, mrb_value copy)
@@ -1470,8 +1491,8 @@ mrb_struct_init_copy(mrb_state *mrb, mrb_value copy)
   if (!mrb_obj_is_instance_of(mrb, s, mrb_obj_class(mrb, copy))) {
     mrb_raise(mrb, E_TYPE_ERROR, &quot;wrong argument class&quot;);
   }
-  if (!mrb_array_p(s)) {
-    mrb_raise(mrb, E_TYPE_ERROR, &quot;corrupted struct&quot;);
+  if (!mrb_struct_p(s)) {
+    struct_corrupted(mrb);
   }
   mrb_ary_replace(mrb, copy, s);
   return copy;
@@ -1521,12 +1542,12 @@ struct.inspect   -&gt; string
       <pre class="lines">
 
 
+73
 74
-75
-76</pre>
+75</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-struct/mrblib/struct.rb', line 74</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-struct/mrblib/struct.rb', line 73</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_inspect'>inspect</span>
   <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid__inspect'>_inspect</span><span class='lparen'>(</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
@@ -1633,14 +1654,14 @@ struct.inspect   -&gt; string
       <pre class="lines">
 
 
-605
-606
-607
-608
-609</pre>
+587
+588
+589
+590
+591</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-struct/src/struct.c', line 605</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-struct/src/struct.c', line 587</span>
 
 static mrb_value
 mrb_struct_len(mrb_state *mrb, mrb_value self)
@@ -1711,14 +1732,14 @@ mrb_struct_len(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-108
-109
-110
-111
-112</pre>
+99
+100
+101
+102
+103</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-struct/src/struct.c', line 108</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-struct/src/struct.c', line 99</span>
 
 static mrb_value
 mrb_struct_members(mrb_state *mrb, mrb_value obj)
@@ -1760,17 +1781,17 @@ mrb_struct_members(mrb_state *mrb, mrb_value obj)
       <pre class="lines">
 
 
+39
 40
 41
 42
 43
 44
 45
-46
-47</pre>
+46</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-struct/mrblib/struct.rb', line 40</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-struct/mrblib/struct.rb', line 39</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_select'>select</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_ary'>ary</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
@@ -1882,14 +1903,14 @@ mrb_struct_members(mrb_state *mrb, mrb_value obj)
       <pre class="lines">
 
 
-605
-606
-607
-608
-609</pre>
+587
+588
+589
+590
+591</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-struct/src/struct.c', line 605</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-struct/src/struct.c', line 587</span>
 
 static mrb_value
 mrb_struct_len(mrb_state *mrb, mrb_value self)
@@ -1998,14 +2019,14 @@ mrb_struct_len(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-618
-619
-620
-621
-622</pre>
+600
+601
+602
+603
+604</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-struct/src/struct.c', line 618</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-struct/src/struct.c', line 600</span>
 
 static mrb_value
 mrb_struct_to_a(mrb_state *mrb, mrb_value self)
@@ -2071,24 +2092,24 @@ mrb_struct_to_a(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-630
-631
-632
-633
-634
-635
-636
-637
-638
-639
-640
-641
-642
-643
-644</pre>
+612
+613
+614
+615
+616
+617
+618
+619
+620
+621
+622
+623
+624
+625
+626</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-struct/src/struct.c', line 630</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-struct/src/struct.c', line 612</span>
 
 static mrb_value
 mrb_struct_to_h(mrb_state *mrb, mrb_value self)
@@ -2099,7 +2120,7 @@ mrb_struct_to_h(mrb_state *mrb, mrb_value self)
   members = struct_members(mrb, self);
   ret = mrb_hash_new_capa(mrb, RARRAY_LEN(members));
 
-  for (i = 0; i &lt; RARRAY_LEN(members); ++i) {
+  for (i = 0; i &lt; RARRAY_LEN(members); i++) {
     mrb_hash_set(mrb, ret, RARRAY_PTR(members)[i], RSTRUCT_PTR(self)[i]);
   }
 
@@ -2207,14 +2228,14 @@ mrb_struct_to_h(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-618
-619
-620
-621
-622</pre>
+600
+601
+602
+603
+604</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-struct/src/struct.c', line 618</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-struct/src/struct.c', line 600</span>
 
 static mrb_value
 mrb_struct_to_a(mrb_state *mrb, mrb_value self)
@@ -2241,19 +2262,19 @@ mrb_struct_to_a(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-646
-647
-648
-649
-650
-651
-652
-653
-654
-655</pre>
+628
+629
+630
+631
+632
+633
+634
+635
+636
+637</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-struct/src/struct.c', line 646</span>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-struct/src/struct.c', line 628</span>
 
 static mrb_value
 mrb_struct_values_at(mrb_state *mrb, mrb_value self)
@@ -2275,9 +2296,9 @@ mrb_struct_values_at(mrb_state *mrb, mrb_value self)
 </div>
 
       <div id="footer">
-  Generated on Mon Mar 22 18:11:13 2021 by
+  Generated on Sun Oct 29 05:51:34 2023 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.26 in <a href="https://github.com/sagmor/yard-mruby">mruby mode</a> 0.3.0 (ruby-2.7.2).
+  0.9.34 in <a href="https://github.com/sagmor/yard-mruby">mruby mode</a> 0.3.0 (ruby-3.2.2).
 </div>
 
     </div>

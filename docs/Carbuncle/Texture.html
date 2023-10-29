@@ -6,7 +6,7 @@
 <title>
   Class: Carbuncle::Texture
   
-    &mdash; Documentation by YARD 0.9.26
+    &mdash; Documentation by YARD 0.9.34
   
 </title>
 
@@ -674,8 +674,7 @@ mrb_texture_initialize(mrb_state *mrb, mrb_value self)
 131
 132
 133
-134
-135</pre>
+134</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'gems/carbuncle-graphics/src/texture.c', line 124</span>
@@ -688,8 +687,7 @@ mrb_texture_to_bitmap(mrb_state *mrb, mrb_value self)
   mrb_value img = mrb_obj_new(mrb, mrb_carbuncle_class_get(mrb, &quot;Bitmap&quot;), 2, values);
   Image *ptr = mrb_carbuncle_get_bitmap(mrb, img);
   UnloadImage(*ptr);
-  *ptr = GetTextureData(*texture);
-  ImageFormat(ptr, UNCOMPRESSED_R8G8B8A8);
+  *ptr = LoadImageFromTexture(*texture);
   return img;
 }</pre>
     </td>
@@ -774,9 +772,9 @@ mrb_texture_get_width(mrb_state *mrb, mrb_value self)
 </div>
 
       <div id="footer">
-  Generated on Mon Mar 22 18:11:11 2021 by
+  Generated on Sun Oct 29 05:51:31 2023 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.26 in <a href="https://github.com/sagmor/yard-mruby">mruby mode</a> 0.3.0 (ruby-2.7.2).
+  0.9.34 in <a href="https://github.com/sagmor/yard-mruby">mruby mode</a> 0.3.0 (ruby-3.2.2).
 </div>
 
     </div>
