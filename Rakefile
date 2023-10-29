@@ -42,7 +42,6 @@ end
 
 desc 'generate documentation'
 task docs: :doc_files do
-  puts 'hello world'
   gem_list = CARBUNCLE_GEMS.map {|i| "carbuncle-#{i}" }.join(',')
   core_gems = CORE_GEMS.join(',')
   carbuncle_dirs = "gems/{#{gem_list}}/{src,mrblib}/{**}/*.{rb,c}"

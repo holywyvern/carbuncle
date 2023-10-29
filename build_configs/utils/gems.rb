@@ -8,11 +8,13 @@ STDLIB_GEMS = %w[
   mruby-array-ext mruby-hash-ext mruby-range-ext mruby-proc-ext
   mruby-symbol-ext mruby-object-ext mruby-objectspace mruby-set
   mruby-fiber mruby-enumerator mruby-enum-lazy mruby-toplevel-ext
-  mruby-kernel-ext mruby-class-ext
+  mruby-kernel-ext mruby-class-ext mruby-struct mruby-catch mruby-data
+  mruby-enum-chain mruby-pack mruby-proc-binding
 ].freeze
 
 MATH_GEMS = %w[
   mruby-math mruby-rational mruby-complex mruby-cmath mruby-bigint
+  mruby-random
 ].freeze
 
 METAPROG_GEMS = %w[
