@@ -1,9 +1,12 @@
-import SyntaxHighlighter from 'react-highlight.js';
-import { withTranslation } from '../../i18n';
+import SyntaxHighlighter from "react-syntax-highlighter";
+import { vs } from "react-syntax-highlighter/dist/cjs/styles/hljs";
+import { withTranslation } from "next-i18next";
 
-import Panel from '../panel';
+import Panel from "../panel";
 
 import styles from "./styles.module.scss";
+
+vs.background = "transparent";
 
 function Example({ title, children, t }) {
   return (
@@ -13,13 +16,19 @@ function Example({ title, children, t }) {
       </header>
       <Panel stretch noOverflow>
         <div className={styles.panel}>
-          <SyntaxHighlighter language="ruby">
+          <SyntaxHighlighter
+            showLineNumbers
+            showInlineLineNumbers
+            language="ruby"
+            style={vs}
+            customStyle={{ background: "rgba(255, 255, 255, 0.4)" }}
+          >
             {children}
           </SyntaxHighlighter>
         </div>
       </Panel>
     </section>
-  )
+  );
 }
 
-export default withTranslation('common')(Example);
+export default withTranslation("common")(Example);

@@ -1,5 +1,5 @@
 import Example from "../example";
-import { withTranslation } from '../../i18n';
+import { withTranslation } from "next-i18next";
 
 const example1 = `
 include Carbuncle
@@ -59,18 +59,12 @@ end
 function Examples({ t }) {
   return (
     <>
-      <h3>{t('Quick examples')}</h3>
-      <Example title="Hello World">
-        {example1}        
-      </Example>
-      <Example title="Drawing an Image">
-        {example2}
-      </Example>
-      <Example title="Playing music and sound">
-        {example3}
-      </Example>
+      <h3>{t("Quick examples")}</h3>
+      <Example title="Hello World">{example1}</Example>
+      <Example title="Drawing an Image">{example2}</Example>
+      <Example title="Playing music and sound">{example3}</Example>
     </>
-  )
+  );
 }
 
-export default withTranslation('common')(Examples);
+export default withTranslation("common")(Examples);

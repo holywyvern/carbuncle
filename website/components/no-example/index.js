@@ -1,6 +1,6 @@
-import { withTranslation } from '../../i18n';
+import { withTranslation } from "next-i18next";
 
-import Panel from "../panel"
+import Panel from "../panel";
 
 import styles from "./styles.module.scss";
 
@@ -9,12 +9,13 @@ function NoExample({ t }) {
     <div className={styles.wrapper}>
       <div className={styles.view}>
         <Panel>
-          {t('No example selected.')}<br />
-          {t('Select one from the sidebar.')}
+          {t("No example selected.")}
+          <br />
+          {t("Select one from the sidebar.")}
         </Panel>
       </div>
     </div>
   );
 }
 
-export default withTranslation('examples')(NoExample);
+export default withTranslation("examples")(NoExample);

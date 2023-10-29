@@ -1,18 +1,15 @@
-const NextI18Next = require('next-i18next').default;
-const { localeSubpaths } = require('next/config').default().publicRuntimeConfig;
-const path = require('path');
+const path = require("path");
 
-const basePath = process.env.NODE_ENV === 'production' ? '/carbuncle' : '';
+const basePath = process.env.NODE_ENV === "production" ? "/carbuncle" : "";
 
-module.exports = new NextI18Next({
-  whitelist: ['en', 'es'],
-  otherLanguages: ['es'],
-  localeSubpaths,
-  localePath: path.resolve('./public/static/locales'),
+module.exports = {
+  locales: ["en", "es"],
+  defaultLocale: "en",
+  localePath: path.resolve("./public/static/locales"),
   detection: {
-    order: ['querystring', 'localStorage', 'cookie', 'navigator', 'htmlTag'],
+    order: ["querystring", "localStorage", "cookie", "navigator", "htmlTag"],
   },
   backend: {
     loadPath: `${basePath}/static/locales/{{lng}}/{{ns}}.json`,
   },
-})
+};
