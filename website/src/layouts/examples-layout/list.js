@@ -20,8 +20,8 @@ const Item = withTranslation("examples")(({ label, to, t }) => {
   });
   return (
     <li>
-      <Link href={link}>
-        <a className={className}>{t(label)}</a>
+      <Link href={link} className={className}>
+        {t(label)}
       </Link>
     </li>
   );

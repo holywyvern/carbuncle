@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { vs } from "react-syntax-highlighter/dist/cjs/styles/hljs";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { i18n, withTranslation } from "../../i18n";
+import { i18n, withTranslation } from "next-i18next";
 
 import Panel from "../../components/panel";
 
@@ -75,7 +75,9 @@ function CarbuncleExample({ id, t }) {
   const [code, setCode] = useState(null);
   const [showCode, setShowCode] = useState(false);
   useEffect(() => {
-    fetch(`${process.env.basePath}/data/examples${id}/main_${i18n.language}.rb`)
+    fetch(
+      `${process.env.basePath}/data/examples${id}/main_${i18n?.language}.rb`
+    )
       .then((response) => {
         if (response.ok && response.status === 200) {
           return response.text();
@@ -86,7 +88,7 @@ function CarbuncleExample({ id, t }) {
       })
       .then((text) => setCode(text))
       .catch(console.error);
-  }, [id, i18n.language]);
+  }, [id, i18n?.language]);
 
   const toggleCode = () => setShowCode(!showCode);
   const copyCode = () => copyToClipboard(code);
