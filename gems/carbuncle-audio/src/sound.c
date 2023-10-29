@@ -1,45 +1,33 @@
 #include "carbuncle/core.h"
 #include "carbuncle/sound.h"
+#include "carbuncle/filesystem.h"
 
 #include <mruby/class.h>
 #include <mruby/data.h>
-
-#include "soloud.h"
-#include "soloud_wav.h"
-#include "physfs_file.hpp"
-
-extern SoLoud::Soloud carbuncle_soloud;
-
-namespace
-{
-  struct SoundContainer
-  {
-    SoLoud::Wav wav;
-    PhysFsFile file;
-    mrb_bool playing;
-    SoLoud::handle handle;
-  };
-}
+#include <mruby/variable.h>
 
 static void
 mrb_sound_free(mrb_state *mrb, void *p)
 {
-  if (p)
-  {
-    SoundContainer *sound = reinterpret_cast<SoundContainer *>(p);
-    delete sound;
-  }
+  if (!p) return;
+  Sound *sound = (Sound *)p;
+  UnloadSound(*sound);
+  mrb_free(mrb, p);
 }
 
 static const struct mrb_data_type sound_data_type = {
   "Carbuncle::Sound", mrb_sound_free
 };
 
-static SoundContainer *
+static Sound *
 get_sound(mrb_state *mrb, mrb_value self)
 {
-  return DATA_GET_DISPOSABLE_PTR(mrb, self, &sound_data_type, SoundContainer);
+  return DATA_GET_DISPOSABLE_PTR(mrb, self, &sound_data_type, Sound);
 }
+
+#define VOLUME mrb_intern_lit(mrb, "@volume")
+#define PAN mrb_intern_lit(mrb, "@pan")
+#define PITCH mrb_intern_lit(mrb, "@pitch")
 
 /**
  * @overload initialize(filename)
@@ -54,27 +42,25 @@ mrb_sound_initialize(mrb_state *mrb, mrb_value self)
   const char *name;
   mrb_get_args(mrb, "z", &name);
   mrb_carbuncle_check_file(mrb, name);
-  SoundContainer *container = new SoundContainer();
-  DATA_PTR(self) = container;
+  Sound *sound = mrb_malloc(mrb, sizeof *sound);
+  *sound = LoadCarbuncleSound(mrb, name); 
+  DATA_PTR(self) = sound;
   DATA_TYPE(self) = &sound_data_type;
-  container->file.init(mrb, name);
-  container->playing = FALSE;
-  if (container->wav.loadFile(&container->file))
-  {
-    mrb_raise(mrb, E_ARGUMENT_ERROR, "Couldn't load sound stream.");
-  }
-  container->handle = carbuncle_soloud.play(container->wav, -1, 0, true);
+  mrb_iv_set(mrb, self, VOLUME, mrb_float_value(mrb, 1));
+  mrb_iv_set(mrb, self, PAN, mrb_float_value(mrb, 0));
+  mrb_iv_set(mrb, self, PITCH, mrb_float_value(mrb, 1));  
   return self;
 }
 
 /**
- * @return [Float]
+ * Checks if the sound is playing.
+ * @return [Boolean]
  */
 static mrb_value
-mrb_sound_get_size(mrb_state *mrb, mrb_value self)
+mrb_sound_playingQ(mrb_state *mrb, mrb_value self)
 {
-  SoundContainer *sound = get_sound(mrb, self);
-  return mrb_float_value(mrb, sound->wav.getLength());
+  Sound *sound = get_sound(mrb, self);
+  return mrb_bool_value(IsSoundPlaying(*sound));
 }
 
 /**
@@ -84,15 +70,19 @@ mrb_sound_get_size(mrb_state *mrb, mrb_value self)
 static mrb_value
 mrb_sound_get_volume(mrb_state *mrb, mrb_value self)
 {
-  SoundContainer *sound = get_sound(mrb, self);
-  return mrb_float_value(mrb, carbuncle_soloud.getVolume(sound->handle));
+  return mrb_iv_get(mrb, self, VOLUME);
 }
 
 static mrb_value
 mrb_sound_get_pan(mrb_state *mrb, mrb_value self)
 {
-  SoundContainer *sound = get_sound(mrb, self);
-  return mrb_float_value(mrb, carbuncle_soloud.getPan(sound->handle));
+  return mrb_iv_get(mrb, self, PAN);
+}
+
+static mrb_value
+mrb_sound_get_pitch(mrb_state *mrb, mrb_value self)
+{
+  return mrb_iv_get(mrb, self, PITCH);
 }
 
 /**
@@ -103,8 +93,10 @@ mrb_sound_set_volume(mrb_state *mrb, mrb_value self)
 {
   mrb_float value;
   mrb_get_args(mrb, "f", &value);
-  SoundContainer *sound = get_sound(mrb, self);
-  carbuncle_soloud.setVolume(sound->handle, value);
+  Sound *sound = get_sound(mrb, self);
+  value = value < 0 ? 0 : (value > 1 ? 1 : value);
+  SetSoundVolume(*sound, value);
+  mrb_iv_set(mrb, self, VOLUME, mrb_float_value(mrb, value));
   return mrb_float_value(mrb, value);
 }
 
@@ -113,8 +105,22 @@ mrb_sound_set_pan(mrb_state *mrb, mrb_value self)
 {
   mrb_float value;
   mrb_get_args(mrb, "f", &value);
-  SoundContainer *sound = get_sound(mrb, self);
-  carbuncle_soloud.setPan(sound->handle, value);
+  Sound *sound = get_sound(mrb, self);
+  value = value < -1 ? -1 : (value > 1 ? 1 : value);
+  SetSoundPan(*sound, value);
+  mrb_iv_set(mrb, self, PAN, mrb_float_value(mrb, value));
+  return mrb_float_value(mrb, value);
+}
+
+static mrb_value
+mrb_sound_set_pitch(mrb_state *mrb, mrb_value self)
+{
+  mrb_float value;
+  mrb_get_args(mrb, "f", &value);
+  Sound *sound = get_sound(mrb, self);
+  value = value < 0.5 ? 0.5 : (value > 2 ? 2 : value);
+  SetSoundPitch(*sound, value);
+  mrb_iv_set(mrb, self, PITCH, mrb_float_value(mrb, value));
   return mrb_float_value(mrb, value);
 }
 
@@ -136,7 +142,7 @@ mrb_sound_disposedQ(mrb_state *mrb, mrb_value self)
 static mrb_value
 mrb_sound_dispose(mrb_state *mrb, mrb_value self)
 {
-  SoundContainer *sound = get_sound(mrb, self);
+  Sound *sound = get_sound(mrb, self);
   mrb_sound_free(mrb, sound);
   DATA_PTR(self) = NULL;
   return self;
@@ -146,15 +152,29 @@ mrb_sound_dispose(mrb_state *mrb, mrb_value self)
  * Plays the current sound.
  * @return [nil]
  */
-extern "C" mrb_value
+mrb_value
 mrb_sound_play(mrb_state *mrb, mrb_value self)
 {
-  SoundContainer *sound = get_sound(mrb, self);
-  float volume = carbuncle_soloud.getVolume(sound->handle);
-  float pan = carbuncle_soloud.getPan(sound->handle);
-  SoLoud::handle h = carbuncle_soloud.play(sound->wav, volume, pan, false);
-  carbuncle_soloud.setLooping(h, false);
-  carbuncle_soloud.scheduleStop(h, sound->wav.getLength());
+  Sound *sound = get_sound(mrb, self);
+  if (!IsSoundPlaying(*sound))
+  {
+    PlaySound(*sound);
+  }
+  return self;
+}
+
+/**
+ * Plays the current sound. From its paused position
+ * @return [nil]
+ */
+mrb_value
+mrb_sound_resume(mrb_state *mrb, mrb_value self)
+{
+  Sound *sound = get_sound(mrb, self);
+  if (!IsSoundPlaying(*sound))
+  {
+    ResumeSound(*sound);
+  }
   return self;
 }
 
@@ -162,14 +182,13 @@ mrb_sound_play(mrb_state *mrb, mrb_value self)
  * Pauses the sound, allowing to be resumed later.
  * @return [nil]
  */
-extern "C" mrb_value
+mrb_value
 mrb_sound_pause(mrb_state *mrb, mrb_value self)
 {
-  SoundContainer *sound = get_sound(mrb, self);
-  if (sound->playing)
+  Sound *sound = get_sound(mrb, self);
+  if (IsSoundPlaying(*sound))
   {
-    sound->playing = FALSE;
-    carbuncle_soloud.setPause(sound->handle, true);
+    PauseSound(*sound);
   }
   return self;
 }
@@ -178,20 +197,18 @@ mrb_sound_pause(mrb_state *mrb, mrb_value self)
  * Stops the sound, setting it's position to the beggining.
  * @return [nil]
  */
-extern "C" mrb_value
+mrb_value
 mrb_sound_stop(mrb_state *mrb, mrb_value self)
 {
-  SoundContainer *sound = get_sound(mrb, self);
-  if (sound->playing)
+  Sound *sound = get_sound(mrb, self);
+  if (IsSoundPlaying(*sound))
   {
-    sound->playing = FALSE;
-    carbuncle_soloud.setPause(sound->handle, true);
+    StopSound(*sound);
   }
-  carbuncle_soloud.seek(sound->handle, 0);
   return self;
 }
 
-extern "C" void
+void
 mrb_init_carbuncle_sound(mrb_state *mrb)
 {
   struct RClass *carbuncle = mrb_carbuncle_get(mrb);
@@ -215,18 +232,18 @@ mrb_init_carbuncle_sound(mrb_state *mrb)
   mrb_define_method(mrb, sound, "initialize", mrb_sound_initialize, MRB_ARGS_REQ(1));
 
   mrb_define_method(mrb, sound, "pan", mrb_sound_get_pan, MRB_ARGS_NONE());
-  mrb_define_method(mrb, sound, "size", mrb_sound_get_size, MRB_ARGS_NONE());
-  mrb_define_method(mrb, sound, "length", mrb_sound_get_size, MRB_ARGS_NONE());
-  mrb_define_method(mrb, sound, "count", mrb_sound_get_size, MRB_ARGS_NONE());
   mrb_define_method(mrb, sound, "volume", mrb_sound_get_volume, MRB_ARGS_NONE());
+  mrb_define_method(mrb, sound, "pitch", mrb_sound_get_pitch, MRB_ARGS_NONE());
 
   mrb_define_method(mrb, sound, "volume=", mrb_sound_set_volume, MRB_ARGS_REQ(1));
   mrb_define_method(mrb, sound, "pan=", mrb_sound_set_pan, MRB_ARGS_REQ(1));
+  mrb_define_method(mrb, sound, "pitch=", mrb_sound_set_pitch, MRB_ARGS_REQ(1));
 
   mrb_define_method(mrb, sound, "disposed?", mrb_sound_disposedQ, MRB_ARGS_NONE());
   mrb_define_method(mrb, sound, "dispose", mrb_sound_dispose, MRB_ARGS_NONE());
 
   mrb_define_method(mrb, sound, "play", mrb_sound_play, MRB_ARGS_NONE());
+  mrb_define_method(mrb, sound, "resume", mrb_sound_resume, MRB_ARGS_NONE());
   mrb_define_method(mrb, sound, "pause", mrb_sound_pause, MRB_ARGS_NONE());
   mrb_define_method(mrb, sound, "stop", mrb_sound_stop, MRB_ARGS_NONE());
 }

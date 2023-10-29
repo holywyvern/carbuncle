@@ -24,6 +24,12 @@ LoadCarbuncleImage(mrb_state *mrb, const char *filename);
 Texture
 LoadCarbuncleTexture(mrb_state *mrb, const char *filename);
 
+Music
+LoadCarbuncleMusic(mrb_state *mrb, const char *filename);
+
+Sound
+LoadCarbuncleSound(mrb_state *mrb, const char *filename);
+
 #ifdef __EMSCRIPTEN__
 
 void

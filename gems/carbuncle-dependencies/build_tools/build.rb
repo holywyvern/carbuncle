@@ -60,7 +60,7 @@ module Carbuncle
     end
 
     def libraries
-      %w[raylib freetype physfs soloud mbedtls mbedcrypto mbedx509 z xml2 tmx Boxer]
+      %w[raylib freetype physfs mbedtls mbedcrypto mbedx509 z xml2 tmx Boxer]
     end
 
     def general_cmake_flags
@@ -104,7 +104,6 @@ module Carbuncle
         '-DBUILD_EXAMPLES=OFF',
         '-DSUPPORT_FILEFORMAT_BMP=ON',
         '-DSUPPORT_FILEFORMAT_JPG=ON',
-        '-DUSE_AUDIO=OFF' # We use SoLoud instead
       ]
     end
 
@@ -232,9 +231,13 @@ module Carbuncle
       'libBoxer.a'
     end
 
+    def zlib_libraries
+      'zlib'
+    end
+
     def all_dependencies
       @all_dependencies ||= [
-        raylib, zlib, freetype, libxml2, tmx, physfs, soloud, ssl, boxer, # ws
+        raylib, zlib, freetype, libxml2, tmx, physfs, ssl, boxer, # ws
       ]
     end
   end

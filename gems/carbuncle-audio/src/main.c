@@ -4,21 +4,19 @@
 #include "carbuncle/music.h"
 #include "carbuncle/sound.h"
 
-#include "soloud.h"
+#include "raylib.h"
 
-SoLoud::Soloud carbuncle_soloud;
-
-extern "C" void
+void
 mrb_carbuncle_audio_gem_init(mrb_state *mrb)
 {
-  carbuncle_soloud.init();
+  InitAudioDevice();
   mrb_init_carbuncle_audio(mrb);
   mrb_init_carbuncle_music(mrb);
   mrb_init_carbuncle_sound(mrb);
 }
 
-extern "C" void
+void
 mrb_carbuncle_audio_gem_final(mrb_state *mrb)
 {
-  carbuncle_soloud.deinit();
+  CloseAudioDevice();
 }

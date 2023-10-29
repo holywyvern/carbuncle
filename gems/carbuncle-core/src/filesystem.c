@@ -730,13 +730,12 @@ mrb_carbuncle_load_file_text(mrb_state *mrb, const char *filename)
 
 Image LoadCarbuncleImage(mrb_state *mrb, const char *filename)
 {
-  // unsigned char *bytes;
-  // size_t byte_size;
-  // bytes = mrb_carbuncle_load_file(mrb, filename, &byte_size);
-  // Image img = LoadImageFromMemory(GetFileExtension(filename), bytes, byte_size);
-  // mrb_free(mrb, bytes);
-  // return img;
-  return LoadImage(filename);
+  unsigned char *bytes;
+  size_t byte_size;
+  bytes = mrb_carbuncle_load_file(mrb, filename, &byte_size);
+  Image img = LoadImageFromMemory(GetFileExtension(filename), bytes, byte_size);
+  mrb_free(mrb, bytes);
+  return img;
 }
 
 Texture
@@ -746,6 +745,30 @@ LoadCarbuncleTexture(mrb_state *mrb, const char *filename)
   Texture2D texture = LoadTextureFromImage(image);
   UnloadImage(image);
   return texture;
+}
+
+Music
+LoadCarbuncleMusic(mrb_state *mrb, const char *filename)
+{
+  unsigned char *bytes;
+  size_t byte_size;
+  bytes = mrb_carbuncle_load_file(mrb, filename, &byte_size);
+  Music music = LoadMusicStreamFromMemory(GetFileExtension(filename), bytes, byte_size);
+  // mrb_free(mrb, bytes);
+  return music;
+}
+
+Sound
+LoadCarbuncleSound(mrb_state *mrb, const char *filename)
+{
+  unsigned char *bytes;
+  size_t byte_size;
+  bytes = mrb_carbuncle_load_file(mrb, filename, &byte_size);
+  Wave wave = LoadWaveFromMemory(GetFileExtension(filename), bytes, byte_size);
+  Sound sound = LoadSoundFromWave(wave);
+  UnloadWave(wave);
+  mrb_free(mrb, bytes);
+  return sound;
 }
 
 void mrb_carbuncle_file_error(mrb_state *mrb, const char *action)

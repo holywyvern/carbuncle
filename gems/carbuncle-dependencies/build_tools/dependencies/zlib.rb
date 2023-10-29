@@ -27,7 +27,7 @@ module Carbuncle
       end
 
       def libraries
-        'zlib'
+        config.zlib_libraries
       end
     end
   end

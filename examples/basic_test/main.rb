@@ -53,6 +53,7 @@ class TestGame < Carbuncle::Game
   end
 
   def update(dt)
+    @music.update
     @planes.each.with_index do |p, index|
       p.update(dt)
       p.ox += (2 - index) * dt * 20

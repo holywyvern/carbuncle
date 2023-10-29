@@ -7,7 +7,7 @@ module Carbuncle
 
       def libraries
         %w[
-          raylib freetype physfs tmx xml2 soloud
+          raylib freetype physfs tmx xml2
           mbedtls mbedcrypto mbedx509
           z m dl pthread X11 xcb GL Xext Xau Xdmcp
         ]

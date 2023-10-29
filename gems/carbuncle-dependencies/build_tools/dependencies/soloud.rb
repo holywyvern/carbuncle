@@ -5,6 +5,28 @@ module Carbuncle
         'SoLoud'
       end
 
+      def unzip
+        super
+        check = <<~CHECK
+          if (CMAKE_SYSTEM_NAME STREQUAL Emscripten)
+            add_link_options(
+              -s ASYNCIFY=1
+              -s USE_GLFW=3
+              -s USE_SDL=2
+              -s USE_SDL_MIXER=2
+              --use-preload-plugins
+              -s FORCE_FILESYSTEM=1
+              -s DISABLE_EXCEPTION_CATCHING=0
+              -s ALLOW_MEMORY_GROWTH=1
+              -O3
+            )
+          endif()
+        CHECK
+        File.open(File.join(base_dir, 'contrib', 'CMakeLists.txt'), 'a') do |f|
+          f << check
+        end
+      end
+  
       def url
         'https://github.com/jarikomppa/soloud/archive/RELEASE_20200207.zip'
       end

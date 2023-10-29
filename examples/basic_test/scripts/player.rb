@@ -3,6 +3,7 @@ class Game::Player < Carbuncle::Sprite
 
   def initialize
     super(Carbuncle::Texture.new('graphics/characters/kurea.png'))
+    @sound = Sound.new('sound/coin.wav')
     @frame_width = texture.width / 4
     @frame_height = texture.height / 10
     @frame = 0
@@ -63,6 +64,7 @@ class Game::Player < Carbuncle::Sprite
   end
 
   def attack!
+    @sound.play
     @attacking = true
     @pose = rand > 0.5 ? 6 : 7
     @frame = 0

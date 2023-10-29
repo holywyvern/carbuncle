@@ -1,14 +1,13 @@
 #include "carbuncle/core.h"
 #include "carbuncle/audio.h"
+#include "carbuncle/filesystem.h"
 
-#include "soloud.h"
-
-extern SoLoud::Soloud carbuncle_soloud;
+static mrb_float master_volume = 100;
 
 static mrb_value
 mrb_s_audio_get_master_volume(mrb_state *mrb, mrb_value self)
 {
-  return mrb_float_value(mrb, carbuncle_soloud.getGlobalVolume());
+  return mrb_float_value(mrb, master_volume);
 }
 
 static mrb_value
@@ -16,8 +15,9 @@ mrb_s_audio_set_master_volume(mrb_state *mrb, mrb_value self)
 {
   mrb_float value;
   mrb_get_args(mrb, "f", &value);
-  carbuncle_soloud.setGlobalVolume(value);
-  return mrb_float_value(mrb, value);
+  master_volume = value > 100 ? 100 : (value < 0 ? 0 : value);
+  SetMasterVolume(master_volume / 100);
+  return mrb_float_value(mrb, master_volume);
 }
 
 void

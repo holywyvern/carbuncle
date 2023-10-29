@@ -13,6 +13,10 @@ module Carbuncle
         []
       end
 
+      def zlib_library
+        'libz.a'
+      end
+
       def raylib_cmake_flags
         [
           '-DPLATFORM=Web',
@@ -21,20 +25,20 @@ module Carbuncle
           '-DBUILD_GAMES=OFF',
           '-DSUPPORT_FILEFORMAT_BMP=ON',
           '-DSUPPORT_FILEFORMAT_JPG=ON',
-          '-DUSE_AUDIO=OFF' # We use SoLoud instead
         ]
       end
 
       def soloud_cmake_flags
+        emsdk = File.basename(`which emcc`)
         [
           '-DSOLOUD_BACKEND_SDL2=ON',
-          "-DSDL2_INCLUDE_DIR=#{ENV['EMSCRIPTEN']}/cache/include",
-          "-DSDL2_LIBRARY=#{ENV['EMSCRIPTEN']}/cache/ports-builds/libSDL2.a"
+          "-DSDL2_INCLUDE_DIR=#{emsdk}/cache/include",
+          "-DSDL2_LIBRARY=#{emsdk}/cache/ports-builds/libSDL2.a"
         ]
       end
 
       def libraries
-        %w[raylib freetype physfs soloud mbedtls mbedcrypto mbedx509 z xml2 tmx]
+        %w[raylib freetype physfs mbedtls mbedcrypto mbedx509 z xml2 tmx]
       end
   
       
@@ -48,7 +52,7 @@ module Carbuncle
 
       def all_dependencies
         @all_dependencies ||= [
-          raylib, zlib, freetype, libxml2, tmx, physfs, soloud, ssl, # ws
+          raylib, zlib, freetype, libxml2, tmx, physfs, ssl, # ws
         ]
       end
     end

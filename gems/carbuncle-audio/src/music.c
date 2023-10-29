@@ -1,46 +1,34 @@
 #include "carbuncle/core.h"
 #include "carbuncle/music.h"
+#include "carbuncle/filesystem.h"
 
 #include <mruby/class.h>
 #include <mruby/data.h>
-
-#include "soloud.h"
-#include "soloud_wavstream.h"
-#include "physfs_file.hpp"
-
-extern SoLoud::Soloud carbuncle_soloud;
-
-namespace
-{
-  struct MusicContainer
-  {
-    SoLoud::WavStream wav;
-    PhysFsFile file;
-    mrb_bool playing;
-    SoLoud::handle handle;
-  };
-}
+#include <mruby/variable.h>
 
 static void
 mrb_music_free(mrb_state *mrb, void *p)
 {
-  if (p)
-  {
-    MusicContainer *music = reinterpret_cast<MusicContainer *>(p);
-    carbuncle_soloud.stop(music->handle);
-    delete music;
-  }
+  if (!p) return;
+
+  Music *music = (Music *)p;
+  UnloadMusicStream(*music);
+  mrb_free(mrb, p);
 }
 
 static const struct mrb_data_type music_data_type = {
   "Carbuncle::Music", mrb_music_free
 };
 
-static MusicContainer *
+static Music *
 get_music(mrb_state *mrb, mrb_value self)
 {
-  return DATA_GET_DISPOSABLE_PTR(mrb, self, &music_data_type, MusicContainer);
+  return DATA_GET_DISPOSABLE_PTR(mrb, self, &music_data_type, Music);
 }
+
+#define VOLUME mrb_intern_lit(mrb, "@volume")
+#define PAN mrb_intern_lit(mrb, "@pan")
+#define PITCH mrb_intern_lit(mrb, "@pitch")
 
 /**
  * @overload initialize(filename)
@@ -55,17 +43,13 @@ mrb_music_initialize(mrb_state *mrb, mrb_value self)
   const char *name;
   mrb_get_args(mrb, "z", &name);
   mrb_carbuncle_check_file(mrb, name);
-  MusicContainer *container = new MusicContainer();
-  DATA_PTR(self) = container;
+  Music *music = mrb_malloc(mrb, sizeof *music);
+  *music = LoadCarbuncleMusic(mrb, name); 
+  DATA_PTR(self) = music;
   DATA_TYPE(self) = &music_data_type;
-  container->file.init(mrb, name);
-  container->playing = FALSE;
-  if (container->wav.loadFile(&container->file))
-  {
-    mrb_raise(mrb, E_ARGUMENT_ERROR, "Couldn't load music stream.");
-  }
-  container->handle = carbuncle_soloud.play(container->wav, -1, 0, true);
-  carbuncle_soloud.setLooping(container->handle, true);
+  mrb_iv_set(mrb, self, VOLUME, mrb_float_value(mrb, 1));
+  mrb_iv_set(mrb, self, PAN, mrb_float_value(mrb, 0));
+  mrb_iv_set(mrb, self, PITCH, mrb_float_value(mrb, 1));
   return self;
 }
 
@@ -76,8 +60,8 @@ mrb_music_initialize(mrb_state *mrb, mrb_value self)
 static mrb_value
 mrb_music_playingQ(mrb_state *mrb, mrb_value self)
 {
-  MusicContainer *music = get_music(mrb, self);
-  return mrb_bool_value(music->playing);
+  Music *music = get_music(mrb, self);
+  return mrb_bool_value(IsMusicStreamPlaying(*music));
 }
 
 /**
@@ -86,8 +70,8 @@ mrb_music_playingQ(mrb_state *mrb, mrb_value self)
 static mrb_value
 mrb_music_get_position(mrb_state *mrb, mrb_value self)
 {
-  MusicContainer *music = get_music(mrb, self);
-  return mrb_float_value(mrb, carbuncle_soloud.getStreamTime(music->handle));
+  Music *music = get_music(mrb, self);
+  return mrb_float_value(mrb, GetMusicTimePlayed(*music));
 }
 
 /**
@@ -96,8 +80,8 @@ mrb_music_get_position(mrb_state *mrb, mrb_value self)
 static mrb_value
 mrb_music_get_size(mrb_state *mrb, mrb_value self)
 {
-  MusicContainer *music = get_music(mrb, self);
-  return mrb_float_value(mrb, music->wav.getLength());
+  Music *music = get_music(mrb, self);
+  return mrb_float_value(mrb, GetMusicTimeLength(*music));
 }
 
 /**
@@ -107,24 +91,32 @@ mrb_music_get_size(mrb_state *mrb, mrb_value self)
 static mrb_value
 mrb_music_get_volume(mrb_state *mrb, mrb_value self)
 {
-  MusicContainer *music = get_music(mrb, self);
-  return mrb_float_value(mrb, carbuncle_soloud.getVolume(music->handle));
+  get_music(mrb, self);
+  return mrb_iv_get(mrb, self, VOLUME);
 }
 
 static mrb_value
 mrb_music_get_pan(mrb_state *mrb, mrb_value self)
 {
-  MusicContainer *music = get_music(mrb, self);
-  return mrb_float_value(mrb, carbuncle_soloud.getPan(music->handle));
+  get_music(mrb, self);
+  return mrb_iv_get(mrb, self, PAN);
 }
+
+static mrb_value
+mrb_music_get_pitch(mrb_state *mrb, mrb_value self)
+{
+  get_music(mrb, self);
+  return mrb_iv_get(mrb, self, PITCH);
+}
+
 
 static mrb_value
 mrb_music_set_position(mrb_state *mrb, mrb_value self)
 {
-  MusicContainer *music = get_music(mrb, self);
+  Music *music = get_music(mrb, self);
   mrb_float value;
   mrb_get_args(mrb, "f", &value);
-  carbuncle_soloud.seek(music->handle, value);
+  SeekMusicStream(*music, value);
   return mrb_float_value(mrb, value);
 }
 
@@ -136,8 +128,10 @@ mrb_music_set_volume(mrb_state *mrb, mrb_value self)
 {
   mrb_float value;
   mrb_get_args(mrb, "f", &value);
-  MusicContainer *music = get_music(mrb, self);
-  carbuncle_soloud.setVolume(music->handle, value);
+  Music *music = get_music(mrb, self);
+  value = value < 0 ? 0 : (value > 1 ? 1 : value);
+  SetMusicVolume(*music, value);
+  mrb_iv_set(mrb, self, VOLUME, mrb_float_value(mrb, value));
   return mrb_float_value(mrb, value);
 }
 
@@ -146,8 +140,22 @@ mrb_music_set_pan(mrb_state *mrb, mrb_value self)
 {
   mrb_float value;
   mrb_get_args(mrb, "f", &value);
-  MusicContainer *music = get_music(mrb, self);
-  carbuncle_soloud.setPan(music->handle, value);
+  Music *music = get_music(mrb, self);
+  value = value < -1 ? -1 : (value > 1 ? 1 : value);
+  SetMusicPan(*music, value);
+  mrb_iv_set(mrb, self, PAN, mrb_float_value(mrb, value));
+  return mrb_float_value(mrb, value);
+}
+
+static mrb_value
+mrb_music_set_pitch(mrb_state *mrb, mrb_value self)
+{
+  mrb_float value;
+  mrb_get_args(mrb, "f", &value);
+  Music *music = get_music(mrb, self);
+  value = value < 0.5 ? 0.5 : (value > 2 ? 2 : value);
+  SetMusicPitch(*music, value);
+  mrb_iv_set(mrb, self, PITCH, mrb_float_value(mrb, value));
   return mrb_float_value(mrb, value);
 }
 
@@ -169,7 +177,7 @@ mrb_music_disposedQ(mrb_state *mrb, mrb_value self)
 static mrb_value
 mrb_music_dispose(mrb_state *mrb, mrb_value self)
 {
-  MusicContainer *music = get_music(mrb, self);
+  Music *music = get_music(mrb, self);
   mrb_music_free(mrb, music);
   DATA_PTR(self) = NULL;
   return self;
@@ -179,14 +187,28 @@ mrb_music_dispose(mrb_state *mrb, mrb_value self)
  * Plays the current music.
  * @return [nil]
  */
-extern "C" mrb_value
+mrb_value
 mrb_music_play(mrb_state *mrb, mrb_value self)
 {
-  MusicContainer *music = get_music(mrb, self);
-  if (!music->playing)
+  Music *music = get_music(mrb, self);
+  if (!IsMusicStreamPlaying(*music))
   {
-    music->playing = TRUE;
-    carbuncle_soloud.setPause(music->handle, false);
+    PlayMusicStream(*music);
+  }
+  return self;
+}
+
+/**
+ * Plays the current music at the place it was paused.
+ * @return [nil]
+ */
+mrb_value
+mrb_music_resume(mrb_state *mrb, mrb_value self)
+{
+  Music *music = get_music(mrb, self);
+  if (!IsMusicStreamPlaying(*music))
+  {
+    ResumeMusicStream(*music);
   }
   return self;
 }
@@ -195,14 +217,13 @@ mrb_music_play(mrb_state *mrb, mrb_value self)
  * Pauses the music, allowing to be resumed later.
  * @return [nil]
  */
-extern "C" mrb_value
+mrb_value
 mrb_music_pause(mrb_state *mrb, mrb_value self)
 {
-  MusicContainer *music = get_music(mrb, self);
-  if (music->playing)
+  Music *music = get_music(mrb, self);
+  if (IsMusicStreamPlaying(*music))
   {
-    music->playing = FALSE;
-    carbuncle_soloud.setPause(music->handle, true);
+    PauseMusicStream(*music);
   }
   return self;
 }
@@ -211,20 +232,26 @@ mrb_music_pause(mrb_state *mrb, mrb_value self)
  * Stops the music, setting it's position to the beggining.
  * @return [nil]
  */
-extern "C" mrb_value
+mrb_value
 mrb_music_stop(mrb_state *mrb, mrb_value self)
 {
-  MusicContainer *music = get_music(mrb, self);
-  if (music->playing)
+  Music *music = get_music(mrb, self);
+  if (IsMusicStreamPlaying(*music))
   {
-    music->playing = FALSE;
-    carbuncle_soloud.setPause(music->handle, true);
+    StopMusicStream(*music);
   }
-  carbuncle_soloud.seek(music->handle, 0);
   return self;
 }
 
-extern "C" void
+static mrb_value
+mrb_music_update(mrb_state *mrb, mrb_value self)
+{
+  Music *music = get_music(mrb, self);
+  UpdateMusicStream(*music);
+  return self;
+}
+
+void
 mrb_init_carbuncle_music(mrb_state *mrb)
 {
   struct RClass *carbuncle = mrb_carbuncle_get(mrb);
@@ -251,6 +278,7 @@ mrb_init_carbuncle_music(mrb_state *mrb)
 
   mrb_define_method(mrb, music, "position", mrb_music_get_position, MRB_ARGS_NONE());
   mrb_define_method(mrb, music, "pan", mrb_music_get_pan, MRB_ARGS_NONE());
+  mrb_define_method(mrb, music, "pitch", mrb_music_get_pitch, MRB_ARGS_NONE());
   mrb_define_method(mrb, music, "size", mrb_music_get_size, MRB_ARGS_NONE());
   mrb_define_method(mrb, music, "length", mrb_music_get_size, MRB_ARGS_NONE());
   mrb_define_method(mrb, music, "count", mrb_music_get_size, MRB_ARGS_NONE());
@@ -259,11 +287,15 @@ mrb_init_carbuncle_music(mrb_state *mrb)
   mrb_define_method(mrb, music, "volume=", mrb_music_set_volume, MRB_ARGS_REQ(1));
   mrb_define_method(mrb, music, "position=", mrb_music_set_position, MRB_ARGS_REQ(1));
   mrb_define_method(mrb, music, "pan=", mrb_music_set_pan, MRB_ARGS_REQ(1));
+  mrb_define_method(mrb, music, "pitch=", mrb_music_set_pitch, MRB_ARGS_REQ(1));
 
   mrb_define_method(mrb, music, "disposed?", mrb_music_disposedQ, MRB_ARGS_NONE());
   mrb_define_method(mrb, music, "dispose", mrb_music_dispose, MRB_ARGS_NONE());
 
   mrb_define_method(mrb, music, "play", mrb_music_play, MRB_ARGS_NONE());
+  mrb_define_method(mrb, music, "resume", mrb_music_resume, MRB_ARGS_NONE());
   mrb_define_method(mrb, music, "pause", mrb_music_pause, MRB_ARGS_NONE());
   mrb_define_method(mrb, music, "stop", mrb_music_stop, MRB_ARGS_NONE());
+
+  mrb_define_method(mrb, music, "update", mrb_music_update, MRB_ARGS_NONE());
 }
