@@ -6,6 +6,10 @@ module Carbuncle
       @config = config
     end
 
+    def cmake_command
+      @cmake_command ||= config.cmake_command
+    end
+
     def env
       @env ||= @config.env
     end
@@ -42,7 +46,7 @@ module Carbuncle
       puts "Building #{name}..."
       FileUtils.mkdir_p(build_dir)
       Dir.chdir(build_dir) do
-        success = system("cmake #{cmake_flags.join(' ')} #{cmake_dir}") && system('cmake --build .')
+        success = system("#{cmake_command} #{cmake_flags.join(' ')} #{cmake_dir}") && system('cmake --build .')
         raise "Failed to build #{name}" unless success
 
         puts "#{name} was built!"

@@ -10,12 +10,7 @@ module Carbuncle
       end
 
       def general_cmake_flags
-        super +
-          [
-            "-DEMSCRIPTEN_ROOT_PATH=#{ENV['EMSCRIPTEN']}",
-            '-G "Unix Makefiles"',
-            '-DCMAKE_MAKE_PROGRAM=make'
-          ]
+        []
       end
 
       def raylib_cmake_flags
@@ -45,6 +40,10 @@ module Carbuncle
       
       def toolchain_name
         'emcc'
+      end
+
+      def cmake_command
+        'emcmake cmake'
       end
 
       def all_dependencies

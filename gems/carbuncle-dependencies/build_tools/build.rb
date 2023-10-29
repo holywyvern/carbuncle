@@ -7,6 +7,10 @@ module Carbuncle
       Carbuncle::Console.header("Detecting Carbuncle build for #{type}.")
     end
 
+    def cmake_command
+      'cmake'
+    end
+
     def build_dependencies
       all_dependencies.each(&:build)
     end
