@@ -1,6 +1,8 @@
 #include "carbuncle/core.h"
 #include "carbuncle/filesystem.h"
 
+#include <stdio.h>
+
 #ifdef __EMSCRIPTEN__
 #include <emscripten/emscripten.h>
 #endif
@@ -728,10 +730,13 @@ mrb_carbuncle_load_file_text(mrb_state *mrb, const char *filename)
 
 Image LoadCarbuncleImage(mrb_state *mrb, const char *filename)
 {
-  char *bytes;
-  size_t byte_size;
-  bytes = mrb_carbuncle_load_file(mrb, filename, &byte_size);
-  return LoadImageFromMemory(GetFileExtension(filename), bytes, byte_size);
+  // unsigned char *bytes;
+  // size_t byte_size;
+  // bytes = mrb_carbuncle_load_file(mrb, filename, &byte_size);
+  // Image img = LoadImageFromMemory(GetFileExtension(filename), bytes, byte_size);
+  // mrb_free(mrb, bytes);
+  // return img;
+  return LoadImage(filename);
 }
 
 Texture

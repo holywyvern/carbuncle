@@ -17,6 +17,7 @@ class TestGame < Carbuncle::Game
   end
 
   def load_background
+    @bmp = Bitmap.new('graphics/backgrounds/bg.jpg')
     texture = Texture.new('graphics/backgrounds/bg.jpg')
     @planes = 5.times.map do |i|
       p = Plane.new(texture)

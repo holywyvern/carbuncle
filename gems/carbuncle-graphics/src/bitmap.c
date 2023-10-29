@@ -90,7 +90,6 @@ mrb_bitmap_initialize(mrb_state *mrb, mrb_value self)
     }
     default: mrb_carbuncle_arg_error(mrb, "1 or 2", argc);
   }
-  ImageFormat(img, PIXELFORMAT_UNCOMPRESSED_R8G8B8A8);
   DATA_PTR(self) = img;
   DATA_TYPE(self) = &bitmap_data_type;
   mrb_iv_set(
@@ -104,6 +103,15 @@ static mrb_value
 mrb_bitmap_disposedQ(mrb_state *mrb, mrb_value self)
 {
   return mrb_bool_value(!DATA_PTR(self));
+}
+
+static mrb_value
+mrb_bitmap_readyQ(mrb_state *mrb, mrb_value self)
+{
+  if (!DATA_PTR(self)) return mrb_false_value();
+
+  Image *image = mrb_carbuncle_get_bitmap(mrb, self);
+  return mrb_bool_value(IsImageReady(*image));
 }
 
 static mrb_value
@@ -634,6 +642,7 @@ mrb_init_carbuncle_bitmap(mrb_state *mrb)
   mrb_define_method(mrb, bitmap, "initialize_copy", mrb_bitmap_initialize, MRB_ARGS_REQ(1));
 
   mrb_define_method(mrb, bitmap, "disposed?", mrb_bitmap_disposedQ, MRB_ARGS_NONE());
+  mrb_define_method(mrb, bitmap, "ready?", mrb_bitmap_readyQ, MRB_ARGS_NONE());
   mrb_define_method(mrb, bitmap, "dispose", mrb_bitmap_dispose, MRB_ARGS_NONE());
 
   mrb_define_method(mrb, bitmap, "save", mrb_bitmap_save, MRB_ARGS_REQ(1));

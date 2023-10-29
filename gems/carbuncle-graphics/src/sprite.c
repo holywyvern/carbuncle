@@ -80,6 +80,7 @@ mrb_carbuncle_sprite_draw_texture(Texture2D texture, Rectangle src, Rectangle ds
     rlTranslatef(dst.x, dst.y, 0.0f);
     rlRotatef(angle, 0.0f, 0.0f, 1.0f);
     rlTranslatef(-origin.x, -origin.y, 0.0f);
+    rlSetTexture(texture.id);
     rlBegin(RL_QUADS);
       rlColor4ub(tint.r, tint.g, tint.b, tint.a);
       // Normal vector pointing towards viewer
@@ -97,6 +98,7 @@ mrb_carbuncle_sprite_draw_texture(Texture2D texture, Rectangle src, Rectangle ds
       rlTexCoord2f(corners[3][0], corners[3][1]);
       rlVertex2f(dst.width, 0.0f);
     rlEnd();
+    rlSetTexture(0);
   rlPopMatrix();
 }
 

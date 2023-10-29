@@ -94,11 +94,10 @@ module Carbuncle
     end
 
     def raylib_cmake_flags
-      [
+      [ 
+        '-DCUSTOMIZE_BUILD=ON',
         '-DPLATFORM=Desktop',
-        '-DSTATIC=ON',
         '-DBUILD_EXAMPLES=OFF',
-        '-DBUILD_GAMES=OFF',
         '-DSUPPORT_FILEFORMAT_BMP=ON',
         '-DSUPPORT_FILEFORMAT_JPG=ON',
         '-DUSE_AUDIO=OFF' # We use SoLoud instead
