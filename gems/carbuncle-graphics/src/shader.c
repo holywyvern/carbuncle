@@ -216,7 +216,7 @@ mrb_shader_find_uniform_location(mrb_state *mrb, mrb_value self)
   const char *name;
   struct mrb_Shader *shader = get_shader(mrb, self);
   mrb_get_args(mrb, "z", &name);
-  return mrb_fixnum_value(GetShaderLocation(shader->shader, name));
+  return mrb_int_value(mrb, GetShaderLocation(shader->shader, name));
 }
 
 mrb_value

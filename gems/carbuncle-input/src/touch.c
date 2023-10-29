@@ -36,7 +36,7 @@ mrb_touch_get_points(mrb_state *mrb, mrb_value self)
 static mrb_value
 mrb_touch_get_size(mrb_state *mrb, mrb_value self)
 {
-  return mrb_fixnum_value(GetTouchPointCount());
+  return mrb_int_value(mrb, GetTouchPointCount());
 }
 
 static mrb_value

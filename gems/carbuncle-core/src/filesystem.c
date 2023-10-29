@@ -324,7 +324,7 @@ static mrb_value
 mrb_file_get_size(mrb_state *mrb, mrb_value self)
 {
   PHYSFS_File *file = get_file(mrb, self);
-  return mrb_fixnum_value(PHYSFS_fileLength(file));
+  return mrb_int_value(mrb, PHYSFS_fileLength(file));
 }
 
 static mrb_value
@@ -349,7 +349,7 @@ mrb_file_tell(mrb_state *mrb, mrb_value self)
   {
     raise_physfs_error(mrb, "tell");
   }
-  return mrb_fixnum_value(pos);
+  return mrb_int_value(mrb, pos);
 }
 
 static mrb_value
@@ -499,7 +499,7 @@ mrb_file_write(mrb_state *mrb, mrb_value self)
   {
     raise_physfs_error(mrb, "write");
   }
-  return mrb_fixnum_value(bytes);
+  return mrb_int_value(mrb, bytes);
 }
 
 static mrb_value

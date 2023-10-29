@@ -263,10 +263,10 @@ mrb_carbuncle_color_new(mrb_state *mrb, mrb_int r, mrb_int g, mrb_int b, mrb_int
 {
   struct RClass *point = mrb_carbuncle_class_get(mrb, "Color");
   mrb_value args[4] = {
-    mrb_fixnum_value(r),
-    mrb_fixnum_value(g),
-    mrb_fixnum_value(b),
-    mrb_fixnum_value(a)
+    mrb_int_value(mrb, r),
+    mrb_int_value(mrb, g),
+    mrb_int_value(mrb, b),
+    mrb_int_value(mrb, a)
   };
   return mrb_obj_new(mrb, point, 4, args);  
 }

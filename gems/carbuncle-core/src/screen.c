@@ -67,7 +67,7 @@ static mrb_value
 mrb_screen_get_width(mrb_state *mrb, mrb_value self)
 {
   Screen *screen = mrb_carbuncle_get_screen(mrb, self);
-  return mrb_fixnum_value(screen->width);
+  return mrb_int_value(mrb, screen->width);
 }
 
 /**
@@ -79,7 +79,7 @@ static mrb_value
 mrb_screen_get_height(mrb_state *mrb, mrb_value self)
 {
   Screen *screen = mrb_carbuncle_get_screen(mrb, self);
-  return mrb_fixnum_value(screen->height);
+  return mrb_int_value(mrb, screen->height);
 }
 
 /**
@@ -130,7 +130,7 @@ mrb_screen_set_width(mrb_state *mrb, mrb_value self)
   }
   Screen *screen = mrb_carbuncle_get_screen(mrb, self);
   screen->width = value;
-  mrb_value width = mrb_fixnum_value(value);
+  mrb_value width = mrb_int_value(mrb, value);
   check_game(mrb, self, screen);
   return width;
 }
@@ -154,7 +154,7 @@ mrb_screen_set_height(mrb_state *mrb, mrb_value self)
   }
   Screen *screen = mrb_carbuncle_get_screen(mrb, self);
   screen->height = value;
-  mrb_value height = mrb_fixnum_value(value);
+  mrb_value height = mrb_int_value(mrb, value);
   check_game(mrb, self, screen);
   return height;
 }

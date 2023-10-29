@@ -156,14 +156,14 @@ static mrb_value
 mrb_bitmap_get_width(mrb_state *mrb, mrb_value self)
 {
   Image *image = mrb_carbuncle_get_bitmap(mrb, self);
-  return mrb_fixnum_value(image->width);
+  return mrb_int_value(mrb, image->width);
 }
 
 static mrb_value
 mrb_bitmap_get_height(mrb_state *mrb, mrb_value self)
 {
   Image *image = mrb_carbuncle_get_bitmap(mrb, self);
-  return mrb_fixnum_value(image->height);
+  return mrb_int_value(mrb, image->height);
 }
 
 static mrb_value

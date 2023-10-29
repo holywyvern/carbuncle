@@ -103,7 +103,7 @@ mrb_mouse_upQ(mrb_state *mrb, mrb_value self)
 static mrb_value
 mrb_mouse_get_x(mrb_state *mrb, mrb_value self)
 {
-  return mrb_fixnum_value(GetMouseX());
+  return mrb_int_value(mrb, GetMouseX());
 }
 
 /*
@@ -114,7 +114,7 @@ mrb_mouse_get_x(mrb_state *mrb, mrb_value self)
 static mrb_value
 mrb_mouse_get_y(mrb_state *mrb, mrb_value self)
 {
-  return mrb_fixnum_value(GetMouseY());
+  return mrb_int_value(mrb, GetMouseY());
 }
 
 /*
@@ -135,7 +135,7 @@ mrb_mouse_get_position(mrb_state *mrb, mrb_value self)
 static mrb_value
 mrb_mouse_get_wheel_move(mrb_state *mrb, mrb_value self)
 {
-  return mrb_fixnum_value(GetMouseWheelMove());
+  return mrb_int_value(mrb, GetMouseWheelMove());
 }
 
 /*
@@ -148,7 +148,7 @@ mrb_mouse_set_x(mrb_state *mrb, mrb_value self)
   mrb_int value;
   mrb_get_args(mrb, "i", &value);
   SetMousePosition(value, GetMouseY());
-  return mrb_fixnum_value(value);
+  return mrb_int_value(mrb, value);
 }
 
 /*
@@ -161,7 +161,7 @@ mrb_mouse_set_y(mrb_state *mrb, mrb_value self)
   mrb_int value;
   mrb_get_args(mrb, "i", &value);
   SetMousePosition(GetMouseX(), value);
-  return mrb_fixnum_value(value);
+  return mrb_int_value(mrb, value);
 }
 
 /*

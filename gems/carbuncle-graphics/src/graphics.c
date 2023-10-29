@@ -38,7 +38,7 @@ get_graphics_end_color(mrb_state *mrb, mrb_value self)
 static mrb_value
 mrb_s_graphics_get_fps(mrb_state *mrb, mrb_value self)
 {
-  return mrb_fixnum_value(GetFPS());
+  return mrb_int_value(mrb, GetFPS());
 }
 
 static mrb_value
@@ -56,7 +56,7 @@ mrb_s_graphics_get_delta_time(mrb_state *mrb, mrb_value self)
 static mrb_value
 mrb_s_graphics_get_target_fps(mrb_state *mrb, mrb_value self)
 {
-  return mrb_fixnum_value(carbuncle_target_fps);
+  return mrb_int_value(mrb, carbuncle_target_fps);
 }
 
 static mrb_value
@@ -67,7 +67,7 @@ mrb_s_graphics_set_target_fps(mrb_state *mrb, mrb_value self)
   target = target < 0 ? 0 : target;
   carbuncle_target_fps = target;
   SetTargetFPS(carbuncle_target_fps);
-  return mrb_fixnum_value(carbuncle_target_fps);
+  return mrb_int_value(mrb, carbuncle_target_fps);
 }
 
 static mrb_value
@@ -85,7 +85,7 @@ mrb_s_graphics_get_end_color(mrb_state *mrb, mrb_value self)
 static mrb_value
 mrb_s_graphics_get_style(mrb_state *mrb, mrb_value self)
 {
-  return mrb_fixnum_value(carbuncle_graphics_style);
+  return mrb_int_value(mrb, carbuncle_graphics_style);
 }
 
 static mrb_value

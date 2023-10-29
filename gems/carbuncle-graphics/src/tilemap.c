@@ -435,28 +435,28 @@ static mrb_value
 mrb_tilemap_get_width(mrb_state *mrb, mrb_value self)
 {
   tmx_map *map = mrb_carbuncle_get_tilemap(mrb, self);
-  return mrb_fixnum_value(map->width);
+  return mrb_int_value(mrb, map->width);
 }
 
 static mrb_value
 mrb_tilemap_get_height(mrb_state *mrb, mrb_value self)
 {
   tmx_map *map = mrb_carbuncle_get_tilemap(mrb, self);
-  return mrb_fixnum_value(map->height);
+  return mrb_int_value(mrb, map->height);
 }
 
 static mrb_value
 mrb_tilemap_get_tile_width(mrb_state *mrb, mrb_value self)
 {
   tmx_map *map = mrb_carbuncle_get_tilemap(mrb, self);
-  return mrb_fixnum_value(map->tile_width);
+  return mrb_int_value(mrb, map->tile_width);
 }
 
 static mrb_value
 mrb_tilemap_get_tile_height(mrb_state *mrb, mrb_value self)
 {
   tmx_map *map = mrb_carbuncle_get_tilemap(mrb, self);
-  return mrb_fixnum_value(map->tile_height);
+  return mrb_int_value(mrb, map->tile_height);
 }
 
 static mrb_value
