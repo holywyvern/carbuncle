@@ -103,10 +103,11 @@ jobs:
         name: Build .app file for Mac OS X
         run: cp mruby/build/host/bin/mruby-carbuncle examples/distributables/osx.app/mruby-carbuncle
       - if: matrix.build_name == 'Mac OS X'
-        name: Zip Emscripten
-        uses: montudor/action-zip@v1
+        name: Zip Mac OS X App
+        uses: vimtor/action-zip@v1.1
         with:
-          args: zip -qq -r ${{ matrix.release_file }} . -i ${{ matrix.release_folder }}      
+          files: ${{ matrix.release_folder }}
+          dest: ${{ matrix.release_file }}  
       - if: github.ref_type == 'tag'
         name: Publish Binaries Tag for ${{ matrix.build_name }}
         uses: svenstaro/upload-release-action@v2
