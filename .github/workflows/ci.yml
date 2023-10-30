@@ -101,10 +101,7 @@ jobs:
           args: zip -qq -r ${{ matrix.release_file }} . -i ${{ matrix.release_folder }}
       - if: matrix.build_name == 'Mac OS X'
         name: Build .app file for Mac OS X
-        uses: canastro/copy-file-action@master
-        with:
-          source: mruby/build/host/bin/mruby-carbuncle
-          target: examples/distributables/osx.app/mruby-carbuncle
+        run: cp mruby/build/host/bin/mruby-carbuncle examples/distributables/osx.app/mruby-carbuncle
       - if: matrix.build_name == 'Mac OS X'
         name: Zip Emscripten
         uses: montudor/action-zip@v1
