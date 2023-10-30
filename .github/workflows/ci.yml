@@ -30,7 +30,7 @@ jobs:
             os: ubuntu-latest
             config_file: build_configs/ci.rb
             release_file: mruby/build/host/bin/mruby-carbuncle
-            release_name: mruby-carbuncle-linux
+            release_name: mruby-carbuncle
             release_body: Ubuntu Binary
           - build_name: Windows (MinGW Cross Build)
             os: ubuntu-latest
@@ -41,9 +41,9 @@ jobs:
           - build_name: Web (Emscripten)
             os: ubuntu-latest
             config_file: build_configs/emscripten.rb
-            release_folder: mruby/build/mingw/bin
-            release_file: mruby/build/mingw/bin/mruby-carbuncle.zip
-            release_name: mruby-carbuncle.zip
+            release_folder: mruby/build/web/bin
+            release_file: mruby-carbuncle.web.zip
+            release_name: mruby-carbuncle.web.zip
             release_body: Emscripten Website 
           - build_name: Mac OS X
             os: macos-latest
@@ -94,16 +94,11 @@ jobs:
         run: gem install rubyzip
       - name: Build mruby
         run: rake
-      - if: matrix.build_name == 'Web (Emscripten)'
-        name: Zip Emscripten
-        uses: montudor/action-zip@v1
-        with:
-          args: zip -qq -r ${{ matrix.release_file }} . -i ${{ matrix.release_folder }}
       - if: matrix.build_name == 'Mac OS X'
         name: Build .app file for Mac OS X
         run: cp mruby/build/host/bin/mruby-carbuncle examples/distributables/osx.app/mruby-carbuncle
-      - if: matrix.build_name == 'Mac OS X'
-        name: Zip Mac OS X App
+      - if: matrix.build_name == 'Web (Emscripten)' || matrix.build_name == 'Mac OS X'
+        name: Zip Files
         uses: vimtor/action-zip@v1.1
         with:
           files: ${{ matrix.release_folder }}
