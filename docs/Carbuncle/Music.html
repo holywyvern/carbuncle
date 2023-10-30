@@ -508,6 +508,50 @@
         <li class="public ">
   <span class="summary_signature">
     
+      <a href="#pos-instance_method" title="#pos (instance method)">#<strong>pos</strong>  &#x21d2; Float </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#pos=-instance_method" title="#pos= (instance method)">#<strong>pos=</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
       <a href="#position=-instance_method" title="#position= (instance method)">#<strong>position</strong>  &#x21d2; Object </a>
     
 
@@ -552,6 +596,28 @@
     <span class="summary_desc"><div class='inline'>
 <p>Plays the current music at the place it was paused.</p>
 </div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#seek-instance_method" title="#seek (instance method)">#<strong>seek</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
   
 </li>
 
@@ -1523,6 +1589,108 @@ mrb_music_playingQ(mrb_state *mrb, mrb_value self)
 </div>
     
       <div class="method_details ">
+  <h3 class="signature " id="pos-instance_method">
+  
+    #<strong>pos</strong>  &#x21d2; <tt><span class='object_link'><a href="../Float.html" title="Float (class)">Float</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../Float.html" title="Float (class)">Float</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div>
+
+<table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+70
+71
+72
+73
+74
+75</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-audio/src/music.c', line 70</span>
+
+static mrb_value
+mrb_music_get_position(mrb_state *mrb, mrb_value self)
+{
+  Music *music = get_music(mrb, self);
+  return mrb_float_value(mrb, GetMusicTimePlayed(*music));
+}</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="pos=-instance_method">
+  
+    #<strong>pos=</strong>  &#x21d2; <tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+113
+114
+115
+116
+117
+118
+119
+120
+121</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-audio/src/music.c', line 113</span>
+
+static mrb_value
+mrb_music_set_position(mrb_state *mrb, mrb_value self)
+{
+  Music *music = get_music(mrb, self);
+  mrb_float value;
+  mrb_get_args(mrb, &quot;f&quot;, &amp;value);
+  SeekMusicStream(*music, value);
+  return mrb_float_value(mrb, value);
+}</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
   <h3 class="signature " id="position=-instance_method">
   
     #<strong>position=</strong>  &#x21d2; <tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>  <span class="extras">(readonly)</span>
@@ -1628,6 +1796,48 @@ mrb_music_resume(mrb_state *mrb, mrb_value self)
     ResumeMusicStream(*music);
   }
   return self;
+}</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="seek-instance_method">
+  
+    #<strong>seek</strong>  &#x21d2; <tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+113
+114
+115
+116
+117
+118
+119
+120
+121</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-audio/src/music.c', line 113</span>
+
+static mrb_value
+mrb_music_set_position(mrb_state *mrb, mrb_value self)
+{
+  Music *music = get_music(mrb, self);
+  mrb_float value;
+  mrb_get_args(mrb, &quot;f&quot;, &amp;value);
+  SeekMusicStream(*music, value);
+  return mrb_float_value(mrb, value);
 }</pre>
     </td>
   </tr>
@@ -1747,7 +1957,7 @@ mrb_music_update(mrb_state *mrb, mrb_value self)
 </div>
 
       <div id="footer">
-  Generated on Sun Oct 29 21:24:50 2023 by
+  Generated on Mon Oct 30 00:03:46 2023 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.34 in <a href="https://github.com/sagmor/yard-mruby">mruby mode</a> 0.3.0 (ruby-3.2.2).
 </div>

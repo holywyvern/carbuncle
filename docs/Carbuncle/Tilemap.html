@@ -98,8 +98,8 @@
   
   <dl>
     <dt>Defined in:</dt>
-    <dd>gems/carbuncle-graphics/src/tilemap.c<span class="defines">,<br />
-  gems/carbuncle-graphics/mrblib/tilemap.rb</span>
+    <dd>gems/carbuncle-tilemap/src/tilemap.c<span class="defines">,<br />
+  gems/carbuncle-tilemap/mrblib/tilemap.rb</span>
 </dd>
   </dl>
   
@@ -111,7 +111,7 @@
     
   
     
-      <strong class="classes">Classes:</strong> <span class='object_link'><a href="Tilemap/ImageLayer.html" title="Carbuncle::Tilemap::ImageLayer (class)">ImageLayer</a></span>, <span class='object_link'><a href="Tilemap/Layer.html" title="Carbuncle::Tilemap::Layer (class)">Layer</a></span>, <span class='object_link'><a href="Tilemap/LayerGroup.html" title="Carbuncle::Tilemap::LayerGroup (class)">LayerGroup</a></span>, <span class='object_link'><a href="Tilemap/ObjectLayer.html" title="Carbuncle::Tilemap::ObjectLayer (class)">ObjectLayer</a></span>, <span class='object_link'><a href="Tilemap/Tile.html" title="Carbuncle::Tilemap::Tile (class)">Tile</a></span>, <span class='object_link'><a href="Tilemap/TileLayer.html" title="Carbuncle::Tilemap::TileLayer (class)">TileLayer</a></span>
+      <strong class="classes">Classes:</strong> <span class='object_link'><a href="Tilemap/ImageLayer.html" title="Carbuncle::Tilemap::ImageLayer (class)">ImageLayer</a></span>, <span class='object_link'><a href="Tilemap/Layer.html" title="Carbuncle::Tilemap::Layer (class)">Layer</a></span>, <span class='object_link'><a href="Tilemap/LayerGroup.html" title="Carbuncle::Tilemap::LayerGroup (class)">LayerGroup</a></span>, <span class='object_link'><a href="Tilemap/ObjectLayer.html" title="Carbuncle::Tilemap::ObjectLayer (class)">ObjectLayer</a></span>, <span class='object_link'><a href="Tilemap/TileLayer.html" title="Carbuncle::Tilemap::TileLayer (class)">TileLayer</a></span>
     
   
 </p>
@@ -527,34 +527,34 @@
       <pre class="lines">
 
 
-396
-397
-398
-399
-400
-401
-402
-403
-404
-405
-406
-407
-408
-409
-410
-411
-412
-413
-414
-415
-416
-417
-418
-419
-420</pre>
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-graphics/src/tilemap.c', line 396</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-tilemap/src/tilemap.c', line 191</span>
 
 static mrb_value
 mrb_tilemap_initialize(mrb_state *mrb, mrb_value self)
@@ -608,18 +608,18 @@ mrb_tilemap_initialize(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-478
-479
-480
-481
-482
-483
-484
-485
-486</pre>
+273
+274
+275
+276
+277
+278
+279
+280
+281</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-graphics/src/tilemap.c', line 478</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-tilemap/src/tilemap.c', line 273</span>
 
 static mrb_value
 mrb_tilemap_dispose(mrb_state *mrb, mrb_value self)
@@ -674,14 +674,14 @@ mrb_tilemap_dispose(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-472
-473
-474
-475
-476</pre>
+267
+268
+269
+270
+271</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-graphics/src/tilemap.c', line 472</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-tilemap/src/tilemap.c', line 267</span>
 
 static mrb_value
 mrb_tilemap_disposedQ(mrb_state *mrb, mrb_value self)
@@ -708,24 +708,24 @@ mrb_tilemap_disposedQ(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-522
-523
-524
-525
-526
-527
-528
-529
-530
-531
-532
-533
-534
-535
-536</pre>
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-graphics/src/tilemap.c', line 522</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-tilemap/src/tilemap.c', line 317</span>
 
 static mrb_value
 mrb_tilemap_draw(mrb_state *mrb, mrb_value self)
@@ -762,15 +762,15 @@ mrb_tilemap_draw(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-441
-442
-443
-444
-445
-446</pre>
+236
+237
+238
+239
+240
+241</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-graphics/src/tilemap.c', line 441</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-tilemap/src/tilemap.c', line 236</span>
 
 static mrb_value
 mrb_tilemap_get_height(mrb_state *mrb, mrb_value self)
@@ -798,14 +798,14 @@ mrb_tilemap_get_height(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-422
-423
-424
-425
-426</pre>
+217
+218
+219
+220
+221</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-graphics/src/tilemap.c', line 422</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-tilemap/src/tilemap.c', line 217</span>
 
 static mrb_value
 mrb_tilemap_get_layers(mrb_state *mrb, mrb_value self)
@@ -832,14 +832,14 @@ mrb_tilemap_get_layers(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-428
-429
-430
-431
-432</pre>
+223
+224
+225
+226
+227</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-graphics/src/tilemap.c', line 428</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-tilemap/src/tilemap.c', line 223</span>
 
 static mrb_value
 mrb_tilemap_get_offset(mrb_state *mrb, mrb_value self)
@@ -866,18 +866,18 @@ mrb_tilemap_get_offset(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-462
-463
-464
-465
-466
-467
-468
-469
-470</pre>
+257
+258
+259
+260
+261
+262
+263
+264
+265</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-graphics/src/tilemap.c', line 462</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-tilemap/src/tilemap.c', line 257</span>
 
 static mrb_value
 mrb_tilemap_set_offset(mrb_state *mrb, mrb_value self)
@@ -908,17 +908,17 @@ mrb_tilemap_set_offset(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-681
-682
-683
-684
-685</pre>
+333
+334
+335
+336
+337</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-graphics/src/tilemap.c', line 681</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-tilemap/src/tilemap.c', line 333</span>
 
 static mrb_value
-mrb_any_get_properties(mrb_state *mrb, mrb_value self)
+mrb_tilemap_get_properties(mrb_state *mrb, mrb_value self)
 {
   return mrb_iv_get(mrb, self, PROPERTIES_SYMBOL);
 }</pre>
@@ -947,7 +947,7 @@ mrb_any_get_properties(mrb_state *mrb, mrb_value self)
 5</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-graphics/mrblib/tilemap.rb', line 3</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-tilemap/mrblib/tilemap.rb', line 3</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_size'>size</span>
   <span class='ivar'>@size</span> <span class='op'>||=</span> <span class='const'><span class='object_link'><a href="../Carbuncle.html" title="Carbuncle (module)">Carbuncle</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Point.html" title="Carbuncle::Point (class)">Point</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Point.html#initialize-instance_method" title="Carbuncle::Point#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_width'>width</span><span class='comma'>,</span> <span class='id identifier rubyid_height'>height</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_freeze'>freeze</span>
@@ -972,15 +972,15 @@ mrb_any_get_properties(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-455
-456
-457
-458
-459
-460</pre>
+250
+251
+252
+253
+254
+255</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-graphics/src/tilemap.c', line 455</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-tilemap/src/tilemap.c', line 250</span>
 
 static mrb_value
 mrb_tilemap_get_tile_height(mrb_state *mrb, mrb_value self)
@@ -1013,7 +1013,7 @@ mrb_tilemap_get_tile_height(mrb_state *mrb, mrb_value self)
 9</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-graphics/mrblib/tilemap.rb', line 7</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-tilemap/mrblib/tilemap.rb', line 7</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_tile_size'>tile_size</span>
   <span class='ivar'>@tile_size</span> <span class='op'>||=</span> <span class='const'><span class='object_link'><a href="../Carbuncle.html" title="Carbuncle (module)">Carbuncle</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Point.html" title="Carbuncle::Point (class)">Point</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Point.html#initialize-instance_method" title="Carbuncle::Point#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_tile_width'>tile_width</span><span class='comma'>,</span> <span class='id identifier rubyid_tile_height'>tile_height</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_freeze'>freeze</span>
@@ -1038,15 +1038,15 @@ mrb_tilemap_get_tile_height(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-448
-449
-450
-451
-452
-453</pre>
+243
+244
+245
+246
+247
+248</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-graphics/src/tilemap.c', line 448</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-tilemap/src/tilemap.c', line 243</span>
 
 static mrb_value
 mrb_tilemap_get_tile_width(mrb_state *mrb, mrb_value self)
@@ -1074,14 +1074,14 @@ mrb_tilemap_get_tile_width(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-687
-688
-689
-690
-691</pre>
+339
+340
+341
+342
+343</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-graphics/src/tilemap.c', line 687</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-tilemap/src/tilemap.c', line 339</span>
 
 static mrb_value
 mrb_tilemap_get_tiles(mrb_state *mrb, mrb_value self)
@@ -1116,7 +1116,7 @@ mrb_tilemap_get_tiles(mrb_state *mrb, mrb_value self)
 16</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-graphics/mrblib/tilemap.rb', line 11</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-tilemap/mrblib/tilemap.rb', line 11</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_tiles_at'>tiles_at</span><span class='lparen'>(</span><span class='id identifier rubyid_x'>x</span><span class='comma'>,</span> <span class='id identifier rubyid_y'>y</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_layers'>layers</span>
@@ -1144,42 +1144,42 @@ mrb_tilemap_get_tiles(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-488
-489
-490
-491
-492
-493
-494
-495
-496
-497
-498
-499
-500
-501
-502
-503
-504
-505
-506
-507
-508
-509
-510
-511
-512
-513
-514
-515
-516
-517
-518
-519
-520</pre>
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-graphics/src/tilemap.c', line 488</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-tilemap/src/tilemap.c', line 283</span>
 
 static mrb_value
 mrb_tilemap_update(mrb_state *mrb, mrb_value self)
@@ -1234,15 +1234,15 @@ mrb_tilemap_update(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-434
-435
-436
-437
-438
-439</pre>
+229
+230
+231
+232
+233
+234</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-graphics/src/tilemap.c', line 434</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-tilemap/src/tilemap.c', line 229</span>
 
 static mrb_value
 mrb_tilemap_get_width(mrb_state *mrb, mrb_value self)
@@ -1260,7 +1260,7 @@ mrb_tilemap_get_width(mrb_state *mrb, mrb_value self)
 </div>
 
       <div id="footer">
-  Generated on Sun Oct 29 21:24:52 2023 by
+  Generated on Mon Oct 30 00:03:47 2023 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.34 in <a href="https://github.com/sagmor/yard-mruby">mruby mode</a> 0.3.0 (ruby-3.2.2).
 </div>

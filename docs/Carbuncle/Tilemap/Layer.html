@@ -98,7 +98,7 @@
   
   <dl>
     <dt>Defined in:</dt>
-    <dd>gems/carbuncle-graphics/src/tilemap.c</dd>
+    <dd>gems/carbuncle-tilemap/src/tilemap_layer.c</dd>
   </dl>
   
 </div>
@@ -365,19 +365,19 @@
       <pre class="lines">
 
 
-538
-539
-540
-541
-542
-543
-544
-545
-546
-547</pre>
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-graphics/src/tilemap.c', line 538</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-tilemap/src/tilemap_layer.c', line 30</span>
 
 static mrb_value
 mrb_layer_initialize(mrb_state *mrb, mrb_value self)
@@ -416,14 +416,14 @@ mrb_layer_initialize(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-597
-598
-599
-600
-601</pre>
+95
+96
+97
+98
+99</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-graphics/src/tilemap.c', line 597</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-tilemap/src/tilemap_layer.c', line 95</span>
 
 static mrb_value
 mrb_layer_draw(mrb_state *mrb, mrb_value self)
@@ -450,14 +450,14 @@ mrb_layer_draw(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-549
-550
-551
-552
-553</pre>
+41
+42
+43
+44
+45</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-graphics/src/tilemap.c', line 549</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-tilemap/src/tilemap_layer.c', line 41</span>
 
 static mrb_value
 mrb_layer_get_map(mrb_state *mrb, mrb_value self)
@@ -484,15 +484,15 @@ mrb_layer_get_map(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-562
-563
-564
-565
-566
-567</pre>
+60
+61
+62
+63
+64
+65</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-graphics/src/tilemap.c', line 562</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-tilemap/src/tilemap_layer.c', line 60</span>
 
 static mrb_value
 mrb_layer_get_opacity(mrb_state *mrb, mrb_value self)
@@ -520,18 +520,18 @@ mrb_layer_get_opacity(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-579
-580
-581
-582
-583
-584
-585
-586
-587</pre>
+77
+78
+79
+80
+81
+82
+83
+84
+85</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-graphics/src/tilemap.c', line 579</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-tilemap/src/tilemap_layer.c', line 77</span>
 
 static mrb_value
 mrb_layer_set_opacity(mrb_state *mrb, mrb_value self)
@@ -562,17 +562,17 @@ mrb_layer_set_opacity(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-681
-682
-683
-684
-685</pre>
+54
+55
+56
+57
+58</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-graphics/src/tilemap.c', line 681</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-tilemap/src/tilemap_layer.c', line 54</span>
 
 static mrb_value
-mrb_any_get_properties(mrb_state *mrb, mrb_value self)
+mrb_layer_get_properties(mrb_state *mrb, mrb_value self)
 {
   return mrb_iv_get(mrb, self, PROPERTIES_SYMBOL);
 }</pre>
@@ -596,16 +596,16 @@ mrb_any_get_properties(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-589
-590
-591
-592
-593
-594
-595</pre>
+87
+88
+89
+90
+91
+92
+93</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-graphics/src/tilemap.c', line 589</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-tilemap/src/tilemap_layer.c', line 87</span>
 
 static mrb_value
 mrb_layer_update(mrb_state *mrb, mrb_value self)
@@ -634,15 +634,15 @@ mrb_layer_update(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-555
-556
-557
-558
-559
-560</pre>
+47
+48
+49
+50
+51
+52</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-graphics/src/tilemap.c', line 555</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-tilemap/src/tilemap_layer.c', line 47</span>
 
 static mrb_value
 mrb_layer_get_visible(mrb_state *mrb, mrb_value self)
@@ -670,18 +670,18 @@ mrb_layer_get_visible(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-569
-570
-571
-572
-573
-574
-575
-576
-577</pre>
+67
+68
+69
+70
+71
+72
+73
+74
+75</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-graphics/src/tilemap.c', line 569</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-tilemap/src/tilemap_layer.c', line 67</span>
 
 static mrb_value
 mrb_layer_set_visible(mrb_state *mrb, mrb_value self)
@@ -736,15 +736,15 @@ mrb_layer_set_visible(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-555
-556
-557
-558
-559
-560</pre>
+47
+48
+49
+50
+51
+52</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-graphics/src/tilemap.c', line 555</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-tilemap/src/tilemap_layer.c', line 47</span>
 
 static mrb_value
 mrb_layer_get_visible(mrb_state *mrb, mrb_value self)
@@ -762,7 +762,7 @@ mrb_layer_get_visible(mrb_state *mrb, mrb_value self)
 </div>
 
       <div id="footer">
-  Generated on Sun Oct 29 21:24:52 2023 by
+  Generated on Mon Oct 30 00:03:49 2023 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.34 in <a href="https://github.com/sagmor/yard-mruby">mruby mode</a> 0.3.0 (ruby-3.2.2).
 </div>

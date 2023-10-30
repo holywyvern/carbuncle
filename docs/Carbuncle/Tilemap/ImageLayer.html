@@ -100,7 +100,7 @@
   
   <dl>
     <dt>Defined in:</dt>
-    <dd>gems/carbuncle-graphics/src/tilemap.c</dd>
+    <dd>gems/carbuncle-tilemap/src/tilemap_layer.c</dd>
   </dl>
   
 </div>
@@ -183,27 +183,27 @@
       <pre class="lines">
 
 
-623
-624
-625
-626
-627
-628
-629
-630
-631
-632
-633
-634
-635
-636
-637
-638
-639
-640</pre>
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-graphics/src/tilemap.c', line 623</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-tilemap/src/tilemap_layer.c', line 121</span>
 
 static mrb_value
 mrb_image_layer_draw(mrb_state *mrb, mrb_value self)
@@ -219,7 +219,7 @@ mrb_image_layer_draw(mrb_state *mrb, mrb_value self)
     if (sy &amp;&amp; sy-&gt;type == PT_FLOAT) { scale.y = sy-&gt;value.decimal; }    
     Vector2 *offset = mrb_carbuncle_get_point(mrb, mrb_iv_get(mrb, map, OFFSET_SYMBOL));
     Vector2 round_offset = { floorf(scale.x * offset-&gt;x), floorf(scale.y * offset-&gt;y) };
-    draw_image_layer(&amp;round_offset, layer, layer-&gt;content.image);
+    mrb_carbuncle_tilemap_utils_draw_image_layer(&amp;round_offset, layer, layer-&gt;content.image);
   }
   return self;
 }</pre>
@@ -233,7 +233,7 @@ mrb_image_layer_draw(mrb_state *mrb, mrb_value self)
 </div>
 
       <div id="footer">
-  Generated on Sun Oct 29 21:24:52 2023 by
+  Generated on Mon Oct 30 00:03:49 2023 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.34 in <a href="https://github.com/sagmor/yard-mruby">mruby mode</a> 0.3.0 (ruby-3.2.2).
 </div>

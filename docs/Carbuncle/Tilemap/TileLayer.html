@@ -100,7 +100,7 @@
   
   <dl>
     <dt>Defined in:</dt>
-    <dd>gems/carbuncle-graphics/src/tilemap.c</dd>
+    <dd>gems/carbuncle-tilemap/src/tilemap_layer.c</dd>
   </dl>
   
 </div>
@@ -205,28 +205,28 @@
       <pre class="lines">
 
 
-661
-662
-663
-664
-665
-666
-667
-668
-669
-670
-671
-672
-673
-674
-675
-676
-677
-678
-679</pre>
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-graphics/src/tilemap.c', line 661</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-tilemap/src/tilemap_layer.c', line 159</span>
 
 static mrb_value
 mrb_tile_layer_draw(mrb_state *mrb, mrb_value self)
@@ -243,7 +243,7 @@ mrb_tile_layer_draw(mrb_state *mrb, mrb_value self)
     if (sy &amp;&amp; sy-&gt;type == PT_FLOAT) { scale.y = sy-&gt;value.decimal; }    
     Vector2 *offset = mrb_carbuncle_get_point(mrb, mrb_iv_get(mrb, map, OFFSET_SYMBOL));
     Vector2 round_offset = { floorf(scale.x * offset-&gt;x), floorf(scale.y * offset-&gt;y) };
-    draw_tile_layer(&amp;round_offset, map_data, layer);
+    mrb_carbuncle_tilemap_utils_draw_tile_layer(&amp;round_offset, map_data, layer);
   }
   return self;
 }</pre>
@@ -267,25 +267,25 @@ mrb_tile_layer_draw(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-703
-704
-705
-706
-707
-708
-709
-710
-711
-712
-713
-714
-715
-716
-717
-718</pre>
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-graphics/src/tilemap.c', line 703</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-tilemap/src/tilemap_layer.c', line 179</span>
 
 static mrb_value
 mrb_tile_layer_tile_at(mrb_state *mrb, mrb_value self)
@@ -313,7 +313,7 @@ mrb_tile_layer_tile_at(mrb_state *mrb, mrb_value self)
 </div>
 
       <div id="footer">
-  Generated on Sun Oct 29 21:24:52 2023 by
+  Generated on Mon Oct 30 00:03:49 2023 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.34 in <a href="https://github.com/sagmor/yard-mruby">mruby mode</a> 0.3.0 (ruby-3.2.2).
 </div>
