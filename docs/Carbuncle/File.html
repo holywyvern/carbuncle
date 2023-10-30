@@ -592,13 +592,6 @@
       <pre class="lines">
 
 
-114
-115
-116
-117
-118
-119
-120
 121
 122
 123
@@ -651,10 +644,17 @@
 170
 171
 172
-173</pre>
+173
+174
+175
+176
+177
+178
+179
+180</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-core/src/filesystem.c', line 114</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-core/src/filesystem.c', line 121</span>
 
 static mrb_value
 mrb_file_initialize(mrb_state *mrb, mrb_value self)
@@ -1075,17 +1075,17 @@ mrb_file_initialize(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-188
-189
-190
-191
-192
-193
-194
-195</pre>
+195
+196
+197
+198
+199
+200
+201
+202</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-core/src/filesystem.c', line 188</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-core/src/filesystem.c', line 195</span>
 
 static mrb_value
 mrb_file_close(mrb_state *mrb, mrb_value self)
@@ -1139,14 +1139,14 @@ mrb_file_close(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-175
-176
-177
-178
-179</pre>
+182
+183
+184
+185
+186</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-core/src/filesystem.c', line 175</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-core/src/filesystem.c', line 182</span>
 
 static mrb_value
 mrb_file_closedQ(mrb_state *mrb, mrb_value self)
@@ -1197,15 +1197,15 @@ mrb_file_closedQ(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-181
-182
-183
-184
-185
-186</pre>
+188
+189
+190
+191
+192
+193</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-core/src/filesystem.c', line 181</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-core/src/filesystem.c', line 188</span>
 
 static mrb_value
 mrb_file_eofQ(mrb_state *mrb, mrb_value self)
@@ -1233,19 +1233,19 @@ mrb_file_eofQ(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-355
-356
-357
-358
-359
-360
-361
 362
 363
-364</pre>
+364
+365
+366
+367
+368
+369
+370
+371</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-core/src/filesystem.c', line 355</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-core/src/filesystem.c', line 362</span>
 
 static mrb_value
 mrb_file_flush(mrb_state *mrb, mrb_value self)
@@ -1253,7 +1253,7 @@ mrb_file_flush(mrb_state *mrb, mrb_value self)
   PHYSFS_File *file = get_file(mrb, self);
   if (!PHYSFS_flush(file))
   {
-    raise_physfs_error(mrb, &quot;flush&quot;);
+    raise_physfs_error(mrb, &quot;flush&quot;, NULL);
   }
   return self;
 }</pre>
@@ -1277,15 +1277,15 @@ mrb_file_flush(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-323
-324
-325
-326
-327
-328</pre>
+330
+331
+332
+333
+334
+335</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-core/src/filesystem.c', line 323</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-core/src/filesystem.c', line 330</span>
 
 static mrb_value
 mrb_file_get_size(mrb_state *mrb, mrb_value self)
@@ -1313,20 +1313,20 @@ mrb_file_get_size(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-343
-344
-345
-346
-347
-348
-349
 350
 351
 352
-353</pre>
+353
+354
+355
+356
+357
+358
+359
+360</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-core/src/filesystem.c', line 343</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-core/src/filesystem.c', line 350</span>
 
 static mrb_value
 mrb_file_tell(mrb_state *mrb, mrb_value self)
@@ -1335,7 +1335,7 @@ mrb_file_tell(mrb_state *mrb, mrb_value self)
   mrb_int pos = PHYSFS_tell(file);
   if (pos == -1)
   {
-    raise_physfs_error(mrb, &quot;tell&quot;);
+    raise_physfs_error(mrb, &quot;tell&quot;, NULL);
   }
   return mrb_int_value(mrb, pos);
 }</pre>
@@ -1359,13 +1359,6 @@ mrb_file_tell(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-453
-454
-455
-456
-457
-458
-459
 460
 461
 462
@@ -1393,10 +1386,17 @@ mrb_file_tell(mrb_state *mrb, mrb_value self)
 484
 485
 486
-487</pre>
+487
+488
+489
+490
+491
+492
+493
+494</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-core/src/filesystem.c', line 453</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-core/src/filesystem.c', line 460</span>
 
 static mrb_value
 mrb_file_read(mrb_state *mrb, mrb_value self)
@@ -1410,12 +1410,12 @@ mrb_file_read(mrb_state *mrb, mrb_value self)
     len = PHYSFS_fileLength(file);
     if (len == -1)
     {
-      raise_physfs_error(mrb, &quot;read&quot;);
+      raise_physfs_error(mrb, &quot;read&quot;, NULL);
     }
     pos = PHYSFS_tell(file);
     if (pos == -1)
     {
-      raise_physfs_error(mrb, &quot;read&quot;);
+      raise_physfs_error(mrb, &quot;read&quot;, NULL);
     }
     limit = len - pos;
   }
@@ -1428,7 +1428,7 @@ mrb_file_read(mrb_state *mrb, mrb_value self)
     len = PHYSFS_readBytes(file, buffer, limit);
     if (len &lt; 0)
     {
-      raise_physfs_error(mrb, &quot;read&quot;);
+      raise_physfs_error(mrb, &quot;read&quot;, NULL);
     }
     return mrb_str_new(mrb, buffer, len);
   }
@@ -1453,18 +1453,18 @@ mrb_file_read(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-443
-444
-445
-446
-447
-448
-449
 450
-451</pre>
+451
+452
+453
+454
+455
+456
+457
+458</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-core/src/filesystem.c', line 443</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-core/src/filesystem.c', line 450</span>
 
 static mrb_value
 mrb_file_readline(mrb_state *mrb, mrb_value self)
@@ -1559,21 +1559,21 @@ mrb_file_readline(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-330
-331
-332
-333
-334
-335
-336
 337
 338
 339
 340
-341</pre>
+341
+342
+343
+344
+345
+346
+347
+348</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-core/src/filesystem.c', line 330</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-core/src/filesystem.c', line 337</span>
 
 static mrb_value
 mrb_file_seek(mrb_state *mrb, mrb_value self)
@@ -1583,7 +1583,7 @@ mrb_file_seek(mrb_state *mrb, mrb_value self)
   mrb_get_args(mrb, &quot;i&quot;, &amp;position);
   if (!PHYSFS_seek(file, position))
   {
-    raise_physfs_error(mrb, &quot;seek&quot;);
+    raise_physfs_error(mrb, &quot;seek&quot;, NULL);
   }
   return self;
 }</pre>
@@ -1607,15 +1607,15 @@ mrb_file_seek(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-323
-324
-325
-326
-327
-328</pre>
+330
+331
+332
+333
+334
+335</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-core/src/filesystem.c', line 323</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-core/src/filesystem.c', line 330</span>
 
 static mrb_value
 mrb_file_get_size(mrb_state *mrb, mrb_value self)
@@ -1643,20 +1643,20 @@ mrb_file_get_size(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-343
-344
-345
-346
-347
-348
-349
 350
 351
 352
-353</pre>
+353
+354
+355
+356
+357
+358
+359
+360</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-core/src/filesystem.c', line 343</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-core/src/filesystem.c', line 350</span>
 
 static mrb_value
 mrb_file_tell(mrb_state *mrb, mrb_value self)
@@ -1665,7 +1665,7 @@ mrb_file_tell(mrb_state *mrb, mrb_value self)
   mrb_int pos = PHYSFS_tell(file);
   if (pos == -1)
   {
-    raise_physfs_error(mrb, &quot;tell&quot;);
+    raise_physfs_error(mrb, &quot;tell&quot;, NULL);
   }
   return mrb_int_value(mrb, pos);
 }</pre>
@@ -1689,13 +1689,6 @@ mrb_file_tell(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-489
-490
-491
-492
-493
-494
-495
 496
 497
 498
@@ -1703,10 +1696,17 @@ mrb_file_tell(mrb_state *mrb, mrb_value self)
 500
 501
 502
-503</pre>
+503
+504
+505
+506
+507
+508
+509
+510</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-core/src/filesystem.c', line 489</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-core/src/filesystem.c', line 496</span>
 
 static mrb_value
 mrb_file_write(mrb_state *mrb, mrb_value self)
@@ -1719,7 +1719,7 @@ mrb_file_write(mrb_state *mrb, mrb_value self)
   bytes = PHYSFS_writeBytes(file, txt, size);
   if (bytes == -1)
   {
-    raise_physfs_error(mrb, &quot;write&quot;);
+    raise_physfs_error(mrb, &quot;write&quot;, NULL);
   }
   return mrb_int_value(mrb, bytes);
 }</pre>
@@ -1733,7 +1733,7 @@ mrb_file_write(mrb_state *mrb, mrb_value self)
 </div>
 
       <div id="footer">
-  Generated on Mon Oct 30 02:48:19 2023 by
+  Generated on Mon Oct 30 04:04:37 2023 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.34 in <a href="https://github.com/sagmor/yard-mruby">mruby mode</a> 0.3.0 (ruby-3.2.2).
 </div>

@@ -1,0 +1,2385 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  Class: Carbuncle::Input::Action
+  
+    &mdash; Documentation by YARD 0.9.34
+  
+</title>
+
+  <link rel="stylesheet" href="../../css/style.css" type="text/css" />
+
+  <link rel="stylesheet" href="../../css/common.css" type="text/css" />
+
+  <link rel="stylesheet" href="../../css/mruby.css" type="text/css" />
+
+<script type="text/javascript">
+  pathId = "Carbuncle::Input::Action";
+  relpath = '../../';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../js/app.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../js/mruby.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="../../class_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  
+    <a href="../../_index.html">Index (A)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../../Carbuncle.html" title="Carbuncle (module)">Carbuncle</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../Input.html" title="Carbuncle::Input (module)">Input</a></span></span>
+     &raquo; 
+    <span class="title">Action</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../../class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><h1>Class: Carbuncle::Input::Action
+  
+  
+  
+</h1>
+<div class="box_info">
+  
+  <dl>
+    <dt>Inherits:</dt>
+    <dd>
+      <span class="inheritName"><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></span>
+      
+        <ul class="fullTree">
+          <li><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></li>
+          
+            <li class="next">Carbuncle::Input::Action</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+    </dd>
+  </dl>
+  
+
+  
+  
+  
+  
+  
+
+  
+
+  
+  <dl>
+    <dt>Defined in:</dt>
+    <dd>gems/carbuncle-input/mrblib/input.rb</dd>
+  </dl>
+  
+</div>
+
+
+
+
+
+  <h2>Instance Attribute Summary <small><a href="#" class="summary_toggle">collapse</a></small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#controller-instance_method" title="#controller (instance method)">#<strong>controller</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute controller.</p>
+</div></span>
+  
+</li>
+
+    
+  </ul>
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#axis-instance_method" title="#axis (instance method)">#<strong>axis</strong>(direction, index = -1,, positive: true, deadzone: 0.3, axis: :any)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#axis_down%3F-instance_method" title="#axis_down? (instance method)">#<strong>axis_down?</strong>  &#x21d2; Boolean </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#axis_up%3F-instance_method" title="#axis_up? (instance method)">#<strong>axis_up?</strong>  &#x21d2; Boolean </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#bind_gamepad-instance_method" title="#bind_gamepad (instance method)">#<strong>bind_gamepad</strong>(key, index = -1))  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#bind_gamepad_axis-instance_method" title="#bind_gamepad_axis (instance method)">#<strong>bind_gamepad_axis</strong>(direction, index = -1,, positive: true, deadzone: 0.3, axis: :any)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#bind_keyboard-instance_method" title="#bind_keyboard (instance method)">#<strong>bind_keyboard</strong>(key)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#clear-instance_method" title="#clear (instance method)">#<strong>clear</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#down%3F-instance_method" title="#down? (instance method)">#<strong>down?</strong>  &#x21d2; Boolean </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#gamemaps-instance_method" title="#gamemaps (instance method)">#<strong>gamemaps</strong>(index)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#gamepad-instance_method" title="#gamepad (instance method)">#<strong>gamepad</strong>(key, index = -1))  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#gamepad_axis-instance_method" title="#gamepad_axis (instance method)">#<strong>gamepad_axis</strong>(binding)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#gamepad_binding_down%3F-instance_method" title="#gamepad_binding_down? (instance method)">#<strong>gamepad_binding_down?</strong>(gamepad)  &#x21d2; Boolean </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#gamepad_binding_press%3F-instance_method" title="#gamepad_binding_press? (instance method)">#<strong>gamepad_binding_press?</strong>(gamepad)  &#x21d2; Boolean </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#gamepad_binding_release%3F-instance_method" title="#gamepad_binding_release? (instance method)">#<strong>gamepad_binding_release?</strong>(gamepad)  &#x21d2; Boolean </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#gamepad_binding_up%3F-instance_method" title="#gamepad_binding_up? (instance method)">#<strong>gamepad_binding_up?</strong>(gamepad)  &#x21d2; Boolean </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#gamepad_down%3F-instance_method" title="#gamepad_down? (instance method)">#<strong>gamepad_down?</strong>  &#x21d2; Boolean </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#gamepad_press%3F-instance_method" title="#gamepad_press? (instance method)">#<strong>gamepad_press?</strong>  &#x21d2; Boolean </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#gamepad_release%3F-instance_method" title="#gamepad_release? (instance method)">#<strong>gamepad_release?</strong>  &#x21d2; Boolean </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#gamepad_up%3F-instance_method" title="#gamepad_up? (instance method)">#<strong>gamepad_up?</strong>  &#x21d2; Boolean </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">#<strong>initialize</strong>(controller)  &#x21d2; Action </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>A new instance of Action.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#key-instance_method" title="#key (instance method)">#<strong>key</strong>(key)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#keyboard_down%3F-instance_method" title="#keyboard_down? (instance method)">#<strong>keyboard_down?</strong>  &#x21d2; Boolean </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#keyboard_press%3F-instance_method" title="#keyboard_press? (instance method)">#<strong>keyboard_press?</strong>  &#x21d2; Boolean </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#keyboard_release%3F-instance_method" title="#keyboard_release? (instance method)">#<strong>keyboard_release?</strong>  &#x21d2; Boolean </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#keyboard_up%3F-instance_method" title="#keyboard_up? (instance method)">#<strong>keyboard_up?</strong>  &#x21d2; Boolean </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#left_axis-instance_method" title="#left_axis (instance method)">#<strong>left_axis</strong>(binding)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#press%3F-instance_method" title="#press? (instance method)">#<strong>press?</strong>  &#x21d2; Boolean </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#release%3F-instance_method" title="#release? (instance method)">#<strong>release?</strong>  &#x21d2; Boolean </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#right_axis-instance_method" title="#right_axis (instance method)">#<strong>right_axis</strong>(binding)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#up%3F-instance_method" title="#up? (instance method)">#<strong>up?</strong>  &#x21d2; Boolean </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+<div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <h3 class="signature first" id="initialize-instance_method">
+  
+    #<strong>initialize</strong>(controller)  &#x21d2; <tt><span class='object_link'><a href="" title="Carbuncle::Input::Action (class)">Action</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns a new instance of Action.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+
+<table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+39
+40
+41
+42
+43
+44
+45</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-input/mrblib/input.rb', line 39</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_controller'>controller</span><span class='rparen'>)</span>
+  <span class='ivar'>@controller</span> <span class='op'>=</span> <span class='id identifier rubyid_controller'>controller</span>
+  <span class='ivar'>@key_bindings</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+  <span class='ivar'>@gamepad_bindings</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+  <span class='ivar'>@gamepad_axis</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+  <span class='ivar'>@last_axis</span> <span class='op'>=</span> <span class='int'>0</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+  <div id="instance_attr_details" class="attr_details">
+    <h2>Instance Attribute Details</h2>
+    
+      
+      <span id=""></span>
+      <div class="method_details first">
+  <h3 class="signature first" id="controller-instance_method">
+  
+    #<strong>controller</strong>  &#x21d2; <tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the value of attribute controller.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+
+<table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+37
+38
+39</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-input/mrblib/input.rb', line 37</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_controller'>controller</span>
+  <span class='ivar'>@controller</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="axis-instance_method">
+  
+    #<strong>axis</strong>(direction, index = -1,, positive: true, deadzone: 0.3, axis: :any)  &#x21d2; <tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+76
+77
+78</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-input/mrblib/input.rb', line 76</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_axis'>axis</span><span class='lparen'>(</span><span class='id identifier rubyid_direction'>direction</span><span class='comma'>,</span> <span class='id identifier rubyid_index'>index</span> <span class='op'>=</span> <span class='op'>-</span><span class='int'>1</span><span class='comma'>,</span> <span class='label'>positive:</span> <span class='kw'>true</span><span class='comma'>,</span> <span class='label'>deadzone:</span> <span class='float'>0.3</span><span class='comma'>,</span> <span class='label'>axis:</span> <span class='symbol'>:any</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_bind_gamepad_axis'>bind_gamepad_axis</span><span class='lparen'>(</span><span class='id identifier rubyid_direction'>direction</span><span class='comma'>,</span> <span class='id identifier rubyid_index'>index</span><span class='comma'>,</span> <span class='label'>positive:</span> <span class='id identifier rubyid_positive'>positive</span><span class='comma'>,</span> <span class='label'>deadzone:</span> <span class='id identifier rubyid_deadzone'>deadzone</span><span class='comma'>,</span> <span class='label'>axis:</span> <span class='id identifier rubyid_axis'>axis</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="axis_down?-instance_method">
+  
+    #<strong>axis_down?</strong>  &#x21d2; <tt>Boolean</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div>
+
+<table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-input/mrblib/input.rb', line 158</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_axis_down?'>axis_down?</span>
+  <span class='ivar'>@gamepad_axis</span><span class='period'>.</span><span class='id identifier rubyid_any?'>any?</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_binding'>binding</span><span class='op'>|</span>
+    <span class='id identifier rubyid_gamepad_axis'>gamepad_axis</span><span class='lparen'>(</span><span class='id identifier rubyid_binding'>binding</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_any?'>any?</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_value'>value</span><span class='op'>|</span>
+      <span class='kw'>if</span> <span class='id identifier rubyid_binding'>binding</span><span class='lbracket'>[</span><span class='symbol'>:positive</span><span class='rbracket'>]</span>
+        <span class='id identifier rubyid_value'>value</span> <span class='op'>&gt;</span> <span class='id identifier rubyid_binding'>binding</span><span class='lbracket'>[</span><span class='symbol'>:deadzone</span><span class='rbracket'>]</span>
+      <span class='kw'>else</span>
+        <span class='id identifier rubyid_value'>value</span> <span class='op'>&lt;</span> <span class='op'>-</span><span class='id identifier rubyid_binding'>binding</span><span class='lbracket'>[</span><span class='symbol'>:deadzone</span><span class='rbracket'>]</span>
+      <span class='kw'>end</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="axis_up?-instance_method">
+  
+    #<strong>axis_up?</strong>  &#x21d2; <tt>Boolean</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div>
+
+<table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-input/mrblib/input.rb', line 126</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_axis_up?'>axis_up?</span>
+  <span class='ivar'>@gamepad_axis</span><span class='period'>.</span><span class='id identifier rubyid_any?'>any?</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_binding'>binding</span><span class='op'>|</span>
+    <span class='id identifier rubyid_gamepad_axis'>gamepad_axis</span><span class='lparen'>(</span><span class='id identifier rubyid_binding'>binding</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_any?'>any?</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_value'>value</span><span class='op'>|</span>
+      <span class='kw'>if</span> <span class='id identifier rubyid_binding'>binding</span><span class='lbracket'>[</span><span class='symbol'>:positive</span><span class='rbracket'>]</span>
+        <span class='id identifier rubyid_value'>value</span> <span class='op'>&lt;=</span> <span class='id identifier rubyid_binding'>binding</span><span class='lbracket'>[</span><span class='symbol'>:deadzone</span><span class='rbracket'>]</span>
+      <span class='kw'>else</span>
+        <span class='id identifier rubyid_value'>value</span> <span class='op'>&gt;=</span> <span class='op'>-</span><span class='id identifier rubyid_binding'>binding</span><span class='lbracket'>[</span><span class='symbol'>:deadzone</span><span class='rbracket'>]</span>
+      <span class='kw'>end</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="bind_gamepad-instance_method">
+  
+    #<strong>bind_gamepad</strong>(key, index = -1))  &#x21d2; <tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+56
+57
+58
+59</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-input/mrblib/input.rb', line 56</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_bind_gamepad'>bind_gamepad</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='comma'>,</span> <span class='id identifier rubyid_index'>index</span> <span class='op'>=</span> <span class='op'>-</span><span class='int'>1</span><span class='rparen'>)</span>
+  <span class='ivar'>@gamepad_bindings</span><span class='period'>.</span><span class='id identifier rubyid_push'>push</span><span class='lparen'>(</span><span class='lbracket'>[</span><span class='id identifier rubyid_index'>index</span><span class='comma'>,</span> <span class='id identifier rubyid_key'>key</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='kw'>self</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="bind_gamepad_axis-instance_method">
+  
+    #<strong>bind_gamepad_axis</strong>(direction, index = -1,, positive: true, deadzone: 0.3, axis: :any)  &#x21d2; <tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-input/mrblib/input.rb', line 65</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_bind_gamepad_axis'>bind_gamepad_axis</span><span class='lparen'>(</span><span class='id identifier rubyid_direction'>direction</span><span class='comma'>,</span> <span class='id identifier rubyid_index'>index</span> <span class='op'>=</span> <span class='op'>-</span><span class='int'>1</span><span class='comma'>,</span> <span class='label'>positive:</span> <span class='kw'>true</span><span class='comma'>,</span> <span class='label'>deadzone:</span> <span class='float'>0.3</span><span class='comma'>,</span> <span class='label'>axis:</span> <span class='symbol'>:any</span><span class='rparen'>)</span>
+  <span class='ivar'>@gamepad_axis</span><span class='period'>.</span><span class='id identifier rubyid_push'>push</span><span class='lparen'>(</span><span class='lbrace'>{</span>
+    <span class='label'>direction:</span> <span class='id identifier rubyid_direction'>direction</span><span class='comma'>,</span>
+    <span class='label'>index:</span> <span class='id identifier rubyid_index'>index</span><span class='comma'>,</span>
+    <span class='label'>axis:</span> <span class='id identifier rubyid_axis'>axis</span><span class='comma'>,</span>
+    <span class='label'>positive:</span> <span class='id identifier rubyid_positive'>positive</span><span class='comma'>,</span>
+    <span class='label'>deadzone:</span> <span class='id identifier rubyid_deadzone'>deadzone</span>
+  <span class='rbrace'>}</span><span class='rparen'>)</span>
+  <span class='kw'>self</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="bind_keyboard-instance_method">
+  
+    #<strong>bind_keyboard</strong>(key)  &#x21d2; <tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+47
+48
+49
+50</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-input/mrblib/input.rb', line 47</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_bind_keyboard'>bind_keyboard</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span>
+  <span class='ivar'>@key_bindings</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_key'>key</span>
+  <span class='kw'>self</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="clear-instance_method">
+  
+    #<strong>clear</strong>  &#x21d2; <tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+80
+81
+82
+83
+84</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-input/mrblib/input.rb', line 80</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_clear'>clear</span>
+  <span class='ivar'>@key_bindings</span><span class='period'>.</span><span class='id identifier rubyid_clear'>clear</span>
+  <span class='ivar'>@gamepad_bindings</span><span class='period'>.</span><span class='id identifier rubyid_clear'>clear</span>
+  <span class='ivar'>@gamepad_axis</span><span class='period'>.</span><span class='id identifier rubyid_clear'>clear</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="down?-instance_method">
+  
+    #<strong>down?</strong>  &#x21d2; <tt>Boolean</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div>
+
+<table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+138
+139
+140</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-input/mrblib/input.rb', line 138</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_down?'>down?</span>
+  <span class='id identifier rubyid_keyboard_down?'>keyboard_down?</span> <span class='op'>||</span> <span class='id identifier rubyid_gamepad_down?'>gamepad_down?</span> <span class='op'>||</span> <span class='id identifier rubyid_axis_down?'>axis_down?</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="gamemaps-instance_method">
+  
+    #<strong>gamemaps</strong>(index)  &#x21d2; <tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+226
+227
+228
+229
+230</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-input/mrblib/input.rb', line 226</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_gamemaps'>gamemaps</span><span class='lparen'>(</span><span class='id identifier rubyid_index'>index</span><span class='rparen'>)</span>
+  <span class='kw'>return</span> <span class='const'><span class='object_link'><a href="../../Carbuncle.html" title="Carbuncle (module)">Carbuncle</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Gamepad.html" title="Carbuncle::Gamepad (class)">Gamepad</a></span></span><span class='period'>.</span><span class='id identifier rubyid_each'><span class='object_link'><a href="../Gamepad.html#each-class_method" title="Carbuncle::Gamepad.each (method)">each</a></span></span> <span class='kw'>if</span> <span class='id identifier rubyid_index'>index</span> <span class='op'>&lt;</span> <span class='int'>0</span>
+
+  <span class='lbracket'>[</span><span class='const'><span class='object_link'><a href="../../Carbuncle.html" title="Carbuncle (module)">Carbuncle</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Gamepad.html" title="Carbuncle::Gamepad (class)">Gamepad</a></span></span><span class='lbracket'>[</span><span class='id identifier rubyid_index'>index</span><span class='rbracket'>]</span><span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="gamepad-instance_method">
+  
+    #<strong>gamepad</strong>(key, index = -1))  &#x21d2; <tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+61
+62
+63</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-input/mrblib/input.rb', line 61</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_gamepad'>gamepad</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='comma'>,</span> <span class='id identifier rubyid_index'>index</span> <span class='op'>=</span> <span class='op'>-</span><span class='int'>1</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_bind_gamepad'>bind_gamepad</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='comma'>,</span> <span class='id identifier rubyid_index'>index</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="gamepad_axis-instance_method">
+  
+    #<strong>gamepad_axis</strong>(binding)  &#x21d2; <tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+193
+194
+195
+196
+197
+198</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-input/mrblib/input.rb', line 193</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_gamepad_axis'>gamepad_axis</span><span class='lparen'>(</span><span class='id identifier rubyid_binding'>binding</span><span class='rparen'>)</span>
+  <span class='kw'>return</span> <span class='id identifier rubyid_left_axis'>left_axis</span><span class='lparen'>(</span><span class='id identifier rubyid_binding'>binding</span><span class='rparen'>)</span> <span class='op'>+</span> <span class='id identifier rubyid_right_axis'>right_axis</span><span class='lparen'>(</span><span class='id identifier rubyid_binding'>binding</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_binding'>binding</span><span class='lbracket'>[</span><span class='symbol'>:axis</span><span class='rbracket'>]</span> <span class='op'>==</span> <span class='symbol'>:any</span>
+  <span class='kw'>return</span> <span class='id identifier rubyid_right_axis'>right_axis</span><span class='lparen'>(</span><span class='id identifier rubyid_binding'>binding</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_binding'>binding</span><span class='lbracket'>[</span><span class='symbol'>:axis</span><span class='rbracket'>]</span> <span class='op'>==</span> <span class='symbol'>:right</span>
+
+  <span class='id identifier rubyid_left_axis'>left_axis</span><span class='lparen'>(</span><span class='id identifier rubyid_binding'>binding</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="gamepad_binding_down?-instance_method">
+  
+    #<strong>gamepad_binding_down?</strong>(gamepad)  &#x21d2; <tt>Boolean</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div>
+
+<table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+153
+154
+155
+156</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-input/mrblib/input.rb', line 153</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_gamepad_binding_down?'>gamepad_binding_down?</span><span class='lparen'>(</span><span class='id identifier rubyid_gamepad'>gamepad</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_index'>index</span><span class='comma'>,</span> <span class='id identifier rubyid_key'>key</span> <span class='op'>=</span> <span class='id identifier rubyid_gamepad'>gamepad</span>
+  <span class='id identifier rubyid_gamemaps'>gamemaps</span><span class='lparen'>(</span><span class='id identifier rubyid_index'>index</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_any?'>any?</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_pad'>pad</span><span class='op'>|</span> <span class='id identifier rubyid_pad'>pad</span><span class='period'>.</span><span class='id identifier rubyid_down?'>down?</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="gamepad_binding_press?-instance_method">
+  
+    #<strong>gamepad_binding_press?</strong>(gamepad)  &#x21d2; <tt>Boolean</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div>
+
+<table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+104
+105
+106
+107</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-input/mrblib/input.rb', line 104</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_gamepad_binding_press?'>gamepad_binding_press?</span><span class='lparen'>(</span><span class='id identifier rubyid_gamepad'>gamepad</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_index'>index</span><span class='comma'>,</span> <span class='id identifier rubyid_key'>key</span> <span class='op'>=</span> <span class='id identifier rubyid_gamepad'>gamepad</span>
+  <span class='id identifier rubyid_gamemaps'>gamemaps</span><span class='lparen'>(</span><span class='id identifier rubyid_index'>index</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_any?'>any?</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_pad'>pad</span><span class='op'>|</span> <span class='id identifier rubyid_pad'>pad</span><span class='period'>.</span><span class='id identifier rubyid_press?'>press?</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="gamepad_binding_release?-instance_method">
+  
+    #<strong>gamepad_binding_release?</strong>(gamepad)  &#x21d2; <tt>Boolean</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div>
+
+<table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+188
+189
+190
+191</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-input/mrblib/input.rb', line 188</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_gamepad_binding_release?'>gamepad_binding_release?</span><span class='lparen'>(</span><span class='id identifier rubyid_gamepad'>gamepad</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_index'>index</span><span class='comma'>,</span> <span class='id identifier rubyid_key'>key</span> <span class='op'>=</span> <span class='id identifier rubyid_gamepad'>gamepad</span>
+  <span class='id identifier rubyid_gamemaps'>gamemaps</span><span class='lparen'>(</span><span class='id identifier rubyid_index'>index</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_any?'>any?</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_pad'>pad</span><span class='op'>|</span> <span class='id identifier rubyid_pad'>pad</span><span class='period'>.</span><span class='id identifier rubyid_release?'>release?</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="gamepad_binding_up?-instance_method">
+  
+    #<strong>gamepad_binding_up?</strong>(gamepad)  &#x21d2; <tt>Boolean</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div>
+
+<table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+121
+122
+123
+124</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-input/mrblib/input.rb', line 121</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_gamepad_binding_up?'>gamepad_binding_up?</span><span class='lparen'>(</span><span class='id identifier rubyid_gamepad'>gamepad</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_index'>index</span><span class='comma'>,</span> <span class='id identifier rubyid_key'>key</span> <span class='op'>=</span> <span class='id identifier rubyid_gamepad'>gamepad</span>
+  <span class='id identifier rubyid_gamemaps'>gamemaps</span><span class='lparen'>(</span><span class='id identifier rubyid_index'>index</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_any?'>any?</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_pad'>pad</span><span class='op'>|</span> <span class='id identifier rubyid_pad'>pad</span><span class='period'>.</span><span class='id identifier rubyid_up?'>up?</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="gamepad_down?-instance_method">
+  
+    #<strong>gamepad_down?</strong>  &#x21d2; <tt>Boolean</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div>
+
+<table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+149
+150
+151</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-input/mrblib/input.rb', line 149</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_gamepad_down?'>gamepad_down?</span>
+  <span class='ivar'>@gamepad_bindings</span><span class='period'>.</span><span class='id identifier rubyid_any?'>any?</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_i'>i</span><span class='op'>|</span> <span class='id identifier rubyid_gamepad_binding_down?'>gamepad_binding_down?</span><span class='lparen'>(</span><span class='id identifier rubyid_i'>i</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="gamepad_press?-instance_method">
+  
+    #<strong>gamepad_press?</strong>  &#x21d2; <tt>Boolean</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div>
+
+<table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+97
+98
+99
+100
+101
+102</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-input/mrblib/input.rb', line 97</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_gamepad_press?'>gamepad_press?</span>
+  <span class='kw'>return</span> <span class='kw'>false</span> <span class='kw'>unless</span> <span class='ivar'>@gamepad_bindings</span><span class='period'>.</span><span class='id identifier rubyid_any?'>any?</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_i'>i</span><span class='op'>|</span> <span class='id identifier rubyid_gamepad_binding_press?'>gamepad_binding_press?</span><span class='lparen'>(</span><span class='id identifier rubyid_i'>i</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+  
+  <span class='id identifier rubyid_controller'>controller</span><span class='period'>.</span><span class='id identifier rubyid_last_source'>last_source</span> <span class='op'>=</span> <span class='symbol'>:gamepad</span>
+  <span class='kw'>return</span> <span class='kw'>true</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="gamepad_release?-instance_method">
+  
+    #<strong>gamepad_release?</strong>  &#x21d2; <tt>Boolean</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div>
+
+<table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+181
+182
+183
+184
+185
+186</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-input/mrblib/input.rb', line 181</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_gamepad_release?'>gamepad_release?</span>
+  <span class='kw'>return</span> <span class='kw'>false</span> <span class='kw'>unless</span>  <span class='ivar'>@gamepad_bindings</span><span class='period'>.</span><span class='id identifier rubyid_any?'>any?</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_i'>i</span><span class='op'>|</span> <span class='id identifier rubyid_gamepad_binding_release?'>gamepad_binding_release?</span><span class='lparen'>(</span><span class='id identifier rubyid_i'>i</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+  
+  <span class='id identifier rubyid_controller'>controller</span><span class='period'>.</span><span class='id identifier rubyid_last_source'>last_source</span> <span class='op'>=</span> <span class='symbol'>:gamepad</span>
+  <span class='kw'>return</span> <span class='kw'>true</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="gamepad_up?-instance_method">
+  
+    #<strong>gamepad_up?</strong>  &#x21d2; <tt>Boolean</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div>
+
+<table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+117
+118
+119</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-input/mrblib/input.rb', line 117</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_gamepad_up?'>gamepad_up?</span>
+  <span class='ivar'>@gamepad_bindings</span><span class='period'>.</span><span class='id identifier rubyid_any?'>any?</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_i'>i</span><span class='op'>|</span> <span class='id identifier rubyid_gamepad_binding_up?'>gamepad_binding_up?</span><span class='lparen'>(</span><span class='id identifier rubyid_i'>i</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="key-instance_method">
+  
+    #<strong>key</strong>(key)  &#x21d2; <tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+52
+53
+54</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-input/mrblib/input.rb', line 52</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_key'>key</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_bind_keyboard'>bind_keyboard</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="keyboard_down?-instance_method">
+  
+    #<strong>keyboard_down?</strong>  &#x21d2; <tt>Boolean</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div>
+
+<table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+142
+143
+144
+145
+146
+147</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-input/mrblib/input.rb', line 142</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_keyboard_down?'>keyboard_down?</span>
+  <span class='kw'>return</span> <span class='kw'>false</span> <span class='kw'>unless</span> <span class='const'><span class='object_link'><a href="../../Carbuncle.html" title="Carbuncle (module)">Carbuncle</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Keyboard.html" title="Carbuncle::Keyboard (module)">Keyboard</a></span></span><span class='period'>.</span><span class='id identifier rubyid_any_down?'><span class='object_link'><a href="../Keyboard.html#any_down%3F-class_method" title="Carbuncle::Keyboard.any_down? (method)">any_down?</a></span></span><span class='lparen'>(</span><span class='op'>*</span><span class='ivar'>@key_bindings</span><span class='rparen'>)</span>
+
+  <span class='id identifier rubyid_controller'>controller</span><span class='period'>.</span><span class='id identifier rubyid_last_source'>last_source</span> <span class='op'>=</span> <span class='symbol'>:keyboard</span>
+  <span class='kw'>return</span> <span class='kw'>true</span>     
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="keyboard_press?-instance_method">
+  
+    #<strong>keyboard_press?</strong>  &#x21d2; <tt>Boolean</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div>
+
+<table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+90
+91
+92
+93
+94
+95</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-input/mrblib/input.rb', line 90</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_keyboard_press?'>keyboard_press?</span>
+  <span class='kw'>return</span> <span class='kw'>false</span> <span class='kw'>unless</span> <span class='const'><span class='object_link'><a href="../../Carbuncle.html" title="Carbuncle (module)">Carbuncle</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Keyboard.html" title="Carbuncle::Keyboard (module)">Keyboard</a></span></span><span class='period'>.</span><span class='id identifier rubyid_any_press?'><span class='object_link'><a href="../Keyboard.html#any_press%3F-class_method" title="Carbuncle::Keyboard.any_press? (method)">any_press?</a></span></span><span class='lparen'>(</span><span class='op'>*</span><span class='ivar'>@key_bindings</span><span class='rparen'>)</span>
+
+  <span class='id identifier rubyid_controller'>controller</span><span class='period'>.</span><span class='id identifier rubyid_last_source'>last_source</span> <span class='op'>=</span> <span class='symbol'>:keyboard</span>
+  <span class='kw'>return</span> <span class='kw'>true</span>     
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="keyboard_release?-instance_method">
+  
+    #<strong>keyboard_release?</strong>  &#x21d2; <tt>Boolean</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div>
+
+<table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+174
+175
+176
+177
+178
+179</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-input/mrblib/input.rb', line 174</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_keyboard_release?'>keyboard_release?</span>
+  <span class='kw'>return</span> <span class='kw'>false</span> <span class='kw'>unless</span> <span class='const'><span class='object_link'><a href="../../Carbuncle.html" title="Carbuncle (module)">Carbuncle</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Keyboard.html" title="Carbuncle::Keyboard (module)">Keyboard</a></span></span><span class='period'>.</span><span class='id identifier rubyid_any_release?'><span class='object_link'><a href="../Keyboard.html#any_release%3F-class_method" title="Carbuncle::Keyboard.any_release? (method)">any_release?</a></span></span><span class='lparen'>(</span><span class='op'>*</span><span class='ivar'>@key_bindings</span><span class='rparen'>)</span>
+
+  <span class='id identifier rubyid_controller'>controller</span><span class='period'>.</span><span class='id identifier rubyid_last_source'>last_source</span> <span class='op'>=</span> <span class='symbol'>:keyboard</span>
+  <span class='kw'>return</span> <span class='kw'>true</span>     
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="keyboard_up?-instance_method">
+  
+    #<strong>keyboard_up?</strong>  &#x21d2; <tt>Boolean</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div>
+
+<table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+113
+114
+115</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-input/mrblib/input.rb', line 113</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_keyboard_up?'>keyboard_up?</span>
+  <span class='const'><span class='object_link'><a href="../../Carbuncle.html" title="Carbuncle (module)">Carbuncle</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Keyboard.html" title="Carbuncle::Keyboard (module)">Keyboard</a></span></span><span class='period'>.</span><span class='id identifier rubyid_any_up?'><span class='object_link'><a href="../Keyboard.html#any_up%3F-class_method" title="Carbuncle::Keyboard.any_up? (method)">any_up?</a></span></span><span class='lparen'>(</span><span class='op'>*</span><span class='ivar'>@key_bindings</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="left_axis-instance_method">
+  
+    #<strong>left_axis</strong>(binding)  &#x21d2; <tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-input/mrblib/input.rb', line 200</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_left_axis'>left_axis</span><span class='lparen'>(</span><span class='id identifier rubyid_binding'>binding</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_gamemaps'>gamemaps</span><span class='lparen'>(</span><span class='id identifier rubyid_binding'>binding</span><span class='lbracket'>[</span><span class='symbol'>:index</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='symbol'>:left_axis</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_point'>point</span><span class='op'>|</span>
+    <span class='kw'>case</span> <span class='id identifier rubyid_binding'>binding</span><span class='lbracket'>[</span><span class='symbol'>:direction</span><span class='rbracket'>]</span>
+    <span class='kw'>when</span> <span class='symbol'>:up</span>
+      <span class='lbracket'>[</span><span class='id identifier rubyid_point'>point</span><span class='period'>.</span><span class='id identifier rubyid_x'>x</span><span class='rbracket'>]</span>
+    <span class='kw'>when</span> <span class='symbol'>:down</span>
+      <span class='lbracket'>[</span><span class='id identifier rubyid_point'>point</span><span class='period'>.</span><span class='id identifier rubyid_y'>y</span><span class='rbracket'>]</span>
+    <span class='kw'>else</span>
+      <span class='lbracket'>[</span><span class='id identifier rubyid_point'>point</span><span class='period'>.</span><span class='id identifier rubyid_x'>x</span><span class='comma'>,</span> <span class='id identifier rubyid_point'>point</span><span class='period'>.</span><span class='id identifier rubyid_y'>y</span><span class='rbracket'>]</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span><span class='period'>.</span><span class='id identifier rubyid_flatten'>flatten</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="press?-instance_method">
+  
+    #<strong>press?</strong>  &#x21d2; <tt>Boolean</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div>
+
+<table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+86
+87
+88</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-input/mrblib/input.rb', line 86</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_press?'>press?</span>
+  <span class='id identifier rubyid_keyboard_press?'>keyboard_press?</span> <span class='op'>||</span> <span class='id identifier rubyid_gamepad_press?'>gamepad_press?</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="release?-instance_method">
+  
+    #<strong>release?</strong>  &#x21d2; <tt>Boolean</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div>
+
+<table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+170
+171
+172</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-input/mrblib/input.rb', line 170</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_release?'>release?</span>
+  <span class='id identifier rubyid_keyboard_release?'>keyboard_release?</span> <span class='op'>||</span> <span class='id identifier rubyid_gamepad_release?'>gamepad_release?</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="right_axis-instance_method">
+  
+    #<strong>right_axis</strong>(binding)  &#x21d2; <tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-input/mrblib/input.rb', line 213</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_right_axis'>right_axis</span><span class='lparen'>(</span><span class='id identifier rubyid_binding'>binding</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_gamemaps'>gamemaps</span><span class='lparen'>(</span><span class='id identifier rubyid_binding'>binding</span><span class='lbracket'>[</span><span class='symbol'>:index</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='symbol'>:right_axis</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_point'>point</span><span class='op'>|</span>
+    <span class='kw'>case</span> <span class='id identifier rubyid_binding'>binding</span><span class='lbracket'>[</span><span class='symbol'>:direction</span><span class='rbracket'>]</span>
+    <span class='kw'>when</span> <span class='symbol'>:up</span>
+      <span class='lbracket'>[</span><span class='id identifier rubyid_point'>point</span><span class='period'>.</span><span class='id identifier rubyid_x'>x</span><span class='rbracket'>]</span>
+    <span class='kw'>when</span> <span class='symbol'>:down</span>
+      <span class='lbracket'>[</span><span class='id identifier rubyid_point'>point</span><span class='period'>.</span><span class='id identifier rubyid_y'>y</span><span class='rbracket'>]</span>
+    <span class='kw'>else</span>
+      <span class='lbracket'>[</span><span class='id identifier rubyid_point'>point</span><span class='period'>.</span><span class='id identifier rubyid_x'>x</span><span class='comma'>,</span> <span class='id identifier rubyid_point'>point</span><span class='period'>.</span><span class='id identifier rubyid_y'>y</span><span class='rbracket'>]</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span><span class='period'>.</span><span class='id identifier rubyid_flatten'>flatten</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="up?-instance_method">
+  
+    #<strong>up?</strong>  &#x21d2; <tt>Boolean</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div>
+
+<table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+109
+110
+111</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-input/mrblib/input.rb', line 109</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_up?'>up?</span>
+  <span class='id identifier rubyid_keyboard_up?'>keyboard_up?</span> <span class='op'>||</span> <span class='id identifier rubyid_gamepad_up?'>gamepad_up?</span> <span class='op'>||</span> <span class='id identifier rubyid_axis_up?'>axis_up?</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+      <div id="footer">
+  Generated on Mon Oct 30 04:04:38 2023 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.34 in <a href="https://github.com/sagmor/yard-mruby">mruby mode</a> 0.3.0 (ruby-3.2.2).
+</div>
+
+    </div>
+  </body>
+</html>
