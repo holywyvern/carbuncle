@@ -1,42 +1,43 @@
 import styles from "./styles.module.scss";
 import { withTranslation } from "next-i18next";
 
-function Footer({ t }) {
+const FooterSection = withTranslation("common")(({ t, title, links }) => {
+  return (
+    <section>
+      <h4>{t(title)}</h4>
+      <ul>
+        {links.map(({ label, url }) => {
+          return (
+            <li key={label}>
+              <a href={url} target="_blank">
+                {label}
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+    </section>
+  );
+});
+
+function Footer() {
   return (
     <footer className={styles.footer}>
       <div className={styles.content}>
-        <section>
-          <h4>{t("Special Thanks")}</h4>
-          <ul>
-            <li>
-              <a href="https://mruby.org/" target="_blank">
-                MRuby
-              </a>
-            </li>
-            <li>
-              <a href="https://www.raylib.com/" target="_blank">
-                Raylib
-              </a>
-            </li>
-          </ul>
-        </section>
-        <section>
-          <header>
-            <h4>{t("Developers")}</h4>
-          </header>
-          <ul>
-            <li>
-              <a href="https://ramirorojo.com/" target="_blank">
-                Ramiro Rojo
-              </a>
-            </li>
-            <li>
-              <a href="https://github.com/chronno" target="_blank">
-                chronno
-              </a>
-            </li>
-          </ul>
-        </section>
+        <FooterSection
+          title="Special Thanks"
+          links={[
+            { label: "MRuby", url: "https://mruby.org/" },
+            { label: "Raylib", url: "https://www.raylib.com/" },
+          ]}
+        />
+        <FooterSection
+          title="Developers"
+          links={[
+            { label: "Ramiro Rojo", url: "https://ramirorojo.com/" },
+            { label: "chronno", url: "https://github.com/chronno" },
+          ]}
+        />
       </div>
     </footer>
   );
