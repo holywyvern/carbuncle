@@ -26,7 +26,7 @@ jobs:
           - Web (Emscripten)
           - Mac OS X
         include:
-          - build_name: Ubuntu build
+          - build_name: Ubuntu
             os: ubuntu-latest
             config_file: build_configs/ci.rb
             release_file: mruby/build/host/bin/mruby-carbuncle
@@ -82,7 +82,7 @@ jobs:
         run: >
           sudo apt-get install -y
           build-essential git mingw-w64
-      - if: matrix.build_name == 'Ubuntu build'
+      - if: matrix.build_name == 'Ubuntu'
         name: Install packages
         run: >
           sudo apt-get install -y
