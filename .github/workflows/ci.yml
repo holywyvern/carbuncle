@@ -18,7 +18,6 @@ on:
 jobs:
   build:
     name: CI Check for ${{ matrix.build_name }}
-    runs-on: ${{ matrix.os }}
     strategy:
       matrix:
         build_name:
@@ -52,6 +51,7 @@ jobs:
             release_file: mruby/build/host/bin/mruby-carbuncle.bin
             release_name: mruby-carbuncle.bin
             release_body: Mac OS X Build           
+    runs-on: ${{ matrix.os }}
     env:
       MRUBY_CONFIG: ${{ matrix.config_file }}
     steps:
