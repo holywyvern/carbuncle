@@ -21,12 +21,16 @@
 
 /* Constants */
 
+#define CANVAS_SELECTOR "#canvas"
+
 #ifdef __EMSCRIPTEN__
   static struct
   {
     mrb_state *mrb;
     mrb_value game;
   } mrb_em_state;
+
+  mrb_bool emscripten_carbuncle_size_changed;
 #endif
 
 static const char *CURRENT_GAME_GV_NAME = "#carbunce_current_game";
@@ -111,6 +115,9 @@ begin_game(mrb_state *mrb, mrb_value self, mrb_value instance)
 {
   mrb_funcall(mrb, instance, "start", 0);
   mrb_funcall(mrb, instance, "after_run", 0);
+#ifdef __EMSCRIPTEN__
+  emscripten_carbuncle_size_changed = true;
+#endif
 }
 
 static inline void
@@ -162,6 +169,15 @@ update_file_drop(mrb_state *mrb, mrb_value instance)
 static void
 game_frame(mrb_state *mrb, mrb_value game)
 {
+#ifdef __EMSCRIPTEN__
+  if (emscripten_carbuncle_size_changed)
+  {
+    double w, h;
+    emscripten_get_element_css_size(CANVAS_SELECTOR, &w, &h);    
+    mrb_funcall(mrb, game, "on_resize", 2, mrb_float_value(mrb, w), mrb_float_value(mrb, h));
+    emscripten_carbuncle_size_changed = FALSE;
+  }
+#endif  
   mrb_value dt = mrb_float_value(mrb, GetFrameTime());
   check_closing(mrb, game);
   update_file_drop(mrb, game);
@@ -209,8 +225,6 @@ game_loop(mrb_state *mrb, mrb_value instance)
   mrb_em_state.mrb = mrb;
   mrb_em_state.game = instance;
   emscripten_set_main_loop(carbuncle_emscripten_game_frame, 0, 1);
-  mrb_em_state.mrb = NULL;
-  mrb_em_state.game = mrb_nil_value();
 #else
   while (carbuncle_game_is_running)
   {
@@ -229,6 +243,27 @@ close_game(mrb_state *mrb, mrb_value self, mrb_value instance)
   mrb_funcall(mrb, instance, "after_close", 0);
 }
 
+#ifdef __EMSCRIPTEN__
+
+static EM_BOOL
+on_web_display_size_changed(int event_type, const EmscriptenUiEvent *event, void *user_data)
+{
+  emscripten_carbuncle_size_changed = TRUE;
+  return FALSE;
+}
+
+#endif
+
+static inline void
+add_listeners(mrb_state *mrb, mrb_value self, mrb_value instance)
+{
+#ifdef __EMSCRIPTEN__
+  mrb_em_state.mrb = mrb;
+  mrb_em_state.game = instance;
+  emscripten_set_resize_callback(EMSCRIPTEN_EVENT_TARGET_WINDOW, 0, 0, on_web_display_size_changed);
+#endif
+}
+
 /* Ruby Bindings */
 
 /**
@@ -242,6 +277,7 @@ mrb_s_game_run(mrb_state *mrb, mrb_value self)
   mrb_value instance = mrb_funcall(mrb, self, "new", 0);
   preload_game(mrb, self, instance);
   begin_game(mrb, self, instance);
+  add_listeners(mrb, self, instance);
   game_loop(mrb, instance);
   close_game(mrb, self, instance);
   return mrb_nil_value();
@@ -323,6 +359,9 @@ mrb_game_resize(mrb_state *mrb, mrb_value self)
   mrb_int width, height;
   mrb_get_args(mrb, "ii", &width, &height);
   SetWindowSize(width, height);
+#ifdef __EMSCRIPTEN__
+  emscripten_set_canvas_element_size(CANVAS_SELECTOR, width, height);
+#endif
   return mrb_nil_value();
 }
 

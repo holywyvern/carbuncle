@@ -80,5 +80,11 @@ module Carbuncle
     # @param [Array] files A list of files dropped into the window.
     # @return [nil]
     def file_dropped(*files); end
+
+    # Called on the web when the canvas resizes
+    # @param [Float] width
+    # @param [Float] height
+    # @return [nil]
+    def on_resize(width, height); end
   end
 end

@@ -10,6 +10,7 @@ STDLIB_GEMS = %w[
   mruby-fiber mruby-enumerator mruby-enum-lazy mruby-toplevel-ext
   mruby-kernel-ext mruby-class-ext mruby-struct mruby-catch mruby-data
   mruby-enum-chain mruby-pack mruby-proc-binding
+  mruby-print
 ].freeze
 
 MATH_GEMS = %w[
