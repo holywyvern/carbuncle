@@ -49,18 +49,14 @@ module Carbuncle
         self
       end
 
-      def key(key)
-        bind_keyboard(key)
-      end
+      alias key bind_keyboard
   
       def bind_gamepad(key, index = -1)
         @gamepad_bindings.push([index, key])
         self
       end
 
-      def gamepad(key, index = -1)
-        bind_gamepad(key, index)
-      end
+      alias gamepad bind_gamepad
 
       def bind_gamepad_axis(direction, index = -1, positive: true, deadzone: 0.3, axis: :any)
         @gamepad_axis.push({
@@ -73,9 +69,7 @@ module Carbuncle
         self
       end
 
-      def axis(direction, index = -1, positive: true, deadzone: 0.3, axis: :any)
-        bind_gamepad_axis(direction, index, positive: positive, deadzone: deadzone, axis: axis)
-      end
+      alias axis bind_gamepad_axis
   
       def clear
         @key_bindings.clear
@@ -103,7 +97,7 @@ module Carbuncle
 
       def gamepad_binding_press?(gamepad)
         index, key = gamepad
-        gamemaps(index).any? { |pad| pad.press?(key) }
+        gamepads(index).any? { |pad| pad.press?(key) }
       end
 
       def up?
@@ -120,7 +114,7 @@ module Carbuncle
 
       def gamepad_binding_up?(gamepad)
         index, key = gamepad
-        gamemaps(index).any? { |pad| pad.up?(key) }
+        gamepads(index).any? { |pad| pad.up?(key) }
       end
 
       def axis_up?
@@ -152,7 +146,7 @@ module Carbuncle
 
       def gamepad_binding_down?(gamepad)
         index, key = gamepad
-        gamemaps(index).any? { |pad| pad.down?(key) }
+        gamepads(index).any? { |pad| pad.down?(key) }
       end
 
       def axis_down?
@@ -187,7 +181,7 @@ module Carbuncle
 
       def gamepad_binding_release?(gamepad)
         index, key = gamepad
-        gamemaps(index).any? { |pad| pad.release?(key) }
+        gamepads(index).any? { |pad| pad.release?(key) }
       end
 
       def gamepad_axis(binding)
@@ -198,7 +192,7 @@ module Carbuncle
       end
 
       def left_axis(binding)
-        gamemaps(binding[:index]).map(&:left_axis).map do |point|
+        gamepads(binding[:index]).map(&:left_axis).map do |point|
           case binding[:direction]
           when :up
             [point.x]
@@ -211,7 +205,7 @@ module Carbuncle
       end
 
       def right_axis(binding)
-        gamemaps(binding[:index]).map(&:right_axis).map do |point|
+        gamepads(binding[:index]).map(&:right_axis).map do |point|
           case binding[:direction]
           when :up
             [point.x]
@@ -223,7 +217,7 @@ module Carbuncle
         end.flatten
       end
 
-      def gamemaps(index)
+      def gamepads(index)
         return Carbuncle::Gamepad.each if index < 0
 
         [Carbuncle::Gamepad[index]]
