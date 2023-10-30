@@ -89,6 +89,11 @@
 
   
   
+  <dl>
+      <dt>Extended by:</dt>
+      <dd><span class='object_link'><a href="Vectorizable/ClassMethods.html" title="Carbuncle::Vectorizable::ClassMethods (module)">Carbuncle::Vectorizable::ClassMethods</a></span></dd>
+  </dl>
+  
   
   
   <dl>
@@ -104,7 +109,7 @@
   <dl>
     <dt>Defined in:</dt>
     <dd>gems/carbuncle-math/mrblib/vector4.rb<span class="defines">,<br />
-  gems/carbuncle-math/src/vector4.c,<br /> gems/carbuncle-math/mrblib/vectorizable.rb</span>
+  gems/carbuncle-math/src/vector4.c,<br /> gems/carbuncle-math/mrblib/000-vectorizable.rb</span>
 </dd>
   </dl>
   
@@ -1581,6 +1586,17 @@
   
   
   
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Vectorizable/ClassMethods.html" title="Carbuncle::Vectorizable::ClassMethods (module)">Carbuncle::Vectorizable::ClassMethods</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Vectorizable/ClassMethods.html#vectorize_properties-instance_method" title="Carbuncle::Vectorizable::ClassMethods#vectorize_properties (method)">vectorize_properties</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
   <h3 class="inherited">Methods included from <span class='object_link'><a href="Vectorizable.html" title="Carbuncle::Vectorizable (module)">Vectorizable</a></span></h3>
   <p class="inherited"><span class='object_link'><a href="Vectorizable.html#%25-instance_method" title="Carbuncle::Vectorizable#% (method)">#%</a></span>, <span class='object_link'><a href="Vectorizable.html#*-instance_method" title="Carbuncle::Vectorizable#* (method)">#*</a></span>, <span class='object_link'><a href="Vectorizable.html#**-instance_method" title="Carbuncle::Vectorizable#** (method)">#**</a></span>, <span class='object_link'><a href="Vectorizable.html#%2B-instance_method" title="Carbuncle::Vectorizable#+ (method)">#+</a></span>, <span class='object_link'><a href="Vectorizable.html#--instance_method" title="Carbuncle::Vectorizable#- (method)">#-</a></span>, <span class='object_link'><a href="Vectorizable.html#-@-instance_method" title="Carbuncle::Vectorizable#-@ (method)">#-@</a></span>, <span class='object_link'><a href="Vectorizable.html#%2F-instance_method" title="Carbuncle::Vectorizable#/ (method)">#/</a></span>, <span class='object_link'><a href="Vectorizable.html#<<-instance_method" title="Carbuncle::Vectorizable#&lt;&lt; (method)">#<<</a></span>, <span class='object_link'><a href="Vectorizable.html#>>-instance_method" title="Carbuncle::Vectorizable#&gt;&gt; (method)">#>></a></span>, <span class='object_link'><a href="Vectorizable.html#[]-instance_method" title="Carbuncle::Vectorizable#[] (method)">#[]</a></span>, <span class='object_link'><a href="Vectorizable.html#[]=-instance_method" title="Carbuncle::Vectorizable#[]= (method)">#[]=</a></span>, <span class='object_link'><a href="Vectorizable.html#each-instance_method" title="Carbuncle::Vectorizable#each (method)">#each</a></span>, <span class='object_link'><a href="Vectorizable.html#length-instance_method" title="Carbuncle::Vectorizable#length (method)">#length</a></span>, <span class='object_link'><a href="Vectorizable.html#to_s-instance_method" title="Carbuncle::Vectorizable#to_s (method)">#to_s</a></span></p>
 
@@ -1747,12 +1763,12 @@ mrb_vector4_get_w(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-133
-134
-135</pre>
+122
+123
+124</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vector4.rb', line 133</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vector4.rb', line 122</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_inspect'>inspect</span>
   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Vector4(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_x'>x</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_y'>y</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_z'>z</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_w'>w</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
@@ -1803,12 +1819,12 @@ mrb_vector4_get_w(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-133
-134
-135</pre>
+122
+123
+124</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vector4.rb', line 133</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vector4.rb', line 122</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_inspect'>inspect</span>
   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Vector4(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_x'>x</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_y'>y</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_z'>z</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_w'>w</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
@@ -1859,12 +1875,12 @@ mrb_vector4_get_w(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-133
-134
-135</pre>
+122
+123
+124</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vector4.rb', line 133</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vector4.rb', line 122</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_inspect'>inspect</span>
   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Vector4(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_x'>x</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_y'>y</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_z'>z</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_w'>w</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
@@ -1915,12 +1931,12 @@ mrb_vector4_get_w(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-133
-134
-135</pre>
+122
+123
+124</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vector4.rb', line 133</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vector4.rb', line 122</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_inspect'>inspect</span>
   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Vector4(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_x'>x</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_y'>y</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_z'>z</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_w'>w</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
@@ -1971,12 +1987,12 @@ mrb_vector4_get_w(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-133
-134
-135</pre>
+122
+123
+124</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vector4.rb', line 133</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vector4.rb', line 122</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_inspect'>inspect</span>
   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Vector4(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_x'>x</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_y'>y</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_z'>z</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_w'>w</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
@@ -2027,12 +2043,12 @@ mrb_vector4_get_w(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-133
-134
-135</pre>
+122
+123
+124</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vector4.rb', line 133</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vector4.rb', line 122</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_inspect'>inspect</span>
   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Vector4(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_x'>x</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_y'>y</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_z'>z</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_w'>w</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
@@ -2083,12 +2099,12 @@ mrb_vector4_get_w(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-133
-134
-135</pre>
+122
+123
+124</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vector4.rb', line 133</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vector4.rb', line 122</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_inspect'>inspect</span>
   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Vector4(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_x'>x</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_y'>y</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_z'>z</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_w'>w</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
@@ -2139,12 +2155,12 @@ mrb_vector4_get_w(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-133
-134
-135</pre>
+122
+123
+124</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vector4.rb', line 133</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vector4.rb', line 122</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_inspect'>inspect</span>
   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Vector4(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_x'>x</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_y'>y</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_z'>z</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_w'>w</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
@@ -2195,12 +2211,12 @@ mrb_vector4_get_w(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-133
-134
-135</pre>
+122
+123
+124</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vector4.rb', line 133</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vector4.rb', line 122</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_inspect'>inspect</span>
   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Vector4(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_x'>x</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_y'>y</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_z'>z</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_w'>w</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
@@ -2251,12 +2267,12 @@ mrb_vector4_get_w(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-133
-134
-135</pre>
+122
+123
+124</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vector4.rb', line 133</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vector4.rb', line 122</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_inspect'>inspect</span>
   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Vector4(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_x'>x</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_y'>y</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_z'>z</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_w'>w</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
@@ -2307,12 +2323,12 @@ mrb_vector4_get_w(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-133
-134
-135</pre>
+122
+123
+124</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vector4.rb', line 133</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vector4.rb', line 122</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_inspect'>inspect</span>
   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Vector4(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_x'>x</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_y'>y</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_z'>z</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_w'>w</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
@@ -2363,12 +2379,12 @@ mrb_vector4_get_w(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-133
-134
-135</pre>
+122
+123
+124</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vector4.rb', line 133</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vector4.rb', line 122</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_inspect'>inspect</span>
   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Vector4(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_x'>x</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_y'>y</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_z'>z</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_w'>w</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
@@ -2419,12 +2435,12 @@ mrb_vector4_get_w(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-133
-134
-135</pre>
+122
+123
+124</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vector4.rb', line 133</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vector4.rb', line 122</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_inspect'>inspect</span>
   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Vector4(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_x'>x</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_y'>y</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_z'>z</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_w'>w</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
@@ -2475,12 +2491,12 @@ mrb_vector4_get_w(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-133
-134
-135</pre>
+122
+123
+124</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vector4.rb', line 133</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vector4.rb', line 122</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_inspect'>inspect</span>
   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Vector4(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_x'>x</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_y'>y</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_z'>z</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_w'>w</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
@@ -2595,12 +2611,12 @@ mrb_vector4_get_x(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-133
-134
-135</pre>
+122
+123
+124</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vector4.rb', line 133</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vector4.rb', line 122</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_inspect'>inspect</span>
   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Vector4(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_x'>x</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_y'>y</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_z'>z</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_w'>w</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
@@ -2651,12 +2667,12 @@ mrb_vector4_get_x(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-133
-134
-135</pre>
+122
+123
+124</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vector4.rb', line 133</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vector4.rb', line 122</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_inspect'>inspect</span>
   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Vector4(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_x'>x</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_y'>y</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_z'>z</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_w'>w</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
@@ -2707,12 +2723,12 @@ mrb_vector4_get_x(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-133
-134
-135</pre>
+122
+123
+124</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vector4.rb', line 133</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vector4.rb', line 122</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_inspect'>inspect</span>
   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Vector4(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_x'>x</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_y'>y</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_z'>z</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_w'>w</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
@@ -2763,12 +2779,12 @@ mrb_vector4_get_x(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-133
-134
-135</pre>
+122
+123
+124</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vector4.rb', line 133</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vector4.rb', line 122</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_inspect'>inspect</span>
   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Vector4(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_x'>x</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_y'>y</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_z'>z</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_w'>w</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
@@ -2819,12 +2835,12 @@ mrb_vector4_get_x(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-133
-134
-135</pre>
+122
+123
+124</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vector4.rb', line 133</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vector4.rb', line 122</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_inspect'>inspect</span>
   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Vector4(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_x'>x</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_y'>y</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_z'>z</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_w'>w</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
@@ -2875,12 +2891,12 @@ mrb_vector4_get_x(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-133
-134
-135</pre>
+122
+123
+124</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vector4.rb', line 133</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vector4.rb', line 122</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_inspect'>inspect</span>
   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Vector4(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_x'>x</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_y'>y</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_z'>z</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_w'>w</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
@@ -2931,12 +2947,12 @@ mrb_vector4_get_x(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-133
-134
-135</pre>
+122
+123
+124</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vector4.rb', line 133</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vector4.rb', line 122</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_inspect'>inspect</span>
   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Vector4(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_x'>x</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_y'>y</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_z'>z</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_w'>w</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
@@ -2987,12 +3003,12 @@ mrb_vector4_get_x(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-133
-134
-135</pre>
+122
+123
+124</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vector4.rb', line 133</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vector4.rb', line 122</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_inspect'>inspect</span>
   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Vector4(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_x'>x</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_y'>y</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_z'>z</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_w'>w</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
@@ -3043,12 +3059,12 @@ mrb_vector4_get_x(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-133
-134
-135</pre>
+122
+123
+124</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vector4.rb', line 133</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vector4.rb', line 122</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_inspect'>inspect</span>
   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Vector4(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_x'>x</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_y'>y</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_z'>z</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_w'>w</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
@@ -3099,12 +3115,12 @@ mrb_vector4_get_x(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-133
-134
-135</pre>
+122
+123
+124</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vector4.rb', line 133</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vector4.rb', line 122</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_inspect'>inspect</span>
   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Vector4(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_x'>x</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_y'>y</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_z'>z</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_w'>w</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
@@ -3155,12 +3171,12 @@ mrb_vector4_get_x(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-133
-134
-135</pre>
+122
+123
+124</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vector4.rb', line 133</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vector4.rb', line 122</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_inspect'>inspect</span>
   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Vector4(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_x'>x</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_y'>y</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_z'>z</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_w'>w</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
@@ -3275,12 +3291,12 @@ mrb_vector4_get_y(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-133
-134
-135</pre>
+122
+123
+124</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vector4.rb', line 133</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vector4.rb', line 122</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_inspect'>inspect</span>
   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Vector4(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_x'>x</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_y'>y</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_z'>z</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_w'>w</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
@@ -3331,12 +3347,12 @@ mrb_vector4_get_y(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-133
-134
-135</pre>
+122
+123
+124</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vector4.rb', line 133</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vector4.rb', line 122</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_inspect'>inspect</span>
   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Vector4(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_x'>x</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_y'>y</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_z'>z</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_w'>w</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
@@ -3387,12 +3403,12 @@ mrb_vector4_get_y(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-133
-134
-135</pre>
+122
+123
+124</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vector4.rb', line 133</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vector4.rb', line 122</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_inspect'>inspect</span>
   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Vector4(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_x'>x</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_y'>y</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_z'>z</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_w'>w</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
@@ -3443,12 +3459,12 @@ mrb_vector4_get_y(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-133
-134
-135</pre>
+122
+123
+124</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vector4.rb', line 133</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vector4.rb', line 122</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_inspect'>inspect</span>
   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Vector4(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_x'>x</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_y'>y</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_z'>z</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_w'>w</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
@@ -3499,12 +3515,12 @@ mrb_vector4_get_y(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-133
-134
-135</pre>
+122
+123
+124</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vector4.rb', line 133</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vector4.rb', line 122</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_inspect'>inspect</span>
   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Vector4(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_x'>x</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_y'>y</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_z'>z</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_w'>w</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
@@ -3555,12 +3571,12 @@ mrb_vector4_get_y(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-133
-134
-135</pre>
+122
+123
+124</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vector4.rb', line 133</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vector4.rb', line 122</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_inspect'>inspect</span>
   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Vector4(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_x'>x</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_y'>y</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_z'>z</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_w'>w</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
@@ -3611,12 +3627,12 @@ mrb_vector4_get_y(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-133
-134
-135</pre>
+122
+123
+124</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vector4.rb', line 133</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vector4.rb', line 122</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_inspect'>inspect</span>
   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Vector4(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_x'>x</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_y'>y</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_z'>z</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_w'>w</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
@@ -3667,12 +3683,12 @@ mrb_vector4_get_y(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-133
-134
-135</pre>
+122
+123
+124</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vector4.rb', line 133</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vector4.rb', line 122</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_inspect'>inspect</span>
   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Vector4(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_x'>x</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_y'>y</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_z'>z</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_w'>w</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
@@ -3723,12 +3739,12 @@ mrb_vector4_get_y(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-133
-134
-135</pre>
+122
+123
+124</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vector4.rb', line 133</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vector4.rb', line 122</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_inspect'>inspect</span>
   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Vector4(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_x'>x</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_y'>y</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_z'>z</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_w'>w</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
@@ -3779,12 +3795,12 @@ mrb_vector4_get_y(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-133
-134
-135</pre>
+122
+123
+124</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vector4.rb', line 133</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vector4.rb', line 122</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_inspect'>inspect</span>
   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Vector4(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_x'>x</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_y'>y</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_z'>z</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_w'>w</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
@@ -3835,12 +3851,12 @@ mrb_vector4_get_y(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-133
-134
-135</pre>
+122
+123
+124</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vector4.rb', line 133</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vector4.rb', line 122</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_inspect'>inspect</span>
   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Vector4(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_x'>x</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_y'>y</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_z'>z</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_w'>w</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
@@ -3955,12 +3971,12 @@ mrb_vector4_get_z(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-133
-134
-135</pre>
+122
+123
+124</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vector4.rb', line 133</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vector4.rb', line 122</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_inspect'>inspect</span>
   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Vector4(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_x'>x</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_y'>y</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_z'>z</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_w'>w</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
@@ -4011,12 +4027,12 @@ mrb_vector4_get_z(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-133
-134
-135</pre>
+122
+123
+124</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vector4.rb', line 133</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vector4.rb', line 122</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_inspect'>inspect</span>
   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Vector4(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_x'>x</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_y'>y</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_z'>z</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_w'>w</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
@@ -4067,12 +4083,12 @@ mrb_vector4_get_z(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-133
-134
-135</pre>
+122
+123
+124</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vector4.rb', line 133</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vector4.rb', line 122</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_inspect'>inspect</span>
   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Vector4(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_x'>x</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_y'>y</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_z'>z</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_w'>w</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
@@ -4123,12 +4139,12 @@ mrb_vector4_get_z(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-133
-134
-135</pre>
+122
+123
+124</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vector4.rb', line 133</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vector4.rb', line 122</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_inspect'>inspect</span>
   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Vector4(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_x'>x</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_y'>y</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_z'>z</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_w'>w</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
@@ -4179,12 +4195,12 @@ mrb_vector4_get_z(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-133
-134
-135</pre>
+122
+123
+124</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vector4.rb', line 133</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vector4.rb', line 122</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_inspect'>inspect</span>
   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Vector4(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_x'>x</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_y'>y</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_z'>z</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_w'>w</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
@@ -4235,12 +4251,12 @@ mrb_vector4_get_z(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-133
-134
-135</pre>
+122
+123
+124</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vector4.rb', line 133</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vector4.rb', line 122</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_inspect'>inspect</span>
   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Vector4(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_x'>x</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_y'>y</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_z'>z</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_w'>w</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
@@ -4291,12 +4307,12 @@ mrb_vector4_get_z(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-133
-134
-135</pre>
+122
+123
+124</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vector4.rb', line 133</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vector4.rb', line 122</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_inspect'>inspect</span>
   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Vector4(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_x'>x</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_y'>y</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_z'>z</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_w'>w</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
@@ -4347,12 +4363,12 @@ mrb_vector4_get_z(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-133
-134
-135</pre>
+122
+123
+124</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vector4.rb', line 133</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vector4.rb', line 122</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_inspect'>inspect</span>
   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Vector4(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_x'>x</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_y'>y</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_z'>z</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_w'>w</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
@@ -4403,12 +4419,12 @@ mrb_vector4_get_z(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-133
-134
-135</pre>
+122
+123
+124</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vector4.rb', line 133</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vector4.rb', line 122</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_inspect'>inspect</span>
   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Vector4(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_x'>x</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_y'>y</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_z'>z</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_w'>w</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
@@ -4459,12 +4475,12 @@ mrb_vector4_get_z(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-133
-134
-135</pre>
+122
+123
+124</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vector4.rb', line 133</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vector4.rb', line 122</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_inspect'>inspect</span>
   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Vector4(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_x'>x</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_y'>y</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_z'>z</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_w'>w</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
@@ -4592,12 +4608,12 @@ mrb_vector4_initialize(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-133
-134
-135</pre>
+122
+123
+124</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vector4.rb', line 133</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vector4.rb', line 122</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_inspect'>inspect</span>
   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Vector4(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_x'>x</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_y'>y</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_z'>z</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_w'>w</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
@@ -4658,12 +4674,12 @@ mrb_vector4_set(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-137
-138
-139</pre>
+126
+127
+128</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vector4.rb', line 137</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vector4.rb', line 126</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_size'>size</span>
   <span class='int'>4</span>
@@ -4688,12 +4704,12 @@ mrb_vector4_set(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-141
-142
-143</pre>
+130
+131
+132</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vector4.rb', line 141</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vector4.rb', line 130</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_to_a'>to_a</span>
   <span class='lbracket'>[</span><span class='id identifier rubyid_x'>x</span><span class='comma'>,</span> <span class='id identifier rubyid_y'>y</span><span class='comma'>,</span> <span class='id identifier rubyid_z'>z</span><span class='comma'>,</span> <span class='id identifier rubyid_w'>w</span><span class='rbracket'>]</span>
@@ -4708,7 +4724,7 @@ mrb_vector4_set(mrb_state *mrb, mrb_value self)
 </div>
 
       <div id="footer">
-  Generated on Mon Oct 30 05:35:00 2023 by
+  Generated on Mon Oct 30 06:06:48 2023 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.34 in <a href="https://github.com/sagmor/yard-mruby">mruby mode</a> 0.3.0 (ruby-3.2.2).
 </div>

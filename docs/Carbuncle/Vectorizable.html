@@ -92,7 +92,7 @@
   
   <dl>
     <dt>Defined in:</dt>
-    <dd>gems/carbuncle-math/mrblib/vectorizable.rb<span class="defines">,<br />
+    <dd>gems/carbuncle-math/mrblib/000-vectorizable.rb<span class="defines">,<br />
   gems/carbuncle-math/mrblib/rect.rb,<br /> gems/carbuncle-math/mrblib/point.rb,<br /> gems/carbuncle-math/mrblib/matrix.rb,<br /> gems/carbuncle-math/mrblib/vector3.rb,<br /> gems/carbuncle-math/mrblib/vector4.rb</span>
 </dd>
   </dl>
@@ -112,6 +112,16 @@
 
 </div>
 
+<h2>Defined Under Namespace</h2>
+<p class="children">
+  
+    
+      <strong class="modules">Modules:</strong> <span class='object_link'><a href="Vectorizable/ClassMethods.html" title="Carbuncle::Vectorizable::ClassMethods (module)">ClassMethods</a></span>
+    
+  
+    
+  
+</p>
 
   
     <h2>
@@ -623,16 +633,16 @@
       <pre class="lines">
 
 
-135
-136
-137
-138
-139
-140
-141</pre>
+153
+154
+155
+156
+157
+158
+159</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vectorizable.rb', line 135</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/000-vectorizable.rb', line 153</span>
 
 <span class='kw'>def</span> <span class='op'>%</span><span class='lparen'>(</span><span class='id identifier rubyid_other'>other</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_dup'>dup</span><span class='period'>.</span><span class='id identifier rubyid_tap'>tap</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_vector'>vector</span><span class='op'>|</span>
@@ -758,16 +768,16 @@
       <pre class="lines">
 
 
-101
-102
-103
-104
-105
-106
-107</pre>
+119
+120
+121
+122
+123
+124
+125</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vectorizable.rb', line 101</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/000-vectorizable.rb', line 119</span>
 
 <span class='kw'>def</span> <span class='op'>*</span><span class='lparen'>(</span><span class='id identifier rubyid_other'>other</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_dup'>dup</span><span class='period'>.</span><span class='id identifier rubyid_tap'>tap</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_vector'>vector</span><span class='op'>|</span>
@@ -893,16 +903,16 @@
       <pre class="lines">
 
 
-152
-153
-154
-155
-156
-157
-158</pre>
+170
+171
+172
+173
+174
+175
+176</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vectorizable.rb', line 152</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/000-vectorizable.rb', line 170</span>
 
 <span class='kw'>def</span> <span class='op'>**</span><span class='lparen'>(</span><span class='id identifier rubyid_other'>other</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_dup'>dup</span><span class='period'>.</span><span class='id identifier rubyid_tap'>tap</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_vector'>vector</span><span class='op'>|</span>
@@ -1044,16 +1054,16 @@
       <pre class="lines">
 
 
-67
-68
-69
-70
-71
-72
-73</pre>
+85
+86
+87
+88
+89
+90
+91</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vectorizable.rb', line 67</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/000-vectorizable.rb', line 85</span>
 
 <span class='kw'>def</span> <span class='op'>+</span><span class='lparen'>(</span><span class='id identifier rubyid_other'>other</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_dup'>dup</span><span class='period'>.</span><span class='id identifier rubyid_tap'>tap</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_vector'>vector</span><span class='op'>|</span>
@@ -1179,16 +1189,16 @@
       <pre class="lines">
 
 
-84
-85
-86
-87
-88
-89
-90</pre>
+102
+103
+104
+105
+106
+107
+108</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vectorizable.rb', line 84</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/000-vectorizable.rb', line 102</span>
 
 <span class='kw'>def</span> <span class='op'>-</span><span class='lparen'>(</span><span class='id identifier rubyid_other'>other</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_dup'>dup</span><span class='period'>.</span><span class='id identifier rubyid_tap'>tap</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_vector'>vector</span><span class='op'>|</span>
@@ -1260,14 +1270,14 @@
       <pre class="lines">
 
 
-199
-200
-201
-202
-203</pre>
+217
+218
+219
+220
+221</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vectorizable.rb', line 199</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/000-vectorizable.rb', line 217</span>
 
 <span class='kw'>def</span> <span class='op'>-@</span>
   <span class='id identifier rubyid_dup'>dup</span><span class='period'>.</span><span class='id identifier rubyid_tap'>tap</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_vector'>vector</span><span class='op'>|</span>
@@ -1391,16 +1401,16 @@
       <pre class="lines">
 
 
-118
-119
-120
-121
-122
-123
-124</pre>
+136
+137
+138
+139
+140
+141
+142</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vectorizable.rb', line 118</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/000-vectorizable.rb', line 136</span>
 
 <span class='kw'>def</span> <span class='op'>/</span><span class='lparen'>(</span><span class='id identifier rubyid_other'>other</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_dup'>dup</span><span class='period'>.</span><span class='id identifier rubyid_tap'>tap</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_vector'>vector</span><span class='op'>|</span>
@@ -1526,16 +1536,16 @@
       <pre class="lines">
 
 
-169
-170
-171
-172
-173
-174
-175</pre>
+187
+188
+189
+190
+191
+192
+193</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vectorizable.rb', line 169</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/000-vectorizable.rb', line 187</span>
 
 <span class='kw'>def</span> <span class='op'>&lt;&lt;</span><span class='lparen'>(</span><span class='id identifier rubyid_other'>other</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_dup'>dup</span><span class='period'>.</span><span class='id identifier rubyid_tap'>tap</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_vector'>vector</span><span class='op'>|</span>
@@ -1661,16 +1671,16 @@
       <pre class="lines">
 
 
-186
-187
-188
-189
-190
-191
-192</pre>
+204
+205
+206
+207
+208
+209
+210</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vectorizable.rb', line 186</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/000-vectorizable.rb', line 204</span>
 
 <span class='kw'>def</span> <span class='op'>&gt;&gt;</span><span class='lparen'>(</span><span class='id identifier rubyid_other'>other</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_dup'>dup</span><span class='period'>.</span><span class='id identifier rubyid_tap'>tap</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_vector'>vector</span><span class='op'>|</span>
@@ -1725,12 +1735,12 @@
       <pre class="lines">
 
 
-30
-31
-32</pre>
+48
+49
+50</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vectorizable.rb', line 30</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/000-vectorizable.rb', line 48</span>
 
 <span class='kw'>def</span> <span class='op'>[]</span><span class='lparen'>(</span><span class='id identifier rubyid_index'>index</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_to_a'>to_a</span><span class='lbracket'>[</span><span class='id identifier rubyid_index'>index</span><span class='rbracket'>]</span>
@@ -1781,14 +1791,14 @@
       <pre class="lines">
 
 
-38
-39
-40
-41
-42</pre>
+56
+57
+58
+59
+60</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vectorizable.rb', line 38</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/000-vectorizable.rb', line 56</span>
 
 <span class='kw'>def</span> <span class='op'>[]=</span><span class='lparen'>(</span><span class='id identifier rubyid_index'>index</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_result'>result</span> <span class='op'>=</span> <span class='id identifier rubyid_to_a'>to_a</span>
@@ -1828,12 +1838,12 @@
       <pre class="lines">
 
 
-23
-24
-25</pre>
+41
+42
+43</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vectorizable.rb', line 23</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/000-vectorizable.rb', line 41</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_each'>each</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_to_a'>to_a</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
@@ -1858,12 +1868,12 @@
       <pre class="lines">
 
 
-44
-45
-46</pre>
+62
+63
+64</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vectorizable.rb', line 44</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/000-vectorizable.rb', line 62</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_length'>length</span>
   <span class='id identifier rubyid_size'>size</span>
@@ -1888,12 +1898,12 @@
       <pre class="lines">
 
 
-48
-49
-50</pre>
+66
+67
+68</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/vectorizable.rb', line 48</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/000-vectorizable.rb', line 66</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_to_s'>to_s</span>
   <span class='id identifier rubyid_inspect'>inspect</span>
@@ -1908,7 +1918,7 @@
 </div>
 
       <div id="footer">
-  Generated on Mon Oct 30 05:34:59 2023 by
+  Generated on Mon Oct 30 06:06:46 2023 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.34 in <a href="https://github.com/sagmor/yard-mruby">mruby mode</a> 0.3.0 (ruby-3.2.2).
 </div>

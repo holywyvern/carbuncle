@@ -89,6 +89,11 @@
 
   
   
+  <dl>
+      <dt>Extended by:</dt>
+      <dd><span class='object_link'><a href="Vectorizable/ClassMethods.html" title="Carbuncle::Vectorizable::ClassMethods (module)">Vectorizable::ClassMethods</a></span></dd>
+  </dl>
+  
   
   
   <dl>
@@ -582,6 +587,17 @@
   
   
   
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Vectorizable/ClassMethods.html" title="Carbuncle::Vectorizable::ClassMethods (module)">Vectorizable::ClassMethods</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Vectorizable/ClassMethods.html#vectorize_properties-instance_method" title="Carbuncle::Vectorizable::ClassMethods#vectorize_properties (method)">vectorize_properties</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
   <h3 class="inherited">Methods included from <span class='object_link'><a href="Vectorizable.html" title="Carbuncle::Vectorizable (module)">Vectorizable</a></span></h3>
   <p class="inherited"><span class='object_link'><a href="Vectorizable.html#%25-instance_method" title="Carbuncle::Vectorizable#% (method)">#%</a></span>, <span class='object_link'><a href="Vectorizable.html#*-instance_method" title="Carbuncle::Vectorizable#* (method)">#*</a></span>, <span class='object_link'><a href="Vectorizable.html#**-instance_method" title="Carbuncle::Vectorizable#** (method)">#**</a></span>, <span class='object_link'><a href="Vectorizable.html#%2B-instance_method" title="Carbuncle::Vectorizable#+ (method)">#+</a></span>, <span class='object_link'><a href="Vectorizable.html#--instance_method" title="Carbuncle::Vectorizable#- (method)">#-</a></span>, <span class='object_link'><a href="Vectorizable.html#-@-instance_method" title="Carbuncle::Vectorizable#-@ (method)">#-@</a></span>, <span class='object_link'><a href="Vectorizable.html#%2F-instance_method" title="Carbuncle::Vectorizable#/ (method)">#/</a></span>, <span class='object_link'><a href="Vectorizable.html#<<-instance_method" title="Carbuncle::Vectorizable#&lt;&lt; (method)">#<<</a></span>, <span class='object_link'><a href="Vectorizable.html#>>-instance_method" title="Carbuncle::Vectorizable#&gt;&gt; (method)">#>></a></span>, <span class='object_link'><a href="Vectorizable.html#[]-instance_method" title="Carbuncle::Vectorizable#[] (method)">#[]</a></span>, <span class='object_link'><a href="Vectorizable.html#[]=-instance_method" title="Carbuncle::Vectorizable#[]= (method)">#[]=</a></span>, <span class='object_link'><a href="Vectorizable.html#each-instance_method" title="Carbuncle::Vectorizable#each (method)">#each</a></span>, <span class='object_link'><a href="Vectorizable.html#length-instance_method" title="Carbuncle::Vectorizable#length (method)">#length</a></span>, <span class='object_link'><a href="Vectorizable.html#to_s-instance_method" title="Carbuncle::Vectorizable#to_s (method)">#to_s</a></span></p>
 
@@ -920,12 +936,12 @@ mrb_rect_initialize(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-21
-22
-23</pre>
+10
+11
+12</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/rect.rb', line 21</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/rect.rb', line 10</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_inspect'>inspect</span>
   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Rect(</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_x'>x</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_y'>y</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_w'>w</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_h'>h</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
@@ -984,12 +1000,12 @@ mrb_rect_set(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-25
-26
-27</pre>
+14
+15
+16</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/rect.rb', line 25</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/rect.rb', line 14</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_size'>size</span>
   <span class='int'>4</span>
@@ -1014,12 +1030,12 @@ mrb_rect_set(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-29
-30
-31</pre>
+18
+19
+20</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/rect.rb', line 29</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-math/mrblib/rect.rb', line 18</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_to_a'>to_a</span>
   <span class='lbracket'>[</span><span class='id identifier rubyid_x'>x</span><span class='comma'>,</span> <span class='id identifier rubyid_y'>y</span><span class='comma'>,</span> <span class='id identifier rubyid_w'>w</span><span class='comma'>,</span> <span class='id identifier rubyid_h'>h</span><span class='rbracket'>]</span>
@@ -1354,7 +1370,7 @@ mrb_rect_set_y(mrb_state *mrb, mrb_value self)
 </div>
 
       <div id="footer">
-  Generated on Mon Oct 30 05:35:00 2023 by
+  Generated on Mon Oct 30 06:06:47 2023 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.34 in <a href="https://github.com/sagmor/yard-mruby">mruby mode</a> 0.3.0 (ruby-3.2.2).
 </div>
