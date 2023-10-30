@@ -83,7 +83,7 @@
   <dl>
     <dt>Defined in:</dt>
     <dd>mruby/mrblib/kernel.rb<span class="defines">,<br />
-  mruby/src/kernel.c,<br /> mruby/mrblib/00kernel.rb,<br /> mruby/mrbgems/mruby-method/mrblib/kernel.rb,<br /> mruby/mrbgems/mruby-object-ext/mrblib/object.rb,<br /> mruby/mrbgems/mruby-enumerator/mrblib/enumerator.rb</span>
+  mruby/src/kernel.c,<br /> mruby/mrblib/00kernel.rb,<br /> mruby/mrbgems/mruby-print/mrblib/print.rb,<br /> mruby/mrbgems/mruby-method/mrblib/kernel.rb,<br /> mruby/mrbgems/mruby-object-ext/mrblib/object.rb,<br /> mruby/mrbgems/mruby-enumerator/mrblib/enumerator.rb</span>
 </dd>
   </dl>
   
@@ -1159,6 +1159,76 @@
         <li class="public ">
   <span class="summary_signature">
     
+      <a href="#p-instance_method" title="#p (instance method)">#<strong>p</strong>(*args)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Print human readable object description.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#print-instance_method" title="#print (instance method)">#<strong>print</strong>(*args)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>15.3.1.2.10 15.3.1.3.35.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#printf-instance_method" title="#printf (instance method)">#<strong>printf</strong>(*args)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
       <a href="#private_methods-instance_method" title="#private_methods (instance method)">#<strong>private_methods</strong>(all = true)  &#x21d2; Array </a>
     
 
@@ -1223,6 +1293,30 @@
   
     <span class="summary_desc"><div class='inline'>
 <p>Returns the list of public methods accessible to <em>obj</em>.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#puts-instance_method" title="#puts (instance method)">#<strong>puts</strong>(*args)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>15.3.1.2.11 15.3.1.3.39.</p>
 </div></span>
   
 </li>
@@ -5403,6 +5497,148 @@ mrb_obj_id_m(mrb_state *mrb, mrb_value self)
 </div>
     
       <div class="method_details ">
+  <h3 class="signature " id="p-instance_method">
+  
+    #<strong>p</strong>(*args)  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Print human readable object description</p>
+
+<p>ISO 15.3.1.2.9 ISO 15.3.1.3.34</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+
+<table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-print/mrblib/print.rb', line 11</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_p'>p</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_i'>i</span> <span class='op'>=</span> <span class='int'>0</span>
+  <span class='id identifier rubyid_len'>len</span> <span class='op'>=</span> <span class='id identifier rubyid_args'>args</span><span class='period'>.</span><span class='id identifier rubyid_size'>size</span>
+  <span class='kw'>while</span> <span class='id identifier rubyid_i'>i</span> <span class='op'>&lt;</span> <span class='id identifier rubyid_len'>len</span>
+    <span class='id identifier rubyid___printstr__'>__printstr__</span> <span class='id identifier rubyid_args'>args</span><span class='lbracket'>[</span><span class='id identifier rubyid_i'>i</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span>
+    <span class='id identifier rubyid___printstr__'>__printstr__</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\n</span><span class='tstring_end'>&quot;</span></span>
+    <span class='id identifier rubyid_i'>i</span> <span class='op'>+=</span> <span class='int'>1</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_args'>args</span><span class='period'>.</span><span class='id identifier rubyid___svalue'>__svalue</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="print-instance_method">
+  
+    #<strong>print</strong>(*args)  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>15.3.1.2.10 15.3.1.3.35</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+
+<table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+24
+25
+26
+27
+28
+29
+30
+31</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-print/mrblib/print.rb', line 24</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_print'>print</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_i'>i</span> <span class='op'>=</span> <span class='int'>0</span>
+  <span class='id identifier rubyid_len'>len</span> <span class='op'>=</span> <span class='id identifier rubyid_args'>args</span><span class='period'>.</span><span class='id identifier rubyid_size'>size</span>
+  <span class='kw'>while</span> <span class='id identifier rubyid_i'>i</span> <span class='op'>&lt;</span> <span class='id identifier rubyid_len'>len</span>
+    <span class='id identifier rubyid___printstr__'>__printstr__</span> <span class='id identifier rubyid_args'>args</span><span class='lbracket'>[</span><span class='id identifier rubyid_i'>i</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
+    <span class='id identifier rubyid_i'>i</span> <span class='op'>+=</span> <span class='int'>1</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="printf-instance_method">
+  
+    #<strong>printf</strong>(*args)  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+52
+53
+54</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-print/mrblib/print.rb', line 52</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_printf'>printf</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid___printstr__'>__printstr__</span><span class='lparen'>(</span><span class='id identifier rubyid_sprintf'>sprintf</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
   <h3 class="signature " id="private_methods-instance_method">
   
     #<strong>private_methods</strong>(all = true)  &#x21d2; <tt><span class='object_link'><a href="#Array-class_method" title="Kernel.Array (method)">Array</a></span></tt> 
@@ -5628,6 +5864,75 @@ mrb_obj_public_methods(mrb_state *mrb, mrb_value self)
   mrb_get_args(mrb, &quot;|b&quot;, &amp;recur);
   return mrb_obj_methods(mrb, recur, self, NOEX_PUBLIC); /* public attribute not define */
 }</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="puts-instance_method">
+  
+    #<strong>puts</strong>(*args)  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>15.3.1.2.11 15.3.1.3.39</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+
+<table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'mruby/mrbgems/mruby-print/mrblib/print.rb', line 35</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_puts'>puts</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_i'>i</span> <span class='op'>=</span> <span class='int'>0</span>
+  <span class='id identifier rubyid_len'>len</span> <span class='op'>=</span> <span class='id identifier rubyid_args'>args</span><span class='period'>.</span><span class='id identifier rubyid_size'>size</span>
+  <span class='kw'>while</span> <span class='id identifier rubyid_i'>i</span> <span class='op'>&lt;</span> <span class='id identifier rubyid_len'>len</span>
+    <span class='id identifier rubyid_s'>s</span> <span class='op'>=</span> <span class='id identifier rubyid_args'>args</span><span class='lbracket'>[</span><span class='id identifier rubyid_i'>i</span><span class='rbracket'>]</span>
+    <span class='kw'>if</span> <span class='id identifier rubyid_s'>s</span><span class='period'>.</span><span class='id identifier rubyid_kind_of?'>kind_of?</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="#Array-class_method" title="Kernel.Array (method)">Array</a></span></span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_puts'>puts</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_s'>s</span><span class='rparen'>)</span>
+    <span class='kw'>else</span>
+      <span class='id identifier rubyid_s'>s</span> <span class='op'>=</span> <span class='id identifier rubyid_s'>s</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
+      <span class='id identifier rubyid___printstr__'>__printstr__</span> <span class='id identifier rubyid_s'>s</span>
+      <span class='id identifier rubyid___printstr__'>__printstr__</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\n</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>if</span> <span class='lparen'>(</span><span class='id identifier rubyid_s'>s</span><span class='lbracket'>[</span><span class='op'>-</span><span class='int'>1</span><span class='rbracket'>]</span> <span class='op'>!=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\n</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+    <span class='id identifier rubyid_i'>i</span> <span class='op'>+=</span> <span class='int'>1</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid___printstr__'>__printstr__</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\n</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>if</span> <span class='id identifier rubyid_len'>len</span> <span class='op'>==</span> <span class='int'>0</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -6664,7 +6969,7 @@ obj.then {|_obj|...}       -&gt; an_object
 </div>
 
       <div id="footer">
-  Generated on Mon Oct 30 10:08:58 2023 by
+  Generated on Mon Oct 30 17:08:04 2023 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.34 in <a href="https://github.com/sagmor/yard-mruby">mruby mode</a> 0.3.0 (ruby-3.2.2).
 </div>
