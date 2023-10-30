@@ -155,28 +155,6 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#axis-instance_method" title="#axis (instance method)">#<strong>axis</strong>(direction, index = -1,, positive: true, deadzone: 0.3, axis: :any)  &#x21d2; Object </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'></div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
       <a href="#axis_down%3F-instance_method" title="#axis_down? (instance method)">#<strong>axis_down?</strong>  &#x21d2; Boolean </a>
     
 
@@ -225,6 +203,8 @@
     
 
     
+      (also: #gamepad)
+    
   </span>
   
   
@@ -247,6 +227,8 @@
     
 
     
+      (also: #axis)
+    
   </span>
   
   
@@ -268,6 +250,8 @@
       <a href="#bind_keyboard-instance_method" title="#bind_keyboard (instance method)">#<strong>bind_keyboard</strong>(key)  &#x21d2; Object </a>
     
 
+    
+      (also: #key)
     
   </span>
   
@@ -310,50 +294,6 @@
   <span class="summary_signature">
     
       <a href="#down%3F-instance_method" title="#down? (instance method)">#<strong>down?</strong>  &#x21d2; Boolean </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'></div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#gamemaps-instance_method" title="#gamemaps (instance method)">#<strong>gamemaps</strong>(index)  &#x21d2; Object </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'></div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#gamepad-instance_method" title="#gamepad (instance method)">#<strong>gamepad</strong>(key, index = -1))  &#x21d2; Object </a>
     
 
     
@@ -573,6 +513,28 @@
         <li class="public ">
   <span class="summary_signature">
     
+      <a href="#gamepads-instance_method" title="#gamepads (instance method)">#<strong>gamepads</strong>(index)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
       <a href="#initialize-instance_method" title="#initialize (instance method)">#<strong>initialize</strong>(controller)  &#x21d2; Action </a>
     
 
@@ -592,28 +554,6 @@
     <span class="summary_desc"><div class='inline'>
 <p>A new instance of Action.</p>
 </div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#key-instance_method" title="#key (instance method)">#<strong>key</strong>(key)  &#x21d2; Object </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'></div></span>
   
 </li>
 
@@ -931,37 +871,7 @@
 
     
       <div class="method_details first">
-  <h3 class="signature first" id="axis-instance_method">
-  
-    #<strong>axis</strong>(direction, index = -1,, positive: true, deadzone: 0.3, axis: :any)  &#x21d2; <tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt> 
-  
-
-  
-
-  
-</h3><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-76
-77
-78</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-input/mrblib/input.rb', line 76</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_axis'>axis</span><span class='lparen'>(</span><span class='id identifier rubyid_direction'>direction</span><span class='comma'>,</span> <span class='id identifier rubyid_index'>index</span> <span class='op'>=</span> <span class='op'>-</span><span class='int'>1</span><span class='comma'>,</span> <span class='label'>positive:</span> <span class='kw'>true</span><span class='comma'>,</span> <span class='label'>deadzone:</span> <span class='float'>0.3</span><span class='comma'>,</span> <span class='label'>axis:</span> <span class='symbol'>:any</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_bind_gamepad_axis'>bind_gamepad_axis</span><span class='lparen'>(</span><span class='id identifier rubyid_direction'>direction</span><span class='comma'>,</span> <span class='id identifier rubyid_index'>index</span><span class='comma'>,</span> <span class='label'>positive:</span> <span class='id identifier rubyid_positive'>positive</span><span class='comma'>,</span> <span class='label'>deadzone:</span> <span class='id identifier rubyid_deadzone'>deadzone</span><span class='comma'>,</span> <span class='label'>axis:</span> <span class='id identifier rubyid_axis'>axis</span><span class='rparen'>)</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="axis_down?-instance_method">
+  <h3 class="signature first" id="axis_down?-instance_method">
   
     #<strong>axis_down?</strong>  &#x21d2; <tt>Boolean</tt> 
   
@@ -999,20 +909,20 @@
       <pre class="lines">
 
 
+152
+153
+154
+155
+156
+157
 158
 159
 160
 161
-162
-163
-164
-165
-166
-167
-168</pre>
+162</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-input/mrblib/input.rb', line 158</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-input/mrblib/input.rb', line 152</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_axis_down?'>axis_down?</span>
   <span class='ivar'>@gamepad_axis</span><span class='period'>.</span><span class='id identifier rubyid_any?'>any?</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_binding'>binding</span><span class='op'>|</span>
@@ -1069,20 +979,20 @@
       <pre class="lines">
 
 
+120
+121
+122
+123
+124
+125
 126
 127
 128
 129
-130
-131
-132
-133
-134
-135
-136</pre>
+130</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-input/mrblib/input.rb', line 126</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-input/mrblib/input.rb', line 120</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_axis_up?'>axis_up?</span>
   <span class='ivar'>@gamepad_axis</span><span class='period'>.</span><span class='id identifier rubyid_any?'>any?</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_binding'>binding</span><span class='op'>|</span>
@@ -1107,6 +1017,10 @@
   
 
   
+    <span class="aliases">Also known as:
+    <span class="names"><span id='gamepad-instance_method'>gamepad</span></span>
+    </span>
+  
 
   
 </h3><table class="source_code">
@@ -1115,13 +1029,13 @@
       <pre class="lines">
 
 
+54
+55
 56
-57
-58
-59</pre>
+57</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-input/mrblib/input.rb', line 56</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-input/mrblib/input.rb', line 54</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_bind_gamepad'>bind_gamepad</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='comma'>,</span> <span class='id identifier rubyid_index'>index</span> <span class='op'>=</span> <span class='op'>-</span><span class='int'>1</span><span class='rparen'>)</span>
   <span class='ivar'>@gamepad_bindings</span><span class='period'>.</span><span class='id identifier rubyid_push'>push</span><span class='lparen'>(</span><span class='lbracket'>[</span><span class='id identifier rubyid_index'>index</span><span class='comma'>,</span> <span class='id identifier rubyid_key'>key</span><span class='rbracket'>]</span><span class='rparen'>)</span>
@@ -1139,6 +1053,10 @@
   
 
   
+    <span class="aliases">Also known as:
+    <span class="names"><span id='axis-instance_method'>axis</span></span>
+    </span>
+  
 
   
 </h3><table class="source_code">
@@ -1147,19 +1065,19 @@
       <pre class="lines">
 
 
+61
+62
+63
+64
 65
 66
 67
 68
 69
-70
-71
-72
-73
-74</pre>
+70</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-input/mrblib/input.rb', line 65</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-input/mrblib/input.rb', line 61</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_bind_gamepad_axis'>bind_gamepad_axis</span><span class='lparen'>(</span><span class='id identifier rubyid_direction'>direction</span><span class='comma'>,</span> <span class='id identifier rubyid_index'>index</span> <span class='op'>=</span> <span class='op'>-</span><span class='int'>1</span><span class='comma'>,</span> <span class='label'>positive:</span> <span class='kw'>true</span><span class='comma'>,</span> <span class='label'>deadzone:</span> <span class='float'>0.3</span><span class='comma'>,</span> <span class='label'>axis:</span> <span class='symbol'>:any</span><span class='rparen'>)</span>
   <span class='ivar'>@gamepad_axis</span><span class='period'>.</span><span class='id identifier rubyid_push'>push</span><span class='lparen'>(</span><span class='lbrace'>{</span>
@@ -1182,6 +1100,10 @@
     #<strong>bind_keyboard</strong>(key)  &#x21d2; <tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt> 
   
 
+  
+    <span class="aliases">Also known as:
+    <span class="names"><span id='key-instance_method'>key</span></span>
+    </span>
   
 
   
@@ -1223,14 +1145,14 @@
       <pre class="lines">
 
 
-80
-81
-82
-83
-84</pre>
+74
+75
+76
+77
+78</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-input/mrblib/input.rb', line 80</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-input/mrblib/input.rb', line 74</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_clear'>clear</span>
   <span class='ivar'>@key_bindings</span><span class='period'>.</span><span class='id identifier rubyid_clear'>clear</span>
@@ -1281,79 +1203,15 @@
       <pre class="lines">
 
 
-138
-139
-140</pre>
+132
+133
+134</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-input/mrblib/input.rb', line 138</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-input/mrblib/input.rb', line 132</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_down?'>down?</span>
   <span class='id identifier rubyid_keyboard_down?'>keyboard_down?</span> <span class='op'>||</span> <span class='id identifier rubyid_gamepad_down?'>gamepad_down?</span> <span class='op'>||</span> <span class='id identifier rubyid_axis_down?'>axis_down?</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="gamemaps-instance_method">
-  
-    #<strong>gamemaps</strong>(index)  &#x21d2; <tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt> 
-  
-
-  
-
-  
-</h3><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-226
-227
-228
-229
-230</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-input/mrblib/input.rb', line 226</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_gamemaps'>gamemaps</span><span class='lparen'>(</span><span class='id identifier rubyid_index'>index</span><span class='rparen'>)</span>
-  <span class='kw'>return</span> <span class='const'><span class='object_link'><a href="../../Carbuncle.html" title="Carbuncle (module)">Carbuncle</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Gamepad.html" title="Carbuncle::Gamepad (class)">Gamepad</a></span></span><span class='period'>.</span><span class='id identifier rubyid_each'><span class='object_link'><a href="../Gamepad.html#each-class_method" title="Carbuncle::Gamepad.each (method)">each</a></span></span> <span class='kw'>if</span> <span class='id identifier rubyid_index'>index</span> <span class='op'>&lt;</span> <span class='int'>0</span>
-
-  <span class='lbracket'>[</span><span class='const'><span class='object_link'><a href="../../Carbuncle.html" title="Carbuncle (module)">Carbuncle</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Gamepad.html" title="Carbuncle::Gamepad (class)">Gamepad</a></span></span><span class='lbracket'>[</span><span class='id identifier rubyid_index'>index</span><span class='rbracket'>]</span><span class='rbracket'>]</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="gamepad-instance_method">
-  
-    #<strong>gamepad</strong>(key, index = -1))  &#x21d2; <tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt> 
-  
-
-  
-
-  
-</h3><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-61
-62
-63</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-input/mrblib/input.rb', line 61</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_gamepad'>gamepad</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='comma'>,</span> <span class='id identifier rubyid_index'>index</span> <span class='op'>=</span> <span class='op'>-</span><span class='int'>1</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_bind_gamepad'>bind_gamepad</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='comma'>,</span> <span class='id identifier rubyid_index'>index</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1375,15 +1233,15 @@
       <pre class="lines">
 
 
-193
-194
-195
-196
-197
-198</pre>
+187
+188
+189
+190
+191
+192</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-input/mrblib/input.rb', line 193</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-input/mrblib/input.rb', line 187</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_gamepad_axis'>gamepad_axis</span><span class='lparen'>(</span><span class='id identifier rubyid_binding'>binding</span><span class='rparen'>)</span>
   <span class='kw'>return</span> <span class='id identifier rubyid_left_axis'>left_axis</span><span class='lparen'>(</span><span class='id identifier rubyid_binding'>binding</span><span class='rparen'>)</span> <span class='op'>+</span> <span class='id identifier rubyid_right_axis'>right_axis</span><span class='lparen'>(</span><span class='id identifier rubyid_binding'>binding</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_binding'>binding</span><span class='lbracket'>[</span><span class='symbol'>:axis</span><span class='rbracket'>]</span> <span class='op'>==</span> <span class='symbol'>:any</span>
@@ -1435,17 +1293,17 @@
       <pre class="lines">
 
 
-153
-154
-155
-156</pre>
+147
+148
+149
+150</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-input/mrblib/input.rb', line 153</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-input/mrblib/input.rb', line 147</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_gamepad_binding_down?'>gamepad_binding_down?</span><span class='lparen'>(</span><span class='id identifier rubyid_gamepad'>gamepad</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_index'>index</span><span class='comma'>,</span> <span class='id identifier rubyid_key'>key</span> <span class='op'>=</span> <span class='id identifier rubyid_gamepad'>gamepad</span>
-  <span class='id identifier rubyid_gamemaps'>gamemaps</span><span class='lparen'>(</span><span class='id identifier rubyid_index'>index</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_any?'>any?</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_pad'>pad</span><span class='op'>|</span> <span class='id identifier rubyid_pad'>pad</span><span class='period'>.</span><span class='id identifier rubyid_down?'>down?</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+  <span class='id identifier rubyid_gamepads'>gamepads</span><span class='lparen'>(</span><span class='id identifier rubyid_index'>index</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_any?'>any?</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_pad'>pad</span><span class='op'>|</span> <span class='id identifier rubyid_pad'>pad</span><span class='period'>.</span><span class='id identifier rubyid_down?'>down?</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1491,17 +1349,17 @@
       <pre class="lines">
 
 
-104
-105
-106
-107</pre>
+98
+99
+100
+101</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-input/mrblib/input.rb', line 104</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-input/mrblib/input.rb', line 98</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_gamepad_binding_press?'>gamepad_binding_press?</span><span class='lparen'>(</span><span class='id identifier rubyid_gamepad'>gamepad</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_index'>index</span><span class='comma'>,</span> <span class='id identifier rubyid_key'>key</span> <span class='op'>=</span> <span class='id identifier rubyid_gamepad'>gamepad</span>
-  <span class='id identifier rubyid_gamemaps'>gamemaps</span><span class='lparen'>(</span><span class='id identifier rubyid_index'>index</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_any?'>any?</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_pad'>pad</span><span class='op'>|</span> <span class='id identifier rubyid_pad'>pad</span><span class='period'>.</span><span class='id identifier rubyid_press?'>press?</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+  <span class='id identifier rubyid_gamepads'>gamepads</span><span class='lparen'>(</span><span class='id identifier rubyid_index'>index</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_any?'>any?</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_pad'>pad</span><span class='op'>|</span> <span class='id identifier rubyid_pad'>pad</span><span class='period'>.</span><span class='id identifier rubyid_press?'>press?</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1547,17 +1405,17 @@
       <pre class="lines">
 
 
-188
-189
-190
-191</pre>
+182
+183
+184
+185</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-input/mrblib/input.rb', line 188</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-input/mrblib/input.rb', line 182</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_gamepad_binding_release?'>gamepad_binding_release?</span><span class='lparen'>(</span><span class='id identifier rubyid_gamepad'>gamepad</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_index'>index</span><span class='comma'>,</span> <span class='id identifier rubyid_key'>key</span> <span class='op'>=</span> <span class='id identifier rubyid_gamepad'>gamepad</span>
-  <span class='id identifier rubyid_gamemaps'>gamemaps</span><span class='lparen'>(</span><span class='id identifier rubyid_index'>index</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_any?'>any?</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_pad'>pad</span><span class='op'>|</span> <span class='id identifier rubyid_pad'>pad</span><span class='period'>.</span><span class='id identifier rubyid_release?'>release?</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+  <span class='id identifier rubyid_gamepads'>gamepads</span><span class='lparen'>(</span><span class='id identifier rubyid_index'>index</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_any?'>any?</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_pad'>pad</span><span class='op'>|</span> <span class='id identifier rubyid_pad'>pad</span><span class='period'>.</span><span class='id identifier rubyid_release?'>release?</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1603,17 +1461,17 @@
       <pre class="lines">
 
 
-121
-122
-123
-124</pre>
+115
+116
+117
+118</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-input/mrblib/input.rb', line 121</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-input/mrblib/input.rb', line 115</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_gamepad_binding_up?'>gamepad_binding_up?</span><span class='lparen'>(</span><span class='id identifier rubyid_gamepad'>gamepad</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_index'>index</span><span class='comma'>,</span> <span class='id identifier rubyid_key'>key</span> <span class='op'>=</span> <span class='id identifier rubyid_gamepad'>gamepad</span>
-  <span class='id identifier rubyid_gamemaps'>gamemaps</span><span class='lparen'>(</span><span class='id identifier rubyid_index'>index</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_any?'>any?</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_pad'>pad</span><span class='op'>|</span> <span class='id identifier rubyid_pad'>pad</span><span class='period'>.</span><span class='id identifier rubyid_up?'>up?</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+  <span class='id identifier rubyid_gamepads'>gamepads</span><span class='lparen'>(</span><span class='id identifier rubyid_index'>index</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_any?'>any?</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_pad'>pad</span><span class='op'>|</span> <span class='id identifier rubyid_pad'>pad</span><span class='period'>.</span><span class='id identifier rubyid_up?'>up?</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1659,12 +1517,12 @@
       <pre class="lines">
 
 
-149
-150
-151</pre>
+143
+144
+145</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-input/mrblib/input.rb', line 149</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-input/mrblib/input.rb', line 143</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_gamepad_down?'>gamepad_down?</span>
   <span class='ivar'>@gamepad_bindings</span><span class='period'>.</span><span class='id identifier rubyid_any?'>any?</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_i'>i</span><span class='op'>|</span> <span class='id identifier rubyid_gamepad_binding_down?'>gamepad_binding_down?</span><span class='lparen'>(</span><span class='id identifier rubyid_i'>i</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
@@ -1713,15 +1571,15 @@
       <pre class="lines">
 
 
-97
-98
-99
-100
-101
-102</pre>
+91
+92
+93
+94
+95
+96</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-input/mrblib/input.rb', line 97</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-input/mrblib/input.rb', line 91</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_gamepad_press?'>gamepad_press?</span>
   <span class='kw'>return</span> <span class='kw'>false</span> <span class='kw'>unless</span> <span class='ivar'>@gamepad_bindings</span><span class='period'>.</span><span class='id identifier rubyid_any?'>any?</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_i'>i</span><span class='op'>|</span> <span class='id identifier rubyid_gamepad_binding_press?'>gamepad_binding_press?</span><span class='lparen'>(</span><span class='id identifier rubyid_i'>i</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
@@ -1773,15 +1631,15 @@
       <pre class="lines">
 
 
-181
-182
-183
-184
-185
-186</pre>
+175
+176
+177
+178
+179
+180</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-input/mrblib/input.rb', line 181</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-input/mrblib/input.rb', line 175</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_gamepad_release?'>gamepad_release?</span>
   <span class='kw'>return</span> <span class='kw'>false</span> <span class='kw'>unless</span>  <span class='ivar'>@gamepad_bindings</span><span class='period'>.</span><span class='id identifier rubyid_any?'>any?</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_i'>i</span><span class='op'>|</span> <span class='id identifier rubyid_gamepad_binding_release?'>gamepad_binding_release?</span><span class='lparen'>(</span><span class='id identifier rubyid_i'>i</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
@@ -1833,12 +1691,12 @@
       <pre class="lines">
 
 
-117
-118
-119</pre>
+111
+112
+113</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-input/mrblib/input.rb', line 117</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-input/mrblib/input.rb', line 111</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_gamepad_up?'>gamepad_up?</span>
   <span class='ivar'>@gamepad_bindings</span><span class='period'>.</span><span class='id identifier rubyid_any?'>any?</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_i'>i</span><span class='op'>|</span> <span class='id identifier rubyid_gamepad_binding_up?'>gamepad_binding_up?</span><span class='lparen'>(</span><span class='id identifier rubyid_i'>i</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
@@ -1849,9 +1707,9 @@
 </div>
     
       <div class="method_details ">
-  <h3 class="signature " id="key-instance_method">
+  <h3 class="signature " id="gamepads-instance_method">
   
-    #<strong>key</strong>(key)  &#x21d2; <tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt> 
+    #<strong>gamepads</strong>(index)  &#x21d2; <tt><span class='object_link'><a href="../../Object.html" title="Object (class)">Object</a></span></tt> 
   
 
   
@@ -1863,15 +1721,19 @@
       <pre class="lines">
 
 
-52
-53
-54</pre>
+220
+221
+222
+223
+224</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-input/mrblib/input.rb', line 52</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-input/mrblib/input.rb', line 220</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_key'>key</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_bind_keyboard'>bind_keyboard</span><span class='lparen'>(</span><span class='id identifier rubyid_key'>key</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_gamepads'>gamepads</span><span class='lparen'>(</span><span class='id identifier rubyid_index'>index</span><span class='rparen'>)</span>
+  <span class='kw'>return</span> <span class='const'><span class='object_link'><a href="../../Carbuncle.html" title="Carbuncle (module)">Carbuncle</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Gamepad.html" title="Carbuncle::Gamepad (class)">Gamepad</a></span></span><span class='period'>.</span><span class='id identifier rubyid_each'><span class='object_link'><a href="../Gamepad.html#each-class_method" title="Carbuncle::Gamepad.each (method)">each</a></span></span> <span class='kw'>if</span> <span class='id identifier rubyid_index'>index</span> <span class='op'>&lt;</span> <span class='int'>0</span>
+
+  <span class='lbracket'>[</span><span class='const'><span class='object_link'><a href="../../Carbuncle.html" title="Carbuncle (module)">Carbuncle</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Gamepad.html" title="Carbuncle::Gamepad (class)">Gamepad</a></span></span><span class='lbracket'>[</span><span class='id identifier rubyid_index'>index</span><span class='rbracket'>]</span><span class='rbracket'>]</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1917,15 +1779,15 @@
       <pre class="lines">
 
 
-142
-143
-144
-145
-146
-147</pre>
+136
+137
+138
+139
+140
+141</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-input/mrblib/input.rb', line 142</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-input/mrblib/input.rb', line 136</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_keyboard_down?'>keyboard_down?</span>
   <span class='kw'>return</span> <span class='kw'>false</span> <span class='kw'>unless</span> <span class='const'><span class='object_link'><a href="../../Carbuncle.html" title="Carbuncle (module)">Carbuncle</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Keyboard.html" title="Carbuncle::Keyboard (module)">Keyboard</a></span></span><span class='period'>.</span><span class='id identifier rubyid_any_down?'><span class='object_link'><a href="../Keyboard.html#any_down%3F-class_method" title="Carbuncle::Keyboard.any_down? (method)">any_down?</a></span></span><span class='lparen'>(</span><span class='op'>*</span><span class='ivar'>@key_bindings</span><span class='rparen'>)</span>
@@ -1977,15 +1839,15 @@
       <pre class="lines">
 
 
-90
-91
-92
-93
-94
-95</pre>
+84
+85
+86
+87
+88
+89</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-input/mrblib/input.rb', line 90</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-input/mrblib/input.rb', line 84</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_keyboard_press?'>keyboard_press?</span>
   <span class='kw'>return</span> <span class='kw'>false</span> <span class='kw'>unless</span> <span class='const'><span class='object_link'><a href="../../Carbuncle.html" title="Carbuncle (module)">Carbuncle</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Keyboard.html" title="Carbuncle::Keyboard (module)">Keyboard</a></span></span><span class='period'>.</span><span class='id identifier rubyid_any_press?'><span class='object_link'><a href="../Keyboard.html#any_press%3F-class_method" title="Carbuncle::Keyboard.any_press? (method)">any_press?</a></span></span><span class='lparen'>(</span><span class='op'>*</span><span class='ivar'>@key_bindings</span><span class='rparen'>)</span>
@@ -2037,15 +1899,15 @@
       <pre class="lines">
 
 
-174
-175
-176
-177
-178
-179</pre>
+168
+169
+170
+171
+172
+173</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-input/mrblib/input.rb', line 174</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-input/mrblib/input.rb', line 168</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_keyboard_release?'>keyboard_release?</span>
   <span class='kw'>return</span> <span class='kw'>false</span> <span class='kw'>unless</span> <span class='const'><span class='object_link'><a href="../../Carbuncle.html" title="Carbuncle (module)">Carbuncle</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Keyboard.html" title="Carbuncle::Keyboard (module)">Keyboard</a></span></span><span class='period'>.</span><span class='id identifier rubyid_any_release?'><span class='object_link'><a href="../Keyboard.html#any_release%3F-class_method" title="Carbuncle::Keyboard.any_release? (method)">any_release?</a></span></span><span class='lparen'>(</span><span class='op'>*</span><span class='ivar'>@key_bindings</span><span class='rparen'>)</span>
@@ -2097,12 +1959,12 @@
       <pre class="lines">
 
 
-113
-114
-115</pre>
+107
+108
+109</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-input/mrblib/input.rb', line 113</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-input/mrblib/input.rb', line 107</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_keyboard_up?'>keyboard_up?</span>
   <span class='const'><span class='object_link'><a href="../../Carbuncle.html" title="Carbuncle (module)">Carbuncle</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Keyboard.html" title="Carbuncle::Keyboard (module)">Keyboard</a></span></span><span class='period'>.</span><span class='id identifier rubyid_any_up?'><span class='object_link'><a href="../Keyboard.html#any_up%3F-class_method" title="Carbuncle::Keyboard.any_up? (method)">any_up?</a></span></span><span class='lparen'>(</span><span class='op'>*</span><span class='ivar'>@key_bindings</span><span class='rparen'>)</span>
@@ -2127,24 +1989,24 @@
       <pre class="lines">
 
 
+194
+195
+196
+197
+198
+199
 200
 201
 202
 203
 204
-205
-206
-207
-208
-209
-210
-211</pre>
+205</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-input/mrblib/input.rb', line 200</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-input/mrblib/input.rb', line 194</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_left_axis'>left_axis</span><span class='lparen'>(</span><span class='id identifier rubyid_binding'>binding</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_gamemaps'>gamemaps</span><span class='lparen'>(</span><span class='id identifier rubyid_binding'>binding</span><span class='lbracket'>[</span><span class='symbol'>:index</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='symbol'>:left_axis</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_point'>point</span><span class='op'>|</span>
+  <span class='id identifier rubyid_gamepads'>gamepads</span><span class='lparen'>(</span><span class='id identifier rubyid_binding'>binding</span><span class='lbracket'>[</span><span class='symbol'>:index</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='symbol'>:left_axis</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_point'>point</span><span class='op'>|</span>
     <span class='kw'>case</span> <span class='id identifier rubyid_binding'>binding</span><span class='lbracket'>[</span><span class='symbol'>:direction</span><span class='rbracket'>]</span>
     <span class='kw'>when</span> <span class='symbol'>:up</span>
       <span class='lbracket'>[</span><span class='id identifier rubyid_point'>point</span><span class='period'>.</span><span class='id identifier rubyid_x'>x</span><span class='rbracket'>]</span>
@@ -2199,12 +2061,12 @@
       <pre class="lines">
 
 
-86
-87
-88</pre>
+80
+81
+82</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-input/mrblib/input.rb', line 86</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-input/mrblib/input.rb', line 80</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_press?'>press?</span>
   <span class='id identifier rubyid_keyboard_press?'>keyboard_press?</span> <span class='op'>||</span> <span class='id identifier rubyid_gamepad_press?'>gamepad_press?</span>
@@ -2253,12 +2115,12 @@
       <pre class="lines">
 
 
-170
-171
-172</pre>
+164
+165
+166</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-input/mrblib/input.rb', line 170</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-input/mrblib/input.rb', line 164</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_release?'>release?</span>
   <span class='id identifier rubyid_keyboard_release?'>keyboard_release?</span> <span class='op'>||</span> <span class='id identifier rubyid_gamepad_release?'>gamepad_release?</span>
@@ -2283,24 +2145,24 @@
       <pre class="lines">
 
 
+207
+208
+209
+210
+211
+212
 213
 214
 215
 216
 217
-218
-219
-220
-221
-222
-223
-224</pre>
+218</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-input/mrblib/input.rb', line 213</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-input/mrblib/input.rb', line 207</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_right_axis'>right_axis</span><span class='lparen'>(</span><span class='id identifier rubyid_binding'>binding</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_gamemaps'>gamemaps</span><span class='lparen'>(</span><span class='id identifier rubyid_binding'>binding</span><span class='lbracket'>[</span><span class='symbol'>:index</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='symbol'>:right_axis</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_point'>point</span><span class='op'>|</span>
+  <span class='id identifier rubyid_gamepads'>gamepads</span><span class='lparen'>(</span><span class='id identifier rubyid_binding'>binding</span><span class='lbracket'>[</span><span class='symbol'>:index</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='symbol'>:right_axis</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_point'>point</span><span class='op'>|</span>
     <span class='kw'>case</span> <span class='id identifier rubyid_binding'>binding</span><span class='lbracket'>[</span><span class='symbol'>:direction</span><span class='rbracket'>]</span>
     <span class='kw'>when</span> <span class='symbol'>:up</span>
       <span class='lbracket'>[</span><span class='id identifier rubyid_point'>point</span><span class='period'>.</span><span class='id identifier rubyid_x'>x</span><span class='rbracket'>]</span>
@@ -2355,12 +2217,12 @@
       <pre class="lines">
 
 
-109
-110
-111</pre>
+103
+104
+105</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-input/mrblib/input.rb', line 109</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-input/mrblib/input.rb', line 103</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_up?'>up?</span>
   <span class='id identifier rubyid_keyboard_up?'>keyboard_up?</span> <span class='op'>||</span> <span class='id identifier rubyid_gamepad_up?'>gamepad_up?</span> <span class='op'>||</span> <span class='id identifier rubyid_axis_up?'>axis_up?</span>
@@ -2375,7 +2237,7 @@
 </div>
 
       <div id="footer">
-  Generated on Mon Oct 30 05:21:45 2023 by
+  Generated on Mon Oct 30 05:35:01 2023 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.34 in <a href="https://github.com/sagmor/yard-mruby">mruby mode</a> 0.3.0 (ruby-3.2.2).
 </div>
