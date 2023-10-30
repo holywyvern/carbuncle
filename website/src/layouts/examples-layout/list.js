@@ -51,13 +51,17 @@ const MenuGroup = withTranslation("examples")(({ label, children, t }) => {
 });
 
 const Header = withTranslation("examples")(({ t }) => {
+  const router = useRouter();
+  const onClick = () => {
+    router.push("/");
+  };
   return (
     <>
-      <header className={styles.header}>
+      <header className={styles.header} tabIndex={0} onClick={onClick}>
         <Image src="/img/logo.svg" className={styles.logo} />
         <div>
           <h1>
-            Ca<span className={styles.hightlight}>r</span>buncle
+            Ca<span className={styles.hightlight}>rb</span>uncle
           </h1>
           <h2>{t("Examples")}</h2>
         </div>

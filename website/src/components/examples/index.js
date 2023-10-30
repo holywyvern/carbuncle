@@ -70,9 +70,7 @@ function Examples({ t }) {
       <Example title="Playing music and sound">{example3}</Example>
       <hr />
       Check out more examples in the{" "}
-      <Link href={`${process.env.basePath}/examples`}>
-        Examples subdirectory
-      </Link>
+      <Link href="/examples">Examples subdirectory</Link>
     </>
   );
 }

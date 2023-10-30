@@ -19,7 +19,7 @@ function Header({ t }) {
       />
       <div className={styles.container}>
         <h1 className={styles.title}>
-          Ca<span>r</span>buncle
+          Ca<span>rb</span>uncle
           <sup className={styles.sup}>beta</sup>
         </h1>
         <div className={styles.subtitle}>

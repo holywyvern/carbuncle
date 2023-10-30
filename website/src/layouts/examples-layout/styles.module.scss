@@ -50,6 +50,7 @@
 }
 
 .header {
+  cursor: pointer;
   display: flex;
   justify-content: center;
 
@@ -86,4 +87,8 @@
 .active {
   color: var(--tutorial-color);
   background: var(--footer-color);
+}
+
+.hightlight {
+  color: var(--highlight-color);
 }
