@@ -1,5 +1,6 @@
 include Carbuncle
 
+Carbuncle::File.require 'input.rb'
 Carbuncle::File.require 'scripts/player.rb'
 
 class TestGame < Carbuncle::Game
