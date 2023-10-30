@@ -3,6 +3,7 @@ class Game::Player < Carbuncle::Sprite
 
   def initialize
     super(Carbuncle::Texture.new('graphics/characters/kurea.png'))
+    setup_actions    
     @sound = Sound.new('sound/coin.wav')
     @frame_width = texture.width / 4
     @frame_height = texture.height / 10
@@ -15,6 +16,31 @@ class Game::Player < Carbuncle::Sprite
     update_rect
   end
 
+  def setup_actions
+    @actions = Carbuncle::Input.player
+    setup_attack
+    setup_left
+    setup_right
+  end
+
+  def setup_attack
+    @attack_action = @actions[:attack]
+    @attack_action.bind_keyboard(:a)
+    @attack_action.bind_gamepad(:RIGHT_FACE_DOWN)      
+  end
+
+  def setup_left
+    @left_action = @actions[:left]
+    @left_action.bind_keyboard(:left)
+    @left_action.bind_gamepad(:DPAD_LEFT)     
+  end
+
+  def setup_right
+    @right_action = @actions[:right]
+    @right_action.bind_keyboard(:right)
+    @right_action.bind_gamepad(:DPAD_RIGHT)    
+  end
+
   def update(dt)
     update_input(dt)
     update_frame(dt)
@@ -24,14 +50,14 @@ class Game::Player < Carbuncle::Sprite
     return if attacking?
 
     dx = 0
-    if Carbuncle::Keyboard.press?(:a)
+    if @attack_action.press?
       attack!
-    elsif Carbuncle::Keyboard.down?(:left)
+    elsif @left_action.down?
       dx -= 80
       scale.x = 1
       @frame = 0 if @pose != 4
       @pose = 4
-    elsif Carbuncle::Keyboard.down?(:right)
+    elsif @right_action.down?
       dx += 80
       @frame = 0 if @pose != 5
       @pose = 5

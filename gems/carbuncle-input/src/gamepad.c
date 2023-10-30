@@ -9,7 +9,7 @@
 #include <mruby/string.h>
 
 #define MAX_AXIS_COUNT 16
-#define GAMEPAD_COUNT 4
+#define GAMEPAD_COUNT 8
 
 #define GAMEPADS_SYMBOL mrb_intern_cstr(mrb, "#gamepads")
 
@@ -323,6 +323,12 @@ mrb_gamepad_releaseQ(mrb_state *mrb, mrb_value self)
   return mrb_bool_value(IsGamepadButtonReleased(pad->id, button));
 }
 
+static mrb_value
+mrb_s_gamepad_get_size(mrb_state *mrb, mrb_value self)
+{
+  return mrb_fixnum_value(GAMEPAD_COUNT);
+}
+
 /**
  * @overload [](id)
  * Gets the current Gamepad by id.
@@ -362,12 +368,16 @@ mrb_init_carbuncle_gamepad(mrb_state *mrb)
   mrb_define_method(mrb, gamepad, "name", mrb_gamepad_get_name, MRB_ARGS_NONE());
 
   mrb_define_method(mrb, gamepad, "available?", mrb_gamepad_availableQ, MRB_ARGS_NONE());
+  mrb_define_method(mrb, gamepad, "connected?", mrb_gamepad_availableQ, MRB_ARGS_NONE());
 
-  mrb_define_method(mrb, gamepad, "up?", mrb_gamepad_upQ, MRB_ARGS_NONE());
-  mrb_define_method(mrb, gamepad, "down?", mrb_gamepad_downQ, MRB_ARGS_NONE());
-  mrb_define_method(mrb, gamepad, "press?", mrb_gamepad_pressQ, MRB_ARGS_NONE());
-  mrb_define_method(mrb, gamepad, "release?", mrb_gamepad_releaseQ, MRB_ARGS_NONE());
+  mrb_define_method(mrb, gamepad, "up?", mrb_gamepad_upQ, MRB_ARGS_REQ(1));
+  mrb_define_method(mrb, gamepad, "down?", mrb_gamepad_downQ, MRB_ARGS_REQ(1));
+  mrb_define_method(mrb, gamepad, "press?", mrb_gamepad_pressQ, MRB_ARGS_REQ(1));
+  mrb_define_method(mrb, gamepad, "release?", mrb_gamepad_releaseQ, MRB_ARGS_REQ(1));
 
+  mrb_define_class_method(mrb, gamepad, "size", mrb_s_gamepad_get_size, MRB_ARGS_NONE());
+  mrb_define_class_method(mrb, gamepad, "length", mrb_s_gamepad_get_size, MRB_ARGS_NONE());
+  mrb_define_class_method(mrb, gamepad, "count", mrb_s_gamepad_get_size, MRB_ARGS_NONE());
   mrb_define_class_method(mrb, gamepad, "[]", mrb_s_gamepad_get_subscript, MRB_ARGS_REQ(1));
 
   arena = mrb_gc_arena_save(mrb);
