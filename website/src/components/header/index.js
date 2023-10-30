@@ -3,6 +3,9 @@ import { withTranslation } from "next-i18next";
 
 import Link from "./link";
 import Image from "../image";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGithub } from "@fortawesome/free-brands-svg-icons";
+import { faBook } from "@fortawesome/free-solid-svg-icons";
 
 function Header({ t }) {
   return (
@@ -23,10 +26,15 @@ function Header({ t }) {
           <h2>Game Engine</h2>
           <div className={styles.links}>
             <Link to="https://github.com/holywyvern/carbuncle">
+              <FontAwesomeIcon icon={faGithub} />
+              &nbsp;
               {t("Source")}
             </Link>
-            <Link to={`${process.env.basePath}/docs`}>{t("API Docs")}</Link>
-            <Link to={`${process.env.basePath}/examples`}>{t("Examples")}</Link>
+            <Link to={`${process.env.basePath}/docs`}>
+              <FontAwesomeIcon icon={faBook} />
+              &nbsp;
+              {t("API Docs")}
+            </Link>
           </div>
         </div>
       </div>

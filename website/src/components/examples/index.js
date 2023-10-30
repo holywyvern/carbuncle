@@ -1,5 +1,8 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Example from "../example";
 import { withTranslation } from "next-i18next";
+import { faCode } from "@fortawesome/free-solid-svg-icons";
+import Link from "next/link";
 
 const example1 = `
 include Carbuncle
@@ -59,10 +62,17 @@ end
 function Examples({ t }) {
   return (
     <>
-      <h3>{t("Quick examples")}</h3>
+      <h3>
+        <FontAwesomeIcon icon={faCode} /> {t("Quick examples")}
+      </h3>
       <Example title="Hello World">{example1}</Example>
       <Example title="Drawing an Image">{example2}</Example>
       <Example title="Playing music and sound">{example3}</Example>
+      <hr />
+      Check out more examples in the{" "}
+      <Link href={`${process.env.basePath}/examples`}>
+        Examples subdirectory
+      </Link>
     </>
   );
 }

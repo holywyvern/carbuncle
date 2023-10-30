@@ -1,14 +1,12 @@
 import SyntaxHighlighter from "react-syntax-highlighter";
-import { vs } from "react-syntax-highlighter/dist/cjs/styles/hljs";
+import { zenburn } from "react-syntax-highlighter/dist/cjs/styles/hljs";
 
-function RubyCode({ children }) {
+function RubyCode({ children, style = zenburn, background = "transparent" }) {
   return (
     <SyntaxHighlighter
-      showLineNumbers
-      showInlineLineNumbers
       language="ruby"
-      style={vs}
-      customStyle={{ background: "rgba(255, 255, 255, 0.4)" }}
+      style={style}
+      customStyle={{ background }}
     >
       {children}
     </SyntaxHighlighter>

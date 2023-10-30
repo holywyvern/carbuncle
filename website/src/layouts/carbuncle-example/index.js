@@ -11,6 +11,7 @@ import { faEye, faEyeSlash, faCopy } from "@fortawesome/free-solid-svg-icons";
 
 import styles from "./styles.module.scss";
 import RubyCode from "../../components/ruby-code";
+import { vs } from "react-syntax-highlighter/dist/cjs/styles/hljs";
 
 const copyToClipboard = (str) => {
   const el = document.createElement("textarea");
@@ -30,7 +31,7 @@ function CodeBlock({ id, t, code }) {
   }
   return (
     <div className={styles["code-container"]}>
-      <RubyCode children={code} />
+      <RubyCode children={code} style={vs} />
     </div>
   );
 }
