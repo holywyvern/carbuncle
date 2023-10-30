@@ -43,63 +43,7 @@ swap_point(float *p1, float *p2)
 void
 mrb_carbuncle_sprite_draw_texture(Texture2D texture, Rectangle src, Rectangle dst, Vector2 origin, float angle, Color tint)
 {
-  // Check if texture is valid
-  if (texture.id <= 0) { return; }
-
-  float width = (float)texture.width;
-  float height = (float)texture.height;
-
-  bool flip_x = false, flip_y = false;
-
-  if (src.width < 0) { flip_x = true; src.width *= -1; }
-  if (src.height < 0) { flip_y = true; src.height *= -1; }
-
-  float corners[4][2] = {
-    // Bottom-left corner for texture and quad
-    { src.x/width, src.y/height },
-    // Bottom-right corner for texture and quad
-    { src.x/width, (src.y + src.height)/height },
-    // Top-right corner for texture and quad
-    { (src.x + src.width)/width, (src.y + src.height)/height },
-    // Top-left corner for texture and quad
-    { (src.x + src.width)/width, src.y/height }          
-  };
-
-  if (flip_x)
-  {
-    swap_point(corners[0], corners[3]);
-    swap_point(corners[1], corners[2]);
-  }
-  if (flip_y)
-  {
-    swap_point(corners[0], corners[1]);
-    swap_point(corners[2], corners[3]);
-  }
-
-  rlPushMatrix();
-    rlTranslatef(dst.x, dst.y, 0.0f);
-    rlRotatef(angle, 0.0f, 0.0f, 1.0f);
-    rlTranslatef(-origin.x, -origin.y, 0.0f);
-    rlSetTexture(texture.id);
-    rlBegin(RL_QUADS);
-      rlColor4ub(tint.r, tint.g, tint.b, tint.a);
-      // Normal vector pointing towards viewer
-      rlNormal3f(0.0f, 0.0f, 1.0f);
-      // Bottom-left corner for texture and quad
-      rlTexCoord2f(corners[0][0], corners[0][1]);
-      rlVertex2f(0.0f, 0.0f);
-      // Bottom-right corner for texture and quad
-      rlTexCoord2f(corners[1][0], corners[1][1]);
-      rlVertex2f(0.0f, dst.height);
-      // Top-right corner for texture and quad
-      rlTexCoord2f(corners[2][0], corners[2][1]);
-      rlVertex2f(dst.width, dst.height);
-      // Top-left corner for texture and quad
-      rlTexCoord2f(corners[3][0], corners[3][1]);
-      rlVertex2f(dst.width, 0.0f);
-    rlEnd();
-    rlSetTexture(0);
-  rlPopMatrix();
+  DrawTexturePro(texture, src, dst, origin, angle, tint);
 }
 
 
