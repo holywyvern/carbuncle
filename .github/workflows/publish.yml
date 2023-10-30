@@ -1,0 +1,73 @@
+name: Publish
+
+on:
+  push:
+    tags:
+      - '*'
+  workflow_dispatch:
+
+jobs:
+  publish:
+    name: Publish for ${{ matrix.build_name }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        build_name:
+          - Ubuntu build
+          - Windows (MinGW Cross Build)
+          - Web (Emscripten)
+          - Mac OS X
+        include:
+          - build_name: Ubuntu build
+            os: ubuntu-latest
+            config_file: build_configs/ci.rb
+          - build_name: Windows (MinGW Cross Build)
+            os: ubuntu-latest
+            config_file: build_configs/mingw.rb
+          - build_name: Web (Emscripten)
+            os: ubuntu-latest
+            config_file: build_configs/emscripten.rb
+          - build_name: Mac OS X
+            os: macos-latest
+            config_file: build_configs/clang.rb
+    env:
+      MRUBY_CONFIG: ${{ matrix.config_file }}
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.2'
+          bundler-cache: true
+      - name: Setup CMake
+        uses: jwlawson/actions-setup-cmake@v1.6
+        with:
+          cmake-version: '3.16.x'
+      - if: matrix.build_name == 'Web (Emscripten)'
+        name: Setup Emscripten
+        uses: mymindstorm/setup-emsdk@v11
+        with:
+          version: 3.1.47
+          actions-cache-folder: 'emsdk-cache'          
+      - if: matrix.os == 'macos-latest'
+        name: Install dependencies
+        run: |
+          brew install ruby bison
+          brew link bison --force
+      - if: matrix.build_name == 'Windows (MinGW Cross Build)'
+        name: Install packages
+        run: >
+          sudo apt-get install -y
+          build-essential git mingw-w64
+      - if: matrix.build_name == 'Ubuntu build'
+        name: Install packages
+        run: >
+          sudo apt-get install -y
+          build-essential git libasound2-dev mesa-common-dev
+          libx11-dev libxrandr-dev libxi-dev xorg-dev libgl1-mesa-dev
+          libglu1-mesa-dev libgtk-3-dev      
+      - name: Install all gems
+        run: gem install rubyzip
+      - name: Build mruby
+        run: rake
