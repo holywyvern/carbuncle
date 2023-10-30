@@ -30,7 +30,7 @@ jobs:
             os: ubuntu-latest
             config_file: build_configs/ci.rb
             release_file: mruby/build/host/bin/mruby-carbuncle
-            release_name: mruby-carbuncle
+            release_name: mruby-carbuncle-linux
             release_body: Ubuntu Binary
           - build_name: Windows (MinGW Cross Build)
             os: ubuntu-latest
@@ -48,8 +48,8 @@ jobs:
           - build_name: Mac OS X
             os: macos-latest
             config_file: build_configs/clang.rb
-            release_file: mruby/build/host/bin/mruby-carbuncle.bin
-            release_name: mruby-carbuncle.bin
+            release_file: mruby/build/host/bin/mruby-carbuncle
+            release_name: mruby-carbuncle-mac
             release_body: Mac OS X Build           
     runs-on: ${{ matrix.os }}
     env:
@@ -97,7 +97,7 @@ jobs:
         name: Zip Emscripten
         uses: montudor/action-zip@v1
         with:
-          args: zip -qq -r ${{ matrix.release_file }} ${{ matrix.release_folder }}
+          args: zip -qq -r ${{ matrix.release_file }} . -i ${{ matrix.release_folder }}
       - if: github.ref_type == 'tag'
         name: Publish Binaries Tag for ${{ matrix.build_name }}
         uses: svenstaro/upload-release-action@v2
