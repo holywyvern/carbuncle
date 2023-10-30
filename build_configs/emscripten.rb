@@ -32,9 +32,6 @@ MRuby::CrossBuild.new('web') do |conf|
   conf.exts.executable = '.html'
   conf.linker.command = 'emcc'
   conf.linker.flags = emscripten_flags
-  
 
-  add_core_gems(conf)
-  add_external_gems(conf)
-  add_carbuncle_gems(conf)  
+  setup_carbuncle(conf)
 end

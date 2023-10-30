@@ -1,11 +1,7 @@
 # frozen_string_literal: true
 
 require_relative 'utils/gems'
-
-# Build an empty ruby build on current target
-MRuby::Build.new do |conf|
-  conf.toolchain :gcc
-end
+require_relative 'utils/empty_build'
 
 MRuby::CrossBuild.new('mingw') do |conf|
   conf.toolchain :gcc
@@ -16,16 +12,9 @@ MRuby::CrossBuild.new('mingw') do |conf|
 
   conf.linker.flags += %w[-static -static-libgcc]
 
-  add_core_gems(conf)
-  add_external_gems(conf)
-  add_carbuncle_gems(conf)
+  setup_carbuncle(conf)
 
   conf.cc.defines += %w[PCRE_STATIC]
 
-  if ENV['DEBUG'] == 'true'
-    conf.enable_test
-    conf.enable_debug
-    conf.cc.defines += %w[MRB_ENABLE_DEBUG_HOOK]
-    conf.gem core: 'mruby-bin-debugger'
-  end
+  setup_carbuncle_debug(conf)
 end

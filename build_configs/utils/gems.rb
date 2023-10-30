@@ -50,3 +50,18 @@ def add_carbuncle_gems(conf)
   end
   conf.gem File.expand_path(File.join(root_dir, 'mruby-bin-carbuncle'))
 end
+
+def setup_carbuncle(conf)
+  add_core_gems(conf)
+  add_external_gems(conf)
+  add_carbuncle_gems(conf)
+end
+
+def setup_carbuncle_debug(conf)
+  return if ENV['DEBUG'] != 'true'
+
+  conf.enable_test
+  conf.enable_debug
+  conf.cc.defines += %w[MRB_ENABLE_DEBUG_HOOK]
+  conf.gem core: 'mruby-bin-debugger'
+end
