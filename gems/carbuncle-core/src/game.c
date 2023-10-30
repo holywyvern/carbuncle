@@ -2,6 +2,7 @@
 #include "carbuncle/game.h"
 #include "carbuncle/screen.h"
 #include "carbuncle/message_box.h"
+#include "carbuncle/loader.h"
 
 #include "raylib.h"
 
@@ -51,15 +52,64 @@ create_window(mrb_state *mrb, mrb_value instance)
 }
 
 static inline void
-begin_game(mrb_state *mrb, mrb_value self, mrb_value instance)
+draw_loading_screen(mrb_state *mrb)
 {
-  // SetTraceLogLevel(LOG_ERROR);
+  const char *text = "Loading...";
+  BeginDrawing();
+  ClearBackground(RAYWHITE);
+  int x = (GetScreenWidth() - MeasureText(text, 48)) / 2;
+  int y = (GetScreenHeight() - 24) / 2;
+  DrawText(text, x, y, 48, BLACK);
+  EndDrawing();
+}
+
+static inline void
+await_loaded_files(mrb_state *mrb)
+{
+  while (mrb_carbuncle_loader_loading_p(mrb))
+  {
+    draw_loading_screen(mrb);
+  }
+}
+
+#ifdef __EMSCRIPTEN__
+
+static void
+carbuncle_emscripten_await_loaded_files()
+{
+  draw_loading_screen(mrb_em_state.mrb);
+}
+
+#endif
+
+static void
+preload_game(mrb_state *mrb, mrb_value self, mrb_value instance)
+{
+  SetTraceLogLevel(LOG_ERROR);
   mrb_funcall(mrb, instance, "before_run", 0);
   mrb_gv_set(mrb, CURRENT_GAME_SYMBOL, instance);
   mrb_gc_register(mrb, instance);
+  mrb_funcall(mrb, instance, "load", 0);
   carbuncle_game_is_running = TRUE;
   create_window(mrb, instance);
-  mrb_funcall(mrb, instance, "load", 0);
+#ifdef __EMSCRIPTEN__
+  mrb_em_state.mrb = mrb;
+  mrb_em_state.game = instance;
+  emscripten_set_main_loop(carbuncle_emscripten_await_loaded_files, 0, 0);
+  while (mrb_carbuncle_loader_loading_p(mrb))
+  {
+    emscripten_sleep(16);
+  }
+  emscripten_cancel_main_loop();
+#else
+  await_loaded_files(mrb);
+#endif
+}
+
+static inline void
+begin_game(mrb_state *mrb, mrb_value self, mrb_value instance)
+{
+  mrb_funcall(mrb, instance, "start", 0);
   mrb_funcall(mrb, instance, "after_run", 0);
 }
 
@@ -190,6 +240,7 @@ static mrb_value
 mrb_s_game_run(mrb_state *mrb, mrb_value self)
 {
   mrb_value instance = mrb_funcall(mrb, self, "new", 0);
+  preload_game(mrb, self, instance);
   begin_game(mrb, self, instance);
   game_loop(mrb, instance);
   close_game(mrb, self, instance);

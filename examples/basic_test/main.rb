@@ -4,7 +4,7 @@ Carbuncle::File.require 'input.rb'
 Carbuncle::File.require 'scripts/player.rb'
 
 class TestGame < Carbuncle::Game
-  def load
+  def start
     @t = 0
     load_music
     load_background

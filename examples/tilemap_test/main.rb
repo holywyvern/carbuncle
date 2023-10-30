@@ -1,7 +1,7 @@
 include Carbuncle
 
 class TestGame < Carbuncle::Game
-  def load
+  def start
     load_map
   end
 

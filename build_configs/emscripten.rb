@@ -1,11 +1,7 @@
 # frozen_string_literal: true
 
 require_relative 'utils/gems'
-
-# Build an empty ruby build on current target
-MRuby::Build.new do |conf|
-  conf.toolchain :gcc
-end
+require_relative 'utils/empty_build'
 
 MRuby::CrossBuild.new('web') do |conf|
   conf.toolchain :clang

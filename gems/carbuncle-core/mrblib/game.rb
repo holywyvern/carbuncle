@@ -11,17 +11,39 @@ module Carbuncle
 
     # @!group Lifecycle methods
 
-    # This method is called after the graphics context is created.
-    # This method should be overrided your main screen for your game.
-    # @example The game starts
+    # This method is called before the graphics context are created.
+    # Only really used when working on the web.
+    # This will prepare the files on the filesystem so the game can load
+    # them properly.
+    # Any file preloaded here will be awaited before starting the engine, on the loading screen.
+    # Any other initial configuration like screen size would be nice to be added here.
+    # If you don't preload the file here, it will still be loaded, but may hang the
+    # website if the file is too big.
+    # @example The game is a web game
     #   class MyGame < Carbuncle::Game
     #     def load
-    #       # The screen is loaded, so we can load our assets
-    #       SceneManager.set(TitleScene)
+    #       Loader.prepare("img/hero.png")
+    #     end
+    #
+    #     def start
+    #        @hero = Texture.new("img/hero.png")
+    #        # the rest of your code here...
     #     end
     #   end
     # @return [nil]
     def load; end
+
+    # This method is called after the graphics context is created and assets were prepared.
+    # This method is the one you run to setup the game.
+    # @example The game starts
+    #   class MyGame < Carbuncle::Game
+    #     def start
+    #       # The assets are loaded, so we can load our assets
+    #       SceneManager.set(TitleScene)
+    #     end
+    #   end
+    # @return [nil]
+    def start; end
 
     # This method is called after an update, usually once per frame.
     # If the application skips frames, this method won't be called.

@@ -13,6 +13,7 @@
 #include "carbuncle/screen.h"
 #include "carbuncle/filesystem.h"
 #include "carbuncle/message_box.h"
+#include "carbuncle/loader.h"
 
 #ifdef CARBUNCLE_DEBUG
 mrb_bool mrb_carbuncle_debug_drawing = FALSE;
@@ -35,12 +36,13 @@ mrb_s_carbuncle_toggle_debug_draw(mrb_state *mrb, mrb_value self)
 void
 mrb_carbuncle_core_gem_init(mrb_state *mrb)
 {
-  struct RClass *carbuncle = mrb_define_module(mrb, "Carbuncle");
+  mrb_define_module(mrb, "Carbuncle");
 
   mrb_init_carbuncle_game(mrb);
   mrb_init_carbuncle_screen(mrb);
   mrb_init_carbuncle_filesystem(mrb);
   mrb_init_carbuncle_messagebox(mrb);
+  mrb_init_carbuncle_loader(mrb);
 
 #ifdef CARBUNCLE_DEBUG
   mrb_define_module_function(mrb, carbuncle, "debug_draw?", mrb_s_carbuncle_debug_drawQ, MRB_ARGS_NONE());

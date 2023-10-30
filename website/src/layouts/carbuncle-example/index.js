@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
-import SyntaxHighlighter from "react-syntax-highlighter";
-import { vs } from "react-syntax-highlighter/dist/cjs/styles/hljs";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { i18n, withTranslation } from "next-i18next";
 
@@ -11,8 +10,7 @@ import ExamplesLayout from "../examples-layout";
 import { faEye, faEyeSlash, faCopy } from "@fortawesome/free-solid-svg-icons";
 
 import styles from "./styles.module.scss";
-
-vs.background = "transparent";
+import RubyCode from "../../components/ruby-code";
 
 const copyToClipboard = (str) => {
   const el = document.createElement("textarea");
@@ -32,15 +30,7 @@ function CodeBlock({ id, t, code }) {
   }
   return (
     <div className={styles["code-container"]}>
-      <SyntaxHighlighter
-        showLineNumbers
-        showInlineLineNumbers
-        language="ruby"
-        style={vs}
-        customStyle={{ background: "rgba(255, 255, 255, 0.4)" }}
-      >
-        {code}
-      </SyntaxHighlighter>
+      <RubyCode children={code} />
     </div>
   );
 }
@@ -76,7 +66,9 @@ function CarbuncleExample({ id, t }) {
   const [showCode, setShowCode] = useState(false);
   useEffect(() => {
     fetch(
-      `${process.env.basePath}/data/examples${id}/main_${i18n?.language}.rb`
+      `${process.env.basePath}/data/examples${id}/main_${
+        i18n?.language || "en"
+      }.rb`
     )
       .then((response) => {
         if (response.ok && response.status === 200) {
