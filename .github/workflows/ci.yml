@@ -4,6 +4,9 @@ name: CI
 
 # Controls when the action will run. 
 on:
+  push:
+    tags:
+      - '*'
   # Triggers the workflow on push or pull request events but only for the main branch
   push:
     branches: [ main ]
@@ -15,149 +18,95 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # Compile for Ubuntu
-  ubuntu_build:
-    name: Ubuntu Build (GCC)
-    # The type of runner that the job will run on
-    runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
+  build:
+    name: CI Check for ${{ matrix.build_name }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        build_name:
+          - Ubuntu
+          - Windows (MinGW Cross Build)
+          - Web (Emscripten)
+          - Mac OS X
+        include:
+          - build_name: Ubuntu build
+            os: ubuntu-latest
+            config_file: build_configs/ci.rb
+            release_file: mruby/build/host/bin/mruby-carbuncle
+            release_name: mruby-carbuncle
+            release_body: Ubuntu Binary
+          - build_name: Windows (MinGW Cross Build)
+            os: ubuntu-latest
+            config_file: build_configs/mingw.rb
+            release_file: mruby/build/mingw/bin/mruby-carbuncle.exe
+            release_name: mruby-carbuncle.exe
+            release_body: Windows Binary (x64)            
+          - build_name: Web (Emscripten)
+            os: ubuntu-latest
+            config_file: build_configs/emscripten.rb
+            release_folder: mruby/build/mingw/bin
+            release_file: mruby/build/mingw/bin/mruby-carbuncle.zip
+            release_name: mruby-carbuncle.zip
+            release_body: Emscripten Website 
+          - build_name: Mac OS X
+            os: macos-latest
+            config_file: build_configs/clang.rb
+            release_file: mruby/build/host/bin/mruby-carbuncle.bin
+            release_name: mruby-carbuncle.bin
+            release_body: Mac OS X Build           
+    env:
+      MRUBY_CONFIG: ${{ matrix.config_file }}
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v4
-      - uses: ruby/setup-ruby@v1
+      - name: Checkout Code
+        uses: actions/checkout@v4
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.2' # Not needed with a .ruby-version file
-          bundler-cache: true # runs 'bundle install' and caches installed gems automatically
-      - uses: jwlawson/actions-setup-cmake@v1.6
+          ruby-version: '3.2'
+          bundler-cache: true
+      - name: Setup CMake
+        uses: jwlawson/actions-setup-cmake@v1.6
         with:
           cmake-version: '3.16.x'
-      - name: Install packages
+      - if: matrix.build_name == 'Web (Emscripten)'
+        name: Setup Emscripten
+        uses: mymindstorm/setup-emsdk@v11
+        with:
+          version: 3.1.47
+          actions-cache-folder: 'emsdk-cache'          
+      - if: matrix.os == 'macos-latest'
+        name: Install dependencies
+        run: |
+          brew install ruby bison
+          brew link bison --force
+      - if: matrix.build_name == 'Windows (MinGW Cross Build)'
+        name: Install packages
+        run: >
+          sudo apt-get install -y
+          build-essential git mingw-w64
+      - if: matrix.build_name == 'Ubuntu build'
+        name: Install packages
         run: >
           sudo apt-get install -y
           build-essential git libasound2-dev mesa-common-dev
           libx11-dev libxrandr-dev libxi-dev xorg-dev libgl1-mesa-dev
-          libglu1-mesa-dev libgtk-3-dev
-
-      # Installs gems
+          libglu1-mesa-dev libgtk-3-dev      
       - name: Install all gems
         run: gem install rubyzip
-
-      # Build mruby
       - name: Build mruby
         run: rake
-      
-      # Run tests
-      # TODO: Wait until mruby-json fix test on ubuntu
-      # - name: Test
-      #  run: rake test
-  # Cross compile for MinGW
-  mingw_cross_build:
-    name: MinGW Cross Build (Ubuntu)
-    # The type of runner that the job will run on
-    runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
-    steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v4
-      - uses: ruby/setup-ruby@v1
+      - if: matrix.build_name == 'Web (Emscripten)'
+        name: Zip Emscripten
+        uses: montudor/action-zip@v1
         with:
-          ruby-version: '3.2' # Not needed with a .ruby-version file
-          bundler-cache: true # runs 'bundle install' and caches installed gems automatically
-      - uses: jwlawson/actions-setup-cmake@v1.6
+          args: zip -qq -r ${{ matrix.release_file }} ${{ matrix.release_folder }}
+      - if: github.ref_type == 'tag'
+        name: Publish Binaries Tag for ${{ matrix.build_name }}
+        uses: svenstaro/upload-release-action@v2
         with:
-          cmake-version: '3.16.x'
-      - name: Install packages
-        run: >
-          sudo apt-get install -y
-          build-essential git mingw-w64
-
-      # Installs gems
-      - name: Install all gems
-        run: gem install rubyzip
-
-      # Build mruby
-      - name: Build mruby
-        run: >
-          MRUBY_CONFIG=build_configs/mingw.rb
-          rake
-
-
-  # Cross compile for emscripten
-  emscripten_cross_build:
-    name: Emscripten Cross Build (Ubuntu)
-    # The type of runner that the job will run on
-    runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
-    steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v4
-      - uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: '3.2' # Not needed with a .ruby-version file
-          bundler-cache: true # runs 'bundle install' and caches installed gems automatically
-      - uses: jwlawson/actions-setup-cmake@v1.6
-        with:
-          cmake-version: '3.16.x'
-      - name: Setup emsdk
-        uses: mymindstorm/setup-emsdk@v11
-        with:
-          # Make sure to set a version number!
-          version: 3.1.47
-          # This is the name of the cache folder.
-          # The cache folder will be placed in the build directory,
-          #  so make sure it doesn't conflict with anything!
-          actions-cache-folder: 'emsdk-cache'
-      # Verify Emscripted Install
-      - name: Verify
-        run: emcc -v
-
-      # Installs gems
-      - name: Install all gems
-        run: gem install rubyzip
-
-      # Build mruby
-      - name: Build mruby
-        run: >
-          EMSCRIPTEN=$(dirname "$(which emcc)")
-          MRUBY_CONFIG=build_configs/emscripten.rb
-          rake
-
-  # Build on Mac OSX
-  macos_build:
-    name: Mac OS X Build
-    runs-on: macos-latest
-    steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v4
-      - uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: '3.2' # Not needed with a .ruby-version file
-          bundler-cache: true # runs 'bundle install' and caches installed gems automatically
-      - uses: jwlawson/actions-setup-cmake@v1.6
-        with:
-          cmake-version: '3.16.x'
-
-      - name: Install dependencies
-        run: |
-          brew install ruby bison
-          brew link bison --force
-
-      # Installs gems
-      - name: Install all gems
-        run: gem install rubyzip rake
-
-      # Build mruby
-      - name: Build mruby
-        run: >
-          MRUBY_CONFIG=build_configs/clang.rb
-          rake
-
-      # Test mruby
-      # TODO: Wait until mruby-json fix test on OSX
-      # - name: Test
-      #   run: >
-      #     MRUBY_CONFIG=build_configs/clang.rb
-      #     rake test
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: ${{ matrix.release_file }}
+          asset_name: ${{ matrix.release_name }}
+          tag: ${{ github.ref }}
+          overwrite: true
+          body: ${{ matrix.release_body }}
