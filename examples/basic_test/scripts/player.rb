@@ -32,13 +32,15 @@ class Game::Player < Carbuncle::Sprite
   def setup_left
     @left_action = @actions[:left]
     @left_action.bind_keyboard(:left)
-    @left_action.bind_gamepad(:DPAD_LEFT)     
+    @left_action.bind_gamepad(:DPAD_LEFT)
+    @left_action.bind_gamepad_axis(:x, positive: false) 
   end
 
   def setup_right
     @right_action = @actions[:right]
     @right_action.bind_keyboard(:right)
-    @right_action.bind_gamepad(:DPAD_RIGHT)    
+    @right_action.bind_gamepad(:DPAD_RIGHT)
+    @right_action.bind_gamepad_axis(:x, positive: true)
   end
 
   def update(dt)
