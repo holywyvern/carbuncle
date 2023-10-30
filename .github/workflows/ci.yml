@@ -31,27 +31,23 @@ jobs:
             config_file: build_configs/ci.rb
             release_file: mruby/build/host/bin/mruby-carbuncle
             release_name: mruby-carbuncle
-            release_body: Ubuntu Binary
           - build_name: Windows (MinGW Cross Build)
             os: ubuntu-latest
             config_file: build_configs/mingw.rb
             release_file: mruby/build/mingw/bin/mruby-carbuncle.exe
-            release_name: mruby-carbuncle.exe
-            release_body: Windows Binary (x64)            
+            release_name: mruby-carbuncle.exe           
           - build_name: Web (Emscripten)
             os: ubuntu-latest
             config_file: build_configs/emscripten.rb
             release_folder: mruby/build/web/bin
             release_file: mruby-carbuncle.web.zip
             release_name: mruby-carbuncle.web.zip
-            release_body: Emscripten Website 
           - build_name: Mac OS X
             os: macos-latest
             config_file: build_configs/clang.rb
             release_folder: examples/distributables/osx.app
             release_file: mruby-carbuncle.app.zip
-            release_name: mruby-carbuncle.app.zip
-            release_body: Mac OS X Build           
+            release_name: mruby-carbuncle.app.zip         
     runs-on: ${{ matrix.os }}
     env:
       MRUBY_CONFIG: ${{ matrix.config_file }}
@@ -102,7 +98,16 @@ jobs:
         uses: vimtor/action-zip@v1.1
         with:
           files: ${{ matrix.release_folder }}
-          dest: ${{ matrix.release_file }}  
+          dest: ${{ matrix.release_file }}
+      - if: github.ref_type == 'tag'
+        name: Read RELEASE.md for tag body
+        shell: bash
+        run: |
+          r=$(cat RELEASE.md)
+          r="${r//'%'/'%25'}"                      # Multiline escape sequences for %
+          r="${r//$'\n'/'%0A'}"                    # Multiline escape sequences for '\n'
+          r="${r//$'\r'/'%0D'}"                    # Multiline escape sequences for '\r'
+          echo "RELEASE_BODY=$r" >> $GITHUB_OUTPUT # <--- Set environment variable          
       - if: github.ref_type == 'tag'
         name: Publish Binaries Tag for ${{ matrix.build_name }}
         uses: svenstaro/upload-release-action@v2
@@ -112,4 +117,5 @@ jobs:
           asset_name: ${{ matrix.release_name }}
           tag: ${{ github.ref }}
           overwrite: true
-          body: ${{ matrix.release_body }}
+          body: |
+            ${{ steps.read_release.outputs.RELEASE_BODY }}  # <--- Use environment variables that was created earlier
