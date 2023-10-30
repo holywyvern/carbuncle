@@ -82,24 +82,9 @@
   
   <dl>
     <dt>Defined in:</dt>
-    <dd>gems/carbuncle-input/src/keyboard.c<span class="defines">,<br />
-  gems/carbuncle-input/mrblib/keyboard.rb</span>
-</dd>
+    <dd>gems/carbuncle-input/mrblib/keyboard.rb</dd>
   </dl>
   
-</div>
-
-<h2>Overview</h2><div class="docstring">
-  <div class="discussion">
-    
-<p>This class handles keyboard input.</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-
 </div>
 
 
@@ -127,9 +112,9 @@
     
       
       <pre class="example code"><code><span class='comment'># Use this:
-</span><span class='const'><span class='object_link'><a href="../Carbuncle.html" title="Carbuncle (module)">Carbuncle</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="" title="Carbuncle::Keyboard (module)">Keyboard</a></span></span><span class='period'>.</span><span class='id identifier rubyid_press?'><span class='object_link'><a href="#press%3F-class_method" title="Carbuncle::Keyboard.press? (method)">press?</a></span></span><span class='lparen'>(</span><span class='symbol'>:a</span><span class='rparen'>)</span> <span class='comment'># =&gt; Cross platform!
+</span><span class='const'><span class='object_link'><a href="../Carbuncle.html" title="Carbuncle (module)">Carbuncle</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="" title="Carbuncle::Keyboard (module)">Keyboard</a></span></span><span class='period'>.</span><span class='id identifier rubyid_press?'>press?</span><span class='lparen'>(</span><span class='symbol'>:a</span><span class='rparen'>)</span> <span class='comment'># =&gt; Cross platform!
 </span><span class='comment'># Over this:
-</span><span class='const'><span class='object_link'><a href="../Carbuncle.html" title="Carbuncle (module)">Carbuncle</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="" title="Carbuncle::Keyboard (module)">Keyboard</a></span></span><span class='period'>.</span><span class='id identifier rubyid_press?'><span class='object_link'><a href="#press%3F-class_method" title="Carbuncle::Keyboard.press? (method)">press?</a></span></span><span class='lparen'>(</span><span class='int'>65</span><span class='rparen'>)</span> <span class='comment'># =&gt; Only works if A is mapped to the index 65!</span></code></pre>
+</span><span class='const'><span class='object_link'><a href="../Carbuncle.html" title="Carbuncle (module)">Carbuncle</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="" title="Carbuncle::Keyboard (module)">Keyboard</a></span></span><span class='period'>.</span><span class='id identifier rubyid_press?'>press?</span><span class='lparen'>(</span><span class='int'>65</span><span class='rparen'>)</span> <span class='comment'># =&gt; Only works if A is mapped to the index 65!</span></code></pre>
     
   </div>
 
@@ -714,126 +699,6 @@
 </li>
 
       
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#character-class_method" title="character (class method)">.<strong>character</strong>  &#x21d2; String<sup>?</sup> </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'>
-<p>Gets the current pressed character as a string, or nil, if no character was press.</p>
-</div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#down%3F-class_method" title="down? (class method)">.<strong>down?</strong>(key)  &#x21d2; Boolean </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'>
-<p>Gets if the corresponding key is being pressed, by value or key.</p>
-</div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#press%3F-class_method" title="press? (class method)">.<strong>press?</strong>(key)  &#x21d2; Boolean </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'>
-<p>Gets if the corresponding key is pressed on the current frame.</p>
-</div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#release%3F-class_method" title="release? (class method)">.<strong>release?</strong>(key)  &#x21d2; Boolean </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'>
-<p>Gets if the corresponding key is was released on the current frame.</p>
-</div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#up%3F-class_method" title="up? (class method)">.<strong>up?</strong>(key)  &#x21d2; Boolean </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'>
-<p>Gets if the corresponding key is not pressed, by value or key.</p>
-</div></span>
-  
-</li>
-
-      
     </ul>
   
 
@@ -879,7 +744,7 @@
   <p class="tag_title">See Also:</p>
   <ul class="see">
     
-      <li><span class='object_link'><a href="#down%3F-class_method" title="Carbuncle::Keyboard.down? (method)">down?</a></span></li>
+      <li>down?</li>
     
   </ul>
 
@@ -942,7 +807,7 @@
   <p class="tag_title">See Also:</p>
   <ul class="see">
     
-      <li><span class='object_link'><a href="#press%3F-class_method" title="Carbuncle::Keyboard.press? (method)">press?</a></span></li>
+      <li>press?</li>
     
   </ul>
 
@@ -1005,7 +870,7 @@
   <p class="tag_title">See Also:</p>
   <ul class="see">
     
-      <li><span class='object_link'><a href="#release%3F-class_method" title="Carbuncle::Keyboard.release? (method)">release?</a></span></li>
+      <li>release?</li>
     
   </ul>
 
@@ -1068,7 +933,7 @@
   <p class="tag_title">See Also:</p>
   <ul class="see">
     
-      <li><span class='object_link'><a href="#up%3F-class_method" title="Carbuncle::Keyboard.up? (method)">up?</a></span></li>
+      <li>up?</li>
     
   </ul>
 
@@ -1131,7 +996,7 @@
   <p class="tag_title">See Also:</p>
   <ul class="see">
     
-      <li><span class='object_link'><a href="#down%3F-class_method" title="Carbuncle::Keyboard.down? (method)">down?</a></span></li>
+      <li>down?</li>
     
   </ul>
 
@@ -1194,7 +1059,7 @@
   <p class="tag_title">See Also:</p>
   <ul class="see">
     
-      <li><span class='object_link'><a href="#press%3F-class_method" title="Carbuncle::Keyboard.press? (method)">press?</a></span></li>
+      <li>press?</li>
     
   </ul>
 
@@ -1257,7 +1122,7 @@
   <p class="tag_title">See Also:</p>
   <ul class="see">
     
-      <li><span class='object_link'><a href="#release%3F-class_method" title="Carbuncle::Keyboard.release? (method)">release?</a></span></li>
+      <li>release?</li>
     
   </ul>
 
@@ -1320,7 +1185,7 @@
   <p class="tag_title">See Also:</p>
   <ul class="see">
     
-      <li><span class='object_link'><a href="#up%3F-class_method" title="Carbuncle::Keyboard.up? (method)">up?</a></span></li>
+      <li>up?</li>
     
   </ul>
 
@@ -1347,380 +1212,12 @@
 </table>
 </div>
     
-      <div class="method_details ">
-  <h3 class="signature " id="character-class_method">
-  
-    .<strong>character</strong>  &#x21d2; <tt><span class='object_link'><a href="../String.html" title="String (class)">String</a></span></tt><sup>?</sup> 
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    
-<p>Gets the current pressed character as a string, or nil, if no character was press.</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt><span class='object_link'><a href="../String.html" title="String (class)">String</a></span></tt>, <tt>nil</tt>)</span>
-      
-      
-      
-    </li>
-  
-</ul>
-
-</div>
-
-<table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-145
-146
-147
-148
-149
-150
-151
-152
-153</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-input/src/keyboard.c', line 145</span>
-
-static mrb_value
-mrb_keyboard_get_character(mrb_state *mrb, mrb_value self)
-{
-  char character[5];
-  int key = GetKeyPressed();
-  if (key &lt;= 0) { return mrb_nil_value(); }
-  carbuncle_utf8_encode(character, key);
-  return mrb_str_new_cstr(mrb, character);
-}</pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="down?-class_method">
-  
-    .<strong>down?</strong>(key)  &#x21d2; <tt>Boolean</tt> 
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    
-
-  </div>
-</div>
-<div class="tags">
-  
-  <div class="docstring">
-  <div class="discussion">
-    
-<p>Gets if the corresponding key is being pressed, by value or key. You can pass a symbol, like ‘a’ or a number like 65 and it will work the same. The available names are the same as the constants.</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-
-</div>
-
-
-
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>Boolean</tt>)</span>
-      
-      
-      
-    </li>
-  
-</ul>
-
-</div>
-
-<table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-106
-107
-108
-109
-110
-111</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-input/src/keyboard.c', line 106</span>
-
-static mrb_value
-mrb_keyboard_downQ(mrb_state *mrb, mrb_value self)
-{
-  mrb_int key = convert_keyboard_key(mrb);
-  return mrb_bool_value(IsKeyDown(key));
-}</pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="press?-class_method">
-  
-    .<strong>press?</strong>(key)  &#x21d2; <tt>Boolean</tt> 
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    
-
-  </div>
-</div>
-<div class="tags">
-  
-  <div class="docstring">
-  <div class="discussion">
-    
-<p>Gets if the corresponding key is pressed on the current frame. You can pass a symbol, like ‘a’ or a number like 65 and it will work the same. The available names are the same as the constants.</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-
-</div>
-
-
-
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>Boolean</tt>)</span>
-      
-      
-      
-    </li>
-  
-</ul>
-
-</div>
-
-<table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-92
-93
-94
-95
-96
-97</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-input/src/keyboard.c', line 92</span>
-
-static mrb_value
-mrb_keyboard_pressQ(mrb_state *mrb, mrb_value self)
-{
-  mrb_int key = convert_keyboard_key(mrb);
-  return mrb_bool_value(IsKeyPressed(key));
-}</pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="release?-class_method">
-  
-    .<strong>release?</strong>(key)  &#x21d2; <tt>Boolean</tt> 
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    
-
-  </div>
-</div>
-<div class="tags">
-  
-  <div class="docstring">
-  <div class="discussion">
-    
-<p>Gets if the corresponding key is was released on the current frame. You can pass a symbol, like ‘a’ or a number like 65 and it will work the same. The available names are the same as the constants.</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-
-</div>
-
-
-
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>Boolean</tt>)</span>
-      
-      
-      
-    </li>
-  
-</ul>
-
-</div>
-
-<table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-120
-121
-122
-123
-124
-125</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-input/src/keyboard.c', line 120</span>
-
-static mrb_value
-mrb_keyboard_releaseQ(mrb_state *mrb, mrb_value self)
-{
-  mrb_int key = convert_keyboard_key(mrb);
-  return mrb_bool_value(IsKeyReleased(key));
-}</pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="up?-class_method">
-  
-    .<strong>up?</strong>(key)  &#x21d2; <tt>Boolean</tt> 
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    
-
-  </div>
-</div>
-<div class="tags">
-  
-  <div class="docstring">
-  <div class="discussion">
-    
-<p>Gets if the corresponding key is not pressed, by value or key. You can pass a symbol, like ‘a’ or a number like 65 and it will work the same. The available names are the same as the constants.</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-
-</div>
-
-
-
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>Boolean</tt>)</span>
-      
-      
-      
-    </li>
-  
-</ul>
-
-</div>
-
-<table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-134
-135
-136
-137
-138
-139</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-input/src/keyboard.c', line 134</span>
-
-static mrb_value
-mrb_keyboard_upQ(mrb_state *mrb, mrb_value self)
-{
-  mrb_int key = convert_keyboard_key(mrb);
-  return mrb_bool_value(IsKeyUp(key));
-}</pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
   </div>
 
 </div>
 
       <div id="footer">
-  Generated on Mon Oct 30 06:38:55 2023 by
+  Generated on Mon Oct 30 10:08:57 2023 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.34 in <a href="https://github.com/sagmor/yard-mruby">mruby mode</a> 0.3.0 (ruby-3.2.2).
 </div>

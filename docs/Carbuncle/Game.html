@@ -98,24 +98,9 @@
   
   <dl>
     <dt>Defined in:</dt>
-    <dd>gems/carbuncle-core/src/game.c<span class="defines">,<br />
-  gems/carbuncle-core/mrblib/game.rb</span>
-</dd>
+    <dd>gems/carbuncle-core/mrblib/game.rb</dd>
   </dl>
   
-</div>
-
-<h2>Overview</h2><div class="docstring">
-  <div class="discussion">
-    
-<p>This class represents a game. It handles screen creation and the game’s main loop.</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-
 </div>
 
 
@@ -150,33 +135,6 @@
     <span class="summary_desc"><div class='inline'>
 <p>The current game, that’s already running.</p>
 </div></span>
-  
-</li>
-
-    
-      <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#screen-instance_method" title="#screen (instance method)">#<strong>screen</strong>  &#x21d2; Carbuncle::Screen </a>
-    
-
-    
-  </span>
-  
-  
-  
-    
-      <span class="note title readonly">readonly</span>
-    
-    
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'></div></span>
   
 </li>
 
@@ -236,7 +194,31 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>This method is called after the graphics context is created.</p>
+<p>This method is called before the graphics context are created.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#start-instance_method" title="#start (instance method)">#<strong>start</strong>  &#x21d2; nil </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>This method is called after the graphics context is created and assets were prepared.</p>
 </div></span>
   
 </li>
@@ -407,102 +389,6 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#close-instance_method" title="#close (instance method)">#<strong>close</strong>  &#x21d2; self </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'>
-<p>Closes the game and destroys the game’s window.</p>
-</div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#close%3F-instance_method" title="#close? (instance method)">#<strong>close?</strong>  &#x21d2; self </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'>
-<p>An method called when the user clicks on the cross button.</p>
-</div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#initialize-instance_method" title="#initialize (instance method)">#<strong>initialize</strong>  &#x21d2; self </a>
-    
-
-    
-  </span>
-  
-  
-    <span class="note title constructor">constructor</span>
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'></div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#resize-instance_method" title="#resize (instance method)">#<strong>resize</strong>(width, height)  &#x21d2; nil </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'>
-<p>Resizes the game’s window.</p>
-</div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
       <a href="#running%3F-instance_method" title="#running? (instance method)">#<strong>running?</strong>  &#x21d2; Boolean </a>
     
 
@@ -527,59 +413,6 @@
     </ul>
   
 
-<div id="constructor_details" class="method_details_list">
-  <h2>Constructor Details</h2>
-  
-    <div class="method_details first">
-  <h3 class="signature first" id="initialize-instance_method">
-  
-    #<strong>initialize</strong>  &#x21d2; <tt>self</tt> 
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    
-
-  </div>
-</div>
-<div class="tags">
-  
-
-</div>
-
-<table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-231
-232
-233
-234
-235
-236
-237</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-core/src/game.c', line 231</span>
-
-static mrb_value
-mrb_game_initialize(mrb_state *mrb, mrb_value self)
-{
-  mrb_value new_screen = mrb_carbuncle_screen_new(mrb, self);
-  mrb_iv_set(mrb, self, SCREEN_SYMBOL, new_screen);
-  return self;
-}</pre>
-    </td>
-  </tr>
-</table>
-</div>
-  
-</div>
 
   <div id="instance_attr_details" class="attr_details">
     <h2>Instance Attribute Details</h2>
@@ -638,66 +471,6 @@ mrb_game_initialize(mrb_state *mrb, mrb_value self)
 </table>
 </div>
     
-      
-      <span id=""></span>
-      <div class="method_details ">
-  <h3 class="signature " id="screen-instance_method">
-  
-    #<strong>screen</strong>  &#x21d2; <tt><span class='object_link'><a href="Screen.html" title="Carbuncle::Screen (class)">Carbuncle::Screen</a></span></tt>  <span class="extras">(readonly)</span>
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    
-
-  </div>
-</div>
-<div class="tags">
-  
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt><span class='object_link'><a href="Screen.html" title="Carbuncle::Screen (class)">Carbuncle::Screen</a></span></tt>)</span>
-      
-      
-      
-    </li>
-  
-</ul>
-
-</div>
-
-<table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-222
-223
-224
-225
-226</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-core/src/game.c', line 222</span>
-
-static mrb_value
-mrb_game_get_screen(mrb_state *mrb, mrb_value self)
-{
-  return mrb_iv_get(mrb, self, SCREEN_SYMBOL);
-}</pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
   </div>
 
 
@@ -746,10 +519,10 @@ mrb_game_get_screen(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-55</pre>
+77</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-core/mrblib/game.rb', line 55</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-core/mrblib/game.rb', line 77</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_after_close'>after_close</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -798,10 +571,10 @@ mrb_game_get_screen(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-47</pre>
+69</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-core/mrblib/game.rb', line 47</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-core/mrblib/game.rb', line 69</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_after_run'>after_run</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -850,10 +623,10 @@ mrb_game_get_screen(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-51</pre>
+73</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-core/mrblib/game.rb', line 51</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-core/mrblib/game.rb', line 73</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_before_close'>before_close</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -902,134 +675,12 @@ mrb_game_get_screen(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-42</pre>
+64</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-core/mrblib/game.rb', line 42</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-core/mrblib/game.rb', line 64</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_before_run'>before_run</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="close-instance_method">
-  
-    #<strong>close</strong>  &#x21d2; <tt>self</tt> 
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    
-<p>Closes the game and destroys the game’s window.</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>self</tt>)</span>
-      
-      
-      
-    </li>
-  
-</ul>
-
-</div>
-
-<table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-255
-256
-257
-258
-259
-260</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-core/src/game.c', line 255</span>
-
-static mrb_value
-mrb_game_close(mrb_state *mrb, mrb_value self)
-{
-  carbuncle_game_is_running = FALSE;
-  return mrb_nil_value();
-}</pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="close?-instance_method">
-  
-    #<strong>close?</strong>  &#x21d2; <tt>self</tt> 
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    
-<p>An method called when the user clicks on the cross button. It should return true/false depending if the user can and can’t close the screen. Useful to redirect your close button to another action.</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>self</tt>)</span>
-      
-      
-      
-    </li>
-  
-</ul>
-
-</div>
-
-<table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-245
-246
-247
-248
-249</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-core/src/game.c', line 245</span>
-
-static mrb_value
-mrb_game_closeQ(mrb_state *mrb, mrb_value self)
-{
-  return mrb_true_value();
-}</pre>
     </td>
   </tr>
 </table>
@@ -1076,10 +727,10 @@ mrb_game_closeQ(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-35</pre>
+57</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-core/mrblib/game.rb', line 35</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-core/mrblib/game.rb', line 57</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_draw'>draw</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -1128,10 +779,10 @@ mrb_game_closeQ(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-60</pre>
+82</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-core/mrblib/game.rb', line 60</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-core/mrblib/game.rb', line 82</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_file_dropped'>file_dropped</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_files'>files</span><span class='rparen'>)</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -1151,7 +802,7 @@ mrb_game_closeQ(mrb_state *mrb, mrb_value self)
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>This method is called after the graphics context is created. This method should be overrided your main screen for your game.</p>
+<p>This method is called before the graphics context are created. Only really used when working on the web. This will prepare the files on the filesystem so the game can load them properly. Any file preloaded here will be awaited before starting the engine, on the loading screen. Any other initial configuration like screen size would be nice to be added here. If you don’t preload the file here, it will still be loaded, but may hang the website if the file is too big.</p>
 
 
   </div>
@@ -1163,14 +814,18 @@ mrb_game_closeQ(mrb_state *mrb, mrb_value self)
     
       
         <p class="example_title"><div class='inline'>
-<p>The game starts</p>
+<p>The game is a web game</p>
 </div></p>
       
       <pre class="example code"><code><span class='kw'>class</span> <span class='const'>MyGame</span> <span class='op'>&lt;</span> <span class='const'><span class='object_link'><a href="../Carbuncle.html" title="Carbuncle (module)">Carbuncle</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="" title="Carbuncle::Game (class)">Game</a></span></span>
   <span class='kw'>def</span> <span class='id identifier rubyid_load'>load</span>
-    <span class='comment'># The screen is loaded, so we can load our assets
-</span>    <span class='const'>SceneManager</span><span class='period'>.</span><span class='id identifier rubyid_set'>set</span><span class='lparen'>(</span><span class='const'>TitleScene</span><span class='rparen'>)</span>
+    <span class='const'>Loader</span><span class='period'>.</span><span class='id identifier rubyid_prepare'>prepare</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>img/hero.png</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
   <span class='kw'>end</span>
+
+  <span class='kw'>def</span> <span class='id identifier rubyid_start'>start</span>
+     <span class='ivar'>@hero</span> <span class='op'>=</span> <span class='const'>Texture</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>img/hero.png</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+     <span class='comment'># the rest of your code here...
+</span>  <span class='kw'>end</span>
 <span class='kw'>end</span></code></pre>
     
   </div>
@@ -1197,91 +852,12 @@ mrb_game_closeQ(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-24</pre>
+34</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-core/mrblib/game.rb', line 24</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-core/mrblib/game.rb', line 34</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_load'>load</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="resize-instance_method">
-  
-    #<strong>resize</strong>(width, height)  &#x21d2; <tt>nil</tt> 
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    
-
-  </div>
-</div>
-<div class="tags">
-  
-  <div class="docstring">
-  <div class="discussion">
-    
-<p>Resizes the game’s window.</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>nil</tt>)</span>
-      
-      
-      
-    </li>
-  
-</ul>
-
-</div>
-
-
-
-
-</div>
-
-<table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-269
-270
-271
-272
-273
-274
-275
-276</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-core/src/game.c', line 269</span>
-
-static mrb_value
-mrb_game_resize(mrb_state *mrb, mrb_value self)
-{
-  mrb_int width, height;
-  mrb_get_args(mrb, &quot;ii&quot;, &amp;width, &amp;height);
-  SetWindowSize(width, height);
-  return mrb_nil_value();
-}</pre>
     </td>
   </tr>
 </table>
@@ -1340,6 +916,75 @@ mrb_game_resize(mrb_state *mrb, mrb_value self)
 </div>
     
       <div class="method_details ">
+  <h3 class="signature " id="start-instance_method">
+  
+    #<strong>start</strong>  &#x21d2; <tt>nil</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>This method is called after the graphics context is created and assets were prepared. This method is the one you run to setup the game.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+        <p class="example_title"><div class='inline'>
+<p>The game starts</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='kw'>class</span> <span class='const'>MyGame</span> <span class='op'>&lt;</span> <span class='const'><span class='object_link'><a href="../Carbuncle.html" title="Carbuncle (module)">Carbuncle</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="" title="Carbuncle::Game (class)">Game</a></span></span>
+  <span class='kw'>def</span> <span class='id identifier rubyid_start'>start</span>
+    <span class='comment'># The assets are loaded, so we can load our assets
+</span>    <span class='const'>SceneManager</span><span class='period'>.</span><span class='id identifier rubyid_set'>set</span><span class='lparen'>(</span><span class='const'>TitleScene</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></code></pre>
+    
+  </div>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>nil</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div>
+
+<table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+46</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-core/mrblib/game.rb', line 46</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_start'>start</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
   <h3 class="signature " id="update-instance_method">
   
     #<strong>update</strong>(dt)  &#x21d2; <tt>nil</tt> 
@@ -1380,10 +1025,10 @@ mrb_game_resize(mrb_state *mrb, mrb_value self)
       <pre class="lines">
 
 
-30</pre>
+52</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gems/carbuncle-core/mrblib/game.rb', line 30</span>
+      <pre class="code"><span class="info file"># File 'gems/carbuncle-core/mrblib/game.rb', line 52</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_update'>update</span><span class='lparen'>(</span><span class='id identifier rubyid_dt'>dt</span><span class='rparen'>)</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -1396,7 +1041,7 @@ mrb_game_resize(mrb_state *mrb, mrb_value self)
 </div>
 
       <div id="footer">
-  Generated on Mon Oct 30 06:38:56 2023 by
+  Generated on Mon Oct 30 10:08:58 2023 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.34 in <a href="https://github.com/sagmor/yard-mruby">mruby mode</a> 0.3.0 (ruby-3.2.2).
 </div>

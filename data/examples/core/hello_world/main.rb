@@ -4,6 +4,10 @@ class ExampleGame < Game
   attr_accessor :text
 
   def load
+    Loader.prepare("pixel-unicode.ttf")
+  end
+
+  def start
     Font.default_name = 'pixel-unicode.ttf'
     Font.default_size = 48
     self.text = Text.new

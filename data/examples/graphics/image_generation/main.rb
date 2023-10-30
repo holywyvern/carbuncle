@@ -4,6 +4,10 @@ class ExampleGame < Game
   attr_accessor :label, :sprites, :selected, :labels, :help
 
   def load
+    Loader.prepare("pixel-unicode.ttf")
+  end
+
+  def start
     Font.default_name = 'pixel-unicode.ttf'
     self.sprites = []
     self.labels = []

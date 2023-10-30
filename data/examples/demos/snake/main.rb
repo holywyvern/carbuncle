@@ -298,6 +298,10 @@ class SnameGame < Game
   attr_accessor :texture, :snake, :background, :fruit, :state, :title, :game_over, :score
 
   def load
+    Loader.prepare("snake.png")
+  end
+
+  def start
     self.state = :title
     self.texture = Texture.new('snake.png')
     self.background = Background.new(self)
