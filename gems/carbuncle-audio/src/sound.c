@@ -131,7 +131,8 @@ mrb_sound_set_pitch(mrb_state *mrb, mrb_value self)
 static mrb_value
 mrb_sound_disposedQ(mrb_state *mrb, mrb_value self)
 {
-  return mrb_bool_value(!DATA_PTR(self));
+  Sound *sound = get_sound(mrb, self);
+  return mrb_bool_value(IsSoundPlaying(*sound));
 }
 
 /**
@@ -238,6 +239,8 @@ mrb_init_carbuncle_sound(mrb_state *mrb)
   mrb_define_method(mrb, sound, "volume=", mrb_sound_set_volume, MRB_ARGS_REQ(1));
   mrb_define_method(mrb, sound, "pan=", mrb_sound_set_pan, MRB_ARGS_REQ(1));
   mrb_define_method(mrb, sound, "pitch=", mrb_sound_set_pitch, MRB_ARGS_REQ(1));
+
+  mrb_define_method(mrb, sound, "playing?", mrb_sound_playingQ, MRB_ARGS_NONE());
 
   mrb_define_method(mrb, sound, "disposed?", mrb_sound_disposedQ, MRB_ARGS_NONE());
   mrb_define_method(mrb, sound, "dispose", mrb_sound_dispose, MRB_ARGS_NONE());

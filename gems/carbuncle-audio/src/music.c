@@ -277,6 +277,7 @@ mrb_init_carbuncle_music(mrb_state *mrb)
   mrb_define_method(mrb, music, "playing?", mrb_music_playingQ, MRB_ARGS_NONE());
 
   mrb_define_method(mrb, music, "position", mrb_music_get_position, MRB_ARGS_NONE());
+  mrb_define_method(mrb, music, "pos", mrb_music_get_position, MRB_ARGS_NONE());
   mrb_define_method(mrb, music, "pan", mrb_music_get_pan, MRB_ARGS_NONE());
   mrb_define_method(mrb, music, "pitch", mrb_music_get_pitch, MRB_ARGS_NONE());
   mrb_define_method(mrb, music, "size", mrb_music_get_size, MRB_ARGS_NONE());
@@ -286,6 +287,8 @@ mrb_init_carbuncle_music(mrb_state *mrb)
 
   mrb_define_method(mrb, music, "volume=", mrb_music_set_volume, MRB_ARGS_REQ(1));
   mrb_define_method(mrb, music, "position=", mrb_music_set_position, MRB_ARGS_REQ(1));
+  mrb_define_method(mrb, music, "pos=", mrb_music_set_position, MRB_ARGS_REQ(1));
+  mrb_define_method(mrb, music, "seek", mrb_music_set_position, MRB_ARGS_REQ(1));
   mrb_define_method(mrb, music, "pan=", mrb_music_set_pan, MRB_ARGS_REQ(1));
   mrb_define_method(mrb, music, "pitch=", mrb_music_set_pitch, MRB_ARGS_REQ(1));
 

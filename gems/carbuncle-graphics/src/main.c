@@ -12,7 +12,6 @@
 #include "carbuncle/nine_patch.h"
 #include "carbuncle/shader.h"
 #include "carbuncle/graphics.h"
-#include "carbuncle/tilemap.h"
 
 void
 mrb_carbuncle_graphics_gem_init(mrb_state *mrb)
@@ -29,7 +28,6 @@ mrb_carbuncle_graphics_gem_init(mrb_state *mrb)
   mrb_init_carbuncle_nine_patch(mrb);
   mrb_init_carbuncle_shader(mrb);
   mrb_init_carbuncle_graphics(mrb);
-  mrb_init_carbuncle_tilemap(mrb);
 }
 
 void

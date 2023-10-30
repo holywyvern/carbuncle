@@ -115,6 +115,8 @@ game_frame(mrb_state *mrb, mrb_value game)
   mrb_value dt = mrb_float_value(mrb, GetFrameTime());
   check_closing(mrb, game);
   update_file_drop(mrb, game);
+  struct RClass *audio = mrb_carbuncle_module_get(mrb, "Audio");
+  mrb_funcall(mrb, mrb_obj_value(audio), "update", 1, dt);
   mrb_funcall(mrb, game, "update", 1, dt);
   draw_game(mrb, game);
 }

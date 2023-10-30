@@ -1,6 +1,6 @@
 CARBUNCLE_GEMS = %w[
   dependencies support core audio doc-ext graphics
-  input math scene
+  input math scene tilemap
 ].freeze
 
 STDLIB_GEMS = %w[

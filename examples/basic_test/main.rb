@@ -12,8 +12,7 @@ class TestGame < Carbuncle::Game
   end
 
   def load_music
-    @music = Music.new('music/test.ogg')
-    @music.play
+    Audio.bgm_play('music/test.ogg')
   end
 
   def load_background
@@ -53,7 +52,6 @@ class TestGame < Carbuncle::Game
   end
 
   def update(dt)
-    @music.update
     @planes.each.with_index do |p, index|
       p.update(dt)
       p.ox += (2 - index) * dt * 20
