@@ -166,7 +166,7 @@ get_button(mrb_state *mrb, mrb_value name)
 {
   const char *button = mrb_str_to_cstr(mrb, name);
   mrb_sym button_symbol = mrb_intern_cstr(mrb, button);
-  mrb_value gamepad_class = mrb_obj_value(mrb_carbuncle_module_get(mrb, "Gamepad"));
+  mrb_value gamepad_class = mrb_obj_value(mrb_carbuncle_class_get(mrb, "Gamepad"));
   if (!mrb_const_defined(mrb, gamepad_class, button_symbol))
   {
     mrb_raisef(mrb, E_ARGUMENT_ERROR, "cannot find Gamepad button '%s'.", button);
@@ -340,7 +340,7 @@ mrb_s_gamepad_get_subscript(mrb_state *mrb, mrb_value self)
 {
   mrb_int index;
   mrb_get_args(mrb, "i", &index);
-  return mrb_ary_entry(mrb_cv_get(mrb, self, GAMEPADS_SYMBOL), index);
+  return mrb_ary_entry(mrb_iv_get(mrb, self, GAMEPADS_SYMBOL), index);
 }
 
 void

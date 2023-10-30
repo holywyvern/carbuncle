@@ -77,10 +77,17 @@ get_class_by_code(mrb_state *mrb, PHYSFS_ErrorCode code)
 }
 
 static void
-raise_physfs_error(mrb_state *mrb, const char *action)
+raise_physfs_error(mrb_state *mrb, const char *action, const char* file)
 {
   PHYSFS_ErrorCode code = PHYSFS_getLastErrorCode();
-  mrb_raisef(mrb, E_FILE_ERROR, "Failed to %s file (%s).", action, ERROR_MESSAGE);
+  if (file)
+  {
+    mrb_raisef(mrb, E_FILE_ERROR, "Failed to %s file \"%s\" (%s).", action, file, ERROR_MESSAGE);
+  }
+  else
+  {
+    mrb_raisef(mrb, E_FILE_ERROR, "Failed to %s file (%s).", action, ERROR_MESSAGE);
+  }
 }
 
 static void
@@ -91,7 +98,7 @@ mrb_file_free(mrb_state *mrb, void *ptr)
     PHYSFS_File *file = ptr;
     if (!PHYSFS_close(file))
     {
-      raise_physfs_error(mrb, "close");
+      raise_physfs_error(mrb, "close", NULL);
     }
   }
 }
@@ -335,7 +342,7 @@ mrb_file_seek(mrb_state *mrb, mrb_value self)
   mrb_get_args(mrb, "i", &position);
   if (!PHYSFS_seek(file, position))
   {
-    raise_physfs_error(mrb, "seek");
+    raise_physfs_error(mrb, "seek", NULL);
   }
   return self;
 }
@@ -347,7 +354,7 @@ mrb_file_tell(mrb_state *mrb, mrb_value self)
   mrb_int pos = PHYSFS_tell(file);
   if (pos == -1)
   {
-    raise_physfs_error(mrb, "tell");
+    raise_physfs_error(mrb, "tell", NULL);
   }
   return mrb_int_value(mrb, pos);
 }
@@ -358,7 +365,7 @@ mrb_file_flush(mrb_state *mrb, mrb_value self)
   PHYSFS_File *file = get_file(mrb, self);
   if (!PHYSFS_flush(file))
   {
-    raise_physfs_error(mrb, "flush");
+    raise_physfs_error(mrb, "flush", NULL);
   }
   return self;
 }
@@ -385,7 +392,7 @@ read_byte(mrb_state *mrb, PHYSFS_File *file, void *buffer, void *str)
     {
       mrb_free(mrb, str);
     }
-    raise_physfs_error(mrb, "read");
+    raise_physfs_error(mrb, "read", NULL);
   }
 }
 
@@ -462,12 +469,12 @@ mrb_file_read(mrb_state *mrb, mrb_value self)
     len = PHYSFS_fileLength(file);
     if (len == -1)
     {
-      raise_physfs_error(mrb, "read");
+      raise_physfs_error(mrb, "read", NULL);
     }
     pos = PHYSFS_tell(file);
     if (pos == -1)
     {
-      raise_physfs_error(mrb, "read");
+      raise_physfs_error(mrb, "read", NULL);
     }
     limit = len - pos;
   }
@@ -480,7 +487,7 @@ mrb_file_read(mrb_state *mrb, mrb_value self)
     len = PHYSFS_readBytes(file, buffer, limit);
     if (len < 0)
     {
-      raise_physfs_error(mrb, "read");
+      raise_physfs_error(mrb, "read", NULL);
     }
     return mrb_str_new(mrb, buffer, len);
   }
@@ -497,7 +504,7 @@ mrb_file_write(mrb_state *mrb, mrb_value self)
   bytes = PHYSFS_writeBytes(file, txt, size);
   if (bytes == -1)
   {
-    raise_physfs_error(mrb, "write");
+    raise_physfs_error(mrb, "write", NULL);
   }
   return mrb_int_value(mrb, bytes);
 }
@@ -681,23 +688,23 @@ mrb_carbuncle_load_file(mrb_state *mrb, const char *filename, size_t *size)
   file = PHYSFS_openRead(filename);
   if (!file)
   {
-    raise_physfs_error(mrb, "open");
+    raise_physfs_error(mrb, "open", filename);
   }
   *size = PHYSFS_fileLength(file);
   if (*size == -1)
   {
-    raise_physfs_error(mrb, "read");
+    raise_physfs_error(mrb, "read", filename);
   }
   result = mrb_malloc(mrb, (*size) * sizeof *result);
   if (PHYSFS_readBytes(file, result, *size) == -1)
   {
     mrb_free(mrb, result);
-    raise_physfs_error(mrb, "read");
+    raise_physfs_error(mrb, "read", filename);
   }
   if (!PHYSFS_close(file))
   {
     mrb_free(mrb, result);
-    raise_physfs_error(mrb, "close");
+    raise_physfs_error(mrb, "close", filename);
   }
   return result;
 }
@@ -773,5 +780,5 @@ LoadCarbuncleSound(mrb_state *mrb, const char *filename)
 
 void mrb_carbuncle_file_error(mrb_state *mrb, const char *action)
 {
-  raise_physfs_error(mrb, action);
+  raise_physfs_error(mrb, action, NULL);
 }

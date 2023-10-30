@@ -1,15 +1,10 @@
 module Carbuncle
   class Gamepad
+    extend Enumerable
+
     class << self
       def each(&block)
         size.times.map { |i| self[i] }.each(&block)
-      end
-
-      def any?(&block)
-        each do |gamepad|
-          return true if block.call(gamepad)
-        end
-        false
       end
     end
 
