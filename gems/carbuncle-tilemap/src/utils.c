@@ -155,7 +155,9 @@ mrb_carbuncle_tilemap_utils_draw_tile(Vector2 *offset, void *image, unsigned int
   Vector2 pos = (Vector2) {dx - offset->x, dy - offset->y};
   Texture2D *img = image;
   Color color = (Color) {opacity, opacity, opacity, opacity};
-  DrawTextureRec(*img, src, pos, color);
+  if(img) {
+    DrawTextureRec(*img, src, pos, color);
+  }
 }
 
 void
@@ -173,14 +175,19 @@ mrb_carbuncle_tilemap_utils_draw_tile_layer(Vector2 *offset, tmx_map *map, tmx_l
   {
     for (j=0; j<map->width; j++)
     {
-      gid = layer->content.gids[(i*map->width)+j];
+      gid = (layer->content.gids[(i*map->width)+j]) & TMX_FLIP_BITS_REMOVAL;
       tile = map->tiles[gid];
-      if (tile->animation_len)
+      
+      if (tile && tile->animation_len)
       {
         struct mrb_TileData *data = tile->user_data.pointer;
-        tmx_anim_frame animation = tile->animation[data->frame];
-        tile = map->tiles[animation.tile_id + 1];
+        if(data) 
+        {
+          tmx_anim_frame animation = tile->animation[data->frame];
+          tile = map->tiles[animation.tile_id + 1];
+        }
       }
+
       if (tile)
       {
         ts = tile->tileset;
@@ -190,7 +197,7 @@ mrb_carbuncle_tilemap_utils_draw_tile_layer(Vector2 *offset, tmx_map *map, tmx_l
         w  = ts->tile_width;
         h  = ts->tile_height;
         image = im ? im->resource_image : ts->image->resource_image;
-        flags = layer->content.gids[(i*map->width)+j];
+        flags = (layer->content.gids[(i*map->width)+j]) & ~TMX_FLIP_BITS_REMOVAL;
         mrb_carbuncle_tilemap_utils_draw_tile(offset, image, x, y, w, h, j * ts->tile_width, i * ts->tile_height, op, flags);
       }
     }
