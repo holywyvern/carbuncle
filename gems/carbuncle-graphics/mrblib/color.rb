@@ -1,23 +1,12 @@
 class Carbuncle::Color
   include Carbuncle::Vectorizable
+  extend Carbuncle::Vectorizable::ClassMethods
+
+  vectorize_properties %w[r g b a]
 
   class << self
     def random
       new(rand(255), rand(255), rand(255))
-    end
-  end
-
-  (2..4).each do |i|
-    %w[r g b a].permutation(i) do |fields|
-      define_method(fields.join) do
-        Vectorizable::CLASS[i].new(*fields.map { |field| send(field) })
-      end
-
-      define_method("#{fields.join}=") do |other|
-        i.times do |index|
-          send(:"#{fields[index]}=", other[index])
-        end
-      end
     end
   end
 

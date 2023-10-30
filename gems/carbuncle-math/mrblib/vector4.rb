@@ -4,20 +4,9 @@ module Carbuncle
   # Represents a point in fourth dimensional space.
   class Vector4
     include Vectorizable
+    extend Vectorizable::ClassMethods
 
-    (2..4).each do |i|
-      %w[x y z w].permutation(i) do |fields|
-        define_method(fields.join) do
-          Vectorizable::CLASS[i].new(*fields.map { |field| send(field) })
-        end
-
-        define_method("#{fields.join}=") do |other|
-          2.times do |index|
-            send(:"#{fields[index]}=", other[index])
-          end
-        end
-      end
-    end
+    vectorize_properties %w[x y z w]
 
     # @!attribute x [rw]
     #  The x value of the vector.

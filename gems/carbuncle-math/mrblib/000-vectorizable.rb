@@ -8,6 +8,24 @@ module Carbuncle
   module Vectorizable
     include Enumerable
 
+    module ClassMethods
+      def vectorize_properties(properties)
+        (2..properties.size).each do |i|
+          properties.permutation(i) do |fields|
+            define_method(fields.join) do
+              Vectorizable::CLASS[i].new(*fields.map { |field| send(field) })
+            end
+    
+            define_method("#{fields.join}=") do |other|
+              i.times do |index|
+                send(:"#{fields[index]}=", other[index])
+              end
+            end
+          end
+        end
+      end
+    end
+
     # Contains which class is a vectorizable of n-elements
     # It is used for vector operations across classes.
     # While Carbuncle::Color and Carbuncle::Rect are both Vectorizable objects of size 4, Vector4 is the more generic one.
