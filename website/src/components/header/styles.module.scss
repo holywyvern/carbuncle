@@ -43,7 +43,26 @@
   border-radius: var(--padding-sm);
   color: #fafafa;
   background: var(--link-color);
-  font-size: 12px;
+  font-size: 20px;
+  position: relative;
+
+  &::after {
+    content: attr(tip);
+    white-space: nowrap;
+    position: absolute;
+    font-size: 12px;
+    top: -5px;
+    left: 50%;
+    translate: -50% -100%;
+    opacity: 0;
+    background: var(--link-color);
+    padding: 4px;
+    border-radius: 4px;
+    transition: opacity 0.3s ease-in-out;
+  }
+  &:hover::after {
+    opacity: 1;
+  }
 }
 
 @media (max-width: 500px) {

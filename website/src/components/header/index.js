@@ -4,7 +4,7 @@ import { withTranslation } from "next-i18next";
 import Link from "./link";
 import Image from "../image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGithub } from "@fortawesome/free-brands-svg-icons";
+import { faDiscord, faGithub } from "@fortawesome/free-brands-svg-icons";
 import { faBook } from "@fortawesome/free-solid-svg-icons";
 
 function Header({ t }) {
@@ -25,15 +25,17 @@ function Header({ t }) {
         <div className={styles.subtitle}>
           <h2>Game Engine</h2>
           <div className={styles.links}>
-            <Link to="https://github.com/holywyvern/carbuncle">
-              <FontAwesomeIcon icon={faGithub} />
-              &nbsp;
-              {t("Source")}
+            <Link to="https://discord.gg/Z25GMcPh5e" popup={t("Discord")}>
+              <FontAwesomeIcon icon={faDiscord} />
             </Link>
-            <Link to={`${process.env.basePath}/docs`}>
+            <Link
+              to="https://github.com/holywyvern/carbuncle"
+              popup={t("Source")}
+            >
+              <FontAwesomeIcon icon={faGithub} />
+            </Link>
+            <Link to={`${process.env.basePath}/docs`} popup={t("API Docs")}>
               <FontAwesomeIcon icon={faBook} />
-              &nbsp;
-              {t("API Docs")}
             </Link>
           </div>
         </div>
