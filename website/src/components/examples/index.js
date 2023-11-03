@@ -11,10 +11,7 @@ class Example < Game
   def load
     @text = Text.new
     @text.value = 'Hello World'
-  end
-
-  def draw
-    @text.draw
+    self << @text # 'add_child @text' also works
   end
 end
 `.trim();
@@ -48,12 +45,13 @@ include Carbuncle
 
 class Example < Game
   def load
-    @music = Music.new('bgm/awesome.ogg')
+    Audio.music_play 'bgm/awesome.ogg'
     @sound = Sound.new('sfx/click.wav')
     @music.play
   end
 
   def update(dt)
+    super(dt)
     @sound.play if Keyboard.press?(:space)
   end
 end
