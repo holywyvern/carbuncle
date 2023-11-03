@@ -9,6 +9,7 @@
 
 #include "raylib.h"
 
+#include "carbuncle/container.h"
 #include "carbuncle/game.h"
 #include "carbuncle/screen.h"
 #include "carbuncle/filesystem.h"
@@ -38,6 +39,7 @@ mrb_carbuncle_core_gem_init(mrb_state *mrb)
 {
   mrb_define_module(mrb, "Carbuncle");
 
+  mrb_init_carbuncle_container(mrb);
   mrb_init_carbuncle_game(mrb);
   mrb_init_carbuncle_screen(mrb);
   mrb_init_carbuncle_filesystem(mrb);

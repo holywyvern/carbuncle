@@ -9,6 +9,7 @@
 #include <mruby/variable.h>
 #include <mruby/gc.h>
 #include <mruby/string.h>
+#include <mruby/array.h>
 #include <mruby/class.h>
 #include <mruby/error.h>
 
@@ -38,6 +39,7 @@ static const char *SCREEN_IV_NAME = "#screen";
 
 #define CURRENT_GAME_SYMBOL mrb_intern_cstr(mrb, CURRENT_GAME_GV_NAME)
 #define SCREEN_SYMBOL mrb_intern_cstr(mrb, SCREEN_IV_NAME)
+#define CHILDREN_SYMBOL mrb_intern_cstr(mrb, "@children")
 
 /* Variables */
 
@@ -320,6 +322,7 @@ mrb_game_initialize(mrb_state *mrb, mrb_value self)
 {
   mrb_value new_screen = mrb_carbuncle_screen_new(mrb, self);
   mrb_iv_set(mrb, self, SCREEN_SYMBOL, new_screen);
+  mrb_iv_set(mrb, self, CHILDREN_SYMBOL, mrb_ary_new(mrb));
   return self;
 }
 
@@ -377,7 +380,7 @@ mrb_init_carbuncle_game(mrb_state *mrb)
    * @!attribute [r] screen
    *   The screen attached to this game.
    */
-  struct RClass *game = mrb_define_class_under(mrb, carbuncle, "Game", mrb->object_class);
+  struct RClass *game = mrb_define_class_under(mrb, carbuncle, "Game", mrb_class_get_under(mrb, carbuncle, "Container"));
 
   /* Class methods */
 

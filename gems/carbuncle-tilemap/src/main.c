@@ -1,15 +1,15 @@
 #include <mruby.h>
 
-#include "carbuncle/tilemap.h"
-#include "carbuncle/tilemap_layer.h"
-#include "carbuncle/tilemap_tile.h"
+#include "carbuncle/tile.h"
+#include "carbuncle/tileset.h"
+#include "carbuncle/tile_layer.h"
 
 void
 mrb_carbuncle_tilemap_gem_init(mrb_state *mrb)
 {
-  struct RClass *tilemap = mrb_init_carbuncle_tilemap(mrb);
-  mrb_init_carbuncle_tilemap_layer(mrb, tilemap);
-  mrb_init_carbuncle_tilemap_tile(mrb, tilemap);
+  mrb_init_carbuncle_tile(mrb);
+  mrb_init_carbuncle_tile_layer(mrb);
+  mrb_init_carbuncle_tileset(mrb);
 }
 
 void

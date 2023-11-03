@@ -1,5 +1,5 @@
 module Carbuncle
-  class Game
+  class Game < Carbuncle::Container
     class << self
       # @!attribute [r] current_game
       #   The current game, that's already running.
@@ -44,17 +44,6 @@ module Carbuncle
     #   end
     # @return [nil]
     def start; end
-
-    # This method is called after an update, usually once per frame.
-    # If the application skips frames, this method won't be called.
-    # @param [Float] dt The time since the last update.
-    # @return [nil]
-    def update(dt); end
-
-    # This method is called once per frame. This is inside the drawing context,
-    # so you can only draw objects inside this function.
-    # @return [nil]
-    def draw; end
 
     # @!group Lifecycle events
 

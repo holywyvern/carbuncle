@@ -10,9 +10,9 @@
 #include "raylib.h"
 
 void
-mrb_init_carbuncle_tile(mrb_state *mrb)
+mrb_init_carbuncle_tileset(mrb_state *mrb)
 {
   struct RClass *carbuncle = mrb_carbuncle_get(mrb);
-  struct RClass *tile = mrb_define_class_under(mrb, carbuncle, "Tile", mrb->object_class);
+  struct RClass *tile = mrb_define_class_under(mrb, carbuncle, "Tileset", mrb->object_class);
   MRB_SET_INSTANCE_TT(tile, MRB_TT_DATA);
 }

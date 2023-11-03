@@ -22,6 +22,7 @@ class TestGame < Carbuncle::Game
     @planes = 5.times.map do |i|
       p = Plane.new(texture)
       p.opacity = 255 - i * 20
+      add_child p
       p
     end
   end
@@ -36,12 +37,14 @@ class TestGame < Carbuncle::Game
       (screen.width - @text.width) / 2,
       (screen.height - @text.height) / 2
     )
+    self << @text
     @help = ShadowText.new(Font.new('fonts/pixel-unicode.ttf', 24))
     @help.value = "Move with left or right, press 'a' to attack, 's' for screenshot."
     @help.position.set(
       (screen.width - @help.width) / 2,
       (screen.height - @help.height)
     )
+    add_child @help
   end
 
   def load_player
@@ -50,17 +53,15 @@ class TestGame < Carbuncle::Game
       screen.width / 2,
       @text.position.y + @text.height + @player.height
     )
+    add_child @player
   end
 
   def update(dt)
     @planes.each.with_index do |p, index|
-      p.update(dt)
       p.ox += (2 - index) * dt * 20
       p.oy += (3 - index) * dt * 20
     end
-    @text.update(dt)
-    @player.update(dt)
-    @help.update(dt)
+    super(dt)
     take_screenshot if Keyboard.press?(:s)
     @t = (@t + dt) % 2
     @text.value = @t > 1 ? 'Welcöme to Carbüncle' : 'Welcome to Carbuncle'
@@ -68,12 +69,5 @@ class TestGame < Carbuncle::Game
 
   def take_screenshot
     Bitmap.screenshot.save('screen.png')
-  end
-
-  def draw
-    @planes.each(&:draw)
-    @player.draw
-    @text.draw
-    @help.draw
   end
 end
