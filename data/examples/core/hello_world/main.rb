@@ -16,9 +16,6 @@ class ExampleGame < Game
       (screen.width - text.width) / 2,
       (screen.height - text.height) / 2
     )
-  end
-
-  def draw
-    @text.draw
+    self << text
   end
 end
