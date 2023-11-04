@@ -31,6 +31,12 @@ mrb_carbuncle_fetch_file(mrb_state *mrb, const char *filename)
   {
     return;
   }
+  if (strstr(filename, "https://") == filename)
+  {
+    emscripten_wget(filename, filename);
+    mrb_file_carbuncle_console_log(filename, "was loaded.");
+    return;
+  }
   char *host = emscripten_run_script_string("/.*(?=\\/\\w*)/.exec(window.location.href).join() + '/'");
   char *endpoint = mrb_alloca(mrb, strlen(host) + strlen(filename) + 1);
   strcpy(endpoint, host);
@@ -737,11 +743,19 @@ mrb_carbuncle_load_file_text(mrb_state *mrb, const char *filename)
 
 Image LoadCarbuncleImage(mrb_state *mrb, const char *filename)
 {
+  Image img;
   unsigned char *bytes;
   size_t byte_size;
-  bytes = mrb_carbuncle_load_file(mrb, filename, &byte_size);
-  Image img = LoadImageFromMemory(GetFileExtension(filename), bytes, byte_size);
-  mrb_free(mrb, bytes);
+  if (strstr(filename, "https://") == filename)
+  {
+    img = LoadImage(filename);
+  }
+  else
+  {
+    bytes = mrb_carbuncle_load_file(mrb, filename, &byte_size);
+    img = LoadImageFromMemory(GetFileExtension(filename), bytes, byte_size);
+    mrb_free(mrb, bytes);
+  }
   return img;
 }
 
@@ -757,24 +771,40 @@ LoadCarbuncleTexture(mrb_state *mrb, const char *filename)
 Music
 LoadCarbuncleMusic(mrb_state *mrb, const char *filename)
 {
+  Music music;
   unsigned char *bytes;
   size_t byte_size;
-  bytes = mrb_carbuncle_load_file(mrb, filename, &byte_size);
-  Music music = LoadMusicStreamFromMemory(GetFileExtension(filename), bytes, byte_size);
-  // mrb_free(mrb, bytes);
+  if (strstr(filename, "https://") == filename)
+  {
+    music = LoadMusicStream(filename);
+  }
+  else
+  {
+    bytes = mrb_carbuncle_load_file(mrb, filename, &byte_size);
+    music = LoadMusicStreamFromMemory(GetFileExtension(filename), bytes, byte_size);
+    // mrb_free(mrb, bytes);
+  }
   return music;
 }
 
 Sound
 LoadCarbuncleSound(mrb_state *mrb, const char *filename)
 {
+  Sound sound;
   unsigned char *bytes;
   size_t byte_size;
-  bytes = mrb_carbuncle_load_file(mrb, filename, &byte_size);
-  Wave wave = LoadWaveFromMemory(GetFileExtension(filename), bytes, byte_size);
-  Sound sound = LoadSoundFromWave(wave);
-  UnloadWave(wave);
-  mrb_free(mrb, bytes);
+  if (strstr(filename, "https://") == filename)
+  {
+    sound = LoadSound(filename);
+  }
+  else
+  {
+    bytes = mrb_carbuncle_load_file(mrb, filename, &byte_size);
+    Wave wave = LoadWaveFromMemory(GetFileExtension(filename), bytes, byte_size);
+    sound = LoadSoundFromWave(wave);    
+    UnloadWave(wave);
+    mrb_free(mrb, bytes);
+  }
   return sound;
 }
 

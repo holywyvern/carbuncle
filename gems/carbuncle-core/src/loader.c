@@ -88,6 +88,17 @@ mrb_s_loader_prepare(mrb_state *mrb, mrb_value self)
   }
 #ifdef __EMSCRIPTEN__
   filename = RSTRING_CSTR(mrb, file);
+  if (strstr(filename, "https://") == filename)
+  {
+    total_loading_files++;
+    loading_files++;
+    emscripten_async_wget2(
+      filename, filename, "GET", "",
+      mrb, on_file_loaded, on_file_error, on_file_progress
+    );    
+    mrb_hash_set(mrb, preloaded, file, mrb_true_value());
+    return mrb_true_value();
+  }
   char *host = emscripten_run_script_string("/.*(?=\\/\\w*)/.exec(window.location.href).join() + '/'");
   char *endpoint = mrb_alloca(mrb, strlen(host) + strlen(filename) + 1);
   strcpy(endpoint, host);

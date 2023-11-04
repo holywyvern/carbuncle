@@ -42,7 +42,9 @@ function Playground() {
     router.push("/");
   };
   const onPlaygroundUpdate = () =>
-    setURL(`${baseURL}?code=${encodeURIComponent(value)}`);
+    setURL(
+      `${baseURL}?rand=${Math.random()}&code=${encodeURIComponent(value)}`
+    );
   const onValueChange = (value) => setValue(value);
   return (
     <div className={styles.playground}>

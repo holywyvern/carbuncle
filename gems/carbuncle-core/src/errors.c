@@ -3,6 +3,8 @@
 #include <mruby.h>
 #include <mruby/data.h>
 
+#include <string.h>
+
 #include "physfs.h"
 #include "raylib.h"
 
@@ -52,6 +54,7 @@ mrb_carbuncle_check_file(mrb_state *mrb, const char *filename)
 {
 #ifdef __EMSCRIPTEN__
   mrb_carbuncle_fetch_file(mrb, filename);
+  if (strstr(filename, "https://") == filename) return;
 #endif  
   if (!PHYSFS_exists(filename))
   {
