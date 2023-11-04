@@ -151,7 +151,7 @@ mrb_text_draw(mrb_state *mrb, mrb_value self)
   const char *msg;
   struct mrb_Text *text = get_text(mrb, self);
   msg = mrb_str_to_cstr(mrb, mrb_iv_get(mrb, self, VALUE_SYMBOL));
-  DrawTextEx(text->font->raylib_font, msg, *text->position, text->font->size, 0, *text->color);
+  DrawTextEx(text->font->raylib_font, msg, *text->position, text->font->size, text->font->spacing, *text->color);
   return self;
 }
 

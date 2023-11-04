@@ -49,7 +49,7 @@ get_blt_color(mrb_state *mrb, mrb_value obj)
 static void
 draw_text(Image *dst, Rectangle dst_rect, struct mrb_Font *font, const char *msg, Color color)
 {
-  Image text = ImageTextEx(font->raylib_font, msg, font->size, 0, color);
+  Image text = ImageTextEx(font->raylib_font, msg, font->size, font->spacing, color);
   Rectangle src = (Rectangle){0, 0, text.width, text.height};
   ImageDraw(dst, text, src, dst_rect, RAYWHITE);
   UnloadImage(text);

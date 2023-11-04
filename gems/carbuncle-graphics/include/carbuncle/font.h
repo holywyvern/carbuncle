@@ -15,6 +15,7 @@ struct mrb_Font
 {
   FT_Face face;
   Font raylib_font;
+  mrb_float spacing;
   mrb_int size;
   mrb_bool is_default;
   char *bytes;

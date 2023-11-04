@@ -1,0 +1,69 @@
+.playground {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.logo {
+  max-width: 40px;
+}
+
+.highlight {
+  color: var(--highlight-color);
+}
+
+.header {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+
+  padding: var(--padding-xs) var(--padding-sm);
+
+  h1 {
+    font-size: 24px;
+  }
+
+  h2 {
+    font-size: 18px;
+  }
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.wrapper {
+  padding: 8px;
+  flex: 1;
+  display: flex;
+  background: var(--panel-color);
+}
+
+.editor {
+  flex: 1;
+  border: 1px solid var(--footer-color);
+  margin-right: 8px;
+}
+
+.buttons {
+  display: flex;
+  padding: 4px;
+}
+
+.button {
+  appearance: none;
+  border: 0;
+  background: var(--panel-color);
+  color: var(--footer-text-color);
+  padding: 6px;
+  border-radius: 6px;
+}
+
+.frame {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

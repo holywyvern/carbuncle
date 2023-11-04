@@ -58,6 +58,7 @@ load_glyphs(mrb_state *mrb, struct mrb_Font *font, FT_Open_Args *args)
     codepoint = FT_Get_Next_Char(font->face, codepoint, &index);
     ++i;
   }
+  font->spacing = 0;
   font->raylib_font = LoadFontFromMemory(
     GetFileExtension(args->pathname), args->memory_base, args->memory_size,
     font->size, glyphs, font->face->num_glyphs);
@@ -127,6 +128,7 @@ mrb_font_initialize(mrb_state *mrb, mrb_value self)
   else
   {
     font->raylib_font = GetFontDefault();
+    font->spacing = size / 10;
     font->is_default = TRUE;
   }
   return self;
@@ -202,5 +204,5 @@ mrb_carbuncle_font_p(mrb_value obj)
 Vector2
 mrb_carbuncle_font_measure_text(struct mrb_Font *font, const char *msg)
 {
-  return MeasureTextEx(font->raylib_font, msg, font->size, 0);
+  return MeasureTextEx(font->raylib_font, msg, font->size, font->spacing);
 }

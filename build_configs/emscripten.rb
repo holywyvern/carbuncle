@@ -30,4 +30,6 @@ MRuby::CrossBuild.new('web') do |conf|
   conf.linker.flags = emscripten_flags
 
   setup_carbuncle(conf)
+  root_dir = File.join(__dir__, '..', 'gems')
+  conf.gem File.expand_path(File.join(root_dir, 'mruby-bin-playground'))
 end

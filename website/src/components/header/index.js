@@ -5,7 +5,7 @@ import Link from "./link";
 import Image from "../image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDiscord, faGithub } from "@fortawesome/free-brands-svg-icons";
-import { faBook } from "@fortawesome/free-solid-svg-icons";
+import { faBook, faPlayCircle } from "@fortawesome/free-solid-svg-icons";
 
 function Header({ t }) {
   return (
@@ -36,6 +36,12 @@ function Header({ t }) {
             </Link>
             <Link to={`${process.env.basePath}/docs`} popup={t("API Docs")}>
               <FontAwesomeIcon icon={faBook} />
+            </Link>
+            <Link
+              to={`${process.env.basePath}/playground`}
+              popup={t("Playground")}
+            >
+              <FontAwesomeIcon icon={faPlayCircle} />
             </Link>
           </div>
         </div>
