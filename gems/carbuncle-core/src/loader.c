@@ -18,24 +18,11 @@ static mrb_int total_loading_files;
 static mrb_int loading_files;
 static mrb_int errored_files;
 
-#ifdef __EMSCRIPTEN__
-
-#include <emscripten/emscripten.h>
-
-static void
-on_file_loaded(const char *filename)
+static mrb_value
+get_loader(mrb_state *mrb)
 {
-  loading_files--;
+  return mrb_obj_value(mrb_carbuncle_module_get(mrb, "Loader"));
 }
-
-static void
-on_file_error(const char *filename)
-{
-  loading_files--;
-  errored_files++;
-}
-
-#endif
 
 static mrb_value
 get_preloaded(mrb_state *mrb, mrb_value self)
@@ -48,6 +35,45 @@ get_preloaded(mrb_state *mrb, mrb_value self)
   }
   return result;
 }
+
+#ifdef __EMSCRIPTEN__
+
+#include <emscripten/emscripten.h>
+
+static void
+on_plugin_ok(const char *filename)
+{
+  loading_files--;
+}
+
+static void
+on_plugin_error(const char *filename)
+{
+  loading_files--;
+  errored_files++;
+}
+
+static void
+on_file_loaded(unsigned int _, void *p, const char *filename)
+{
+  emscripten_run_preload_plugins(filename, on_plugin_ok, on_plugin_error);
+  mrb_state *mrb = (mrb_state *)p;
+}
+
+static void
+on_file_error(unsigned int _, void *p, int code)
+{
+  mrb_state *mrb = (mrb_state *)p;
+  loading_files--;
+  errored_files++;
+}
+
+static void
+on_file_progress(unsigned int _, void *p, int progress)
+{
+}
+
+#endif
 
 mrb_value
 mrb_s_loader_prepare(mrb_state *mrb, mrb_value self)
@@ -68,7 +94,10 @@ mrb_s_loader_prepare(mrb_state *mrb, mrb_value self)
   strcat(endpoint, filename);
   total_loading_files++;
   loading_files++;
-  emscripten_async_wget(endpoint, filename, on_file_loaded, on_file_error);
+  emscripten_async_wget2(
+    endpoint, filename, "GET", "",
+    mrb, on_file_loaded, on_file_error, on_file_progress
+  );
 #endif
   mrb_hash_set(mrb, preloaded, file, mrb_true_value());
   return mrb_true_value();
