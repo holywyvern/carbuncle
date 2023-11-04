@@ -23,7 +23,7 @@ class Snake
     self.game = game
     self.texture = texture
     self.segments = [Snake::Head.new(self, texture)]
-    self.speed = 8
+    self.speed = 4.0
     self.score = 0
     self.opacity = 0
   end
@@ -56,7 +56,7 @@ class Snake
   def eat
     head.full = true
     self.score += 1
-    self.speed += 1 if speed < 16
+    self.speed += 0.3 if speed < 16
   end
 
   def add_segment
@@ -120,7 +120,7 @@ class Snake::Segment < Sprite
   end
 
   def moving?
-    target_x != real_position.x.floor || target_y != real_position.y.floor
+    target.x.floor != current_x || target.y.floor != current_y
   end
 
   def target_x
@@ -228,7 +228,7 @@ class Snake::Head < Snake::Segment
 
   def update_direction
     next_segment.update_direction(self) if next_segment
-    current.set(target)
+    current.set(target.x.floor, target.y.floor)
     case next_direction
     when :up
       target.y -= 1
