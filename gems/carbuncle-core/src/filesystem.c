@@ -746,16 +746,20 @@ Image LoadCarbuncleImage(mrb_state *mrb, const char *filename)
   Image img;
   unsigned char *bytes;
   size_t byte_size;
+#ifdef __EMSCRIPTEN__  
   if (strstr(filename, "https://") == filename)
   {
     img = LoadImage(filename);
   }
   else
   {
+#endif
     bytes = mrb_carbuncle_load_file(mrb, filename, &byte_size);
     img = LoadImageFromMemory(GetFileExtension(filename), bytes, byte_size);
     mrb_free(mrb, bytes);
+#ifdef __EMSCRIPTEN__
   }
+#endif
   return img;
 }
 
@@ -774,16 +778,20 @@ LoadCarbuncleMusic(mrb_state *mrb, const char *filename)
   Music music;
   unsigned char *bytes;
   size_t byte_size;
+#ifdef __EMSCRIPTEN__  
   if (strstr(filename, "https://") == filename)
   {
     music = LoadMusicStream(filename);
   }
   else
   {
+#endif
     bytes = mrb_carbuncle_load_file(mrb, filename, &byte_size);
     music = LoadMusicStreamFromMemory(GetFileExtension(filename), bytes, byte_size);
     // mrb_free(mrb, bytes);
+#ifdef __EMSCRIPTEN__
   }
+#endif
   return music;
 }
 
@@ -793,18 +801,22 @@ LoadCarbuncleSound(mrb_state *mrb, const char *filename)
   Sound sound;
   unsigned char *bytes;
   size_t byte_size;
+#ifdef __EMSCRIPTEN__  
   if (strstr(filename, "https://") == filename)
   {
     sound = LoadSound(filename);
   }
   else
   {
+#endif
     bytes = mrb_carbuncle_load_file(mrb, filename, &byte_size);
     Wave wave = LoadWaveFromMemory(GetFileExtension(filename), bytes, byte_size);
     sound = LoadSoundFromWave(wave);    
     UnloadWave(wave);
     mrb_free(mrb, bytes);
+#ifdef __EMSCRIPTEN__
   }
+#endif
   return sound;
 }
 

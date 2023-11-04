@@ -55,6 +55,16 @@ create_window(mrb_state *mrb, mrb_value instance)
   mrb_value title_value = mrb_funcall(mrb, screen_value, "title", 0);
   const char *title = mrb_str_to_cstr(mrb, title_value);
   InitWindow(screen->width, screen->height, title);
+  SetTargetFPS(60);
+  if (!IsWindowReady())
+  {
+    mrb_carbuncle_show_fatal("Graphics Error", "Failed to initialize graphics");
+  }
+  InitAudioDevice();
+  if (!IsAudioDeviceReady())
+  {
+    mrb_carbuncle_show_fatal("Audio Error", "Failed to initialize audio");
+  }
 }
 
 static inline void
@@ -91,7 +101,7 @@ carbuncle_emscripten_await_loaded_files()
 static void
 preload_game(mrb_state *mrb, mrb_value self, mrb_value instance)
 {
-  SetTraceLogLevel(LOG_ERROR);
+  // SetTraceLogLevel(LOG_ERROR);
   mrb_funcall(mrb, instance, "before_run", 0);
   mrb_gv_set(mrb, CURRENT_GAME_SYMBOL, instance);
   mrb_gc_register(mrb, instance);
@@ -241,6 +251,7 @@ close_game(mrb_state *mrb, mrb_value self, mrb_value instance)
   mrb_gc_unregister(mrb, instance);
   mrb_gv_set(mrb, CURRENT_GAME_SYMBOL, mrb_nil_value());
   mrb_funcall(mrb, instance, "before_close", 0);
+  CloseAudioDevice();
   CloseWindow();
   mrb_funcall(mrb, instance, "after_close", 0);
 }
