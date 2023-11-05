@@ -6,11 +6,11 @@ module Carbuncle
       end
 
       def url
-        'https://download.savannah.gnu.org/releases/freetype/ft2101.zip'
+        'https://download.savannah.gnu.org/releases/freetype/ft2132.zip'
       end
 
       def subdir
-        'freetype-2.10.1'
+        'freetype-2.13.2'
       end
 
       def lib_dir
