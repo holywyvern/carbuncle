@@ -38,7 +38,7 @@ module Carbuncle
       end
 
       def libraries
-        %w[raylib freetype physfs mbedtls mbedcrypto mbedx509 z xml2 tmx]
+        %w[raylib freetype physfs brotlienc brotlidec brotlicommon mbedtls mbedcrypto mbedx509 z xml2 tmx]
       end
   
       
@@ -52,7 +52,7 @@ module Carbuncle
 
       def all_dependencies
         @all_dependencies ||= [
-          raylib, zlib, freetype, libxml2, tmx, physfs, ssl, # ws
+          raylib, zlib, freetype, brotli, libxml2, tmx, physfs, ssl, # ws
         ]
       end
     end

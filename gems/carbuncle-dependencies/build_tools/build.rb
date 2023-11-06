@@ -55,12 +55,16 @@ module Carbuncle
       @boxer ||= Carbuncle::Dependencies::Boxer.new(self)
     end
 
+    def brotli
+      @brotli ||= Carbuncle::Dependencies::Brotli.new(self)
+    end
+
     def library_paths
       all_dependencies.map(&:lib_dir)
     end
 
     def libraries
-      %w[raylib freetype physfs mbedtls mbedcrypto mbedx509 z xml2 tmx Boxer]
+      %w[raylib freetype physfs brotlienc brotlidec brotlicommon mbedtls mbedcrypto mbedx509 z xml2 tmx Boxer]
     end
 
     def general_cmake_flags
@@ -163,6 +167,12 @@ module Carbuncle
       []
     end
 
+    def brotli_cmake_flags
+      [
+        '-DBUILD_SHARED_LIBS=OFF'
+      ]
+    end
+
     def include_paths
       all_dependencies.map(&:include_paths).flatten
     end
@@ -235,10 +245,18 @@ module Carbuncle
       'zlib'
     end
 
+    def brotli_library
+      'brotli'
+    end
+
     def all_dependencies
       @all_dependencies ||= [
-        raylib, zlib, freetype, libxml2, tmx, physfs, ssl, boxer, # ws
+        raylib, zlib, freetype, brotli, libxml2, tmx, physfs, ssl, boxer,  # ws
       ]
+    end
+
+    def inspect
+      "Build (#{type}) [#{all_dependencies.map(&:inspect).join(', ')}]"
     end
   end
 end

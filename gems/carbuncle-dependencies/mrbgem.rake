@@ -31,6 +31,7 @@ require_relative 'build_tools/dependencies/soloud'
 require_relative 'build_tools/dependencies/libwebsockets'
 require_relative 'build_tools/dependencies/mbedtls'
 require_relative 'build_tools/dependencies/boxer'
+require_relative 'build_tools/dependencies/brotli'
 
 MRuby::Gem::Specification.new('carbuncle-dependencies') do |spec|
   spec.license = 'MIT'

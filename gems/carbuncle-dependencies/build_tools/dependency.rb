@@ -92,5 +92,9 @@ module Carbuncle
     def cmake_dir
       '..'
     end
+
+    def inspect
+      "Dependency (#{name})"
+    end
   end
 end
