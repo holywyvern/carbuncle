@@ -58,20 +58,14 @@ get_shader(mrb_state *mrb, mrb_value obj)
 static void
 load_shader(mrb_state *mrb, struct mrb_Shader *shader, const char *vertex, const char *fragment)
 {
-  mrb_bool free_vertex, free_fragment;
-  free_vertex = FALSE;
-  free_fragment = FALSE;
-  if (vertex && PHYSFS_exists(vertex)) {
-    vertex = mrb_carbuncle_load_file_text(mrb, vertex);
-    free_vertex = TRUE;
-    }
-  if (fragment && PHYSFS_exists(fragment)) {
-    fragment = mrb_carbuncle_load_file_text(mrb, fragment);
-    free_fragment = TRUE;
+  if ((vertex && PHYSFS_exists(vertex)) || (fragment && PHYSFS_exists(fragment)))
+  {
+    shader->shader = LoadShader(vertex, fragment);
   }
-  shader->shader = LoadShaderFromMemory(vertex, fragment);
-  if (free_vertex) { mrb_free(mrb, vertex); }
-  if (free_fragment) {mrb_free(mrb, fragment); }
+  else
+  {
+    shader->shader = LoadShaderFromMemory(vertex, fragment);
+  }
 }
 
 static void

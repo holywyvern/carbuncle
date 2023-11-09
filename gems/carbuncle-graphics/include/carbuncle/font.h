@@ -18,6 +18,7 @@ struct mrb_Font
   mrb_float spacing;
   mrb_int size;
   mrb_bool is_default;
+  int *glyphs;
   char *bytes;
 };
 

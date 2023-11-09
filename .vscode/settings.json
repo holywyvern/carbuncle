@@ -18,6 +18,9 @@
     "xmemory0": "c",
     "xtr1common": "c",
     "*.def": "cpp",
-    "typeinfo": "cpp"
+    "typeinfo": "cpp",
+    "array": "c",
+    "string_view": "c",
+    "string": "c"
   }
 }

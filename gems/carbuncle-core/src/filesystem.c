@@ -18,6 +18,8 @@
 #include <mruby/compile.h>
 #include <mruby/variable.h>
 
+#include "raylib.h"
+
 #ifdef __EMSCRIPTEN__
 
 EM_JS(void, mrb_file_carbuncle_console_log, (const char *a, const char *b), {
@@ -606,8 +608,52 @@ mrb_s_file_get_load_paths(mrb_state *mrb, mrb_value self)
   return mrb_iv_get(mrb, self, LOAD_PATHS);
 }
 
+static struct {
+  mrb_state *mrb;
+} carbuncle_fs_state;
+
+static unsigned char *
+raylib_load_file_data_cb(const char *filename, unsigned int *size)
+{
+  size_t bytes;
+  char *result = mrb_carbuncle_load_file(carbuncle_fs_state.mrb, filename, &bytes);
+  *size = (unsigned int)bytes;
+  return (unsigned char *)result;
+}
+
+static bool
+raylib_save_file_data_cb(const char *filename, void *data, unsigned int size)
+{
+  PHYSFS_File *file = PHYSFS_openWrite(filename);
+  if (!file) return false;
+
+  PHYSFS_sint64 bytes = PHYSFS_writeBytes(file, data, size);
+  PHYSFS_close(file);
+
+  return bytes != -1;
+}
+
+static char *
+raylib_load_text_cb(const char *filename)
+{
+  return mrb_carbuncle_load_file_text(carbuncle_fs_state.mrb, filename);
+}
+
+static bool
+raylib_save_text_cb(const char *filename, char *text)
+{
+  return raylib_save_file_data_cb(filename, text, strlen(text));
+}
+
 void mrb_init_carbuncle_filesystem(mrb_state *mrb)
 {
+  carbuncle_fs_state.mrb = mrb;
+
+  SetLoadFileDataCallback(raylib_load_file_data_cb);
+  SetSaveFileDataCallback(raylib_save_file_data_cb);
+  SetLoadFileTextCallback(raylib_load_text_cb);
+  SetSaveFileTextCallback(raylib_save_text_cb);
+
   struct RClass *carbuncle = mrb_carbuncle_get(mrb);
 
   struct RClass *file = mrb_define_class_under(mrb, carbuncle, "File", mrb->object_class);
@@ -743,81 +789,25 @@ mrb_carbuncle_load_file_text(mrb_state *mrb, const char *filename)
 
 Image LoadCarbuncleImage(mrb_state *mrb, const char *filename)
 {
-  Image img;
-  unsigned char *bytes;
-  size_t byte_size;
-#ifdef __EMSCRIPTEN__  
-  if (strstr(filename, "https://") == filename)
-  {
-    img = LoadImage(filename);
-  }
-  else
-  {
-#endif
-    bytes = mrb_carbuncle_load_file(mrb, filename, &byte_size);
-    img = LoadImageFromMemory(GetFileExtension(filename), bytes, byte_size);
-    mrb_free(mrb, bytes);
-#ifdef __EMSCRIPTEN__
-  }
-#endif
-  return img;
+  return LoadImage(filename);
 }
 
 Texture
 LoadCarbuncleTexture(mrb_state *mrb, const char *filename)
 {
-  Image image = LoadCarbuncleImage(mrb, filename);
-  Texture2D texture = LoadTextureFromImage(image);
-  UnloadImage(image);
-  return texture;
+  return LoadTexture(filename);
 }
 
 Music
 LoadCarbuncleMusic(mrb_state *mrb, const char *filename)
 {
-  Music music;
-  unsigned char *bytes;
-  size_t byte_size;
-#ifdef __EMSCRIPTEN__  
-  if (strstr(filename, "https://") == filename)
-  {
-    music = LoadMusicStream(filename);
-  }
-  else
-  {
-#endif
-    bytes = mrb_carbuncle_load_file(mrb, filename, &byte_size);
-    music = LoadMusicStreamFromMemory(GetFileExtension(filename), bytes, byte_size);
-    // mrb_free(mrb, bytes);
-#ifdef __EMSCRIPTEN__
-  }
-#endif
-  return music;
+  return LoadMusicStream(filename);
 }
 
 Sound
 LoadCarbuncleSound(mrb_state *mrb, const char *filename)
 {
-  Sound sound;
-  unsigned char *bytes;
-  size_t byte_size;
-#ifdef __EMSCRIPTEN__  
-  if (strstr(filename, "https://") == filename)
-  {
-    sound = LoadSound(filename);
-  }
-  else
-  {
-#endif
-    bytes = mrb_carbuncle_load_file(mrb, filename, &byte_size);
-    Wave wave = LoadWaveFromMemory(GetFileExtension(filename), bytes, byte_size);
-    sound = LoadSoundFromWave(wave);    
-    UnloadWave(wave);
-    mrb_free(mrb, bytes);
-#ifdef __EMSCRIPTEN__
-  }
-#endif
-  return sound;
+  return LoadSound(filename);
 }
 
 void mrb_carbuncle_file_error(mrb_state *mrb, const char *action)

@@ -34,6 +34,7 @@ mrb_font_free(mrb_state *mrb, void *ptr)
       UnloadFont(font->raylib_font);
     }
     FT_Done_Face(font->face);
+    mrb_free(mrb, font->glyphs);
     mrb_free(mrb, font->bytes);
     mrb_free(mrb, font);
   }
@@ -49,19 +50,17 @@ static inline void
 load_glyphs(mrb_state *mrb, struct mrb_Font *font, FT_Open_Args *args)
 {
   FT_UInt index;
-  int *glyphs = mrb_alloca(mrb, sizeof(*glyphs) * font->face->num_glyphs);
+  font->glyphs = mrb_malloc(mrb, sizeof(int) * font->face->num_glyphs);
   FT_UInt i = 0;
   FT_ULong codepoint = FT_Get_First_Char(font->face, &index);
   while (codepoint)
   {
-    glyphs[i] = (int)codepoint;
+    font->glyphs[i] = (int)codepoint;
     codepoint = FT_Get_Next_Char(font->face, codepoint, &index);
     ++i;
   }
   font->spacing = 0;
-  font->raylib_font = LoadFontFromMemory(
-    GetFileExtension(args->pathname), args->memory_base, args->memory_size,
-    font->size, glyphs, font->face->num_glyphs);
+  font->raylib_font = LoadFontEx(args->pathname, font->size, font->glyphs, font->face->num_glyphs);
 }
 
 static inline void
@@ -122,12 +121,14 @@ mrb_font_initialize(mrb_state *mrb, mrb_value self)
   if (name)
   {
     mrb_carbuncle_check_file(mrb, name);
+    font->glyphs = NULL;
     open_font(mrb, font, name, size);
     font->is_default = FALSE;
   }
   else
   {
     font->raylib_font = GetFontDefault();
+    font->glyphs = NULL;
     font->spacing = size / 10;
     font->is_default = TRUE;
   }
